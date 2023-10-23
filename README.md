@@ -2,14 +2,14 @@
 
 # name
 平田栞
-<<<<<<< HEAD
+<<<<<<<<< Temporary merge branch 1
 達下華
 ふくい
 式町美紀
-=======
+=========
 たつした
 福井花望
 しきまち
->>>>>>> 06b99bcf57128e171c7cbe6db9844f8066823b65
+>>>>>>>>> Temporary merge branch 2
 いで
 さえき
