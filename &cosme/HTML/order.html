@@ -7,26 +7,27 @@
 </head>
 <body>
     <h2>レジ</h2>
-
-    <dl>
-        <dt>商品合計</dt><dd>〇〇〇〇円</dd>
-        <dt>お届け先</dt><dd>〇〇〇〇様<br>
-                        〒〇〇〇-〇〇〇〇<br>
-                        〇〇県〇〇市〇〇〇〇</dd>
-                        <dd><div class="white"><button onclick="location.href='f_henkou.html'">変更</button></div></dd>
+    <form action="order_check.html" method="post">
+        <dl>
+            <dt>商品合計</dt><dd>〇〇〇〇円</dd>
+            <dt>お届け先</dt><dd>〇〇〇〇様<br>
+                            〒〇〇〇-〇〇〇〇<br>
+                            〇〇県〇〇市〇〇〇〇</dd>
+                            <dd><div class="white"><button type="submit">変更</button></div></dd>
+                            
+            <dt>支払い方法</dt>
+                <dd>
+                    <div class="radio-wrap">
+                        <input type="radio" name="test" value="現金">現金<br>
+                        <input type="radio" name="test" value="コンビニ払い">コンビニ払い<br>
+                        <input type="radio" name="test" value="クレジットカード">クレジットカード<br>
+                    </div>
                         
-        <dt>支払い方法</dt>
-            <dd>
-                <div class="radio-wrap">
-                    <input type="radio" name="test" value="現金">現金<br>
-                    <input type="radio" name="test" value="コンビニ払い">コンビニ払い<br>
-                    <input type="radio" name="test" value="クレジットカード">クレジットカード<br>
-                </div>
-                    
-            </dd>
-    </dl>
-    <hr>
-    <div class="ao"><button onclick="location.href='f_buy_kakunin.html'">確認する</button></div>
-    <div class="grey"><button onclick="location.href='f_cart.html'">戻る</button></div>
+                </dd>
+        </dl>
+        <hr>
+        <div class="ao"><button type="submit">確認する</button></div>
+    </form>
+    <div class="grey"><button onclick="location.href='cart.html'">戻る</button></div>
 </body>
 </html>
