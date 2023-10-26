@@ -1,0 +1,118 @@
+
+@charset "UTF-8";
+/*ヘッダー*/
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background-color: #89c3fd;
+  box-sizing: content-box;
+}
+
+ul {
+  display: flex;
+  
+}
+li {
+  list-style: none;
+  
+}
+div {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+/*ホーム画面*/
+#weekranking{
+  margin-left: 120px;
+
+}
+
+#ranking1{
+  margin-left: 0px;
+
+height: 4;
+ }
+#new{
+  margin-left: 120px;
+}
+/*ログイン、ログアウト画面*/
+#logtitle{
+  padding-bottom:1em;
+  text-align:center;
+}
+#logtitle2{
+  line-height: 100px;
+  text-align:center;
+}
+#meru{
+  text-align:center;
+  background-image: url("mail.svg");
+  background-repeat: no-repeat;
+  background-position: 2px center;
+}
+
+
+#meru input {
+  padding: 3px 0 3px 2em; /* アイコンを設置するため左の余白を多めに指定*/
+}
+#pas{
+  text-align:center;
+  position: relative; 
+}
+#pas::before {
+  content: "";           /* 疑似要素に必須 */
+  width: 25px;           /* アイコンの横幅 */
+  height: 25px;          /* アイコンの高さ */
+  background: url(key.svg) no-repeat center center / auto 100%; /* 背景にアイコン画像を配置 */
+  display: inline-block; /* 高さを持たせるためにインラインブロック要素にする */
+  position: absolute;    /* 相対位置に指定 */
+  top:20%;              /* アイコンの位置。微調整してね */
+  left: 20%;             /* アイコンの位置。微調整してね */
+}
+
+#pas input {
+  padding: 3px 0 3px 2em; /* アイコンを設置するため左の余白を多めに指定*/
+}
+
+#logbutton{
+  padding-bottom:2em;
+  text-align: center;
+}
+#hr1{
+  text-align:center;
+}
+#logmsg{
+  text-align:center;
+}
+/*新規登録画面*/
+
+#kakunin{
+  text-align:center;
+}
+/*入れた*/
+.rate-form {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.rate-form input[type=radio] {
+  display: none;
+}
+.rate-form label {
+  position: relative;
+  padding: 0 5px;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 35px;
+}
+.rate-form label:hover {
+  color: #ffcc00;
+}
+.rate-form label:hover ~ label {
+  color: #ffcc00;
+}
+.rate-form input[type=radio]:checked ~ label {
+  color: #ffcc00;
+}
