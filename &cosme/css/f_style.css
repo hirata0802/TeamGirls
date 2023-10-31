@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+/*reji.htmlのcss*/
+h2{
+    text-align: center;
+}
+
+#gokei{
+    text-align: left 0px;
+}
+
+#yen{
+    text-align: center;
+}
+
+#otodoke{
+    margin-right: 150px;
+}
+
+#cus-home{
+    display: grid;
+	place-items: center center;
+}
+
+#white{
+    margin: 0 auto;
+}
+
+#shiharai{
+    text-align: left 0px;
+}
+
+#radio-wrap{
+    margin: center auto;
+}
+
+#ao{
+    margin: center auto;
+}
+
+#grey{
+    margin:  center auto;
+}
