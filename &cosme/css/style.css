@@ -46,16 +46,25 @@ height: 4;
   line-height: 100px;
   text-align:center;
 }
-#meru{
-  text-align:center;
-  background-image: url("mail.svg");
-  background-repeat: no-repeat;
-  background-position: 2px center;
+#meru {
+  text-align: center;
+  position: relative;
 }
 
+#meru::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: url(mail.svg) no-repeat center center / auto 100%;
+  display: inline-block;
+  position: absolute;
+  top: 50%; /* アイコンの位置を垂直方向の中央に配置 */
+  left: 20%; /* アイコンの位置を水平方向に調整。微調整可能 */
+  transform: translateY(-50%); /* 垂直方向の中央揃え */
+}
 
 #meru input {
-  padding: 3px 0 3px 2em; /* アイコンを設置するため左の余白を多めに指定*/
+  padding: 3px 0 3px 2em;
 }
 #pas{
   text-align:center;
@@ -87,11 +96,31 @@ height: 4;
   text-align:center;
 }
 /*新規登録画面*/
-
+#mannaka{
+  text-align:center;
+}
 #kakunin{
   text-align:center;
 }
-/*入れた*/
+#kensaku{
+  text-align:center;
+  padding-left: 100px;
+}
+#toroku1{
+  text-align:center;
+  padding-right: 170px;
+}
+#toroku2{
+  text-align:center;
+
+}
+
+/*新規完了*/
+#homehe{
+  text-align:center;
+
+}
+/*入れたやつ*/
 .rate-form {
   display: flex;
   flex-direction: row-reverse;
