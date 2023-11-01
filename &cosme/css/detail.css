@@ -1,0 +1,55 @@
+.out{
+    position: relative;
+}
+.in img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: .3s;
+}
+img{
+    display: block;
+    margin: -30%;
+    padding: 30%;
+    margin-left: 13%;
+    height: auto;
+    
+}
+input{
+    display: none;
+}
+.in{
+    display: flex;
+    justify-content: center;
+}
+label span{
+    display: block;
+    width: 15px;
+    height: 15px;
+    padding: 7px;
+    margin: 200px 0 0;
+    border-radius: 100%;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+label span::before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #4287f5;
+    opacity: 0.5;
+    border-radius: 100%;
+}
+
+label input:checked + span::before{
+    background: #000;
+    opacity: 1;
+}
+
+label input:checked ~ img,label input:checked ~ a img{
+    opacity: 1;
+    z-index: 1;
+}
