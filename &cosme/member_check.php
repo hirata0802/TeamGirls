@@ -9,20 +9,24 @@
     <h3>&cosme</h3>
     <hr>
     <h2>登録確認</h2>
-    <form action="member_finish.php" method="post">
-        <p><input type="text" name="sei" placeholder="氏名（姓）" readonly><input type="text" name="mei" placeholder="氏名（名）" readonly></p>
-        <p><input type="text" name="seikana" placeholder="かな（せい）" readonly><input type="text" name="meikana" placeholder="かな（めい）" readonly></p>
-        <p><input type="text" name="nikkuname" placeholder="ニックネーム" readonly></p>
-        <p><input type="text" name="yubin" placeholder="郵便番号" readonly>
-        <p><input type="text" name="ken" placeholder="都道府県" readonly></p>
-        <p><input type="text" name="mura" placeholder="市区町村" readonly></p>
-        <p><input type="text" name="banti" placeholder="番地" readonly></p>
-        <p><input type="text" name="bill" placeholder="マンション・ビル名" readonly></p>
-        <p><input type="text" name="tel" placeholder="電話番号"readonly></p>
-        <p><input type="text" name="meil" placeholder="メールアドレス"readonly></p>
-        <p><input type="text" name="pass" placeholder="パスワード"readonly></p>
+    <form action="member_finish.php" method="post" id="next">
+        <?php
+        echo '<p><input type="text" name="sei" placeholder="',$_POST['sei'],'" readonly>';
+        echo '<input type="text" name="mei" placeholder="',$_POST['mei'],'" readonly></p>';
+        echo '<p><input type="text" name="seikana" placeholder="',$_POST['seikana'],'" readonly>';
+        echo '<input type="text" name="meikana" placeholder="',$_POST['meikana'],'" readonly></p>';
+        echo '<p><input type="text" name="nickname" placeholder="',$_POST['nickname'],'" readonly></p>';
+        echo '<p><input type="text" name="zipcode" placeholder="',$_POST['zipcode'],'" readonly>';
+        echo '<p><input type="text" name="prefecture" placeholder="',$_POST['prefecture'],'" readonly></p>';
+        echo '<p><input type="text" name="city" placeholder="',$_POST['city'],'" readonly></p>';
+        echo '<p><input type="text" name="address" placeholder="',$_POST['address'],'" readonly></p>';
+        echo '<p><input type="text" name="bill" placeholder="',$_POST['bill'],'" readonly></p>';
+        echo '<p><input type="text" name="tel" placeholder="',$_POST['tel'],'" readonly></p>';
+        echo '<p><input type="text" name="mail" placeholder="',$_POST['mail'],'" readonly></p>';
+        echo '<p><input type="text" name="pass" placeholder="',$_POST['pass'],'" readonly></p>';
+        ?>
     </form>
-    <div class="grey"><button onclick="location.href='member_new.html'">変更</button></div></p>
-    <div class="ao"><button onclick="location.href='member_finish.html'">新規登録</button></div></p>
+    <button onclick="history.back()" class="grey">変更</button></p>
+    <button type="submit" form="next" class="ao">新規登録</button></p>
 </body>
 </html>
