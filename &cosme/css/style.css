@@ -118,6 +118,25 @@ height: 4;
 /*新規完了*/
 #homehe{
   text-align:center;
+}
+#kaninkanryo{
+  text-align:center;
+  padding-bottom:4em;
+}
+/**/
+
+button{
+   
+  display: block;
+  margin: 0 auto;
+  background-color: #89c3fd;
+  border-color: rgb(221, 221, 221);
+  font-family: 'Century Gothic', sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
 
 }
 /*入れたやつ*/

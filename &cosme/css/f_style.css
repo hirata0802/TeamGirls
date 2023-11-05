@@ -14,16 +14,16 @@ h2{
 }
 
 #otodoke{
-    margin-right: 150px;
+    text-align: 150px;
 }
 
 #cus-home{
     display: grid;
-	place-items: center center;
+	place-items: center ;
 }
 
 #white{
-    margin: 0 auto;
+    margin: center auto;
 }
 
 #shiharai{
@@ -34,10 +34,91 @@ h2{
     margin: center auto;
 }
 
-#ao{
-    margin: center auto;
+button{
+    display: block;
+    margin: 0 auto;
+    background-color: #89c3fd;
+    border-color: rgb(221, 221, 221);
+    font-family: 'Century Gothic', sans-serif;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+/*buy_kakunin.html*/
+#h2{
+    text-align: center;
+}
+
+#otodoke{
+    text-align: left;
+}
+
+#cus-home{
+    text-align: left;
+}
+
+#shiharai{
+    text-align: left;
+}
+
+#radio-wrap{
+    text-align: center;
+}
+
+#h3{
+    text-align: left;
 }
 
 #grey{
-    margin:  center auto;
+    margin-right: center;
+}
+
+/*buy_ok.html*/
+#h3{
+    text-align: left;
+}
+
+#h2{
+    text-align: center;
+}
+
+#kounyuu{
+    text-align: center;
+}
+
+/*cart.html*/
+#h2{
+    text-align: center;
+}
+
+#s-joho1{
+    text-align: center;
+}
+
+#delete1{
+    margin-right: 0%;
+}
+
+#s-joho2{
+    text-align: center;
+}
+
+#delete2{
+    text-align: center;
+}
+
+#gokei{
+    text-align: center;
+}
+
+/*mypage.html*/
+#name{
+    text-align: center;
+}
+
+#n-name{
+    margin: center auto;
 }
