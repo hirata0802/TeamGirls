@@ -1,3 +1,4 @@
+<?php require 'db_connect.php'; ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -12,38 +13,46 @@
         <input type="text" name="keyword" placeholder="キーワードで検索">
         <button type="submit" class="fas fa-search"></button>
     <div id="seach">
-        <table style="font-size:5pt">
-            <tr>
-                <th colspan=3>カテゴリー</th>
-            </tr>
-            <?php
+        <?php
+        echo '<table style="font-size:5pt">';
             echo '<tr>';
-                echo '<td><input type="image" src="image/eye.jpg" alt="アイシャドウ" width="60px"><br>アイシャドウ</td>';
-                echo '<td><input type="image" src="image/eyeliner.jpg" alt="アイライナー" width="60px"><br>アイライナー</td>';
-                echo '<td><input type="image" src="image/eyeliner.jpg" alt="アイライナー" width="60px"><br>アイライナー</td>';
-            echo '</tr><tr>';
-                echo '<td><input type="image" src="image/eye.jpg" alt="アイシャドウ" width="60px"><br>アイシャドウ</td>';
-                echo '<td><input type="image" src="image/eyeliner.jpg" alt="アイライナー" width="60px"><br>アイライナー</td>';
-                echo '<td><input type="image" src="image/eyeliner.jpg" alt="アイライナー" width="60px"><br>アイライナー</td>';
+                echo '<th colspan=3>カテゴリー</th>';
             echo '</tr>';
-            ?>
-        </table>
-        <table style="font-size:5pt">
-            <tr>
-                <th colspan=3>ブランド</th>
-            </tr>
-            <?php
+            $pdo=new PDO($connect, USER, PASS);
+            $sql=$pdo->query('select * from Categories');
+            $count=1;
             echo '<tr>';
-                echo '<td><input type="image" src="image/canmake.jpg" alt="キャンメイク" width="60px"><br>キャンメイク</td>';
-                echo '<td><input type="image" src="image/canmake.jpg" alt="キャンメイク" width="60px"><br>キャンメイク</td>';
-                echo '<td><input type="image" src="image/canmake.jpg" alt="キャンメイク" width="60px"><br>キャンメイク</td>';
-            echo '</tr><tr>';
-                echo '<td><input type="image" src="image/canmake.jpg" alt="キャンメイク" width="60px"><br>キャンメイク</td>';
-                echo '<td><input type="image" src="image/canmake.jpg" alt="キャンメイク" width="60px"><br>キャンメイク</td>';
-                echo '<td><input type="image" src="image/canmake.jpg" alt="キャンメイク" width="60px"><br>キャンメイク</td>';
+            foreach($sql as $row){
+                $category_id=$row['category_id'];
+                if($count%3!=0){
+                    echo '<td><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" width="60px" id="',$category_id,'"><br>',$row['category_name'],'</td>';
+                }else{
+                    echo '<td><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" width="60px" id="',$category_id,'"><br>',$row['category_name'],'</td>';
+                    echo '</tr><tr>';
+                }
+                $count++;
+            }
+        echo '</table>';
+        echo '<table style="font-size:5pt">';
+            echo '<tr>';
+                echo '<th colspan=3>ブランド</th>';
             echo '</tr>';
-            ?>
-        </table>
+
+            $sql=$pdo->query('select * from Brands');
+            $count=1;
+            echo '<tr>';
+            foreach($sql as $row){
+                $brand_id=$row['brand_id'];
+                if($count%3!=0){
+                    echo '<td><input type="image" src="',$row['image_path'],'" alt="',$brand_id,'" width="60px" id="',$brand_id,'"><br>',$row['brand_name'],'</td>';
+                }else{
+                    echo '<td><input type="image" src="',$row['image_path'],'" alt="',$bramd_id,'" width="60px" id="',$brand_id,'"><br>',$row['brand_name'],'</td>';
+                    echo '</tr><tr>';
+                }
+                $count++;
+            }
+        echo '</table>';
+        ?>
     </div>
     </form>
 </body>
