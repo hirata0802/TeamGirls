@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>カート画面</title>
-</head>
-<body>
+//カート画面
+<?php require 'header.php'; ?>
+<?php require 'menu.php'; ?>
     <h2>カート</h2>
     <form action="order.html" method="post">
     <img src="https://placehold.jp/120x100.png">
@@ -53,5 +48,4 @@
         <p>合計金額:〇〇〇〇</p>
         <p><div class="ao"><button type="submit">レジに進む</button></div></p>
     </form>
-</body>
-</html>
+<?php require 'footer.php'; ?>
