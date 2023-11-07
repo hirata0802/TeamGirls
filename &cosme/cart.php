@@ -1,8 +1,15 @@
 //カート画面
+<?php session_start(); ?>
 <?php require 'header.php'; ?>
 <?php require 'menu.php'; ?>
-    <h2>カート</h2>
-    <form action="order.html" method="post">
+<?php require 'db_connect.php'; ?>
+<h2>カート</h2>
+<?php
+    $pdo=new PDO($connect, USER, PASS);
+    $sql=$pdo->prepare('select * from Cart where member_code=?');
+    $sql->execute([$session['customer']['id']]);
+
+<form action="order.html" method="post">
     <img src="https://placehold.jp/120x100.png">
     <p>ブランド名：〇〇〇〇</p>
     <p>商品名：〇〇〇〇</p>
