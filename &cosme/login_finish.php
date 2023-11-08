@@ -1,19 +1,15 @@
-
 <?php session_start(); ?>
 <?php require 'db_connect.php'; ?>
-<?php require 'header.php'; ?>
 <?php
 
 unset($_SESSION['customer']);
 
 $pdo = new PDO($connect, USER, PASS);
-
-$sql = $pdo -> prepare('select * from Members where email=?');
-
-$sql -> execute([$_POST['mail']]);
+$sql = $pdo -> prepare('select * from Members where email=? and member_password=?');
+$sql -> execute([$_POST['mail'],$_POST['pass']]);
 
 foreach($sql as $row){
-    if($_POST['pass']==$row['member_password']){
+    //if($_POST['pass']==$row['member_password']){
         $_SESSION['customer'] = [
             'code' => $row['member_code'],
             'familyName' => $row['family_name'],
@@ -26,14 +22,14 @@ foreach($sql as $row){
             'mail' => $row['email'],
             'pass' => $row['member_password']];
         }
-}
+
 
 if(isset($_SESSION['customer'])){
-    require 'home.php';
+    header('Location: ./home.php');
+    exit();
 }else{
-    
+    require 'header.php';
     echo 'ログイン名またはパスワードが違います';
-    
 }
 
 ?>
