@@ -1,27 +1,27 @@
 <?php session_start(); ?>
+<?php require 'db_connect.php'; ?>
 <?php require 'header.php'; ?>
 <?php require 'menu.php'; ?>
-<?php require 'db-connect.php'; ?>
+
+    <h2>今週のランキング</h2>
 
 <?php
-
-unset($_SESSION['member']);
-$pdo = new PDO($connect,USER,PASS);
-$sql = $pdo -> prepare('select * from Members where email=?');
-$sql -> execute([$_POST['mail']]);
-
-foreach($sql as $row){
-    if(password_verify($_POST['pass'],$row['pass']) == true){
-        $_SESSION['member'] = [
-            'name' => $row['first_name']
-        ];
+if(isset($_SESSION['customer'])){
+    //今週のランキング;
+    $pdo = new PDO($connect, USER, PASS);
+    $sql = $pdo -> query('select * from Cosmetics');
+    foreach($sql as $row){
+        echo '<tr>';
+        echo '<td>', $row['cosme_name'], '</td>';
+        echo '<td>', $row['price'], '</td>';
+        echo '</tr>';
     }
-}
-
-if(isset($_SESSION['member'])){
-    echo 'いらっしゃいませ、',$_SESSION['member']['name'],'さん。';
-}else{
-    echo 'ログイン名またはパスワードが違います。';
+    //新作情報;
 }
 ?>
-<?php require 'footer.php'; ?>
+</body>
+</html>
+<?php
+ $pdo = null;   //DB切断
+ ?>
+

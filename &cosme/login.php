@@ -9,7 +9,7 @@
     <h3>&cosme</h3>
     <hr>
     <h2>ログイン</h2>
-    <form action="home.php" method="post">
+    <form action="login_finish.php" method="post">
         <p><input type="text" name="mail" placeholder="メールアドレス"></p>
         <p><input type="password" name="pass" placeholder="パスワード"></p>
         <p><button type="submit">ログイン</button></p>
