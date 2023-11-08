@@ -46,7 +46,7 @@
                 if($count%3!=0){
                     echo '<td><input type="image" src="',$row['image_path'],'" alt="',$brand_id,'" width="60px" id="',$brand_id,'"><br>',$row['brand_name'],'</td>';
                 }else{
-                    echo '<td><input type="image" src="',$row['image_path'],'" alt="',$bramd_id,'" width="60px" id="',$brand_id,'"><br>',$row['brand_name'],'</td>';
+                    echo '<td><input type="image" src="',$row['image_path'],'" alt="',$brand_id,'" width="60px" id="',$brand_id,'"><br>',$row['brand_name'],'</td>';
                     echo '</tr><tr>';
                 }
                 $count++;
