@@ -36,7 +36,9 @@ require 'header.php';
 echo '<h3>&cosme</h3>';
 echo '<hr>';
 echo '<h2>ログイン</h2>';
+if(isset($msg)){
 echo '<p>', $msg, '</p>';
+}
 
 echo '<form action="login.php" method="post">';
 echo '<p><input type="text" name="mail" placeholder="メールアドレス"></p>';
