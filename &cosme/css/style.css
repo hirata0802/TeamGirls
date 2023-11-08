@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 /*ヘッダー*/
 nav {
@@ -45,9 +46,12 @@ height: 4;
   line-height: 100px;
   text-align:center;
 }
-#logtitle3{
-  line-height: 200px;
-  text-align:center;
+#logtitle3 {
+    padding-bottom: 3em;
+    text-align: center;
+  }
+#sen{
+  margin-bottom: 10em;
 }
 #meru {
   text-align: center;
@@ -188,6 +192,11 @@ height: 4;
   justify-content: center; 
 }
 /*マイページ*/
+.name{
+  border: 1px solid #000;
+  text-align:center;
+  border-radius: 3px;
+}
 .selectbox-004 {
   display: inline-flex;
   align-items: center;
@@ -234,4 +243,5 @@ button{
 #mannaka{
     text-align:center;
   }
+
 
