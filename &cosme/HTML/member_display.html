@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>会員情報変更画面</title>
+    <title>個人情報画面</title>
 </head>
 <body>
     <h3>&cosme</h3>
     <hr>
     <!--個人情報画面に遷移-->
-    <form action="member_display.html" method="post">
-        <h2>会員情報変更</h2>
-        <p><input type="text" name="sei" placeholder="氏名（姓）"><input type="text" name="mei" placeholder="氏名（名）"></p>
-        <p><input type="text" name="seikana" placeholder="かな（せい）"><input type="text" name="meikana" placeholder="かな（めい）"></p>
+    <div class="modoru"><button onclick="history.back()">戻る</button></div>
+    <form action="member_change.html" method="post">
+        <h2>個人情報</h2>
+        <p><input type="text" name="sei" placeholder="氏名（姓）">
+        <input type="text" name="mei" placeholder="氏名（名）"></p>
+        <p><input type="text" name="seikana" placeholder="かな（せい）">
+        <input type="text" name="meikana" placeholder="かな（めい）"></p>
         <p><input type="text" name="yubin" placeholder="郵便番号">
-            
-        <div class="ao"> <button type="submit">検索</button></div></p>
-
         <p><input type="text" name="ken" placeholder="都道府県"></p>
         <p><input type="text" name="mura" placeholder="市区町村"></p>
         <p><input type="text" name="banti" placeholder="番地"></p>
@@ -25,8 +25,8 @@
         <p><input type="text" name="meil" placeholder="メールアドレス"></p>
         <p><input type="text" name="pass" placeholder="パスワード"></p>
     
-        <p><button type="submit">保存</button></p>
+        <p><button type="submit">変更</button></p>
     </form>
-    <div class="modoru"><button onclick="history.back()">戻る</button></div>
+    
 </body>
 </html>
