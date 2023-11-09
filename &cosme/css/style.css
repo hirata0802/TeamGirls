@@ -56,6 +56,7 @@ height: 4;
 #meru {
   text-align: center;
   position: relative;
+  
 }
 
 #meru::before {
@@ -64,32 +65,34 @@ height: 4;
   height: 25px;
   background: url(mail.svg) no-repeat center center / auto 100%;
   display: inline-block;
-  position: absolute;
-  top: 50%; /* アイコンの位置を垂直方向の中央に配置 */
-  left: 20%; /* アイコンの位置を水平方向に調整。微調整可能 */
-  transform: translateY(-50%); /* 垂直方向の中央揃え */
+  position: relative; /* 相対位置指定に変更 */
+  margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
+  top: 30px; /* アイコンの位置を微調整 */
+ right:95px;
 }
 
 #meru input {
   padding: 3px 0 3px 2em;
 }
-#pas{
-  text-align:center;
-  position: relative; 
+#pas {
+  text-align: center;
+  position: relative;
 }
+
 #pas::before {
-  content: "";           /* 疑似要素に必須 */
-  width: 25px;           /* アイコンの横幅 */
-  height: 25px;          /* アイコンの高さ */
-  background: url(key.svg) no-repeat center center / auto 100%; /* 背景にアイコン画像を配置 */
-  display: inline-block; /* 高さを持たせるためにインラインブロック要素にする */
-  position: absolute;    /* 相対位置に指定 */
-  top:20%;              /* アイコンの位置。微調整してね */
-  left: 20%;             /* アイコンの位置。微調整してね */
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: url(key.svg) no-repeat center center / auto 100%;
+  display: inline-block;
+  position: relative; /* 相対位置指定に変更 */
+  margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
+  top: 55px; /* アイコンの位置を微調整 */
+ right:95px;
 }
 
 #pas input {
-  padding: 3px 0 3px 2em; /* アイコンを設置するため左の余白を多めに指定*/
+  padding: 3px 0 3px 2em;
 }
 
 #logbutton{
@@ -243,5 +246,3 @@ button{
 #mannaka{
     text-align:center;
   }
-
-
