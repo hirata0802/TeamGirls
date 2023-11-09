@@ -14,7 +14,7 @@
             <div><font size="1">お気に入り</font></div>
         </li>
         <li>
-            <img src="image/cart.svg" onclick="location.href='cart.html'" width="40" height="40" alt="cart">
+            <img src="image/cart.svg" onclick="location.href='cart_show.html'" width="40" height="40" alt="cart">
             <div><font size="1">&nbsp;カート</font></div>
         </li>
         <li>
