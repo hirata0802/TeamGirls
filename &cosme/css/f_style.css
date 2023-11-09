@@ -5,33 +5,17 @@ h2{
     text-align: center;
 }
 
-#gokei{
-    text-align: left 0px;
+#left{
+    text-align: left;
 }
 
-#yen{
+#center{
     text-align: center;
-}
-
-#otodoke{
-    text-align: 150px;
 }
 
 #cus-home{
     display: grid;
 	place-items: center ;
-}
-
-#white{
-    margin: center auto;
-}
-
-#shiharai{
-    text-align: left 0px;
-}
-
-#radio-wrap{
-    margin: center auto;
 }
 
 button{
@@ -52,28 +36,8 @@ button{
     text-align: center;
 }
 
-#otodoke{
-    text-align: left;
-}
-
-#cus-home{
-    text-align: left;
-}
-
-#shiharai{
-    text-align: left;
-}
-
-#radio-wrap{
-    text-align: center;
-}
-
 #h3{
     text-align: left;
-}
-
-#grey{
-    margin-right: center;
 }
 
 /*buy_ok.html*/
@@ -85,32 +49,8 @@ button{
     text-align: center;
 }
 
-#kounyuu{
-    text-align: center;
-}
-
 /*cart.html*/
 #h2{
-    text-align: center;
-}
-
-#s-joho1{
-    text-align: center;
-}
-
-#delete1{
-    margin-right: 0%;
-}
-
-#s-joho2{
-    text-align: center;
-}
-
-#delete2{
-    text-align: center;
-}
-
-#gokei{
     text-align: center;
 }
 
