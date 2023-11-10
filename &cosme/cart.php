@@ -2,14 +2,14 @@
 <form action="order.html" method="post">
 <?php
     $pdo=new PDO($connect, USER, PASS);
-    $sql=$pdo->prepare('select * from Cart where member_code=? and delete_flag=0 order by id desc');
-    $sql->execute([$_SESSION['customer']['member_code']]);
+    $sql=$pdo->prepare('select * from Cart where member_code=1 and delete_flag=0 order by id desc');
+    //$sql->execute([$_SESSION['customer']['code']]);
     
     if($sql->fetch() == true){  //カートに追加しているか
         $total = 0;
         foreach($sql as $row){
             $sql2=$pdo->prepare('select * from Cart as C inner join Cosmetics as CO on C.cosme_id=CO.cosme_id inner join Brands as B on CO.brand_id=B.brand_id where member_code=? and delete_flag=0');
-            $sql2->execute([$_SESSION['customer']['member_code']]);
+            $sql2->execute([$_SESSION['customer']['code']]);
             foreach($sql as $row){  //カートの中身表示
                 echo '<img src="', $row['CO.image_path'], '">';
                 echo '<p>ブランド名：', $row['B.brand_name'], '</p>';

@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+/*ログイン画面のcss*/
+#center{
+  text-align: center;
+}
+
+.ao{
+ 
+  display: block;
+  margin: 0 auto;
+  background-color: #89c3fd;
+  border-color: rgb(221, 221, 221);
+  font-family: 'Century Gothic', sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.grey{
+  display: block;
+  margin: 0 auto;
+  background-color: #b5b5b5;
+  border-color: rgb(221, 221, 221);
+  font-family: 'Century Gothic', sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/*売上管理画面のcss*/
+.center{
+margin: 0 auto;
+display: flex;
+}
+
+/*商品登録画面のcss*/
+#h3{
+  text-align: left;
+}
+#left{
+  text-align: left;
+}
+
+
+/*商品登録確認画面のcss*/
+
+
+/*商品登録完了のcss 同じ処理のみ完了*/
+
+
+/*ログアウト画面のcss 同じ処理のみ完了*/
+
+
+/*ログアウト完了画面のcss 同じ処理のみ完了*/
