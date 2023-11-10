@@ -56,6 +56,7 @@ height: 4;
 #meru {
   text-align: center;
   position: relative;
+  margin-right: 25px; 
   
 }
 
@@ -67,8 +68,8 @@ height: 4;
   display: inline-block;
   position: relative; /* 相対位置指定に変更 */
   margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
-  top: 30px; /* アイコンの位置を微調整 */
- right:95px;
+  top: 10px; /* アイコンの位置を微調整 */
+ left: 35px;
 }
 
 #meru input {
@@ -77,6 +78,7 @@ height: 4;
 #pas {
   text-align: center;
   position: relative;
+  margin-right: 25px; 
 }
 
 #pas::before {
@@ -87,8 +89,8 @@ height: 4;
   display: inline-block;
   position: relative; /* 相対位置指定に変更 */
   margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
-  top: 55px; /* アイコンの位置を微調整 */
- right:95px;
+  top: 10px; /* アイコンの位置を微調整 */
+ left: 35px;
 }
 
 #pas input {
@@ -101,15 +103,101 @@ height: 4;
 }
 /*新規登録画面*/
 
-#kensaku{
+#kennsaku{
   text-align:center;
-  padding-left: 100px;
+  margin-right: -250px;
 }
 #toroku1{
   text-align:center;
-  padding-right: 170px;
+  padding-right: 145px;
+}
+#simei{
+  text-align: center;
+  position: relative;
+  margin-right: 40px; 
+  
+}
+#pas2 {
+  text-align: center;
+  position: relative;
+  margin-right: 25px; 
 }
 
+#pas2::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: url(key.svg) no-repeat center center / auto 100%;
+  display: inline-block;
+  position: relative; /* 相対位置指定に変更 */
+  margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
+  top: 10px; /* アイコンの位置を微調整 */
+ left: 35px;
+}
+
+#pas2 input {
+  padding: 3px 0 3px 2em;
+}
+#meru2 {
+  text-align: center;
+  position: relative;
+  margin-right: 25px; 
+  
+}
+
+#meru2::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: url(mail.svg) no-repeat center center / auto 100%;
+  display: inline-block;
+  position: relative; /* 相対位置指定に変更 */
+  margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
+  top: 10px; /* アイコンの位置を微調整 */
+ left: 45px;
+}
+
+#meru2 input {
+  padding: 3px 0 3px 2em;
+}
+
+#simei::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: url(aikon.svg) no-repeat center center / auto 100%;
+  display: inline-block;
+  position: relative; /* 相対位置指定に変更 */
+  margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
+  top: 8px; /* アイコンの位置を微調整 */
+ right: -35px;
+}
+
+#simei input {
+  padding: 3px 0 3px 2em;
+}
+#yuubin{
+  text-align: center;
+  position: relative;
+  margin-right: 30px; 
+  
+}
+
+#yuubin::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: url(yuubin.png) no-repeat center center / auto 100%;
+  display: inline-block;
+  position: relative; /* 相対位置指定に変更 */
+  margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
+  top: 8px; /* アイコンの位置を微調整 */
+ right: -40px;
+}
+
+#yuubin input {
+  padding: 3px 0 3px 2em;
+}
 
 /*新規完了*/
 #kaninkanryo{
@@ -246,3 +334,4 @@ button{
 #mannaka{
     text-align:center;
   }
+
