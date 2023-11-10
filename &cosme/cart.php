@@ -20,7 +20,8 @@
             echo '<button class="button is-small" @click="decrement">-1</button>';
             echo '{{ count }}';
             echo '<button class="button is-small" @click="increment">+1</button>';
-            echo '<input type="submit" href="cart-delete.php?id=', $row['cosme_id'], 'value="削除"></p>';
+            $cart = $row['cart_id'];
+            echo '<input type="submit" href="cart-delete.php?id=', $cart, 'value="削除"></p>';
             //$total += $row['CO.price'] * count;
         }
         echo '<hr>';
