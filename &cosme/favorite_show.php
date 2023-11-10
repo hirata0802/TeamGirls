@@ -18,7 +18,6 @@
     
         $sql = $pdo -> prepare('select * from Cosmetics as C inner join Favorites as F on C.cosme_id=F.cosme_id inner join Brands as B on C.brand_id=B.brand_id where F.member_code=?');
         $sql -> execute([$_SESSION['customer']['code']]);
-        
         foreach($sql as $row){
             echo '<table>';
             $cosmeId = $row['cosme_id'];

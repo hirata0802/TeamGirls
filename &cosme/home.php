@@ -3,24 +3,30 @@
 <?php require 'header.php'; ?>
 <?php require 'menu.php'; ?>
 
-    <h2>今週のランキング</h2>
-    <table>
+<h2>今週のランキング</h2>
+<table>
 <?php
-    //今週のランキング;
+    echo '👑今週のランキング';
+    echo '<table>';
     $pdo = new PDO($connect, USER, PASS);
-    $sql = $pdo -> query('select * from Cosmetics order by price desc');
+    $sql = $pdo -> query('select * from OrderDetails as O join Cosmetics as C on O.cosme_id = C.cosme_id group by cosme_id order by quantity desc limit 3');
     foreach($sql as $row){
         echo '<tr>';
-        echo '<td>', $row['cosme_name'], '</td>';
-        echo '<td>', $row['price'], '</td>';
+        echo '<td><img src="',$row['image_path'],'"></td>';
         echo '</tr>';
     }
-    //新作情報;}
+    echo '</table>';
+    
+    echo '⏰新作情報';
+    echo '<table>';
+    $sql2 = $pdo -> query('select * from Cosmetics where creation_date >= (now()-interval 1month)');
+    foreach($sql2 as $row2){
+        echo '<tr>';
+        echo '<td><img src="',$row2['image_path'],'">';
+        echo '</tr>';
+    }
+    echo '</table>';
 ?>
 </table>
-</body>
-</html>
-<?php
- $pdo = null;   //DB切断
- ?>
+<?php require 'footer.php' ?>
 
