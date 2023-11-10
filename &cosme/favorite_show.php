@@ -1,28 +1,48 @@
-<?php require 'db-connect.php'; ?>
-<?php require 'menu.php'; ?>
+<?php session_start(); ?>
+<?php require 'db_connect.php'; ?>
+<?php //require 'menu.php'; ?>
 <?php require 'header.php'; ?>
 
 <?php
     if(isset($_SESSION['customer'])){
-        echo '<table>';
+        
         $pdo = new PDO($connect, USER, PASS);
-        $sql = $pdo -> prepare('select * from Favorites join Cosmetics on Favorites.cosme_id=Cosmetics.cosme_id join Brands on Favorites.brand_id=Brands.brand_id where Favorites.member_code=?');
-        //Cosmetics, Brands where member_code=? and cosme_id=cosme_id and brand_id=brand_id
-        $sql -> execute([$_SESSION['customer']['id']]);
+        $memberCode = $_SESSION['customer']['code'];
 
+        $sql2 ='select * from Favorites where member_code = :memberCode';
+        $sth = $pdo -> prepare($sql2);
+        $sth -> bindValue(':memberCode', $memberCode);
+        $sth -> execute();
+        $count = $sth -> rowCount();
+        echo '<p>',$count,'件  <button class="ao" onclick="location.href=\'serch_input.php\'">絞り込み</button></p>';
+    
+        $sql = $pdo -> prepare('select * from Cosmetics as C inner join Favorites as F on C.cosme_id=F.cosme_id inner join Brands as B on C.brand_id=B.brand_id where F.member_code=?');
+        $sql -> execute([$_SESSION['customer']['code']]);
+        
         foreach($sql as $row){
-            $id = $row['id'];
-            echo $id;
+            echo '<table>';
+            $cosmeId = $row['cosme_id'];
+            echo $cosmeId;
             echo '<tr>';
-            echo '<td>',$row['image_path'],'</td>';
-            echo '<td>',$row['brand_name'],'</td>';
-            echo '<td>',$row['cosme_name'],'</td>';
-            echo '<td>',$row['price'],'</td>';
-            echo '<td><a href="favorite.php?id=',$id,'">削除</a></td>';
-            echo '<td><a href="cart.php?id=',$id,'">カートに入れる</a></td>';
+            echo '<td><img src="',$row['image_path'],'"></td>';
             echo '</tr>';
+
+            echo '<tr>';
+            echo '<td>',$row['brand_name'],'</td>';
+            echo '</tr>';
+
+            echo '<tr>';
+            echo '<td>',$row['cosme_name'],'</td>';
+            echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'">　　　★</a></td>';
+            echo '</tr>';
+
+            echo '<tr>';
+            echo '<td>',$row['price'],'</td>';
+            echo '<td><a href="cart.php?cosmeId=',$cosmeId,'">カートに入れる</a></td>';
+            echo '</tr>';
+            echo '</table>';
         }
-        echo '</table>';
+        
     }
 ?>
 <?php require 'footer.php'; ?>
