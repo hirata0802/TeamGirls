@@ -13,8 +13,15 @@
 if(isset($_SESSION['customer'])){
     unset($_SESSION['customer']);
     echo 'ログアウトしました。';
+    echo '<form action="login.php" method="post">';
+    echo '<button class="ao">ログイン画面へ戻る</button>';
+    echo '</form>';
+   
 }else{
     echo 'すでにログアウトしています。';
+    echo '<form action="login.php" method="post">';
+    echo '<button class="ao">ログイン画面へ戻る</button>';
+    echo '</form>';
 }
 ?>
 
