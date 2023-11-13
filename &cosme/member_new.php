@@ -24,7 +24,7 @@
         <p><input type="text" name="city" id="city" placeholder="市区町村" required></p>
         <p><input type="text" name="address" id="address" placeholder="番地" required></p>
         <p><input type="text" name="bill" placeholder="マンション・ビル名"></p>
-        <p><input type="tel" name="tel" placeholder="電話番号" required></p>
+        <p><input type="tel" name="tel" maxlength="11" pattern="^[0-9]+$" placeholder="電話番号" required></p>
         <p><input type="email" name="mail" placeholder="メールアドレス" required></p>
         <p><input type="password" name="pass" placeholder="パスワード" pattern="^([a-zA-Z0-9]{6,})$" title="半角英数字6文字以上で入力ください" required></p>
     
