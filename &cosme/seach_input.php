@@ -5,14 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>seach</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
 </head>
 <body>
     <?php require 'menu.php'; ?>
     <form action="seach_output.php" method="post">
-        <input type="text" name="keyword" placeholder="キーワードで検索">
-        <button type="submit" class="fas fa-search"></button>
-    <div id="seach">
+        <input type="text" name="keyword" placeholder="キーワードで検索" >
+        <input type="image" src="./image/seach.jpg" alt="検索" width="25px" formaction="seach_output.php?kubun=3&id=key'">
         <?php
         echo '<table style="font-size:5pt">';
             echo '<tr>';
@@ -25,9 +23,9 @@
             foreach($sql as $row){
                 $category_id=$row['category_id'];
                 if($count%3!=0){
-                    echo '<td><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" width="60px" id="',$category_id,'"><br>',$row['category_name'],'</td>';
+                    echo '<td><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" width="60px" formaction="seach_output.php?kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
                 }else{
-                    echo '<td><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" width="60px" id="',$category_id,'"><br>',$row['category_name'],'</td>';
+                    echo '<td><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" width="60px" formaction="seach_output.php?kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
                     echo '</tr><tr>';
                 }
                 $count++;
@@ -44,16 +42,15 @@
             foreach($sql as $row){
                 $brand_id=$row['brand_id'];
                 if($count%3!=0){
-                    echo '<td><input type="image" src="',$row['image_path'],'" alt="',$brand_id,'" width="60px" id="',$brand_id,'"><br>',$row['brand_name'],'</td>';
+                    echo '<td><input type="image" src="',$row['image_path'],'" alt="',$brand_id,'" width="60px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"><br>',$row['brand_name'],'</td>';
                 }else{
-                    echo '<td><input type="image" src="',$row['image_path'],'" alt="',$brand_id,'" width="60px" id="',$brand_id,'"><br>',$row['brand_name'],'</td>';
+                    echo '<td><input type="image" src="',$row['image_path'],'" alt="',$brand_id,'" width="60px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"><br>',$row['brand_name'],'</td>';
                     echo '</tr><tr>';
                 }
                 $count++;
             }
         echo '</table>';
         ?>
-    </div>
     </form>
 </body>
 </html>
