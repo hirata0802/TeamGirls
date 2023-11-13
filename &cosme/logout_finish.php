@@ -15,7 +15,7 @@ if(isset($_SESSION['customer'])){
     echo 'ログアウトしました。';
     echo '<form action="login.php" method="post">';
     echo '<button class="ao">ログイン画面へ戻る</button>';
-    echo '</form>';
+    echo '</form>';//変更
    
 }else{
     echo 'すでにログアウトしています。';
