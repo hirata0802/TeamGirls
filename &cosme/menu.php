@@ -10,11 +10,11 @@
             <div><font size="1">　検索</font></div>
         </li>
         <li>  
-            <img src="image/favorite.svg" onclick="location.href='favorite.php'" width="40" height="40" alt="favorite">
+            <img src="image/favorite.svg" onclick="location.href='favorite_show.php'" width="40" height="40" alt="favorite">
             <div><font size="1">お気に入り</font></div>
         </li>
         <li>
-            <img src="image/cart.svg" onclick="location.href='cart.php'" width="40" height="40" alt="cart">
+            <img src="image/cart.svg" onclick="location.href='cart_show.php'" width="40" height="40" alt="cart">
             <div><font size="1">&nbsp;カート</font></div>
         </li>
         <li>
