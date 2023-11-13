@@ -16,7 +16,8 @@
         echo '〒', $row['post_code'], '<br>';
         echo $row['address'], '<br>';
         echo $row['phone'], '</dd>';
-        echo '<dd><div class="white"><button type="submit" onclick="location.href=`order_change.php`">変更</button></div></dd>';
+        echo '<dd><div class="white"><button type="submit" onclick="location.href=`order_add.php`">お届け先追加</button></div></dd>';
+        echo '<dd><div class="white"><button type="submit" onclick="location.href=`order_change.php`">お届け先変更</button></div></dd>';
     }
     
     echo '<dt>支払い方法</dt>';
