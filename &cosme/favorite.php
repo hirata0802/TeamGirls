@@ -3,18 +3,17 @@
 
 <?php
     $pdo = new PDO($connect,USER,PASS);
-    $exists = $pdo -> prepare('select exists (select  member_code, cosme_id from Favorites where member_code=? and cosme_id=?)');
-    $exists -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
+    $delete_flag = $pdo -> prepare('select delete_flag from Favorites where member_code = ? and cosme_id = ?');
+    $delete_flag -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
 
-if($exists == 0){
-    $sql = $pdo -> prepare('insert into Favorites values(?, ?, current_date)');
+if($delete_flag == 1){//お気に入り追加
+    $sql = $pdo -> prepare('insert into Favorites values(?, ?, current_date, 0)');
     $sql -> execute([$_SESSION['customer']['code'],$_GET['cosmeId']]); 
-}else{
-    $sql = $pdo -> prepare('delete from Favorites where member_code = ? and cosme_id = ?');
+}else{//お気に入り削除
+    $sql = $pdo -> prepare('update Favorites set delete_flag = 1 where member_code = ? and cosme_id = ?');
     $sql -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
 }
 ?>
-
 
 
 
