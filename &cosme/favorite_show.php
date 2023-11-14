@@ -24,7 +24,7 @@
             $cosmeId = $row['cosme_id'];
             echo $cosmeId;
             echo '<tr>';
-            echo '<td><img src="',$row['image_path'],' width=200"></td>';
+            echo '<td><img src="',$row['image_path'],' width=200"></td>';//商品詳細へ飛ばすのか？
             echo '</tr>';
 
             echo '<tr>';
