@@ -9,21 +9,22 @@
     <h3>&cosme</h3>
     <hr>
     <h2>登録確認</h2>
+
     <form action="member_finish.php" method="post" id="next">
         <?php
-        echo '<p><input type="text" name="sei" placeholder="',$_POST['sei'],'" readonly>';
-        echo '<input type="text" name="mei" placeholder="',$_POST['mei'],'" readonly></p>';
-        echo '<p><input type="text" name="seikana" placeholder="',$_POST['seikana'],'" readonly>';
-        echo '<input type="text" name="meikana" placeholder="',$_POST['meikana'],'" readonly></p>';
-        echo '<p><input type="text" name="nickname" placeholder="',$_POST['nickname'],'" readonly></p>';
-        echo '<p><input type="text" name="zipcode" placeholder="',$_POST['zipcode'],'" readonly>';
-        echo '<p><input type="text" name="prefecture" placeholder="',$_POST['prefecture'],'" readonly></p>';
-        echo '<p><input type="text" name="city" placeholder="',$_POST['city'],'" readonly></p>';
-        echo '<p><input type="text" name="address" placeholder="',$_POST['address'],'" readonly></p>';
-        echo '<p><input type="text" name="bill" placeholder="',$_POST['bill'],'" readonly></p>';
-        echo '<p><input type="text" name="tel" placeholder="',$_POST['tel'],'" readonly></p>';
-        echo '<p><input type="text" name="mail" placeholder="',$_POST['mail'],'" readonly></p>';
-        echo '<p><input type="text" name="pass" placeholder="',$_POST['pass'],'" readonly></p>';
+        echo '<p><input type="text" name="sei" value="',$_POST['sei'], '" placeholder="',$_POST['sei'],'" readonly>';
+        echo '<input type="text" name="mei" value="',$_POST['mei'], '" placeholder="',$_POST['mei'],'" readonly></p>';
+        echo '<p><input type="text" name="seikana" value="',$_POST['seikana'], '" placeholder="',$_POST['seikana'],'" readonly>';
+        echo '<input type="text" name="meikana" value="',$_POST['meikana'], '" placeholder="',$_POST['meikana'],'" readonly></p>';
+        echo '<p><input type="text" name="nickname" value="',$_POST['nickname'], '" placeholder="',$_POST['nickname'],'" readonly></p>';
+        echo '<p><input type="text" name="zipcode" value="',$_POST['zipcode'], '" placeholder="',$_POST['zipcode'],'" readonly>';
+        echo '<p><input type="text" name="prefecture" value="',$_POST['prefecture'], '" placeholder="',$_POST['prefecture'],'" readonly></p>';
+        echo '<p><input type="text" name="city" value="',$_POST['city'], '" placeholder="',$_POST['city'],'" readonly></p>';
+        echo '<p><input type="text" name="address" value="',$_POST['address'], '" placeholder="',$_POST['address'],'" readonly></p>';
+        echo '<p><input type="text" name="bill" value="',$_POST['bill'], '" placeholder="',$_POST['bill'],'" readonly></p>';
+        echo '<p><input type="text" name="tel" value="',$_POST['tel'], '" placeholder="',$_POST['tel'],'" readonly></p>';
+        echo '<p><input type="text" name="mail" value="',$_POST['mail'], '" placeholder="',$_POST['mail'],'" readonly></p>';
+        echo '<p><input type="text" name="pass" value="',$_POST['pass'], '" placeholder="',$_POST['pass'],'" readonly></p>';
         ?>
     </form>
     <button onclick="history.back()" class="grey">変更</button></p>

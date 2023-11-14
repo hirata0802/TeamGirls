@@ -18,7 +18,7 @@
         <p><input type="text" name="nickname" placeholder="ニックネーム"></p>
         <p><input type="text" name="zipcode" id="zipcode" placeholder="郵便番号" required>
         <!---↓検索ボタンで住所自動入力-->
-        <button type="button" class="ao" id="btn">検索</button>
+        <button type="button" class="ao" id="btn">検索</button></p>
 
         <p><input type="text" name="prefecture" id="prefecture" placeholder="都道府県" required></p>
         <p><input type="text" name="city" id="city" placeholder="市区町村" required></p>
@@ -28,7 +28,7 @@
         <p><input type="email" name="mail" placeholder="メールアドレス" required></p>
         <p><input type="password" name="pass" placeholder="パスワード" pattern="^([a-zA-Z0-9]{6,})$" title="半角英数字6文字以上で入力ください" required></p>
     
-        <button type="submit" class="ao">確認</button></p>
+        <p><button type="submit" class="ao">確認</button></p>
     </form>
     <script src="./js/jquery-3.7.0.min.js"></script>
     <script src="./js/app.js"></script>
