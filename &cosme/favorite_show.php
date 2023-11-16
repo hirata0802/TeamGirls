@@ -9,21 +9,22 @@
         $pdo = new PDO($connect, USER, PASS);
         $memberCode = $_SESSION['customer']['code'];
 
-        $sql2 ='select * from Favorites where member_code = :memberCode';
+        $sql2 ='select * from Favorites where delete_flag=0 and member_code = :memberCode';
         $sth = $pdo -> prepare($sql2);
         $sth -> bindValue(':memberCode', $memberCode);
         $sth -> execute();
         $count = $sth -> rowCount();
         echo '<p>',$count,'件  <button class="ao" onclick="location.href=\'serch_input.php\'">絞り込み</button></p>';
     
-        $sql = $pdo -> prepare('select * from Cosmetics as C inner join Favorites as F on C.cosme_id=F.cosme_id inner join Brands as B on C.brand_id=B.brand_id where F.member_code=?');
+        //表示
+        $sql = $pdo -> prepare('select * from Cosmetics as C inner join Favorites as F on C.cosme_id=F.cosme_id inner join Brands as B on C.brand_id=B.brand_id where F.member_code=? and delete_flag=0');
         $sql -> execute([$_SESSION['customer']['code']]);
         foreach($sql as $row){
             echo '<table>';
             $cosmeId = $row['cosme_id'];
             echo $cosmeId;
             echo '<tr>';
-            echo '<td><img src="',$row['image_path'],'"></td>';
+            echo '<td><img src="',$row['image_path'],' width=200"></td>';//商品詳細へ飛ばすのか？
             echo '</tr>';
 
             echo '<tr>';
