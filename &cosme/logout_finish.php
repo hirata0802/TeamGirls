@@ -14,19 +14,19 @@
 if(isset($_SESSION['customer'])){
     unset($_SESSION['customer']);
     echo '<div id="logtitle3">';
-    echo 'ログアウトしました。';
+    echo '<h3>ログアウトしました。</h3>';
+    echo '<hr width="250">';
     echo '</div>';
     echo '<form action="login.php" method="post">';
-    echo '<hr width="250">';
     echo '<button class="ao">ログイン画面へ戻る</button>';
     echo '</form>';//変更
    
 }else{
     echo '<div id="logtitle3">';
-    echo 'すでにログアウトしています。';
+    echo '<h3>すでにログアウトしています。</h3>';
+    echo '<hr width="250">';
     echo '</div>';
     echo '<form action="login.php" method="post">';
-    echo '<hr width="250">';
     echo '<button class="ao">ログイン画面へ戻る</button>';
     echo '</form>';
 }
