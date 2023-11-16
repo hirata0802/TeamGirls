@@ -8,7 +8,7 @@
     <title>ログイン画面</title>
 </head>
 <body>
-    <h1>&cosme</h1>
+    <h3>&cosme</h3>
     <hr color="black">
     <?php
 if(isset($_SESSION['customer'])){
@@ -22,8 +22,11 @@ if(isset($_SESSION['customer'])){
     echo '</form>';//変更
    
 }else{
+    echo '<div id="logtitle3">';
     echo 'すでにログアウトしています。';
+    echo '</div>';
     echo '<form action="login.php" method="post">';
+    echo '<hr width="250">';
     echo '<button class="ao">ログイン画面へ戻る</button>';
     echo '</form>';
 }
