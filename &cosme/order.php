@@ -10,7 +10,7 @@
     $sql->execute([$_SESSION['customer']['code']]);
 
     foreach($sql as $row){
-        echo '<dl>'
+        echo '<dl>';
         echo '<dt>商品合計</dt><dd>', $_POST['total'], '円</dd>';
         echo '<dt>お届け先</dt><dd>', $row['address_name'], '　様<br>';
         echo '〒', $row['post_code'], '<br>';
