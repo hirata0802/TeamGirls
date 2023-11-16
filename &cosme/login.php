@@ -57,7 +57,9 @@ echo '<p>', $msg, '</p>';
     <div id="pas"><input type="text" style="width: 200px;height: 30px;" name="pass"placeholder="パスワード"></form></div>
     <br>
     <p><button class="ao" type="submit">ログイン</button></p></div>
+    <br>
     <hr class="hr1">
+    <br>
     <div id="mannaka"><p>アカウントをお持ちでない方はこちら</p>
         <br>
     <a href="f_shinki.php">新規会員登録</a></div>

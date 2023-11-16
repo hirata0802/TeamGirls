@@ -40,6 +40,9 @@ height: 4;
 /*ログイン、ログアウト画面*/
 .hr1{
   margin: 0 auto;
+  border-color: rgb(0, 0, 0);
+  width: 60%;
+
 }
 .hr2{
   margin: 0 auto;
