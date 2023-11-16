@@ -1,11 +1,30 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>会員情報登録確認画面</title>
-</head>
-<body>
+<?php session_start(); ?>
+<?php require 'db_connect.php'; ?>
+<?php
+ $_SESSION['members'] = [
+    'sei' => $_POST['sei'],
+    'mei' => $_POST['mei'],
+    'seikana' => $_POST['seikana'],
+    'meikana' => $_POST['meikana'],
+    'nickname' => $_POST['nickname'],
+    'zipcode' => $_POST['zipcode'],
+    'prefecture' => $_POST['prefecture'],
+    'city' => $_POST['city'],
+    'address' => $_POST['address'],
+    'bill' => $_POST['bill'],
+    'tel' => $_POST['tel'],
+    'pass' => $_POST['pass']
+];
+
+$pdo=new PDO($connect,USER,PASS);
+$sql=$pdo->prepare('select * from Members where email=?');
+$sql->execute([$_POST['mail']]);
+if(!empty($sql->fetchAll())){
+    header('Location: ./member_new.php');
+    exit();
+}
+?>
+<?php require 'header.php'; ?>
     <h3>&cosme</h3>
     <hr>
     <h2>登録確認</h2>
@@ -31,3 +50,4 @@
     <button type="submit" form="next" class="ao">新規登録</button></p>
 </body>
 </html>
+<?php require 'footer.php'; ?>

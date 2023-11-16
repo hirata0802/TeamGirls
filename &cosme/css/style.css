@@ -38,6 +38,11 @@ height: 4;
   margin-left: 120px;
 }
 /*ログイン、ログアウト画面*/
+#hr1{
+  margin: 0 auto;
+
+}
+
 #logtitle{
   padding-bottom:1em;
   text-align:center;
@@ -109,7 +114,7 @@ height: 4;
 }
 #toroku1{
   text-align:center;
-  padding-right: 145px;
+  padding-right: 95px;
 }
 #simei{
   text-align: center;
@@ -120,7 +125,7 @@ height: 4;
 #pas2 {
   text-align: center;
   position: relative;
-  margin-right: 25px; 
+  margin-right: 30px; 
 }
 
 #pas2::before {
@@ -132,7 +137,7 @@ height: 4;
   position: relative; /* 相対位置指定に変更 */
   margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
   top: 10px; /* アイコンの位置を微調整 */
- left: 35px;
+ left: 40px;
 }
 
 #pas2 input {
@@ -141,7 +146,7 @@ height: 4;
 #meru2 {
   text-align: center;
   position: relative;
-  margin-right: 25px; 
+  margin-right: 30px; 
   
 }
 
@@ -154,7 +159,7 @@ height: 4;
   position: relative; /* 相対位置指定に変更 */
   margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
   top: 10px; /* アイコンの位置を微調整 */
- left: 45px;
+ left: 40px;
 }
 
 #meru2 input {
@@ -198,7 +203,28 @@ height: 4;
 #yuubin input {
   padding: 3px 0 3px 2em;
 }
+#tell{
+  text-align: center;
+  position: relative;
+  margin-right: 30px; 
+  
+}
 
+#tell::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: url(tell.svg) no-repeat center center / auto 100%;
+  display: inline-block;
+  position: relative; /* 相対位置指定に変更 */
+  margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
+  top: 8px; /* アイコンの位置を微調整 */
+ right: -40px;
+}
+
+#tell input {
+  padding: 3px 0 3px 2em;
+}
 /*新規完了*/
 #kaninkanryo{
   text-align:center;
@@ -335,3 +361,33 @@ button{
     text-align:center;
   }
 
+  .selectbox {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+ 
+.selectbox::after {
+    position: absolute;
+    right: 15px;
+    width: 10px;
+    height: 7px;
+    background-color: #535353;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    content: '';
+    pointer-events: none;
+}
+ 
+.selectbox select {
+    appearance: none;
+    min-width: 230px;
+    height: 2.8em;
+    padding: .4em calc(.8em + 30px) .4em .8em;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 2%), 0 2px 3px -2px rgba(0 0 0 / 5%);
+    background-color: #fff;
+    color: #333333;
+    font-size: 1em;
+    cursor: pointer;
+}
