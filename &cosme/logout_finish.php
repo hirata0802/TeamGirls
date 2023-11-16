@@ -9,7 +9,7 @@
 </head>
 <body>
     <h3>&cosme</h3>
-    <hr color="black">
+    <div id="sen"><hr color="black"></div>
     <?php
 if(isset($_SESSION['customer'])){
     unset($_SESSION['customer']);
