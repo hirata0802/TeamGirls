@@ -38,6 +38,13 @@ height: 4;
   margin-left: 120px;
 }
 /*ログイン、ログアウト画面*/
+hr.hr1{
+  margin: 0 auto;
+}
+hr.hr2{
+  margin: 0 auto;
+  border-color: rgb(0, 0, 0);
+}
 #logtitle{
   padding-bottom:1em;
   text-align:center;
@@ -109,7 +116,7 @@ height: 4;
 }
 #toroku1{
   text-align:center;
-  padding-right: 145px;
+  padding-right: 95px;
 }
 #simei{
   text-align: center;
@@ -120,7 +127,7 @@ height: 4;
 #pas2 {
   text-align: center;
   position: relative;
-  margin-right: 25px; 
+  margin-right: 30px; 
 }
 
 #pas2::before {
@@ -132,7 +139,7 @@ height: 4;
   position: relative; /* 相対位置指定に変更 */
   margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
   top: 10px; /* アイコンの位置を微調整 */
- left: 35px;
+ left: 40px;
 }
 
 #pas2 input {
@@ -141,7 +148,7 @@ height: 4;
 #meru2 {
   text-align: center;
   position: relative;
-  margin-right: 25px; 
+  margin-right: 30px; 
   
 }
 
@@ -154,7 +161,7 @@ height: 4;
   position: relative; /* 相対位置指定に変更 */
   margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
   top: 10px; /* アイコンの位置を微調整 */
- left: 45px;
+ left: 40px;
 }
 
 #meru2 input {
@@ -198,7 +205,28 @@ height: 4;
 #yuubin input {
   padding: 3px 0 3px 2em;
 }
+#tell{
+  text-align: center;
+  position: relative;
+  margin-right: 30px; 
+  
+}
 
+#tell::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: url(tell.svg) no-repeat center center / auto 100%;
+  display: inline-block;
+  position: relative; /* 相対位置指定に変更 */
+  margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
+  top: 8px; /* アイコンの位置を微調整 */
+ right: -40px;
+}
+
+#tell input {
+  padding: 3px 0 3px 2em;
+}
 /*新規完了*/
 #kaninkanryo{
   text-align:center;
