@@ -41,7 +41,7 @@ if(isset($_POST['login'])){
         $msg = 'ログイン名またはパスワードが違います';
     }
 }
-require 'header.php';
+
 ?>
 <h3>&cosme</h3>
 <div id="hr2"><hr color="black"></div>
