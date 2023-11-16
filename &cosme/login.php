@@ -44,7 +44,7 @@ if(isset($_POST['login'])){
 require 'header.php';
 ?>
 <h3>&cosme</h3>
-<div class="hr2"><hr color="black"></div>
+<hr class="hr2">
 <div id="logtitle"><h2>ログイン</h2></div>
 <?php
 if(isset($msg)){
@@ -57,7 +57,7 @@ echo '<p>', $msg, '</p>';
     <div id="pas"><input type="text" style="width: 200px;height: 30px;" name="pass"placeholder="パスワード"></form></div>
     <br>
     <p><button class="ao" type="submit">ログイン</button></p></div>
-    <div class="hr1"><hr width="250"></div>
+    <hr class="hr1">
     <div id="mannaka"><p>アカウントをお持ちでない方はこちら</p>
         <br>
     <a href="f_shinki.php">新規会員登録</a></div>
