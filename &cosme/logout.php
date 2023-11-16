@@ -7,7 +7,7 @@
     <title>ログアウト画面</title>
 </head>
 <body>
-    <h1>&cosme</h1>
+    <h3>&cosme</h3>
     <hr color="black">
     <form action="logout_finish.php" method="post">
     <div id="logtitle"><h2>ログアウト</h2></div>
