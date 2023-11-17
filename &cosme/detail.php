@@ -6,8 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/detail.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script> 
 <title>&cosme</title>
 </head>
 <body>
@@ -18,7 +17,7 @@
 <?php
     $pdo = new PDO($connect, USER, PASS);
     $cosme1 = $pdo -> prepare('select * from Cosmetics where group_id=? and brand_id=? and category_id=?');
-    $cosme1 -> execute([$_POST['broup_id'], $_POST['brand_id'], $_POST['category_id']]);
+    $cosme1 -> execute([$_POST['group_id'], $_POST['brand_id'], $_POST['category_id']]);
     $count = 1;
 
     echo '<div class="out">';
@@ -38,8 +37,11 @@
     echo '</div>';
 
     echo '<table><tr>';
-    echo '<td><a href="cart.php?cosmeId=',$cosmeId,'"><button>カートに入れる</button></a></td>'; 
-    echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'">　　　★</a></td></tr>';
+    echo '<td><a href="cart.php?cosmeId=',$cosmeId,'"><button>カートに入れる</button></a></td>';
+    
+    echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'"><p v-if="delete_flag=1">★</p></a></td></tr>';
+    echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'"><p v-else-if="delete_flag=0">☆</p></a></td></tr>';
+    //echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'">　　　★</a></td></tr>';
     echo '<p>商品詳細</p>';
     echo '<p>',$cosmeEx,'</p>';
     echo '<p><strong>レビュー</strong></p>';

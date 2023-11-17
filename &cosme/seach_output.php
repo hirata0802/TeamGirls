@@ -5,6 +5,51 @@
     <hr>
     <?php
     $pdo=new PDO($connect, USER, PASS);
+
+    //複数選択
+    if(isset($_POST['multiseach'])){
+        if($_POST['categorySelect']==0 && $_POST['brandSelect']==0 && $_POST['colorSelect']==0){
+            //選択なし
+            $sql=$pdo->query('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id');
+            $count=$sql->rowCount();
+        }else if($_POST['categorySelect']!=0 && $_POST['brandSelect']!=0 && $_POST['colorSelect']!=0){
+            //全選択
+            $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ? and C.brand_id = ? and C.color_id = ?');
+            $sql->execute([$_POST['categorySelect'],$_POST['brandSelect'],$_POST['colorSelect']]);
+            $count=$sql->rowCount();
+        }else if($_POST['categorySelect']!=0 && $_POST['brandSelect']!=0 && $_POST['colorSelect']==0){
+            //カテゴリー、ブランド選択
+            $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ? and C.brand_id = ?');
+            $sql->execute([$_POST['categorySelect'],$_POST['brandSelect']]);
+            $count=$sql->rowCount();
+        }else if($_POST['categorySelect']!=0 && $_POST['brandSelect']==0 && $_POST['colorSelect']==0){
+            //カテゴリー選択
+            $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ?');
+            $sql->execute([$_POST['categorySelect']]);
+            $count=$sql->rowCount();
+        }else if($_POST['categorySelect']==0 && $_POST['brandSelect']!=0 && $_POST['colorSelect']==0){
+            //ブランド選択
+            $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.brand_id = ?');
+            $sql->execute([$_POST['brandSelect']]);
+            $count=$sql->rowCount();
+        }else if($_POST['categorySelect']==0 && $_POST['brandSelect']!=0 && $_POST['colorSelect']!=0){
+            //ブランド、カラー選択
+            $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.brand_id = ? and C.color_id = ?');
+            $sql->execute([$_POST['brandSelect'],$_POST['colorSelect']]);
+            $count=$sql->rowCount();
+        }else if($_POST['categorySelect']==0 && $_POST['brandSelect']==0 && $_POST['colorSelect']!=0){
+            //カラー選択
+            $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.color_id = ?');
+            $sql->execute([$_POST['colorSelect']]);
+            $count=$sql->rowCount();
+        }else if($_POST['categorySelect']!=0 && $_POST['brandSelect']==0 && $_POST['colorSelect']!=0){
+            //カテゴリー、カラー選択
+            $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ? and C.color_id = ?');
+            $sql->execute([$_POST['categorySelect'],$_POST['colorSelect']]);
+            $count=$sql->rowCount();
+        }
+    }
+    if(!empty($_GET['kubun'])){
     if($_GET['kubun']==1){
         //カテゴリー
         $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ?');
@@ -23,9 +68,9 @@
         $sql=$pdo->query('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id');
         $count=$sql->rowCount();
     }
+}
     echo '<table width="100%">';
         echo '<th align="left">',$count,'件</th>';
-        echo '<th align="right"><button type="button">絞り込み</button></th>';
         echo '<form action="detail.php" method="post">';
             $rowcount=1;
             echo '<tr>';
@@ -41,7 +86,7 @@
                     echo '</td>';
                 }else{
                     echo '<td>';
-                        echo '<table width="100%">';
+                        echo '<table width="80%">';
                             echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px"></td></tr>';
                             echo '<tr><td colspan="2" align="left" white-space: nowrap>',$row['cosme_name'],'</td><td align="right"><a href="#">☆</a></td></tr>';
                             echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
