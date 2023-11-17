@@ -61,7 +61,7 @@ echo '<p>', $msg, '</p>';
     <br>
     <div id="mannaka"><p>アカウントをお持ちでない方はこちら</p>
         <br>
-    <a href="f_shinki.php">新規会員登録</a></div>
+    <a href="member_new.php">新規会員登録</a></div>
 </form>
 </body>
 </html>
