@@ -15,7 +15,8 @@
 
     <form action="member_check.php" method="post">
         <?php
-    $sei=$mei=$seikana=$meikana=$nickname=$zipcode=$prefecture=$city=$address=$bill=$tel=$pass=$error='';
+        unset($_SESSION['customer']);
+    $sei=$mei=$seikana=$meikana=$nickname=$zipcode=$prefecture=$city=$address=$bill=$tel=$mail=$pass=$error='';
     if(isset($_SESSION['members'])){
         $sei=$_SESSION['members']['sei'];
         $mei=$_SESSION['members']['mei'];
@@ -28,11 +29,14 @@
         $address=$_SESSION['members']['address'];
         $bill=$_SESSION['members']['bill'];
         $tel=$_SESSION['members']['tel'];
+        $mail=$_SESSION['members']['mail'];
         $pass=$_SESSION['members']['pass'];
         $error='<font color="FF0000">メールアドレスが既に登録されています。</font>';
     }
       echo '<h2>新規会員登録</h2>';
-      echo $error;
+      if(!isset($mail)){
+          echo $error;
+      }
       echo '<p><input type="text" name="sei" placeholder="氏名（姓）" value="',$sei,'" required>';
       echo '<input type="text" name="mei" placeholder="氏名（名）" value="',$mei,'" required></p>';
       echo '<p><input type="text" name="seikana" placeholder="かな（せい）" value="',$seikana,'" required>';

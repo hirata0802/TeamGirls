@@ -3,8 +3,8 @@
 <?php require 'db_connect.php'; ?>
 <?php
 $pdo=new PDO($connect,USER,PASS);
-
-   if(!isset($_SESSION['customer'])){
+if(!isset($_SESSION['customer'])){
+      
         $ads=$_POST['prefecture'].$_POST['city'].$_POST['address'].$_POST['bill'];
             $sql=$pdo->prepare('insert into Members values(null,?,?,?,?,?,?,?,?,?)');
             $sql->execute([
