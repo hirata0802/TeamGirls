@@ -13,6 +13,7 @@
     'address' => $_POST['address'],
     'bill' => $_POST['bill'],
     'tel' => $_POST['tel'],
+    'mail' => $_POST['mail'],
     'pass' => $_POST['pass']
 ];
 
@@ -20,6 +21,7 @@ $pdo=new PDO($connect,USER,PASS);
 $sql=$pdo->prepare('select * from Members where email=?');
 $sql->execute([$_POST['mail']]);
 if(!empty($sql->fetchAll())){
+    $_SESSION['members']['mail']='';
     header('Location: ./member_new.php');
     exit();
 }

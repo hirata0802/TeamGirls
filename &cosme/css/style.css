@@ -1,8 +1,8 @@
 
 @charset "UTF-8";
-/*ヘッダー*/
+/*メニューバー*/
 nav {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -10,7 +10,9 @@ nav {
   background-color: #89c3fd;
   box-sizing: content-box;
 }
-
+#cosme{
+  font-size: 2em;
+}
 ul {
   display: flex;
   

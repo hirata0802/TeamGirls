@@ -15,6 +15,6 @@
         echo $row['address'], '<br>';
         echo $row['phone'], '</dd>';
     }
-    echo '<input type="submit" value="選択" onclick="location.href=`order_db_insert.php`">';
+    echo '<input type="submit" value="選択" onclick="location.href=`order_db_insert.php?order=1`">';
 ?>
 <?php require 'footer.php'; ?>
