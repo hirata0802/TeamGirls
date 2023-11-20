@@ -16,8 +16,8 @@
 
 <?php
     $pdo = new PDO($connect, USER, PASS);
-    $cosme1 = $pdo -> prepare('select * from Cosmetics where group_id=? and brand_id=? and category_id=?');
-    $cosme1 -> execute([$_POST['group_id'], $_POST['brand_id'], $_POST['category_id']]);
+    $cosme1 = $pdo -> prepare('select * from Cosmetics where group_id=? and brand_id=? and category_id=? union select * Favorites where member_code = ?');
+    $cosme1 -> execute([$_POST['group_id'], $_POST['brand_id'], $_POST['category_id'], $_SESSION['customer']['code']]);
     $count = 1;
 
     echo '<div class="out">';
@@ -38,9 +38,11 @@
 
     echo '<table><tr>';
     echo '<td><a href="cart.php?cosmeId=',$cosmeId,'"><button>カートに入れる</button></a></td>';
-    
-    echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'"><p v-if="delete_flag=1">★</p></a></td></tr>';
-    echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'"><p v-else-if="delete_flag=0">☆</p></a></td></tr>';
+    if($row['delete_flag']==0){
+        echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'">★</a></td>';
+    }else{
+        echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'">☆</a></td>';
+    }
     //echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'">　　　★</a></td></tr>';
     echo '<p>商品詳細</p>';
     echo '<p>',$cosmeEx,'</p>';
