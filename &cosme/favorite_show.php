@@ -9,13 +9,11 @@
         $pdo = new PDO($connect, USER, PASS);
         $memberCode = $_SESSION['customer']['code'];
 
-        $sql2 ='select * from Favorites where delete_flag=0 and member_code = :memberCode';
-        $sth = $pdo -> prepare($sql2);
-        $sth -> bindValue(':memberCode', $memberCode);
-        $sth -> execute();
-        $count = $sth -> rowCount();
+        $sql2 = $pdo -> prepare('select * from Favorites where delete_flag=0 and member_code=?');
+        $sql2 -> execute([$_SESSION['customer']['code']]);
+        $count = $sql2 -> rowCount();
 
-        $delete_flag = $pdo -> prepare('select delete_flag from Favorites where member_code = ? and cosme_id = ?');
+        /**$delete_flag = $pdo -> prepare('select delete_flag from Favorites where member_code = ? and cosme_id = ?');
         $delete_flag -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);    
         foreach($delete_flag as $row){
         if($_GET['page'] == 1){//お気に入り画面からの遷移
@@ -23,7 +21,7 @@
                 $sql = $pdo -> prepare('update Favorites set delete_flag=1,register_date=current_date where member_code = ? and cosme_id = ?');
                 $sql -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
             }
-        }}
+        }}*/
         
         //表示
         echo '<p>',$count,'件</p>';
@@ -44,7 +42,7 @@
             echo '<tr>';
             echo '<td>',$row['cosme_name'],'</td>';
             //お気に入りボタン設定
-            echo '<td><a href="favorite_show.php?cosmeId=',$cosmeId,'&page=1">★</a></td>';
+            echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'&page=1">★</a></td>';
             echo '</tr>';
 
             echo '<tr>';
