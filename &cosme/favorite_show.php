@@ -27,8 +27,7 @@
         echo '<p>',$count,'件  <button class="ao" onclick="location.href=\'serch_input.php\'">絞り込み</button></p>';
     
         //表示
-        $sql = $pdo -> prepare('select * from Cosmetics as C inner join Favorites as F on C.cosme_id=F.cosme_id inner join Brands as B on C.brand_id=B.brand_id where F.member_code=?');
-        //$sql = $pdo -> prepare('select * from Cosmetics as C inner join Favorites as F on C.cosme_id=F.cosme_id inner join Brands as B on C.brand_id=B.brand_id where F.member_code=? and delete_flag=0');
+        $sql = $pdo -> prepare('select * from Cosmetics as C inner join Favorites as F on C.cosme_id=F.cosme_id inner join Brands as B on C.brand_id=B.brand_id where F.member_code=? and delete_flag=0');
         $sql -> execute([$_SESSION['customer']['code']]);
         foreach($sql as $row){
             echo '<table>';
@@ -61,6 +60,5 @@
         
     }
     ?>
-    <script src="./js/favorite.js"></script>
 
 <?php require 'footer.php'; ?>
