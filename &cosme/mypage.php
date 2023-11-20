@@ -1,16 +1,43 @@
 <?php session_start(); ?>
+<?php require 'db_connect.php'; ?>
+<?php
+if(isset($_POST['nickname']) || isset($_POST['age']) || isset($_POST['sei']) || isset($_POST['skin']) || isset($_POST['p_color'])){
+    $pdo=new PDO($connect, USER, PASS);
+    $sql=$pdo->prepare('update Mypage set member_nickname=?, member_age=?, member_gender=?, member_skin=?, member_color=? where member_code=?');
+    $sql->execute([
+        $_POST['nickname'],
+        $_POST['age'],
+        $_POST['sei'],
+        $_POST['skin'],
+        $_POST['p_color'],
+        $_SESSION['customer']['code']
+    ]);
+}
+?>
+
+
 <?php require 'header.php'; ?>
 <?php require 'menu.php'; ?>
-<?php require 'db_connect.php'; ?>
-<form action="mypage_insert.php" method="post">
+<form action="mypage.php" method="post">
 <?php
     $pdo=new PDO($connect, USER, PASS);
     $sql=$pdo->prepare('select * from Mypage where member_code=?');
     $sql->execute([$_SESSION['customer']['code']]);
-
     foreach($sql as $row){
+        //アイコン表示
+        if(empty($row['member_image'])){
+            echo '<img src="image/icon/icon/png" alt="">';
+        }else{
+            echo '<img src="', $row['mamber_image'],'" alt="">';
+        }
+        echo '<input type="file" name="image" accept="image/*">';
+
         echo '<p>ニックネーム</p>';
-        echo '<p><input type="text" name="nickname" value="', $row['member_nickname'], '"></p>';
+        if(empty($row['member_nickname'])){
+            echo '<p><input type="text" name="nickname" value="unknown"></p>';
+        }else{
+            echo '<p><input type="text" name="nickname" value="', $row['member_nickname'], '"></p>';
+        }
         
         //佐伯のラベルを付け加える
         echo '<p>年代</p>';

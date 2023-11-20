@@ -12,6 +12,7 @@ if($delete_flag == 1){//お気に入り追加
 }else{//お気に入り削除
     $sql = $pdo -> prepare('update Favorites set delete_flag = 1 where member_code = ? and cosme_id = ?');
     $sql -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
+    require 'favorite_show.php' ;
 }
 ?>
 

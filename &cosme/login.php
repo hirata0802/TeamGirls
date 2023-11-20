@@ -1,25 +1,16 @@
 <?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>ログイン画面</title>
-</head>
-<body>
 <?php require 'db_connect.php'; ?>
 <?php
 $msg;
-if(isset($_POST['login'])){
+if(isset($_POST['mail'])){
     unset($_SESSION['customer']);
     
     $pdo = new PDO($connect, USER, PASS);
-    $sql = $pdo -> prepare('select * from Members where email=? and member_password=?');
-    $sql -> execute([$_POST['mail'],$_POST['pass']]);
+    $sql = $pdo -> prepare('select * from Members where email=?');
+    $sql -> execute([$_POST['mail']]);
     
     foreach($sql as $row){
-        //if($_POST['pass']==$row['member_password']){
+          if(password_verify($_POST['pass'],$row['member_password'])==true){
             $_SESSION['customer'] = [
                 'code' => $row['member_code'],
                 'familyName' => $row['family_name'],
@@ -31,9 +22,9 @@ if(isset($_POST['login'])){
                 'phone' => $row['phone'],
                 'mail' => $row['email'],
                 'pass' => $row['member_password']];
-            }
-    
-    
+             }
+         }
+
     if(isset($_SESSION['customer'])){
         header('Location: ./home.php');
         exit();
@@ -41,27 +32,25 @@ if(isset($_POST['login'])){
         $msg = 'ログイン名またはパスワードが違います';
     }
 }
-
 ?>
+<?php require 'header.php'; ?>
 <h3>&cosme</h3>
 <div id="hr2"><hr color="black"></div>
 <div id="logtitle"><h2>ログイン</h2></div>
 <?php
 if(isset($msg)){
-echo '<p>', $msg, '</p>';
+    echo '<p>', $msg, '</p>';
 }
 ?>
 <form action="login.php" method="post">
-<div id="meru"><input type="text" style="width: 200px;height: 30px;"name="mail" placeholder="メールアドレス">
-    </div>
-    <div id="pas"><input type="text" style="width: 200px;height: 30px;" name="pass"placeholder="パスワード"></form></div>
+    <div id="meru"><input type="text" style="width: 200px;height: 30px;"name="mail" placeholder="メールアドレス"></div>
+    <div id="pas"><input type="text" style="width: 200px;height: 30px;" name="pass"placeholder="パスワード"></div>
     <br>
-    <p><button class="ao" type="submit">ログイン</button></p></div>
-    <div id="hr1"><hr width="250"></div>
-    <br>
-    <div id="mannaka"><p>アカウントをお持ちでない方はこちら</p>
-        <br>
-    <a href="member_new.php">新規会員登録</a></div>
+    <p><button class="ao" type="submit" href="home.php">ログイン</button></p>
 </form>
-</body>
-</html>
+<div id="hr1"><hr width="250"></div>
+<br>
+<div id="mannaka"><p>アカウントをお持ちでない方はこちら</p>
+<br>
+<a href="member_new.php">新規会員登録</a></div>
+<?php require 'footer.php'; ?>

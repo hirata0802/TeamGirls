@@ -1,3 +1,4 @@
+<div id="cart">
 <h2>カート</h2>
 <form action="order.html" method="post">
 <?php
@@ -32,4 +33,8 @@
     //CO.image_path, B.brand_name, CO.cosme_name, CO.price, CO.color_name, C.quantity
     
 ?>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script src="js/cart.js"></script>
 </form>
+</div>
