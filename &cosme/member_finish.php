@@ -12,7 +12,7 @@ if(!isset($_SESSION['customer'])){
                 $_POST['seikana'],$_POST['meikana'],
                 $_POST['zipcode'],
                 $ads,$_POST['tel'],$_POST['mail'],
-                $_POST['pass']]);
+                password_hash($_POST['pass'],PASSWORD_DEFAULT)]);
 
              $id=$pdo->lastInsertId();
              $sql2=$pdo->prepare('insert into Mypage (member_code,member_nickname) values(?,?)');
@@ -27,7 +27,19 @@ if(!isset($_SESSION['customer'])){
             echo '<hr>';
             echo '<p>登録情報を確認・変更できます</p>';
             echo '<a href="mypage.php">＞マイページへ</a>';
-           
+            foreach($sql as $row){
+            $_SESSION['customer'] = [
+                'code' => $row['member_code'],
+                'familyName' => $row['family_name'],
+                'firstName' => $row['first_name'],
+                'familyKana' => $row['family_name_kana'],
+                'firstKana' => $row['first_name_kana'],
+                'post' => $row['post_code'],
+                'address' => $row['address'],
+                'phone' => $row['phone'],
+                'mail' => $row['email'],
+                'pass' => $row['member_password']];
+            }
 
         }
 
