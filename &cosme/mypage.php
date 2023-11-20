@@ -24,13 +24,6 @@ if(isset($_POST['nickname']) || isset($_POST['age']) || isset($_POST['sei']) || 
     $sql=$pdo->prepare('select * from Mypage where member_code=?');
     $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
-        //アイコン表示
-        if(empty($row['member_image'])){
-            echo '<img src="image/icon/icon/png" alt="">';
-        }else{
-            echo '<img src="', $row['mamber_image'],'" alt="">';
-        }
-        echo '<input type="file" name="image" accept="image/*">';
 
         echo '<p>ニックネーム</p>';
         if(empty($row['member_nickname'])){
@@ -84,8 +77,9 @@ if(isset($_POST['nickname']) || isset($_POST['age']) || isset($_POST['sei']) || 
 
 
     echo '<p><input type="submit" value="保存"></p>';
-    echo '<p><a href="member_display.php">個人情報の変更はこちら</a></p>';
+    echo '<p><a href="member_display.php">個人情報</a></p>';
     echo '<p><a href="logout.php">ログアウト</a></p>';
 ?>
 </form>
 <?php require 'footer.php'; ?>
+input
