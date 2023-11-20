@@ -16,8 +16,8 @@
         <input type="image" src="./image/seach.jpg" alt="検索" width="25px" formaction="seach_output.php?kubun=3&id=key'">
         <hr width="70%">
         <h4 align="center">複数絞り込み</h4>
-        <table width="70%" align="center">
-            <tr>
+        <table width="50%" align="center">
+            <tr >
                 <th>カテゴリー</th><th>ブランド</th><th>カラー</th>
             </tr>
             <?php
@@ -61,8 +61,8 @@
             <tr>
                 <td colspan="3"><br><button type="submit" class="ao" name="multiseach">検索</button></td>
             </tr>
-        </table>
-        <hr width="70%">
+        </table><br>
+        <hr width="70%"><br>
         <?php
         echo '<table width="100%">';
             echo '<tr>';
@@ -81,7 +81,7 @@
                 }
                 $count++;
             }
-        echo '</table>';
+        echo '</table><br>';
         echo '<table width="100%">';
             echo '<tr>';
                 echo '<th colspan="3">ブランド</th>';
