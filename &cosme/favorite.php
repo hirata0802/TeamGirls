@@ -1,6 +1,5 @@
 <?php session_start(); ?>
 <?php require 'db_connect.php'; ?>
-
 <?php
     $pdo = new PDO($connect,USER,PASS);
     $delete_flag = $pdo -> prepare('select delete_flag from Favorites where member_code = ? and cosme_id = ?');
