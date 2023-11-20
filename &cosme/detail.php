@@ -16,8 +16,10 @@
 
 <?php
     $pdo = new PDO($connect, USER, PASS);
-    $cosme1 = $pdo -> prepare('select * from Cosmetics where group_id=? and brand_id=? and category_id=? union select * Favorites where member_code = ?');
-    $cosme1 -> execute([$_POST['group_id'], $_POST['brand_id'], $_POST['category_id'], $_SESSION['customer']['code']]);
+    //$cosme1 = $pdo -> prepare('select * from Cosmetics where group_id=? and brand_id=? and category_id=? union select * Favorites where member_code = ?');
+    //$cosme1 -> execute([$_POST['group_id'], $_POST['brand_id'], $_POST['category_id'], $_SESSION['customer']['code']]);
+    $cosme1 = $pdo -> prepare('select * from Cosmetics where cosme_id=? and group_id=? and brand_id=? and category_id=?');
+    $cosme1 -> execute([$_GET['cosme_id'], $_GET['group_id'], $_GET['brand_id'], $_GET['category_id']]);
     $count = 1;
 
     echo '<div class="out">';
@@ -26,7 +28,7 @@
         if($count==1){
             echo '<h3>',$row['cosme_name'],'</h3>';
             echo '<p>販売価格:',$row['price'],'</p>';
-            $cosmeEx = $row['cosme_ex'];
+            $cosmeEx = $row['cosme_detail'];
             $count++;
         }   
         echo '<label><input type=radio name="slide"><span></span><a href="#"></a><img src="',$row['image_path'],'" width="200"></label>';
@@ -39,9 +41,9 @@
     echo '<table><tr>';
     echo '<td><a href="cart.php?cosmeId=',$cosmeId,'"><button>カートに入れる</button></a></td>';
     if($row['delete_flag']==0){
-        echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'">★</a></td>';
+        echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'&page=0">★</a></td>';
     }else{
-        echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'">☆</a></td>';
+        echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'&page=0">☆</a></td>';
     }
     //echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'">　　　★</a></td></tr>';
     echo '<p>商品詳細</p>';
@@ -73,3 +75,12 @@
     echo '<td><a href="review.php"><button>レビューを書く</button></a></td>'; 
 ?>
 <?php require 'footer.php'; ?>
+
+if($row['delete_flag']==0){
+                echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'">★</a></td>';
+                $sql = $pdo -> prepare('insert into Favorites values(?, ?, current_date, 0)');
+                $sql -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
+            }else{
+                
+                echo '<td><a href="favorite.php?cosmeId=',$cosmeId,'">☆</a></td>';
+            }

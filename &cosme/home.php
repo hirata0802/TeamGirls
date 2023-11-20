@@ -20,7 +20,7 @@
     
     echo '<tr>';
     foreach($sql as $row){
-        echo '<td><a href="detail.html"><img src="',$row['image_path'],'"></a></td>';
+        echo '<td><a href="detail.php?cosmeId=',$cosmeId,'"><img src="',$row['image_path'],'"></a></td>';
     }
     echo '</tr>';
     echo '</table>';
@@ -33,7 +33,7 @@
     
     foreach($sql2 as $row2){
         if($count%4!=0){
-            echo '<td><a href="detail.html"><img src="',$row2['image_path'],'"></a></td>';
+            echo '<td><a href="detail.php?cosmeId=',$cosmeId,'"><img src="',$row2['image_path'],'"></a></td>';
         }else{
             echo '</tr><tr>';
         }
