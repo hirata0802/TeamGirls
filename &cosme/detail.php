@@ -11,7 +11,7 @@
 </head>
 <body>
 <?php require 'menu.php'; ?>
-
+<br><br><br>
 <button onclick="history.back()">＜戻る</button>
 
 <?php
