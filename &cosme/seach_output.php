@@ -69,6 +69,7 @@
         $count=$sql->rowCount();
     }
 }
+    echo '<br><br>';
     echo '<table width="100%">';
         echo '<th align="left">',$count,'件</th>';
         echo '<form action="detail.php" method="post">';
@@ -79,18 +80,20 @@
                     echo '<td>';
                         echo '<table width="80%">';
                             echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px"></td></tr>';
-                            echo '<tr><td colspan="2" align="left" white-space: nowrap>',$row['cosme_name'],'</td><td align="right"><a href="#">☆</a></td><tr>';
+                            echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td><tr>';
                             echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
-                            echo '<tr><td width="30%">',$row['price'],'</td><td colspan="2" align="right"><a href="#">カートに入れる</a></td></tr>';
+                            echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
+                            echo '<tr><td colspan="2" align="left"><a href="#">カートに入れる</a></td><td align="right"><a href="#">☆</a></td></tr>';
                         echo '</table>';
                     echo '</td>';
                 }else{
                     echo '<td>';
                         echo '<table width="80%">';
                             echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px"></td></tr>';
-                            echo '<tr><td colspan="2" align="left" white-space: nowrap>',$row['cosme_name'],'</td><td align="right"><a href="#">☆</a></td></tr>';
+                            echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
                             echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
-                            echo '<tr><td width="30%">',$row['price'],'</td><td colspan="2" align="right"><a href="#">カートに入れる</a></td></tr>';
+                            echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
+                            echo '<tr><td colspan="2" align="left"><a href="#">カートに入れる</a></td><td align="right"><a href="#">☆</a></td></tr>';
                         echo '</table>';
                     echo '</td>';
                     echo '</tr><tr>';

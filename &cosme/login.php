@@ -6,11 +6,11 @@ if(isset($_POST['mail'])){
     unset($_SESSION['customer']);
     
     $pdo = new PDO($connect, USER, PASS);
-    $sql = $pdo -> prepare('select * from Members where email=? and member_password=?');
-    $sql -> execute([$_POST['mail'],$_POST['pass']]);
+    $sql = $pdo -> prepare('select * from Members where email=?');
+    $sql -> execute([$_POST['mail']]);
     
     foreach($sql as $row){
-        //if($_POST['pass']==$row['member_password']){
+          if(password_verify($_POST['pass'],$row['member_password'])==true){
             $_SESSION['customer'] = [
                 'code' => $row['member_code'],
                 'familyName' => $row['family_name'],
@@ -21,19 +21,17 @@ if(isset($_POST['mail'])){
                 'address' => $row['address'],
                 'phone' => $row['phone'],
                 'mail' => $row['email'],
-                'pass' => $row['member_password']
-            ];
-        }
-        
-        
-        if(isset($_SESSION['customer'])){
-            header('Location: ./home.php');
-            exit();
-        }else{
-            $msg = 'ログイン名またはパスワードが違います';
-        }
+                'pass' => $row['member_password']];
+             }
+         }
+
+    if(isset($_SESSION['customer'])){
+        header('Location: ./home.php');
+        exit();
+    }else{
+        $msg = 'ログイン名またはパスワードが違います';
     }
-    
+}
 ?>
 <?php require 'header.php'; ?>
 <h3>&cosme</h3>
