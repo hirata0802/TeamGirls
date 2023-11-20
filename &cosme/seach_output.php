@@ -79,7 +79,7 @@
                 if($rowcount%2!=0){
                     echo '<td>';
                         echo '<table width="80%">';
-                            echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px"></td></tr>';
+                            echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px" formaction="detail.php?group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
                             echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td><tr>';
                             echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                             echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
@@ -89,7 +89,7 @@
                 }else{
                     echo '<td>';
                         echo '<table width="80%">';
-                            echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px"></td></tr>';
+                            echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px" formaction="detail.php?group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
                             echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
                             echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                             echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
