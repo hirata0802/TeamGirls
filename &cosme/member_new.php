@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h3>&cosme</h3>
+    <h3>&cosme</h3>
 <div id="hr2"><hr color="black"></div>
     <a href="f_login.html">＜戻る</a>
     
@@ -44,8 +44,8 @@
       echo '<input type="text" style="width: 100px;height: 30px;" name="mei" placeholder="氏名（名）" value="',$mei,'" required>';
       echo '</div>';
       echo '<div id="mannaka">';
-      echo '<p><input type="text" style="width: 100px;height: 30px;" name="seikana" placeholder="かな（せい）" value="',$seikana,'" required>';
-      echo '<input type="text" style="width: 100px;height: 30px;" name="meikana" placeholder="かな（めい）" value="',$meikana,'" required></p>';
+      echo '<p><input type="text" style="width: 125px;height: 30px;" name="seikana" placeholder="かな（せい）" value="',$seikana,'" required>';
+      echo '<input type="text" style="width: 125px;height: 30px;" name="meikana" placeholder="かな（めい）" value="',$meikana,'" required></p>';
       echo '<div id="toroku0">';
       echo '<p><input type="text" style="width: 260px;height: 30px;" name="nickname" placeholder="ニックネーム" value="',$nickname,'" ></p>';
       echo '</div>';
