@@ -10,8 +10,6 @@
 <?php require 'db_connect.php'; ?>
 <?php require 'menu.php'; ?>
     <form action="seach_output.php" method="post">
-        <!--↓見えないからbr追加してる-->
-        <br><br><br>
         <p align="center"><input type="text" name="keyword" placeholder="キーワードで検索">
         <input type="image" src="./image/seach.jpg" alt="検索" width="25px" formaction="seach_output.php?kubun=3&id=key'"></p>
         <hr width="70%">
