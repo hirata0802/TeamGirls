@@ -49,11 +49,11 @@
     $i = 0;
     foreach($cosme2 as $row){
         if($i == 0){
-            if($row['delete_flag']==1){
+            //if($row['delete_flag']==1){
                 echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=0">☆</a>';
-            }else{
-                echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=2">★</a>';
-            }
+            //}//else{
+               // echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=2">★</a>';
+            //}
         }
     }
 
