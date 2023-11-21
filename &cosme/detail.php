@@ -46,15 +46,12 @@
 
     $cosme2 = $pdo -> prepare('select * from Favorites as F inner join Cosmetics as C on F.cosme_id = C.cosme_id  where group_id = ? and member_code = ?');
     $cosme2 -> execute([$_GET['group_id'], $_SESSION['customer']['code']]);
-    $i = 0;
     foreach($cosme2 as $row){
-        if($i == 0){
-            //if($row['delete_flag']==1){
+            if($row['delete_flag']==1){
                 echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=0">☆</a>';
-            //}//else{
-               // echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=2">★</a>';
-            //}
-        }
+            }else{
+               echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=2">★</a>';
+            }
     }
 
     echo '<p align="center">商品詳細</p>';
@@ -71,8 +68,8 @@
     echo    '</form>';
 
 //レビュー表示
-    $review = $pdo -> prepare('select * from Reviews as R join Mypages as M on R.cosme_id = M.cosme_id where cosme_name = ?');
-    $review -> execute([$_GET['cosme_name']]);
+    $review = $pdo -> prepare('select * from Reviews as R join Mypages as M on R.cosme_id = M.cosme_id where cosme_id = ?');
+    $review -> execute([$_GET['cosme_id']]);
     $count = 1;
     if($count<=2){
         foreach($review as $row){
