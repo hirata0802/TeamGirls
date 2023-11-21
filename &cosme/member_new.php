@@ -1,5 +1,4 @@
 <?php session_start(); ?>
-<?php require 'header.php'; ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -9,8 +8,8 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>&cosme</h1>
-    <hr color="black">
+    <h3>&cosme</h3>
+<div id="hr2"><hr color="black"></div>
     <a href="f_login.html">＜戻る</a>
     
 
@@ -47,7 +46,6 @@
       echo '<div id="mannaka">';
       echo '<p><input type="text" style="width: 125px;height: 30px;" name="seikana" placeholder="かな（せい）" value="',$seikana,'" required>';
       echo '<input type="text" style="width: 125px;height: 30px;" name="meikana" placeholder="かな（めい）" value="',$meikana,'" required></p>';
-      echo '</div>';
       echo '<div id="toroku0">';
       echo '<p><input type="text" style="width: 260px;height: 30px;" name="nickname" placeholder="ニックネーム" value="',$nickname,'" ></p>';
       echo '</div>';
@@ -77,6 +75,8 @@
       echo '<input type="password" style="width: 240px;height: 27px;" name="pass" placeholder="パスワード" pattern="^([a-zA-Z0-9]{6,})$" title="半角英数字6文字以上で入力ください" value="',$pass,'" required>';
       echo '</div>';
     ?>
+    <br>
+    <br>
         <p><button type="submit" class="ao">確認</button></p>
     </form>
     <script src="./js/jquery-3.7.0.min.js"></script>
