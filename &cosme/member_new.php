@@ -67,7 +67,7 @@
       echo '</div>';
       echo '<div id="tell">';
       echo '<input type="tel" style="width: 240px;height: 27px;" name="tel" maxlength="11" pattern="^[0-9]+$" placeholder="電話番号" value="',$tel,'" required>';
-      echo '</div>'
+      echo '</div>';
       echo '<br>';
       echo '<div id="meru2">';
       echo '<input type="email" style="width: 240px;height: 27px;" name="mail" placeholder="メールアドレス" required>';
