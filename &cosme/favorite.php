@@ -22,10 +22,8 @@ foreach($delete_flag as $row){
         }else{//お気に入り追加
             $sql = $pdo -> prepare('insert into Favorites values(?, ?, current_date, 0)');
             $sql -> execute([$_GET['cosmeId'], $_SESSION['customer']['code']]); 
-            if($_GET['page'] == 0){
-                header('Location: ./detail.php');
-                exit();
-            }
+            header('Location: ./detail.php');
+            exit();
         }
         header('Location: ./detail.php');
         exit();
