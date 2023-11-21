@@ -41,7 +41,7 @@
       echo '<div id="simei">';
       echo '<p><input type="text" style="width: 100px;height: 30px;" name="sei" placeholder="氏名（姓）" value="',$sei,'" required>';
       echo '<input type="text" style="width: 100px;height: 30px;" name="mei" placeholder="氏名（名）" value="',$mei,'" required></p>';
-      echo '</div>'
+      echo '</div>';
       echo '<p><input type="text" name="seikana" placeholder="かな（せい）" value="',$seikana,'" required>';
       echo '<input type="text" name="meikana" placeholder="かな（めい）" value="',$meikana,'" required></p>';
       echo '<p><input type="text" name="nickname" placeholder="ニックネーム" value="',$nickname,'" ></p>';
