@@ -35,7 +35,6 @@ if(!empty($sql->fetchAll())){
     exit();
 }
 ?>
-<?php require 'header.php'; ?>
 <h3>&cosme</h3>
 <div id="hr2"><hr color="black"></div>
 <div id="logtitle"><h2>登録確認</h2></div>
