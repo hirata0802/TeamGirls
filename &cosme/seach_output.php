@@ -1,6 +1,15 @@
-<?php require 'header.php'; ?>
-<?php require 'db_connect.php'; ?>
-<?php require 'menu.php'; ?>
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>&cosme</title>
+</head>
+<body>
+    <?php require 'db_connect.php'; ?>
+    <?php require 'menu.php'; ?>
     <button onclick="history.back()">＜戻る</button>
     <hr>
     <?php
@@ -113,13 +122,13 @@
         $count=$sql->rowCount();
     }
 }
-    echo '<br><br>';
     echo '<table width="100%">';
         echo '<th align="left" style="font-size:30px;">',$count,'件</th>';
         echo '<form action="detail.php" method="post">';
             $rowcount=1;
             echo '<tr>';
             if($count==1){
+                //1件だけの場合
                 foreach($sql as $row){
                     echo '<td align="center">';
                         echo '<table width="80%">';
@@ -127,7 +136,7 @@
                             echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
                             echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                             echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
-                            echo '<tr><td colspan="2" align="left"><a href="#">カートに入れる</a></td><td align="right"><a href="#">☆</a></td></tr>';
+                            echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td><td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                         echo '</table>';
                     echo '</td><td></td>';
                     echo '</tr>';
@@ -135,23 +144,25 @@
             }else{
                 foreach($sql as $row){
                     if($rowcount%2!=0){
+                        //テーブルの左側
                         echo '<td align="center">';
                             echo '<table width="80%">';
                                 echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
                                 echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td><tr>';
                                 echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                                 echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
-                                echo '<tr><td colspan="2" align="left"><a href="#">カートに入れる</a></td><td align="right"><a href="#">☆</a></td></tr>';
+                                echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td><td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'$page=0">☆</a></td></tr>';
                             echo '</table>';
                         echo '</td>';
                     }else{
+                        //テーブルの右側
                         echo '<td align="center">';
                             echo '<table width="80%">';
                                 echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
                                 echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
                                 echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                                 echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
-                                echo '<tr><td colspan="2" align="left"><a href="#">カートに入れる</a></td><td align="right"><a href="#">☆</a></td></tr>';
+                                echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td><td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                             echo '</table>';
                         echo '</td>';
                         echo '</tr><tr>';
