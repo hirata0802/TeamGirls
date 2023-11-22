@@ -9,7 +9,7 @@
 <body>
 <nav>
     <ul>
-        <li><h1>&cosme　</h1></li>
+        <li><h1>&cosme</h1></li>
         <li>
             <img src="css/image/home_black.svg" onclick="location.href='home.php'" width="40" height="40" alt="home">
             <div><font size="1">&nbsp;ホーム　　</font></div>
