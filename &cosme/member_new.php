@@ -1,13 +1,5 @@
 <?php session_start(); ?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新規会員登録画面</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+<?php require 'header.php'; ?>
     <h3>&cosme</h3>
 <div id="hr2"><hr color="black"></div>
     <a href="f_login.html">＜戻る</a>
