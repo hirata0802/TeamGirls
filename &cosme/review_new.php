@@ -13,8 +13,8 @@
     <?php
     $pdo=new PDO($connect, USER, PASS);
     $sql=$pdo->prepare('select * from Cosmetics where cosme_id = ?');
-    $sql->execute([$_GET['R_new']]);
-    echo '<p>',$_GET['R_new'],'</p>';
+    $sql->execute([$_POST['Rnew']]);
+    echo '<p>',$_POST['Rnew'],'</p>';
     /*<p>満足度
     <form action="review.html" method="post">
         <div class="rate-form">
