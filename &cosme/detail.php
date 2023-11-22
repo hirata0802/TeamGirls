@@ -44,16 +44,15 @@
     //echo '<table><tr>';
     echo '<p><a href="cart.php?cosmeId=',$cosmeId,'"><button>カートに入れる</button></a></p>';
 
-    $cosme2 = $pdo -> prepare('select * from Favorites as F inner join Cosmetics as C on F.cosme_id = C.cosme_id  where group_id = ? and member_code = ?');
-    $cosme2 -> execute([$_GET['group_id'], $_SESSION['customer']['code']]);
+    /*$cosme2 = $pdo -> prepare('select * from Favorites as F inner join Cosmetics as C on F.cosme_id = C.cosme_id  where cosme_id = ? and member_code = ?');
+    $cosme2 -> execute([$cosmeId,$_SESSION['customer']['code']]);
     foreach($cosme2 as $row){
-            if($row['delete_flag']==1){
+            if($row['delete_flag'] == 1){
                 echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=0">☆</a>';
             }else{
-               echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=2">★</a>';
+               echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=0">★</a>';
             }
-    }
-
+    }*/
     echo '<p align="center">商品詳細</p>';
     echo '<p>',$cosmeEx,'</p>';
     echo '<p><strong>レビュー</strong></p>';
@@ -66,20 +65,8 @@
     echo    '<input type="radio" name="detail" value=5>☆';
     echo    '<input type="submit" value="決定">';
     echo    '</form>';
-
-//レビュー表示
-    $review = $pdo -> prepare('select * from Reviews as R join Mypages as M on R.cosme_id = M.cosme_id where cosme_id = ?');
-    $review -> execute([$_GET['cosme_id']]);
-    $count = 1;
-    if($count<=2){
-        foreach($review as $row){
-            echo $row['member_nickname'],$row['level'];
-            echo $row['review_text'];
-            echo '<hr>';
-            $count++;
-        }
-    }
-    echo '<td><a href="cart.php?cosmeId=',$cosmeId,'"><button>レビューをすべて見る</button></a></td>'; 
-    echo '<td><a href="review.php"><button>レビューを書く</button></a></td>'; 
+    //レビュー
+    echo '<td><button onclick="location.href=`review_show.php`" value="',$cosmeId,'" name="R_show" class="ao">レビューを見る</button></td>'; 
+    echo '<td><button onclick="location.href=`review_new.php`" value="',$cosmeId,'" name="R_new" class="ao">レビューを書く</button></td>'; 
 ?>
 <?php require 'footer.php'; ?>
