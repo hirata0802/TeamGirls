@@ -64,7 +64,5 @@ echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</
     echo    '<input type="radio" name="detail" value=4>☆';
     echo    '<input type="radio" name="detail" value=5>☆';
     echo    '</form>';
-    //レビュー
-    echo '<button onclick="location.href=`review_new.php`" value="',$cosmeId,'" name="Rnew" class="ao">レビューを書く</button>'; 
 ?>
 <?php require 'footer.php'; ?>
