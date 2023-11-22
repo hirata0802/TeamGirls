@@ -8,10 +8,14 @@
     </head>
     <body>
     <?php require 'db_connect.php'; ?>
-    <button onclick="history.back()">＜戻る</button>
+    <?php require 'menu.php'; ?>
     <h3>商品レビューを書く</h3>
-    <p>商品名</p>
-    <p>満足度
+    <?php
+    $pdo=new PDO($connect, USER, PASS);
+    $sql=$pdo->prepare('select * from Cosmetics where cosme_id = ?');
+    $sql->execute([$_GET['R_new']]);
+    echo '<p>',$_GET['R_new'],'</p>';
+    /*<p>満足度
     <form action="review.html" method="post">
         <div class="rate-form">
             <input id="star5" type="radio" name="rate" value="5">
@@ -35,7 +39,7 @@
             <input type="file" name="pic">
         </p>
         <div class="ao"><button type="submit">投稿する</button></div>
-    </form>
-
+    </form>*/
+?>
 </body>
 </html>

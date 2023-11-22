@@ -12,9 +12,9 @@
 <body>
 <?php require 'menu.php'; ?>
 <br><br>
-<button onclick="history.back()">＜戻る</button>
-
 <?php
+echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</button>';
+
     $pdo = new PDO($connect, USER, PASS);
     $cosme1 = $pdo -> prepare('select * from Cosmetics where cosme_id=? and group_id=? and brand_id=? and category_id=?');
     $cosme1 -> execute([$_GET['cosme_id'], $_GET['group_id'], $_GET['brand_id'], $_GET['category_id']]);

@@ -10,7 +10,7 @@
 <body>
     <?php require 'db_connect.php'; ?>
     <?php require 'menu.php'; ?>
-    <button onclick="history.back()">＜戻る</button>
+    <button onclick="location.href='seach_input.php'">＜戻る</button>
     <hr>
     <?php
     $pdo=new PDO($connect, USER, PASS);
