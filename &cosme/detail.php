@@ -60,17 +60,5 @@ echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</
     if($countstar==0){
         echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=0">☆</a>';
     }
-    
-    echo '<p align="center">商品詳細</p>';
-    echo '<p>',$cosmeEx,'</p>';
-    echo '<p><strong>レビュー</strong></p>';
-
-    echo    '<form action="#" method="post">';
-    echo    '<input type="radio" name="detail" value=1>☆';
-    echo    '<input type="radio" name="detail" value=2>☆';
-    echo    '<input type="radio" name="detail" value=3>☆';
-    echo    '<input type="radio" name="detail" value=4>☆';
-    echo    '<input type="radio" name="detail" value=5>☆';
-    echo    '</form>';
 ?>
 <?php require 'footer.php'; ?>
