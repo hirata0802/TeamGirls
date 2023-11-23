@@ -43,16 +43,24 @@ echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</
 
     //echo '<table><tr>';
     echo '<p><a href="cart.php?cosmeId=',$cosmeId,'"><button>カートに入れる</button></a></p>';
-
-    /*$cosme2 = $pdo -> prepare('select * from Favorites as F inner join Cosmetics as C on F.cosme_id = C.cosme_id  where cosme_id = ? and member_code = ?');
-    $cosme2 -> execute([$cosmeId,$_SESSION['customer']['code']]);
+    //select * from Cosmetics where cosme_id=? and group_id=? and brand_id=? and category_id=?
+    //
+    $cosme2 = $pdo -> prepare('select * from Favorites as F inner join Cosmetics as C on F.cosme_id=C.cosme_id where member_code = ? and cosme_id=?');
+    $cosme2 -> execute([$_SESSION['customer']['code'],$cosmeId]);//cosmeId=選んだコスメ
+    $countstar=0;
     foreach($cosme2 as $row){
-            if($row['delete_flag'] == 1){
-                echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=0">☆</a>';
-            }else{
-               echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=0">★</a>';
-            }
-    }*/
+        $countstar++;
+        if($row['delete_flag']==0){//1  //9
+            echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=0">★</a>';
+        }else{
+            echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=0">☆</a>';
+        }
+    }
+
+    if($countstar==0){
+        echo '<a href="favorite.php?cosmeId=',$cosmeId,'$page=0">☆</a>';
+    }
+    
     echo '<p align="center">商品詳細</p>';
     echo '<p>',$cosmeEx,'</p>';
     echo '<p><strong>レビュー</strong></p>';
