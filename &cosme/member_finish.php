@@ -13,13 +13,13 @@ if(!isset($_SESSION['customer'])){
                 $_POST['zipcode'],
                 $ads,$_POST['tel'],$_POST['mail'],
                 password_hash($_POST['pass'],PASSWORD_DEFAULT)]);
-
-             $id=$pdo->lastInsertId();
+                
+             $id=$id2=$pdo->lastInsertId();
              $sql2=$pdo->prepare('insert into Mypage (member_code,member_nickname) values(?,?)');
              $sql2->execute([$id,$_POST['nickname']]);
-            echo '<h3>&cosme</h3>';
-            echo '<hr>';
-            echo '<h2>登録完了</h2>';
+             echo '<h3>&cosme</h3>';
+             echo '<hr>';
+             echo '<h2>登録完了</h2>';
             echo '<p><font color="FF0000">',$_POST['sei'],$_POST['mei'],'様</font></p>';
             echo '<p><font color="FF0000">会員登録ありがとうございます。</font></p>';
             echo '<form action="home.php" method="post">';
@@ -27,6 +27,8 @@ if(!isset($_SESSION['customer'])){
             echo '<hr>';
             echo '<p>登録情報を確認・変更できます</p>';
             echo '<a href="mypage.php">＞マイページへ</a>';
+            //$sql3=$pdo->prepare('select * Members where member_code=?');
+            //$sql3->execute([$id2]);
             foreach($sql as $row){
             $_SESSION['customer'] = [
                 'code' => $row['member_code'],

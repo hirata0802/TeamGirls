@@ -22,7 +22,7 @@ $pdo=new PDO($connect,USER,PASS);
 $sql=$pdo->prepare('select * from Members where email=?');
 $sql->execute([$_POST['mail']]);
 if(!empty($sql->fetchAll())){
-    $_SESSION['members']['mail']='';
+    $_SESSION['members']['mail']=null;
     header('Location: ./member_new.php');
     exit();
 }
