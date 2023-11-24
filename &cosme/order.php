@@ -3,11 +3,11 @@
 <?php require 'menu.php'; ?>
 <?php require 'db_connect.php'; ?>
 <h2>レジ</h2>
-<form action="order_check.html" method="post">
+<form action="order_check.php" method="post">
 <?php
     $pdo=new PDO($connect, USER, PASS);
-    $sql=$pdo->prepare('select * from Addresses where member_code=?');
-    $sql->execute([$_SESSION['customer']['code']]);
+    $sql=$pdo->prepare('select * from Addresses where member_code=? and register_date=(select max(register_date) from Addresses where member_code=?);');
+    $sql->execute([$_SESSION['customer']['code'], $_SESSION['customer']['code']]);
 
     foreach($sql as $row){
         echo '<dl>';

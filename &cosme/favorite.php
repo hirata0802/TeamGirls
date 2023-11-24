@@ -4,7 +4,9 @@
     $pdo = new PDO($connect,USER,PASS);
     $delete_flag = $pdo -> prepare('select delete_flag from Favorites where member_code = ? and cosme_id = ?');
     $delete_flag -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
+    $count=$delete_flag->rowCount();
 
+if($count>0){
 foreach($delete_flag as $row){
     if($_GET['page'] == 1){//お気に入り画面からの遷移
         if($row["delete_flag"] == 0){//お気に入り削除
@@ -19,7 +21,7 @@ foreach($delete_flag as $row){
             $sql -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
             header('Location: ./favorite_show.php');
             exit();
-        }else{//お気に入り追加
+        }else{//お気に入り追加 過去に追加したことあるコスメ
             $sql = $pdo -> prepare('insert into Favorites values(?, ?, current_date, 0)');
             $sql -> execute([$_GET['cosmeId'], $_SESSION['customer']['code']]); 
             header('Location: ./detail.php');
@@ -28,5 +30,13 @@ foreach($delete_flag as $row){
         header('Location: ./detail.php');
         exit();
     }
+}
+}else{ //一度もお気に入りに追加したことないコスメ
+    if($_GET['page'] == 2){
+        $sql = $pdo -> prepare('insert into Favorites values(?, ?, current_date, 0)');
+        $sql -> execute([$_GET['cosmeId'], $_SESSION['customer']['code']]); 
+    }
+        header('Location: ./favorite_show.php');
+         exit();
 }
 ?>
