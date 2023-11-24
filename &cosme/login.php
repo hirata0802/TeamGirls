@@ -8,7 +8,7 @@ if(isset($_POST['mail'])){
     $pdo = new PDO($connect, USER, PASS);
     $sql = $pdo -> prepare('select * from Members where email=?');
     $sql -> execute([$_POST['mail']]);
-    
+    $password=$_POST['pass'];    
     foreach($sql as $row){
           if(password_verify($_POST['pass'],$row['member_password'])==true){
             $_SESSION['customer'] = [
@@ -21,7 +21,7 @@ if(isset($_POST['mail'])){
                 'address' => $row['address'],
                 'phone' => $row['phone'],
                 'mail' => $row['email'],
-                'pass' => $row['member_password']];
+                'pass' => $password];
              }
          }
 
@@ -64,4 +64,15 @@ echo '<br>';
 echo '<a href="member_new.php">新規会員登録</a>';
 echo '</div>';
 ?>
+<form action="login.php" method="post">
+    <div id="meru"><input type="text" style="width: 200px;height: 30px;"name="mail" placeholder="メールアドレス"></div>
+    <div id="pas"><input type="password" style="width: 200px;height: 30px;" name="pass"placeholder="パスワード"></div>
+    <br>
+    <p><button class="ao" type="submit" href="home.php">ログイン</button></p>
+</form>
+<div id="hr1"><hr width="250"></div>
+<br>
+<div id="mannaka"><p>アカウントをお持ちでない方はこちら</p>
+<br>
+<a href="member_new.php">新規会員登録</a></div>
 <?php require 'footer.php'; ?>
