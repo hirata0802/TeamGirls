@@ -1,15 +1,15 @@
 <?php session_start(); ?>
-<?php require 'db_connect.php'; ?>
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/detail.css">
-<title>&cosme</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/detail.css">
+        <title>&cosme</title>
+    </head>
+    <body>
+<?php require 'db_connect.php'; ?>
 <?php require 'menu.php'; ?>
 <br><br>
 <?php
@@ -45,12 +45,12 @@ echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</
     echo '<p><a href="cart.php?cosmeId=',$cosmeId,'"><button>カートに入れる</button></a></p>';
 
     //お気に入り
-    //$cosme2 = $pdo -> prepare('select * from Favorites as F inner join Cosmetics as C on F.cosme_id=C.cosme_id where member_code = ? and F.cosme_id=?');
     $cosme2 = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id=?');
     $cosme2 -> execute([$_SESSION['customer']['code'],$cosmeId]);//cosmeId=選んだコスメ
     $count = $cosme2 -> rowCount();
     echo 'コスメID',$cosmeId,'<br>';
     echo '回数',$count,'<br>';
+
     if($count > 0){
         foreach($cosme2 as $row){
             $delete = $row['delete_flag'];

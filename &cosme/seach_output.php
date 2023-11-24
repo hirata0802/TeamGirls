@@ -122,6 +122,8 @@
         $count=$sql->rowCount();
     }
 }
+//仮
+
     echo '<table width="100%">';
         echo '<th align="left" style="font-size:30px;">',$count,'件</th>';
         echo '<form action="detail.php" method="post">';
@@ -136,7 +138,8 @@
                             echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
                             echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                             echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
-                            echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td><td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
+                            echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td>';
+                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                         echo '</table>';
                     echo '</td><td></td>';
                     echo '</tr>';
@@ -151,7 +154,8 @@
                                 echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td><tr>';
                                 echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                                 echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
-                                echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td><td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'$page=0">☆</a></td></tr>';
+                                echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td>';
+                                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'$page=0">☆</a></td></tr>';
                             echo '</table>';
                         echo '</td>';
                     }else{
@@ -162,7 +166,8 @@
                                 echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
                                 echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                                 echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
-                                echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td><td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
+                                echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td>';
+                                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                             echo '</table>';
                         echo '</td>';
                         echo '</tr><tr>';

@@ -21,10 +21,10 @@ foreach($delete_flag as $row){
             $sql -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
             header('Location: ./favorite_show.php');
             exit();
-        }else{//お気に入り追加 過去に追加したことあるコスメ
-            $sql = $pdo -> prepare('insert into Favorites values(?, ?, current_date, 0)');
+        }else if($row['delete_flag'] == 1){//お気に入り追加 過去に追加したことあるコスメ
+            $sql = $pdo -> prepare('update Favorites set delete_flag=0,register_date=current_date where cosme_id = ? and member_code = ?');
             $sql -> execute([$_GET['cosmeId'], $_SESSION['customer']['code']]); 
-            header('Location: ./detail.php');
+            header('Location: ./favorite_show.php');
             exit();
         }
         header('Location: ./detail.php');
