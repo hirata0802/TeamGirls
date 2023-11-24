@@ -3,55 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>カート画面</title>
+    <title>&cosme</title>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><div><h1>&cosme　　　</h1></div></li>
+            <li>
+                <img src="css/image/home_black.svg" onclick="location.href='home.php'" width="40" height="40" alt="home">
+                <div><font size="1">&nbsp;ホーム　　</font></div>
+            </li>
+            <li>
+                <img src="css/image/search.svg" onclick="location.href='seach_input.php'" width="40" height="40" alt="search">
+                <div><font size="1">　検索</font></div>
+            </li>
+            <li>  
+                <img src="css/image/favorite.svg" onclick="location.href='favorite_show.php'" width="40" height="40" alt="favorite">
+                <div><font size="1">お気に入り</font></div>
+            </li>
+            <li>
+                <img src="css/image/cart.svg" onclick="location.href='cart.html'" width="40" height="40" alt="cart">
+                <div><font size="1">&nbsp;カート</font></div>
+            </li>
+            <li>
+                <img src="css/image/mypage.svg" onclick="location.href='mypage.php'" width="40" height="40" alt="mypage">
+                <div><font size="1">マイページ</font></div>
+            </li>
+        </ul>
+    </nav>
+    <div id="cart">
     <h2>カート</h2>
-    <form action="order.html" method="post">
-    <img src="https://placehold.jp/120x100.png">
-    <p>ブランド名：〇〇〇〇</p>
-    <p>商品名：〇〇〇〇</p>
-    <p>価格：〇〇〇〇</p>
-    カラー：〇
-        個数：<select name="kazu">
-            <option value="">1</option>
-            <option value="">2</option>
-            <option value="">3</option>
-            <option value="">4</option>
-            <option value="">5</option>
-            <option value="">6</option>
-            <option value="">7</option>
-            <option value="">8</option>
-            <option value="">9</option>
-            <option value="">10</option>
-            
-        </select>
-        <button type="submit">削除</button>
 
-    <p><img src="https://placehold.jp/120x100.png"></p>
-    <p>ブランド名：〇〇〇〇</p>
-    <p>商品名：〇〇〇〇</p>
-    <p>価格：〇〇〇〇</p>
-    カラー：〇
-        個数：<select name="kazu">
-            <option value="">1</option>
-            <option value="">2</option>
-            <option value="">3</option>
-            <option value="">4</option>
-            <option value="">5</option>
-            <option value="">6</option>
-            <option value="">7</option>
-            <option value="">8</option>
-            <option value="">9</option>
-            <option value="">10</option>
-            
-        </select>
-        <button type="submit">削除</button>
+    <div v-for="row in allData" :key="row.id">
+    <img src="{{ row.image_path }}">
+    <p>ブランド名：{{ row.brand_name }}</p>
+    <p>商品名：{{ row.cosme_name }}</p>
+    <p>価格：{{ row.price }}円</p>
+    <p>カラー：{{ row.color_name }}
+        個数：
+        <button type="submit" @click="decrement(row.id)">－</button>
+        {{ row.quantity }}
+        <button type="submit" @click="increment(row.id)">＋</button>
+        <button type="submit" onclick="Location.href=cart.php">削除</button></p>
+    </div>
+    <hr>
 
-        <hr>
-
-        <p>合計金額:〇〇〇〇</p>
-        <p><div class="ao"><button type="submit">レジに進む</button></div></p>
-    </form>
+        <p>合計金額:{{ total }}</p>
+        <p><div class="ao"><button type="submit" onclick="Location.href=order.php">レジに進む</button></div></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>

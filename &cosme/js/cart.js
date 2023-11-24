@@ -1,50 +1,48 @@
-new Vue({
+var app = new Vue({
     el: '#cart',
-    data(){
-        return{
-            items: []
-        };
+    data:{
+      allData: '',
+      //count
+      total: 0
     },
     methods: {
-        increment(){
-            this.count++;
-        },
-        decrement(){
-            this.count--;
-        }
-    },
-    computed: {
-        isPass: function(){
-            return this.count >= 60;
-        }
-    },
-    methods: {
-        // 商品一覧をjsonから取得する
-        fetchItem () {
-          //コールバック関数でthisを参照できないため別変数へ代入
-          const self = this
-          //axios.get("./item.json").then(function (response) {
-          axios.get("./select_all.php").then(function (response) {
-            self.items = response.data
-          })
-          .catch(function(error) {
-            self.errorFlag = true;
-            alert('ERROR!! 商品一覧が取得できませんでした')
+      fetchItem:function() {
+        axios.post("./cart.php",{
+
+        }).then(function (response) {
+            //allDataにSELECT文の結果が配列で格納
+            app.allData = response.data;
           });
-        },
-        // タブを切り替えて検索条件を初期化する
-        changeTab (number) {
-          this.initialize()
-          this.activeTab = number
-        },
-        // 検索条件を初期化する
-        initialize () {
-          this.filterText = ""
-          this.filterPriceId = undefined
-        }
       },
+      //数量を設定する
+      increment(id){
+        const index = app.getIndexBy(id);
+        app.allData[index].quantity++;
+        this.total = app.allData[index].quantity * app.allData[index].price;
+        
+        //phpにデータを送る
+        fetch('cart_input.php', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},  //json指定
+          body: JSON.stringify(app.allData[index].quantity) //json形式に変換して送付
+        })
+        /*.then(response => response.json())
+        .then(res => {
+          console.log(res);
+        });*/
+      },
+      decrement(id){
+        const index = app.getIndexBy(id);
+        app.allData[index].quantity--;
+        this.total = app.allData[index].quantity * app.allData[index].price
+      },
+      getIndexBy(id){
+        const filteredTodo=app.allData.filter(todo => todo.id === id)[0];
+        const index=app.allData.indexOf(filteredTodo);
+        return index;
+      }
+    },
       mounted () {
-        // アプリケーションが立ち上がったら商品一覧を取得する
         // インスタンス初期化時、DOMが生成された後に実行される
         this.fetchItem()
       }

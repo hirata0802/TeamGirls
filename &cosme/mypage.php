@@ -1,15 +1,28 @@
 <?php session_start(); ?>
 <?php require 'db_connect.php'; ?>
 <?php
-if(isset($_POST['nickname']) || isset($_POST['age']) || isset($_POST['sei']) || isset($_POST['skin']) || isset($_POST['p_color'])){
+if(isset($_POST['nickname']) && isset($_POST['age']) && isset($_POST['sei']) && isset($_POST['skin']) && isset($_POST['p_color'])){
+    $age=$sei=$skin=$p_color=NULL;
+    if(!empty($_POST['age'])){
+        $age = $_POST['age'];
+    }
+    if(!empty($_POST['sei'])){
+        $sei = $_POST['sei'];
+    }
+    if(!empty($_POST['skin'])){
+        $skin = $_POST['skin'];
+    }
+    if(!empty($_POST['p_color'])){
+        $p_color = $_POST['p_color'];
+    }
     $pdo=new PDO($connect, USER, PASS);
     $sql=$pdo->prepare('update Mypage set member_nickname=?, member_age=?, member_gender=?, member_skin=?, member_color=? where member_code=?');
     $sql->execute([
         $_POST['nickname'],
-        $_POST['age'],
-        $_POST['sei'],
-        $_POST['skin'],
-        $_POST['p_color'],
+        $age,
+        $sei,
+        $skin,
+        $p_color,
         $_SESSION['customer']['code']
     ]);
 }
@@ -24,7 +37,7 @@ if(isset($_POST['nickname']) || isset($_POST['age']) || isset($_POST['sei']) || 
     $sql=$pdo->prepare('select * from Mypage where member_code=?');
     $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
-
+        echo $age;
         echo '<p>ニックネーム</p>';
         if(empty($row['member_nickname'])){
             echo '<p><input type="text" name="nickname" value="unknown"></p>';
@@ -35,10 +48,11 @@ if(isset($_POST['nickname']) || isset($_POST['age']) || isset($_POST['sei']) || 
         //佐伯のラベルを付け加える
         echo '<p>年代</p>';
         echo '<select name="age">';
-        if($i<60){
-            echo '<option value="', $row['member_age'], '" selected hidden>', $row['member_age'], '代</option>';
-        }else{
+        $age = $row['member_age'];
+        if($i>60){
             echo '<option value="', $row['member_age'], '" selected hidden>', $row['member_age'], '代以上</option>';
+        }else{
+            echo '<option value="', $row['member_age'], '" selected hidden>', $row['member_age'], '代</option>';
         }
         for($i=10; $i<=60; $i+=10){
             if($i<60){
@@ -77,9 +91,9 @@ if(isset($_POST['nickname']) || isset($_POST['age']) || isset($_POST['sei']) || 
 
 
     echo '<p><input type="submit" value="保存"></p>';
+    echo '<p><a href="history.php">購入履歴</a></p>';
     echo '<p><a href="member_display.php">個人情報</a></p>';
     echo '<p><a href="logout.php">ログアウト</a></p>';
 ?>
 </form>
 <?php require 'footer.php'; ?>
-input
