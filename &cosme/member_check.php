@@ -66,7 +66,7 @@ if(!empty($sql->fetchAll())){
         ?>
     </form>
     <br>
-    <button onclick="Location.href='member_new.php'" class="grey">変更</button></p><br>
+    <button onclick="history.back()" class="grey">変更</button></p><br>
     <button type="submit" form="next" class="ao">新規登録</button></p>
 </body>
 </html>
