@@ -137,7 +137,7 @@ height: 4;
   position: relative; /* 相対位置指定に変更 */
   margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
   top: 10px; /* アイコンの位置を微調整 */
- left: 40px;
+ left: 37px;
 }
 
 #pas2 input {
@@ -159,7 +159,7 @@ height: 4;
   position: relative; /* 相対位置指定に変更 */
   margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
   top: 10px; /* アイコンの位置を微調整 */
- left: 40px;
+ left: 37px;
 }
 
 #meru2 input {
@@ -197,7 +197,7 @@ height: 4;
   position: relative; /* 相対位置指定に変更 */
   margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
   top: 8px; /* アイコンの位置を微調整 */
- right: -40px;
+ right: -37px;
 }
 
 #yuubin input {
@@ -219,7 +219,7 @@ height: 4;
   position: relative; /* 相対位置指定に変更 */
   margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
   top: 8px; /* アイコンの位置を微調整 */
- right: -40px;
+ right: -37px;
 }
 
 #tell input {
