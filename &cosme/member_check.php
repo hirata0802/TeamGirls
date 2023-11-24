@@ -1,24 +1,23 @@
 <?php session_start(); ?>
 <?php require 'db_connect.php'; ?>
-<?php require 'header.php'; ?>
 <?php
  $_SESSION['members'] = [
-    'sei' => $_POST['sei'],
-    'mei' => $_POST['mei'],
-    'seikana' => $_POST['seikana'],
-    'meikana' => $_POST['meikana'],
-    'nickname' => $_POST['nickname'],
-    'zipcode' => $_POST['zipcode'],
-    'prefecture' => $_POST['prefecture'],
-    'city' => $_POST['city'],
-    'address' => $_POST['address'],
-    'bill' => $_POST['bill'],
-    'tel' => $_POST['tel'],
-    'mail' => $_POST['mail'],
-    'pass' => $_POST['pass']
-];
-
-$pdo=new PDO($connect,USER,PASS);
+     'sei' => $_POST['sei'],
+     'mei' => $_POST['mei'],
+     'seikana' => $_POST['seikana'],
+     'meikana' => $_POST['meikana'],
+     'nickname' => $_POST['nickname'],
+     'zipcode' => $_POST['zipcode'],
+     'prefecture' => $_POST['prefecture'],
+     'city' => $_POST['city'],
+     'address' => $_POST['address'],
+     'bill' => $_POST['bill'],
+     'tel' => $_POST['tel'],
+     'mail' => $_POST['mail'],
+     'pass' => $_POST['pass']
+    ];
+    
+    $pdo=new PDO($connect,USER,PASS);
 $sql=$pdo->prepare('select * from Members where email=?');
 $sql->execute([$_POST['mail']]);
 if(!empty($sql->fetchAll())){
@@ -27,6 +26,7 @@ if(!empty($sql->fetchAll())){
     exit();
 }
 ?>
+<?php require 'header.php'; ?>
 <h3>&cosme</h3>
 <div id="hr2"><hr color="black"></div>
 <div id="logtitle"><h2>登録確認</h2></div>
@@ -66,7 +66,7 @@ if(!empty($sql->fetchAll())){
         ?>
     </form>
     <br>
-    <button onclick="history.back()" class="grey">変更</button></p><br>
+    <button onclick="Location.href='member_new.php'" class="grey">変更</button></p><br>
     <button type="submit" form="next" class="ao">新規登録</button></p>
 </body>
 </html>

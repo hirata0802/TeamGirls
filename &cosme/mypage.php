@@ -37,7 +37,6 @@ if(isset($_POST['nickname']) && isset($_POST['age']) && isset($_POST['sei']) && 
     $sql=$pdo->prepare('select * from Mypage where member_code=?');
     $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
-        echo $age;
         echo '<p>ニックネーム</p>';
         if(empty($row['member_nickname'])){
             echo '<p><input type="text" name="nickname" value="unknown"></p>';
