@@ -1,5 +1,14 @@
 @charset "utf-8";
 
+/*cart.html*/
+#delete{
+    margin: 120px right;
+}
+
+#text3 {
+	margin-left: 120px;
+}
+
 /*reji.htmlのcss*/
 h2{
     text-align: center;
@@ -13,52 +22,50 @@ h2{
     text-align: center;
 }
 
-#cus-home{
-    display: grid;
-	place-items: center ;
+#text1 {
+	margin-left: 100px;
 }
 
-button{
-    display: block;
-    margin: 0 auto;
-    background-color: #89c3fd;
-    border-color: rgb(221, 221, 221);
-    font-family: 'Century Gothic', sans-serif;
-    color: rgb(255, 255, 255);
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 5px;
-    text-align: center;
+table{
+    margin: 3px auto;
   }
 
+  .blue{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin:0 auto;
+    padding: .9em 2em;
+    border: 1px solid #2589d0;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #2589d0;
+    font-size: 1em;
+  }
+.grey{
+  display: block;
+  margin: 0 auto;
+  background-color: #b5b5b5;
+  border-color: rgb(221, 221, 221);
+  font-family: 'Century Gothic', sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+ 
+}
+
 /*buy_kakunin.html*/
-#h2{
-    text-align: center;
-}
-
 #h3{
     text-align: left;
 }
 
-/*buy_ok.html*/
-#h3{
-    text-align: left;
+#text2 {
+	margin-left: 80px;
 }
 
-#h2{
-    text-align: center;
-}
+/*buy_ok.html* 同じ処理のみ完了/
 
-/*cart.html*/
-#h2{
-    text-align: center;
-}
-
-/*mypage.html*/
-#name{
-    text-align: center;
-}
-
-#n-name{
-    margin: center auto;
-}
+/*<button class="button-001">ボタンデザイン</button> */
