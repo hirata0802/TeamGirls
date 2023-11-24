@@ -1,6 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+<title>&cosme</title>
+</head>
+<body>
 <nav>
     <ul>
-        <li><div><h1>&cosme　　　</h1></div></li>
+        <li><h1>&cosme</h1></li>
         <li>
             <img src="css/image/home_black.svg" onclick="location.href='home.php'" width="40" height="40" alt="home">
             <div><font size="1">&nbsp;ホーム　　</font></div>
@@ -23,3 +32,5 @@
         </li>
     </ul>
 </nav>
+</body>
+</html>

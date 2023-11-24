@@ -10,10 +10,8 @@
 <?php require 'db_connect.php'; ?>
 <?php require 'menu.php'; ?>
     <form action="seach_output.php" method="post">
-        <!--↓見えないからbr追加してる-->
-        <br><br><br><br>
-        <input type="text" name="keyword" placeholder="キーワードで検索">
-        <input type="image" src="./image/seach.jpg" alt="検索" width="25px" formaction="seach_output.php?kubun=3&id=key'">
+        <p align="center"><input type="text" name="keyword" placeholder="キーワードで検索">
+        <input type="image" src="./image/seach.jpg" alt="検索" width="25px" formaction="seach_output.php?kubun=3&id=key'"></p>
         <hr width="70%">
         <h4 align="center">複数絞り込み</h4>
         <table width="50%" align="center">
@@ -57,6 +55,9 @@
                     echo '</label>';
                 echo '</td>';
                 ?>
+            </tr>
+            <tr>
+                <td colspan="3" align="center"><br>～　<input type="number" name="max" placeholder="￥99,999"></td>
             </tr>
             <tr>
                 <td colspan="3"><br><button type="submit" class="ao" name="multiseach">検索</button></td>
