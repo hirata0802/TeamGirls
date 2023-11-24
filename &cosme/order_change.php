@@ -2,6 +2,7 @@
 <?php require 'header.php'; ?>
 <?php require 'menu.php'; ?>
 <?php require 'db_connect.php'; ?>
+<form action="order_db_insert.php" method="post">
 <?php
     $pdo=new PDO($connect, USER, PASS);
     $sql=$pdo->prepare('select * from Addresses where member_code=?');
@@ -15,6 +16,8 @@
         echo $row['address'], '<br>';
         echo $row['phone'], '</dd>';
     }
-    echo '<input type="submit" value="選択" onclick="location.href=`order_db_insert.php?order=1`">';
+    echo '<input type="hidden" order="1">';
+    echo '<button type="button">選択</button>';
 ?>
+</form>
 <?php require 'footer.php'; ?>
