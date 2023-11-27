@@ -2,7 +2,7 @@
 <?php require 'header.php'; ?>
     <h3>&cosme</h3>
 <div id="hr2"><hr color="black"></div>
-    <a href="f_login.html">＜戻る</a>
+    <a href="login.php">＜戻る</a>
     
 
     <form action="member_check.php" method="post">
