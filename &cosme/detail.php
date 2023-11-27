@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php session_start(); 
+    //ページのURLをセッションに保存
+    if(!isset($_SESSION['history'])){
+        $_SESSION['history'] = array();
+    }
+    array_push($_SESSION['history'], $_SERVER['REQUEST_URI']);
+?>
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -42,19 +48,15 @@ echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</
     echo '<p>カラー：',$colorName,'</p>';
 
     //echo '<table><tr>';
-    echo '<p><a href="cart.php?cosmeId=',$cosmeId,'"><button>カートに入れる</button></a></p>';
+    echo '<p><a href="cart_input.php?cosmeId=',$cosmeId,'&page=0"><button>カートに入れる</button></a></p>';
 
     //お気に入り
     $cosme2 = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id=?');
     $cosme2 -> execute([$_SESSION['customer']['code'],$cosmeId]);//cosmeId=選んだコスメ
     $count = $cosme2 -> rowCount();
-    echo 'コスメID',$cosmeId,'<br>';
-    echo '回数',$count,'<br>';
 
     if($count > 0){
         foreach($cosme2 as $row){
-            $delete = $row['delete_flag'];
-            echo '削除フラグ',$delete;
             if($row['delete_flag']==0){//1  //9
                 echo '<a href="favorite.php?cosmeId=',$cosmeId,'& page=0">★</a>';
             }else{

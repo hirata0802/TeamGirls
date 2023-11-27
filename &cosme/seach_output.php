@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php session_start(); 
+    //ページのURLをセッションに保存
+    if(!isset($_SESSION['history'])){
+        $_SESSION['history'] = array();
+    }
+    array_push($_SESSION['history'], $_SERVER['REQUEST_URI']);
+?>
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -103,26 +109,45 @@
         }
     }
     if(!empty($_GET['kubun'])){
-    if($_GET['kubun']==1){
-        //カテゴリー
-        $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ?');
-        $sql->execute([$_GET['id']]);
-        $count=$sql->rowCount();
-    }else if($_GET['kubun']==2){
-        //ブランド
-        $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.brand_id = ?');
-        $sql->execute([$_GET['id']]);
-        $count=$sql->rowCount();
-    }else if($_GET['kubun']==3){
-        $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.cosme_name like ?');
-        $sql->execute(['%'.$_POST['keyword'].'%']);
-        $count=$sql->rowCount();
-    }else{
-        $sql=$pdo->query('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id');
-        $count=$sql->rowCount();
+        if($_GET['kubun']==1){
+            //カテゴリー
+            $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ?');
+            $sql->execute([$_GET['id']]);
+            $count=$sql->rowCount();
+        }else if($_GET['kubun']==2){
+            //ブランド
+            $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.brand_id = ?');
+            $sql->execute([$_GET['id']]);
+            $count=$sql->rowCount();
+        }else if($_GET['kubun']==3){
+            $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.cosme_name like ?');
+            $sql->execute(['%'.$_POST['keyword'].'%']);
+            $count=$sql->rowCount();
+        }else{
+            $sql=$pdo->query('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id');
+            $count=$sql->rowCount();
+        }
     }
-}
-//仮
+
+ //仮
+
+    foreach($sql as $row){
+        $image_path = $row['image_path'];
+        $cosmeId = $row['cosme_id'];
+        $group_id = $row['group_id'];
+        $category_id = $row['category_id'];
+        $brand_id = $row['brand_id'];
+        $cosme_name = $row['cosme_name'];
+        $brand_name = $row['brand_name'];
+        $price = $row['price'];
+    }
+    
+    $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
+    $member -> execute([$cosmeId, $_SESSION['customer']['code']]);
+    $memberCount = $member -> rowCount();
+    foreach($member as $row){
+        $delete_flag = $row['delete_flag'];
+    }
 
     echo '<table width="100%">';
         echo '<th align="left" style="font-size:30px;">',$count,'件</th>';
@@ -131,43 +156,94 @@
             echo '<tr>';
             if($count==1){
                 //1件だけの場合
-                foreach($sql as $row){
+                //foreach($sql as $row){
                     echo '<td align="center">';
                         echo '<table width="80%">';
-                            echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
-                            echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
-                            echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
-                            echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
-                            echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td>';
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
+                            echo '<tr><td colspan="3"align="center"><input type="image" src="',$image_path,'" alt="',$cosme_name,'" width="150px" height="150px" formaction="detail.php?cosme_id=',$cosmeId,'&group_id=',$group_id,'&brand_id=',$brand_id,'&category_id=',$category_id,'"></td></tr>';
+                            echo '<tr><td colspan="3" align="left" white-space: nowrap>',$cosme_name,'</td></tr>';
+                            echo '<tr><td colspan="3" align="left">',$brand_name,'</td></tr>';
+                            echo '<tr><td colspan="3">',$price,'</td></tr>';
+                            echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$cosmeId,'&page=0">カートに入れる</a></td>';
+                            echo $cosmeId;
+                            echo $brand_id;
+                            echo $category_id;
+                            echo $group_id;
+
+                            if($memberCount > 0){
+                                if($delete_flag==0){
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=0">★</a></td></tr>';
+                                }else if($delete_flag==1){
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=0">☆</a></td></tr>';
+                                }
+                            }else{
+                                echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=2">☆</a></td></tr>';
+                            }
                         echo '</table>';
                     echo '</td><td></td>';
                     echo '</tr>';
-                }
+                //}
             }else{
-                foreach($sql as $row){
+                for($i=0; $i<$count; $i++){
                     if($rowcount%2!=0){
                         //テーブルの左側
                         echo '<td align="center">';
                             echo '<table width="80%">';
-                                echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
-                                echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td><tr>';
-                                echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
-                                echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
-                                echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td>';
-                                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'$page=0">☆</a></td></tr>';
+                                echo '<tr><td colspan="3"align="center"><input type="image" src="',$image_path,'" alt="',$cosme_name,'" width="150px" height="150px" formaction="detail.php?cosme_id=',$cosmeId,'&group_id=',$group_id,'&brand_id=',$brand_id,'&category_id=',$category_id,'"></td></tr>';
+                                echo '<tr><td colspan="3" align="left" white-space: nowrap>',$cosme_name,'</td></tr>';
+                                echo '<tr><td colspan="3" align="left">',$brand_name,'</td></tr>';
+                                echo '<tr><td colspan="3">',$price,'</td></tr>';
+                                echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$cosmeId,'&page=0">カートに入れる</a></td>';
+                                echo $cosmeId;
+                                echo $brand_id;
+                                echo $category_id;
+                                echo $group_id;
+                            
+                                if($memberCount > 0){
+                                    if($delete_flag==0){
+                                        echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=0">★</a></td></tr>';
+                                    }else if($delete_flag==1){
+                                        echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=0">☆</a></td></tr>';
+                                    }
+                                }else{
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=2">☆</a></td></tr>';
+                                }
+                                //echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
+                                //echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td><tr>';
+                                //echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
+                                //echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
+                                //echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
+                                //echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'$page=0">☆</a></td></tr>';
                             echo '</table>';
                         echo '</td>';
                     }else{
                         //テーブルの右側
                         echo '<td align="center">';
                             echo '<table width="80%">';
-                                echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
-                                echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
-                                echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
-                                echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
-                                echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td>';
-                                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
+                                echo '<tr><td colspan="3"align="center"><input type="image" src="',$image_path,'" alt="',$cosme_name,'" width="150px" height="150px" formaction="detail.php?cosme_id=',$cosmeId,'&group_id=',$group_id,'&brand_id=',$brand_id,'&category_id=',$category_id,'"></td></tr>';
+                                echo '<tr><td colspan="3" align="left" white-space: nowrap>',$cosme_name,'</td></tr>';
+                                echo '<tr><td colspan="3" align="left">',$brand_name,'</td></tr>';
+                                echo '<tr><td colspan="3">',$price,'</td></tr>';
+                                echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$cosmeId,'&page=0">カートに入れる</a></td>';
+                            echo $cosmeId;
+                            echo $brand_id;
+                            echo $category_id;
+                            echo $group_id;
+                            
+                                if($memberCount > 0){
+                                    if($delete_flag==0){
+                                        echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=0">★</a></td></tr>';
+                                    }else if($delete_flag==1){
+                                        echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=0">☆</a></td></tr>';
+                                    }
+                                }else{
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=2">☆</a></td></tr>';
+                                }
+                                //echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
+                                //echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
+                                //echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
+                                //echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
+                                //echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
+                                //echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                             echo '</table>';
                         echo '</td>';
                         echo '</tr><tr>';

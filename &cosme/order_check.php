@@ -23,5 +23,5 @@
 ?>
         <div class="ao"><button type="submit">注文を確定する</button></div>
     </form>
-    <div class="grey"><button onclick="location.href='order.html'">変更</button></div>
+    <div class="grey"><button onclick="location.href='cart.html'">変更</button></div>
 <?php require 'footer.php'; ?>
