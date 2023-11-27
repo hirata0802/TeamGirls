@@ -36,7 +36,6 @@
     <div id="mannaka">
     <h2>カート</h2>
     <hr width="150">
-    </div>
         <div v-for="row in allData" :key="row.id">
             <img :src="row.image_path" class="cart_image">
             <p>ブランド名：{{ row.brand_name }}</p>
@@ -46,12 +45,13 @@
             <button type="submit" @click="decrement(row.id)">－</button>
             {{ row.quantity }}
             <button type="submit" @click="increment(row.id)">＋</button>
-            <button type="submit" @click="cartUpdate(row.id)">更新</button>
-            <button type="submit" @click="cartDelete(row.id)">削除</button></p>
+            <button class="ao2" type="submit" @click="cartUpdate(row.id)">更新</button>
+            <button class="ao2" type="submit" @click="cartDelete(row.id)">削除</button></p>
         </div>
         <hr class="tensen">
 
         <p>合計金額:{{ total }}</p>
+    </div>
         <p><button class="ao" type="submit" onclick="location.href='order.php'">レジに進む</button></p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
