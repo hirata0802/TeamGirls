@@ -94,9 +94,9 @@
             foreach($sql as $row){
                 $brand_id=$row['brand_id'];
                 if($count%3!=0){
-                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"><br>',$row['brand_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"><br>',$row['brand_name'],'</td>';
                 }else{
-                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"><br>',$row['brand_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"><br>',$row['brand_name'],'</td>';
                     echo '</tr><tr>';
                 }
                 $count++;
