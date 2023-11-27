@@ -36,10 +36,9 @@ if(isset($_POST['nickname']) && isset($_POST['age']) && isset($_POST['sei']) && 
     $pdo=new PDO($connect, USER, PASS);
     $sql=$pdo->prepare('select * from Mypage where member_code=?');
     $sql->execute([$_SESSION['customer']['code']]);
+    echo '<div id="mannaka">';
     foreach($sql as $row){
-        echo '<div id="mannaka">';
         echo '<p>ニックネーム</p>';
-        echo '</div>';
         if(empty($row['member_nickname'])){
             echo '<p><input type="text" name="nickname" value="unknown"></p>';
         }else{
@@ -47,7 +46,6 @@ if(isset($_POST['nickname']) && isset($_POST['age']) && isset($_POST['sei']) && 
         }
         
         //佐伯のラベルを付け加える
-        echo '<div id="mannaka">';
         echo '<p>年代</p>';
         echo '<select name="age">';
         $age = $row['member_age'];
