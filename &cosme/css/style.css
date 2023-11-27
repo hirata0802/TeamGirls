@@ -322,6 +322,12 @@ height: 4;
   border-radius: 5px;
 
 }
+/*カート*/
+.cart_image{
+  width: 300px;
+  height: auto; /* レスポンシブにするために高さを自動調整 */
+}
+
 /*共通*/
 button{
   background: none; 
