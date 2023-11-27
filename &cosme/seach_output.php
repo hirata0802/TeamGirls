@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php session_start(); 
+    //ページのURLをセッションに保存
+    if(!isset($_SESSION['history'])){
+        $_SESSION['history'] = array();
+    }
+    array_push($_SESSION['history'], $_SERVER['REQUEST_URI']);
+?>
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -138,7 +144,7 @@
                             echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
                             echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                             echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
-                            echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td>';
+                            echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
                             echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                         echo '</table>';
                     echo '</td><td></td>';
@@ -154,7 +160,7 @@
                                 echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td><tr>';
                                 echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                                 echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
-                                echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td>';
+                                echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
                                 echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'$page=0">☆</a></td></tr>';
                             echo '</table>';
                         echo '</td>';
@@ -166,7 +172,7 @@
                                 echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
                                 echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                                 echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
-                                echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$row['cosme_id'],'">カートに入れる</a></td>';
+                                echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
                                 echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                             echo '</table>';
                         echo '</td>';

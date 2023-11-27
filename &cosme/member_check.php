@@ -2,22 +2,21 @@
 <?php require 'db_connect.php'; ?>
 <?php
  $_SESSION['members'] = [
-     'sei' => $_POST['sei'],
-     'mei' => $_POST['mei'],
-     'seikana' => $_POST['seikana'],
-     'meikana' => $_POST['meikana'],
-     'nickname' => $_POST['nickname'],
-     'zipcode' => $_POST['zipcode'],
-     'prefecture' => $_POST['prefecture'],
-     'city' => $_POST['city'],
-     'address' => $_POST['address'],
-     'bill' => $_POST['bill'],
-     'tel' => $_POST['tel'],
-     'mail' => $_POST['mail'],
-     'pass' => $_POST['pass']
-    ];
-    
-    $pdo=new PDO($connect,USER,PASS);
+    'sei' => $_POST['sei'],
+    'mei' => $_POST['mei'],
+    'seikana' => $_POST['seikana'],
+    'meikana' => $_POST['meikana'],
+    'nickname' => $_POST['nickname'],
+    'zipcode' => $_POST['zipcode'],
+    'prefecture' => $_POST['prefecture'],
+    'city' => $_POST['city'],
+    'address' => $_POST['address'],
+    'bill' => $_POST['bill'],
+    'tel' => $_POST['tel'],
+    'mail' => $_POST['mail'],
+    'pass' => $_POST['pass']
+];
+$pdo=new PDO($connect,USER,PASS);
 $sql=$pdo->prepare('select * from Members where email=?');
 $sql->execute([$_POST['mail']]);
 if(!empty($sql->fetchAll())){
