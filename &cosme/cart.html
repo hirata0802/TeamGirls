@@ -33,7 +33,10 @@
         </ul>
     </nav>
     <div id="cart">
+    <div id="mannaka">
     <h2>カート</h2>
+    <hr width="150">
+    </div>
         <div v-for="row in allData" :key="row.id">
             <img :src="row.image_path" class="cart_image">
             <p>ブランド名：{{ row.brand_name }}</p>
@@ -46,10 +49,10 @@
             <button type="submit" @click="cartUpdate(row.id)">更新</button>
             <button type="submit" @click="cartDelete(row.id)">削除</button></p>
         </div>
-        <hr>
+        <hr class="tensen">
 
         <p>合計金額:{{ total }}</p>
-        <p><div class="ao"><button type="submit" onclick="location.href='order.php'">レジに進む</button></div></p>
+        <p><button class="ao" type="submit" onclick="location.href='order.php'">レジに進む</button></p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
