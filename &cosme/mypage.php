@@ -40,9 +40,9 @@ if(isset($_POST['nickname']) && isset($_POST['age']) && isset($_POST['sei']) && 
     foreach($sql as $row){
         echo '<p>ニックネーム</p>';
         if(empty($row['member_nickname'])){
-            echo '<p><input type="text" name="nickname" value="unknown"></p>';
+            echo '<p><input type="text" style="width: 230px;height: 40px;" name="nickname" value="unknown"></p>';
         }else{
-            echo '<p><input type="text" name="nickname" value="', $row['member_nickname'], '"></p>';
+            echo '<p><input type="text" style="width: 230px;height: 40px;" name="nickname" value="', $row['member_nickname'], '"></p>';
         }
         
         //佐伯のラベルを付け加える
