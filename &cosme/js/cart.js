@@ -21,11 +21,6 @@ var app = new Vue({
         this.total = app.allData[index].quantity * app.allData[index].price;
         
         //phpにデータを送る
-        fetch('cart_input.php', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},  //json指定
-          body: JSON.stringify(app.allData[index].quantity) //json形式に変換して送付
-        })
         /*.then(response => response.json())
         .then(res => {
           console.log(res);
@@ -35,6 +30,33 @@ var app = new Vue({
         const index = app.getIndexBy(id);
         app.allData[index].quantity--;
         this.total = app.allData[index].quantity * app.allData[index].price
+      },
+      cartUpdate(id){
+        const index = app.getIndexBy(id);
+        send_data = JSON.stringify(app.allData[index]);
+        $.ajax({
+          type: "POST",
+          url: "cart_input.php",
+          contentType: "Content-Type: application/json; charset=UTF-8",
+          data: send_data,
+          error : function(XMLHttpRequest, textStatus, errorThrown) {
+            console.log("ajax通信に失敗しました");
+            //失敗した時の処理
+          },
+          success : function(response) {
+            console.log("ajax通信に成功しました");
+            //成功した時の処理
+          }
+        })
+      },
+      cartDelete(id){
+        const index = app.getIndexBy(id);
+        fetch('cart_input.php', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},  //json指定
+          body: JSON.stringify(app.allData[index].quantity) //json形式に変換して送付
+        })
+
       },
       getIndexBy(id){
         const filteredTodo=app.allData.filter(todo => todo.id === id)[0];

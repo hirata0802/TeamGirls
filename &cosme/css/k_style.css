@@ -1,60 +1,56 @@
 @charset "utf-8";
 
 /*ログイン画面のcss*/
-.bule{
- 
-  display: block;
-  margin: 0 auto;
-  background-color: #89c3fd;
-  border-color: rgb(221, 221, 221);
-  font-family: 'Century Gothic', sans-serif;
-  color: rgb(255, 255, 255);
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 5px;
-  text-align: center;
-}
+
 
 /*売上管理画面のcss*/
 #center{
   text-align: center;
 }
 
-.ao{
- 
-  display: block;
-  margin: 0 auto;
-  background-color: #89c3fd;
-  border-color: rgb(221, 221, 221);
-  font-family: 'Century Gothic', sans-serif;
-  color: rgb(255, 255, 255);
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 5px;
+input[type="text"] {   border: 1px solid #89c3fd; }
+input[type="number"] {   border: 1px solid #89c3fd; }
+input[type="password"] {   border: 1px solid #89c3fd; }
+select[name="brand"] {   border: 1px solid #89c3fd; }
+select[name="kategori"] {   border: 1px solid #89c3fd; }
+#uriage{
   text-align: center;
 }
 
+table{
+  margin: 3px auto;
+}
 .grey{
-  display: block;
-  margin: 0 auto;
-  background-color: #b5b5b5;
-  border-color: rgb(221, 221, 221);
-  font-family: 'Century Gothic', sans-serif;
-  color: rgb(255, 255, 255);
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 5px;
-  text-align: center;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin:0 auto;
+    padding: .9em 2em;
+    border: 1px solid #7a7e7f;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #7a7e7f;
+    font-size: 1em;
 }
 
+.blue{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  margin:0 auto;
+  padding: .9em 2em;
+  border: 1px solid #2589d0;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #2589d0;
+  font-size: 1em;
+}
 /*商品登録画面のcss*/
 #h3{
   text-align: left;
 }
-#left{
-  text-align: left;
-}
-
 
 /*商品登録確認画面のcss*/
 #center{

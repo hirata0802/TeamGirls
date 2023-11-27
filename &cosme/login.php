@@ -64,15 +64,4 @@ echo '<br>';
 echo '<a href="member_new.php">新規会員登録</a>';
 echo '</div>';
 ?>
-<form action="login.php" method="post">
-    <div id="meru"><input type="text" style="width: 200px;height: 30px;"name="mail" placeholder="メールアドレス"></div>
-    <div id="pas"><input type="password" style="width: 200px;height: 30px;" name="pass"placeholder="パスワード"></div>
-    <br>
-    <p><button class="ao" type="submit" href="home.php">ログイン</button></p>
-</form>
-<div id="hr1"><hr width="250"></div>
-<br>
-<div id="mannaka"><p>アカウントをお持ちでない方はこちら</p>
-<br>
-<a href="member_new.php">新規会員登録</a></div>
 <?php require 'footer.php'; ?>

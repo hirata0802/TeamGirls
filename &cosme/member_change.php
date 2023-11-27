@@ -33,8 +33,7 @@
              $pass=$_SESSION['members']['pass'];
          }*/
         $pdo=new PDO($connect,USER,PASS);
-        $sql=$pdo->prepare(
-            'select * from Members where member_code=?');
+        $sql=$pdo->prepare('select * from Members where member_code=?');
         $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
        echo '<p><input type="text" name="sei" value="',$row['family_name'],'" required>';

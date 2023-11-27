@@ -54,7 +54,7 @@ if(!isset($_SESSION['customer'])){
             echo '<p><font color="FF0000">会員登録ありがとうございます。</font></p>';
             echo '<form action="home.php" method="post">';
             echo '<button class="ao">ホームへ</button>';
-            echo '<hr>';
+            echo '</form><hr>';
             echo '<p>登録情報を確認・変更できます</p>';
             echo '<a href="mypage.php">＞マイページへ</a>';
 
