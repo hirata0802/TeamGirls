@@ -128,8 +128,13 @@
             $count=$sql->rowCount();
         }
     }
-//仮
-    $member = $pdo('select * from Favorites')
+ //仮
+    $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
+    $member -> execute([$cosme_id, $_SESSION['customer']['code']]);
+    $memberCount = $member -> rowCount();
+    foreach($member as $row){
+        $memberCode = $row['cosme_id'];
+    }
     echo '<table width="100%">';
         echo '<th align="left" style="font-size:30px;">',$count,'件</th>';
         echo '<form action="detail.php" method="post">';
