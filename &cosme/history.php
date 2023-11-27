@@ -6,22 +6,22 @@
 <?php
     if(isset($_SESSION['customer'])){
         $pdo=new PDO($connect, USER, PASS);
-        $sql=$pdo->prepare('select * from Orders O inner join OrderDetails OD on O.order_id=OD.order_id where O.member_code=? order by O.order_date desc');
+        $sql=$pdo->prepare('select * from Orders where member_code=? order by order_date desc');
         $sql->execute([$_SESSION['customer']['code']]);
         
         foreach($sql as $row){
-            echo '<p>', $row['O.order_data'];
-            $sql2=$pdo->prepare('select * from OrderDetails OD on O.order_id=OD.order_id inner join Cosmetics C on OD.cosme_id=C.cosme_id where OD.order_id=? order by C.cosme_id');
-            $sql->execute([$row['O.order_id']]);
+            echo '<p>', $row['order_date'], '</p>';
+            $sql2=$pdo->prepare('select * from OrderDetails OD inner join Cosmetics C on OD.cosme_id=C.cosme_id where OD.order_id=? order by C.cosme_id');
+            $sql2->execute([$row['order_id']]);
             foreach($sql2 as $row2){
-                echo '<img src="', $row['C.image_path'], '" alt="">';
-                echo $row2['C.cosme_name'];
-                echo $row2['C.color_name'];
-                echo $row2['OD.quantity'];
-                echo '<button type="button" onclick="Location.href=``">レビューを書く</button>';
+                echo '<p><img src="', $row2['image_path'], '" alt="">';
+                echo $row2['cosme_name'];
+                echo $row2['color_name'];
+                echo $row2['quantity'];
+                echo '<button class="ao" onclick="location.href=`review_new.php?Rnew=', $row2['cosme_id'], '`">レビューを書く</button>';
             }
-            echo $row['O.total_price'], '</p>';
-            echo $row['O.pay_method'], '</p>';
+            echo $row['total_price'], '円<br>';
+            echo $row['pay_method'];
         }
     }
     ?>

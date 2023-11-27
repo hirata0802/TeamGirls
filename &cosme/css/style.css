@@ -324,10 +324,29 @@ height: 4;
 }
 /*カート*/
 .cart_image{
-  width: 300px;
+  width: 100px;
   height: auto; /* レスポンシブにするために高さを自動調整 */
 }
+.tensen{
+    border: none;
+    border-top: 2px dotted rgb(146, 146, 146);
+}
+.ao2{
+  border: 2px solid #89c3fd; /* 青い外枠 */
+  padding: 10px 20px;
+  background-color: transparent; /* 背景色を透明にする */
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+#delete{
+  margin: 120px right;
+}
 
+#text3 {
+margin-left: 120px;
+}
 /*共通*/
 button{
   background: none; 
