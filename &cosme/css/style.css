@@ -340,6 +340,13 @@ height: 4;
   cursor: pointer;
   border-radius: 5px;
 }
+#delete{
+  margin: 120px right;
+}
+
+#text3 {
+margin-left: 120px;
+}
 /*共通*/
 button{
   background: none; 
