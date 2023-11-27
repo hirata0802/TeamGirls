@@ -40,8 +40,16 @@
        echo '<p><input type="text" name="mei" value="',$row['first_name'],'" required>';
        echo '<p><input type="text" name="seikana" value="',$row['family_name_kana'],'" required>';
        echo '<p><input type="text" name="meikana" value="',$row['first_name_kana'],'" required>';
-       echo '<p><input type="text" name="zipcode" value="',$row['post_code'],'" requiredy>';
-       echo '<p><input type="text" name="address" value="',$row['address'],'" required>';
+       echo '<p><input type="text" name="zipcode" id="zipcode" value="',$row['post_code'],'" requiredy>';
+       echo ' <div id="kennsaku">';
+       echo '<button type="button" class="ao" id="btn">検索</button></p>';
+       echo '</div>';
+
+      echo '<p><input type="text" name="prefecture" id="prefecture" value="',$row['prefecture'],'" required></p>';
+      echo '<p><input type="text" name="city" id="city" value="',$row['city'],'" required></p>';
+      echo '<p><input type="text" name="address" id="address" value="',$row['section'],'" required></p>';
+      echo '<p><input type="text" name="bill" value="',$row['building'],'" ></p>';
+
        echo '<p><input type="tel" name="tel" maxlength="11" pattern="^[0-9]+$" value="',$row['phone'],'" required>';
        echo '<p><input type="email" name="mail" value="',$row['email'],'" required>';
        echo '<p><input type="password" name="pass" value="',$_SESSION['customer']['pass'],'" required>';
@@ -53,7 +61,8 @@
    echo '<p><button class="ao" type="submit" href="member_change.php">変更</button></p>';
         ?>
         </form>
-    
+        <script src="./js/jquery-3.7.0.min.js"></script>
+    <script src="./js/app.js"></script>
     <div class="modoru"><button onclick="history.back()">戻る</button></div>
 </body>
 </html>
