@@ -48,13 +48,9 @@ echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</
     $cosme2 = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id=?');
     $cosme2 -> execute([$_SESSION['customer']['code'],$cosmeId]);//cosmeId=選んだコスメ
     $count = $cosme2 -> rowCount();
-    echo 'コスメID',$cosmeId,'<br>';
-    echo '回数',$count,'<br>';
 
     if($count > 0){
         foreach($cosme2 as $row){
-            $delete = $row['delete_flag'];
-            echo '削除フラグ',$delete;
             if($row['delete_flag']==0){//1  //9
                 echo '<a href="favorite.php?cosmeId=',$cosmeId,'& page=0">★</a>';
             }else{

@@ -103,27 +103,27 @@
         }
     }
     if(!empty($_GET['kubun'])){
-    if($_GET['kubun']==1){
-        //カテゴリー
-        $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ?');
-        $sql->execute([$_GET['id']]);
-        $count=$sql->rowCount();
-    }else if($_GET['kubun']==2){
-        //ブランド
-        $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.brand_id = ?');
-        $sql->execute([$_GET['id']]);
-        $count=$sql->rowCount();
-    }else if($_GET['kubun']==3){
-        $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.cosme_name like ?');
-        $sql->execute(['%'.$_POST['keyword'].'%']);
-        $count=$sql->rowCount();
-    }else{
-        $sql=$pdo->query('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id');
-        $count=$sql->rowCount();
+        if($_GET['kubun']==1){
+            //カテゴリー
+            $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ?');
+            $sql->execute([$_GET['id']]);
+            $count=$sql->rowCount();
+        }else if($_GET['kubun']==2){
+            //ブランド
+            $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.brand_id = ?');
+            $sql->execute([$_GET['id']]);
+            $count=$sql->rowCount();
+        }else if($_GET['kubun']==3){
+            $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.cosme_name like ?');
+            $sql->execute(['%'.$_POST['keyword'].'%']);
+            $count=$sql->rowCount();
+        }else{
+            $sql=$pdo->query('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id');
+            $count=$sql->rowCount();
+        }
     }
-}
 //仮
-
+    $member = $pdo('select * from Favorites')
     echo '<table width="100%">';
         echo '<th align="left" style="font-size:30px;">',$count,'件</th>';
         echo '<form action="detail.php" method="post">';
