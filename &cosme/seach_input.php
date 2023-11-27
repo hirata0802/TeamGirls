@@ -75,9 +75,9 @@
             foreach($sql as $row){
                 $category_id=$row['category_id'];
                 if($count%3!=0){
-                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" width="100px" formaction="seach_output.php?kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" width="100px" height="100px" formaction="seach_output.php?kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
                 }else{
-                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" width="100px" formaction="seach_output.php?kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" width="100px" height="100px" formaction="seach_output.php?kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
                     echo '</tr><tr>';
                 }
                 $count++;
@@ -94,9 +94,9 @@
             foreach($sql as $row){
                 $brand_id=$row['brand_id'];
                 if($count%3!=0){
-                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"><br>',$row['brand_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"><br>',$row['brand_name'],'</td>';
                 }else{
-                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"><br>',$row['brand_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"><br>',$row['brand_name'],'</td>';
                     echo '</tr><tr>';
                 }
                 $count++;

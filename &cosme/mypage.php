@@ -36,6 +36,7 @@ if(isset($_POST['nickname']) && isset($_POST['age']) && isset($_POST['sei']) && 
     $pdo=new PDO($connect, USER, PASS);
     $sql=$pdo->prepare('select * from Mypage where member_code=?');
     $sql->execute([$_SESSION['customer']['code']]);
+    echo '<div id="mannaka">';
     foreach($sql as $row){
         echo '<p>ニックネーム</p>';
         if(empty($row['member_nickname'])){
@@ -46,6 +47,7 @@ if(isset($_POST['nickname']) && isset($_POST['age']) && isset($_POST['sei']) && 
         
         //佐伯のラベルを付け加える
         echo '<p>年代</p>';
+        echo '<label class="selectbox">';
         echo '<select name="age">';
         $age = $row['member_age'];
         if($i>60){
@@ -61,16 +63,20 @@ if(isset($_POST['nickname']) && isset($_POST['age']) && isset($_POST['sei']) && 
             }
         }        
         echo '</select>';
-        
+        echo '</label>';
+
         echo '<p>性別</p>';
+        echo '<label class="selectbox">';
         echo '<select name="sei">';
         echo '<option value="', $row['member_gender'], '" selected hidden>', $row['member_gender'], '</option>';
         echo '<option value="女性">女性</option>';
         echo '<option value="男性">男性</option>';
         echo '<option value="その他">その他</option>';
         echo '</select>';
+        echo '</label>';
         
         echo '<p>肌質</p>';
+        echo '<label class="selectbox">';
         echo '<select name="skin">';
         echo '<option value="', $row['member_skin'], '" selected hidden>', $row['member_skin'], '</option>';
         echo '<option value="普通肌">普通肌</option>';
@@ -79,20 +85,28 @@ if(isset($_POST['nickname']) && isset($_POST['age']) && isset($_POST['sei']) && 
         echo '<option value="混合肌">混合肌</option>';
         echo '<option value="敏感肌">敏感肌</option>';
         echo '</select>';
+        echo '</label>';
+        
         
         echo '<p>パーソナルカラー</p>';
+        echo '<label class="selectbox">';
         echo '<select name="p_color">';
         echo '<option value="', $row['member_color'], '" selected hidden>', $row['member_color'], '</option>';
         echo '<option value="イエベ">イエベ</option>';
         echo '<option value="ブルベ">ブルベ</option>';
         echo '</select>';
+        echo '</label>';
     }
 
 
     echo '<p><input type="submit" value="保存"></p>';
+    echo '<br>';
     echo '<p><a href="history.php">購入履歴</a></p>';
     echo '<p><a href="member_display.php">個人情報</a></p>';
     echo '<p><a href="logout.php">ログアウト</a></p>';
+    echo '</div>';
 ?>
 </form>
+</body>
+</html>
 <?php require 'footer.php'; ?>
