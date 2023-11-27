@@ -15,6 +15,7 @@
         
         //表示
         echo '<br>';
+        echo '<button onclick="location.href=`seach_input.php`">＜戻る</button>';
         echo '<table width="100%">';
         echo '<th align="left" style="font-size:30px;">',$count,'件</th>';
         $sql = $pdo -> prepare('select * from Cosmetics as C inner join Favorites as F on C.cosme_id=F.cosme_id inner join Brands as B on C.brand_id=B.brand_id where F.member_code=? and delete_flag=0');
