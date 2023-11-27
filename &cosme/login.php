@@ -18,7 +18,10 @@ if(isset($_POST['mail'])){
                 'familyKana' => $row['family_name_kana'],
                 'firstKana' => $row['first_name_kana'],
                 'post' => $row['post_code'],
-                'address' => $row['address'],
+                'prefecture'=>$row['prefecture'],
+                'city'=>$row['city'],
+                'section'=>$row['section'],
+                'building'=>$row['building'],
                 'phone' => $row['phone'],
                 'mail' => $row['email'],
                 'pass' => $password];

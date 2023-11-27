@@ -5,27 +5,33 @@
 $pdo=new PDO($connect,USER,PASS);
 if(!isset($_SESSION['customer'])){
       
-        $ads=$_POST['prefecture'].$_POST['city'].$_POST['address'].$_POST['bill'];
-            $sql=$pdo->prepare('insert into Members values(null,?,?,?,?,?,?,?,?,?)');
+       
+            $sql=$pdo->prepare('insert into Members values(null,?,?,?,?,?,?,?,?,?,?,?,?)');
             $sql->execute([
                 $_POST['sei'],
                 $_POST['mei'],
                 $_POST['seikana'],
                 $_POST['meikana'],
                 $_POST['zipcode'],
-                $ads,
+                $_POST['prefecture'],
+                $_POST['city'],
+                $_POST['address'],
+                $_POST['bill'],
                 $_POST['tel'],
                 $_POST['mail'],
                 password_hash($_POST['pass'],PASSWORD_DEFAULT)]);
                 
             $id=$pdo->lastInsertId();
         $adsName=$_POST['sei'].$_POST['mei'];
-            $sql2=$pdo->prepare('insert into Addresses values(null,?,?,?,?,?,CURRENT_DATE)');
+            $sql2=$pdo->prepare('insert into Addresses values(null,?,?,?,?,?,?,?,?,CURRENT_DATE)');
             $sql2->execute([
                 $id,
                 $adsName,
                 $_POST['zipcode'],
-                $ads,
+                $_POST['prefecture'],
+                $_POST['city'],
+                $_POST['address'],
+                $_POST['bill'],
                 $_POST['tel']]);
 
              $sql3=$pdo->prepare('insert into Mypage (member_code,member_nickname) values(?,?)');
@@ -42,7 +48,10 @@ if(!isset($_SESSION['customer'])){
                  'familyKana' => $row['family_name_kana'],
                  'firstKana' => $row['first_name_kana'],
                  'post' => $row['post_code'],
-                 'address' => $row['address'],
+                 'prefecture'=>$row['prefecture'],
+                'city'=>$row['city'],
+                'section'=>$row['section'],
+                'building'=>$row['building'],
                  'phone' => $row['phone'],
                  'mail' => $row['email'],
                  'pass' => $row['member_password']];
