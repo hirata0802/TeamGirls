@@ -48,7 +48,6 @@ if(isset($_POST['nickname']) && isset($_POST['age']) && isset($_POST['sei']) && 
         //佐伯のラベルを付け加える
         echo '<p>年代</p>';
         echo '<select name="age">';
-        echo '<select class="selectbox">';
         $age = $row['member_age'];
         if($i>60){
             echo '<option value="', $row['member_age'], '" selected hidden>', $row['member_age'], '代以上</option>';
