@@ -34,22 +34,22 @@
     </nav>
     <div id="cart">
     <h2>カート</h2>
-        <div v-for="row in allData" :key="row.id">
+        <div v-for="row in allData" :key="row.cosme_id">
             <img :src="row.image_path" class="cart_image">
             <p>ブランド名：{{ row.brand_name }}</p>
             <p>商品名：{{ row.cosme_name }}</p>
             <p>価格：{{ row.price }}円</p>
             <p>カラー：{{ row.color_name }}
-            <button type="submit" @click="decrement(row.id)">－</button>
+            <button type="button" @click="decrement(row.cosme_id)">－</button>
             {{ row.quantity }}
-            <button type="submit" @click="increment(row.id)">＋</button>
-            <button type="submit" @click="cartUpdate(row.id)">更新</button>
-            <button type="submit" @click="cartDelete(row.id)">削除</button></p>
+            <button type="button" @click="increment(row.cosme_id)">＋</button>
+            <button type="button" @click="cartUpdate(row.cosme_id)">更新</button>
+            <button type="button" @click="cartDelete(row.cosme_id)">削除</button></p>
         </div>
         <hr>
 
-        <p>合計金額:{{ total }}</p>
-        <p><div class="ao"><button type="submit" onclick="location.href='order.php'">レジに進む</button></div></p>
+        <p>合計金額:</p>
+        <p><button class="ao" type="button" onclick="location.href='order.php'">レジに進む</button></p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
