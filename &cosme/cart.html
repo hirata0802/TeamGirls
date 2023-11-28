@@ -39,6 +39,7 @@
 </div>
     <br>
         <div v-for="row in allData" :key="row.id">
+    <br>
      <div id="mannaka">
             <img :src="row.image_path" class="cart_image">
         </div>
@@ -61,6 +62,7 @@
         <p>合計金額:{{ total }}</p>
     </div>
     </div>
+    <br>
         <p><button class="ao" type="submit" onclick="location.href='order.php'">レジに進む</button></p>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
