@@ -41,7 +41,7 @@
         <div v-for="row in allData" :key="row.id">
     <br>
      <div id="mannaka">
-            <img :src="row.image_path" class="cart_image">
+            <img :src="row.image_path" style="object-fit: contain; width: 100px; height: 100px;">
         </div>
             <div id="text3">
             <p>ブランド名：{{ row.brand_name }}</p>
