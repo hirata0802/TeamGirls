@@ -32,7 +32,7 @@ if(isset($_POST['mail'])){
         header('Location: ./home.php');
         exit();
     }else{
-        $msg = 'ログイン名またはパスワードが違います';
+        $msg = '<font color="FF0000">ログイン名またはパスワードが違います</font>';
     }
 }
 require 'header.php';
@@ -44,7 +44,7 @@ echo '<div id="logtitle">';
 echo '<h2>ログイン</h2>';
 echo '</div>';
 if(isset($msg)){
-    echo '<p>', $msg, '</p>';
+    echo '<p><div id="mannaka">', $msg, '</p></div>';
 }
 
 echo '<form action="login.php" method="post">';

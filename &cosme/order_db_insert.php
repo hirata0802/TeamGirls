@@ -4,13 +4,15 @@
     $pdo=new PDO($connect, USER, PASS);
     //order_add.php
     if($_POST['order'] == 0){
-        $ads=$_POST['prefecture'].$_POST['city'].$_POST['address'].$_POST['bill'];
-        $sql=$pdo->prepare('insert into Addresses values (null,?,?,?,?,?,CURRENT_TIMESTAMP)');
+        $sql=$pdo->prepare('insert into Addresses values (null,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)');
         $sql->execute([
             $_SESSION['customer']['code'],
             $_POST['name'],
             $_POST['zipcode'],
-            $ads,
+            $_POST['prefecture'],
+            $_POST['city'],
+            $_POST['address'],
+            $_POST['bill'],
             $_POST['tel'],
         ]);
         header('Location: ./order.php');

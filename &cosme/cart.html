@@ -36,28 +36,33 @@
     <div id="mannaka">
     <h2>カート</h2>
     <hr width="150">
+</div>
     <br>
         <div v-for="row in allData" :key="row.id">
-            <img :src="row.image_path" class="cart_image">
-            </div>
+    <br>
+     <div id="mannaka">
+            <img :src="row.image_path" style="object-fit: contain; width: 100px; height: 100px;">
+        </div>
             <div id="text3">
             <p>ブランド名：{{ row.brand_name }}</p>
             <p>商品名：{{ row.cosme_name }}</p>
             <p>価格：{{ row.price }}円</p>
-            <p>カラー：{{ row.color_name }}
-            <br>
+            <p>カラー：{{ row.color_name }}</p>
             <button type="submit" @click="decrement(row.id)">－</button>
             {{ row.quantity }}
             <button type="submit" @click="increment(row.id)">＋</button>
             <button class="ao2" type="submit" @click="cartUpdate(row.id)">更新</button>
-            <button class="ao2" type="submit" @click="cartDelete(row.id)">削除</button></p>
+            <button class="ao2" type="submit" @click="cartDelete(row.id)">削除</button>
+            <br>
         </div>
     </div>
     <br>
         <hr class="tensen">
-
+        <div id="mannaka">
         <p>合計金額:{{ total }}</p>
     </div>
+    </div>
+    <br>
         <p><button class="ao" type="submit" onclick="location.href='order.php'">レジに進む</button></p>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
