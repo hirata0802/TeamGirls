@@ -314,6 +314,38 @@ height: 4;
   text-align:center;
   border-radius: 3px;
 }
+/*検索画面*/
+.selectbox1 {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.selectbox1::after {
+  position: absolute;
+  right: 15px;
+  width: 10px;
+  height: 7px;
+  background-color: #535353;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  content: '';
+  pointer-events: none;
+}
+
+.selectbox1 select {
+  appearance: none;
+  /*min-width: 230px;*/
+  height: 2.8em;
+  padding: .4em calc(.8em + 30px) .4em .8em;
+  border: 1px solid black;
+  border-radius: 3px;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 2%), 0 2px 3px -2px rgba(0 0 0 / 5%);
+  background-color: #fff;
+  color: #333333;
+  font-size: 1em;
+  cursor: pointer;
+  width: 50px;
+}
 
 /*お気に入り画面*/
 .sibori{
@@ -324,10 +356,29 @@ height: 4;
 }
 /*カート*/
 .cart_image{
-  width: 300px;
+  width: 100px;
   height: auto; /* レスポンシブにするために高さを自動調整 */
 }
+.tensen{
+    border: none;
+    border-top: 2px dotted rgb(146, 146, 146);
+}
+.ao2{
+  border: 2px solid #89c3fd; /* 青い外枠 */
+  padding: 10px 20px;
+  background-color: transparent; /* 背景色を透明にする */
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+#delete{
+  margin: 120px right;
+}
 
+#text3 {
+margin-left: 10px;
+}
 /*共通*/
 button{
   background: none; 
