@@ -344,7 +344,7 @@ height: 4;
   color: #333333;
   font-size: 1em;
   cursor: pointer;
-  width: 50px;
+  width: 100px;
 }
 
 /*お気に入り画面*/
@@ -377,7 +377,7 @@ height: 4;
 }
 
 #text3 {
-margin-left: 10px;
+margin-left: 90px;
 }
 /*共通*/
 button{
