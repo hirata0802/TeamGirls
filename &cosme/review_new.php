@@ -2,10 +2,35 @@
 <?php require 'db_connect.php'; ?>
 
 <?php
-if(!empty($_POST['rate']) && isset($_POST['honbun'])){
-    $pdo=new PDO($connect, USER, PASS);
-    $sql=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
-    $sql->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],$_POST['pic'],$_POST['honbun']]);
+$errmsg="";
+$statusMsg="";
+if($_GET['page'] == 0){
+    if(!empty($_POST['rate']) && isset($_POST['honbun'])){
+        if(!empty($_FILES['file']['name'])){
+            $targetDir="image/uploads/";
+            $fileName=basename($_FILES['file']['name']);
+            $targetFilePath=$targetDir.$fileName;
+            $fileType=pathinfo($targetFilePath,PATHINFO_EXTENSION);
+            $allowTypes = array('jpg','png','jpeg');
+            if(in_array($fileType,$allowTypes)){
+                if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
+                    echo 'e!';
+                    //dekina---i
+                }
+                echo 'u-n';
+            }else{
+                echo 'ok';
+            }
+            
+            echo '変な';
+        }
+            /*
+            $sql=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
+            $sql->
+            */
+    }else{
+        $errmsg='入力されていない項目があります';
+    }
 }
 ?>
 
@@ -19,6 +44,7 @@ if(!empty($_POST['rate']) && isset($_POST['honbun'])){
     </head>
     <body>
     <?php require 'menu.php'; ?>
+    <button onclick="location.href='history.php'">＜戻る</button>
     <h3>商品レビューを書く</h3>
     <?php
     $pdo=new PDO($connect, USER, PASS);
@@ -28,7 +54,7 @@ if(!empty($_POST['rate']) && isset($_POST['honbun'])){
     $cosme_id=$_GET['Rnew'];
     echo '<p>',$cosme_name,'</p>';
     echo '<p>満足度';
-    echo '<form action="review_new.php" method="post">';
+    echo '<form action="review_new.php?Rnew=',$cosme_id,'&page=0" method="post" enctype="multipart/form-data">';
         echo '<div class="rate-form">';
             echo '<input id="star5" type="radio" name="rate" value="5">';
             echo '<label for="star5">★</label>';
@@ -45,9 +71,10 @@ if(!empty($_POST['rate']) && isset($_POST['honbun'])){
         echo '<p>レビュー本文';
         echo '<textarea name="honbun" cols="30" rows="10"></textarea></p>';
         echo '<p>画像の追加（任意）';
-            echo '<input type="file" name="pic">';
+            echo '<input type="file" name="file">';
         echo '</p>';
-        echo '<button type="submit" value="',$cosme_id,'" name="Rnew" class="ao">投稿する</button></div>';
+        echo '<font color="FF0000">',$errmsg,'</font>';
+        echo '<button type="submit" class="ao">投稿する</button></div>';
     echo '</form>';
 ?>
 </body>
