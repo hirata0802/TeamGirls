@@ -8,6 +8,6 @@ $sql->execute([$_GET['cart']]);
 
 echo 'カートから商品を削除しました。';
 echo '<hr>';
-require 'cart.php';
+require 'cart.html';
 ?>
 <?php require 'footer.php'; ?>

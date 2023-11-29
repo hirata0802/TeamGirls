@@ -2,7 +2,7 @@ var app = new Vue({
     el: '#cart',
     data:{
       allData: '',
-      //total: 0
+      total: 0
     },
     methods: {
       fetchItem:function(){
@@ -17,17 +17,17 @@ var app = new Vue({
       increment(id){
         const index = app.getIndexBy(id);
         app.allData[index].quantity++;
-        //this.total = app.allData[index].quantity * app.allData[index].price;
+        this.total += app.allData[index].price;
       },
       decrement(id){
         const index = app.getIndexBy(id);
         app.allData[index].quantity--;
-        //this.total = app.allData[index].quantity * app.allData[index].price
+        this.total -= app.allData[index].price
       },
-      /*cartUpdate(id){
+      cartUpdate(id){
         const index = app.getIndexBy(id);
         send_data = JSON.stringify(app.allData[index]);
-        $.ajax({
+        $ajax({
           type: "POST",
           url: "cart_input.php",
           contentType: "Content-Type: application/json; charset=UTF-8",
@@ -44,21 +44,22 @@ var app = new Vue({
       },
       cartDelete(id){
         const index = app.getIndexBy(id);
-        fetch('cart_input.php', {
+        fetch('cart_delete.php', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},  //json指定
           body: JSON.stringify(app.allData[index].quantity) //json形式に変換して送付
         })
-        //phpにデータを送る
-        /*.then(response => response.json())
+        /*phpにデータを送る
+        .then(response => response.json())
         .then(res => {
           console.log(res);
-        });
+        });*/
 
-      },*/
+      },
       getIndexBy(id){
-        const filteredTodo=app.allData.filter(todo => todo.id === id)[0];
-        const index=app.allData.indexOf(filteredTodo);
+        //const filteredTodo=app.allData.filter(todo => todo.id === id)[0];
+        //const index=app.allData.indexOf(filteredTodo);
+        const index = app.allData.findIndex(data => data.cart_id === id);
         return index;
       }
     },
