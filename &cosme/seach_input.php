@@ -20,7 +20,7 @@
             echo '<tr>';
                 echo '<td align="center">';
                 echo 'カテゴリー<br>';
-                    echo '<label class="selectbox">';
+                    echo '<label class="selectbox1">';
                         $sql=$pdo->query('select * from Categories');
                         echo '<select name="categorySelect">';
                             echo '<option value="0">選択しない</option>';
@@ -32,7 +32,7 @@
                 echo '</td></tr><tr>';
                 echo '<td align="center">';
                 echo 'ブランド<br>';
-                    echo '<label class="selectbox">';
+                    echo '<label class="selectbox1">';
                         $sql=$pdo->query('select * from Brands');
                         echo '<select name="brandSelect">';
                             echo '<option value="0">選択しない</option>';
@@ -44,7 +44,7 @@
                 echo '</td></tr><tr>';
                 echo '<td align="center">';
                 echo 'カラー<br>';
-                    echo '<label class="selectbox">';
+                    echo '<label class="selectbox1">';
                     $color=[1=>'レッド', 2=>'オレンジ', 3=>'ピンク', 4=>'ベージュ', 5=>'ホワイト', 6=>'ブラウン', 7=>'ブラック', 8=>'シルバー', 9=>'ゴールド', 10=>'その他'];
                         echo '<select name="colorSelect">';
                             echo '<option value="0">選択しない</option>';
@@ -75,9 +75,9 @@
             foreach($sql as $row){
                 $category_id=$row['category_id'];
                 if($count%3!=0){
-                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" width="100px" height="100px" formaction="seach_output.php?kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" style="object-fit: contain; width="100px" height="100px" formaction="seach_output.php?kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
                 }else{
-                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" width="100px" height="100px" formaction="seach_output.php?kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" style="object-fit: contain; width="100px" height="100px" formaction="seach_output.php?kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
                     echo '</tr><tr>';
                 }
                 $count++;
