@@ -1,6 +1,5 @@
 <?php session_start(); ?>
 <?php require 'db_connect.php'; ?>
-
 <?php
 $errmsg="";
 $statusMsg="";
@@ -14,20 +13,22 @@ if($_GET['page'] == 0){
             $allowTypes = array('jpg','png','jpeg');
             if(in_array($fileType,$allowTypes)){
                 if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
-                    echo 'e!';
-                    //dekina---i
+                    $pdo=new PDO($connect, USER, PASS);
+                    $fileup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
+                    $fileup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],$targetFilePath,$_POST['honbun']]);
+                    if($fileup){
+                        header('Location: ./review.php');
+                        exit();
+                    }else{
+                        $statusMsg="投稿に失敗しました。もう一度お願いします。";
+                    }
+                }else{
+                    $statusMsg="申し訳ありませんが、ファイルのアップロードに失敗しました。";
                 }
-                echo 'u-n';
             }else{
-                echo 'ok';
+                $statusMsg="申し訳ありませんが、アップロード可能なファイル（形式）は、JPG、JPEG、PNGのみです。";
             }
-            
-            echo '変な';
         }
-            /*
-            $sql=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
-            $sql->
-            */
     }else{
         $errmsg='入力されていない項目があります';
     }
@@ -74,6 +75,7 @@ if($_GET['page'] == 0){
             echo '<input type="file" name="file">';
         echo '</p>';
         echo '<font color="FF0000">',$errmsg,'</font>';
+        echo '<font color="FF0000">',$statusMsg,'</font>';
         echo '<button type="submit" class="ao">投稿する</button></div>';
     echo '</form>';
 ?>

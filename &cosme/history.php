@@ -18,7 +18,7 @@
                 echo $row2['cosme_name'];
                 echo $row2['color_name'];
                 echo $row2['quantity'];
-                echo '<button class="ao" onclick="location.href=`review_new.php?Rnew=', $row2['cosme_id'], '`">レビューを書く</button>';
+                echo '<button class="ao" onclick="location.href=`review_new.php?Rnew=', $row2['cosme_id'], '&page=1`">レビューを書く</button>';
             }
             echo $row['total_price'], '円<br>';
             echo $row['pay_method'];
