@@ -334,7 +334,7 @@ height: 4;
 
 .selectbox1 select {
   appearance: none;
-  /*min-width: 230px;*/
+ min-width: 230px;
   height: 2.8em;
   padding: .4em calc(.8em + 30px) .4em .8em;
   border: 1px solid black;
@@ -344,7 +344,7 @@ height: 4;
   color: #333333;
   font-size: 1em;
   cursor: pointer;
-  width: 50px;
+  width: 150px;
 }
 
 /*お気に入り画面*/
@@ -377,7 +377,7 @@ height: 4;
 }
 
 #text3 {
-margin-left: 10px;
+margin-left: 90px;
 }
 /*共通*/
 button{

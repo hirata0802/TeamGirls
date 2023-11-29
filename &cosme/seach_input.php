@@ -15,13 +15,11 @@
         <hr width="70%">
         <h4 align="center">複数絞り込み</h4>
         <table width="50%" align="center">
-            <tr >
-                <th>カテゴリー</th><th>ブランド</th><th>カラー</th>
-            </tr>
             <?php
             $pdo=new PDO($connect, USER, PASS);
             echo '<tr>';
                 echo '<td align="center">';
+                echo 'カテゴリー<br>';
                     echo '<label class="selectbox1">';
                         $sql=$pdo->query('select * from Categories');
                         echo '<select name="categorySelect">';
@@ -31,8 +29,9 @@
                             }
                         echo '</select>';
                     echo '</label>';
-                echo '</td>';
+                echo '</td></tr><tr>';
                 echo '<td align="center">';
+                echo 'ブランド<br>';
                     echo '<label class="selectbox1">';
                         $sql=$pdo->query('select * from Brands');
                         echo '<select name="brandSelect">';
@@ -42,8 +41,9 @@
                             }
                         echo '</select>';
                     echo '</label>';
-                echo '</td>';
+                echo '</td></tr><tr>';
                 echo '<td align="center">';
+                echo 'カラー<br>';
                     echo '<label class="selectbox1">';
                     $color=[1=>'レッド', 2=>'オレンジ', 3=>'ピンク', 4=>'ベージュ', 5=>'ホワイト', 6=>'ブラウン', 7=>'ブラック', 8=>'シルバー', 9=>'ゴールド', 10=>'その他'];
                         echo '<select name="colorSelect">';
@@ -94,9 +94,9 @@
             foreach($sql as $row){
                 $brand_id=$row['brand_id'];
                 if($count%3!=0){
-                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"><br>',$row['brand_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"></td>';
                 }else{
-                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"><br>',$row['brand_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"></td>';
                     echo '</tr><tr>';
                 }
                 $count++;
