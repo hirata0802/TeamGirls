@@ -21,22 +21,23 @@
 <?php
 echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</button>';
 
-    $pdo = new PDO($connect, USER, PASS);
-    $cosme1 = $pdo -> prepare('select * from Cosmetics where cosme_id=?');
-    $cosme1 -> execute([$_GET['cosme_id']]);
-    $groupCount = $pdo -> prepare('select count(group_id) from Cosmetics where group_id=(select group_id from Cosmetics where cosme_id=?)');
-    $groupCount -> execute([$_GET['cosme_id']]);
-    
-    foreach($cosme1 as $row){ 
+$pdo = new PDO($connect, USER, PASS);
+$cosme1 = $pdo -> prepare('select * from Cosmetics where cosme_id=?');
+$cosme1 -> execute([$_GET['cosme_id']]);
+$groupCount = $pdo -> prepare('select count(group_id) from Cosmetics where group_id=(select group_id from Cosmetics where cosme_id=?)');
+$groupCount -> execute([$_GET['cosme_id']]);
+
+foreach($cosme1 as $row){ 
         $detail = $row['cosme_detail'];
         $cosmeId = $row['cosme_id'];
+        $cosmeName = $row['cosme_name'];
         echo '<h3 align="center">',$row['cosme_name'],'</h3>';
         echo '<div class="out">';
         echo '<div class="in">';
         //echo '<label><input type=radio name="slide" checked><span></span><a href="#">
         //</a></label>';
         foreach($groupCount as $a){
-            if($a>1){
+            if($a['count(group_id)']>1){
                 echo '<button onclick="location.href=`detail_next.php?group=', $row['group_id'], '&cosmeId=', $row['cosme_id'], '&next=0`">＜</button>';
                 echo '<img src="',$row['image_path'],'" width="200" alt="',$row['color_name'],'">';
                 echo '<button onclick="location.href=`detail_next.php?group=', $row['group_id'], '&cosmeId=', $row['cosme_id'], '&next=1`">＞</button>';
@@ -84,7 +85,7 @@ echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</
         $sql->execute([$_SESSION['customer']['code'], $cosmeId]);
         foreach($sql as $row){
             echo '<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">';
-            echo '<p>', $row['cosme_name'], '　';
+            echo '<p>', $cosmeName, '　';
             for($i=0; $i<5; $i++){
                 if($i<$row['level']){
                     echo '★';
@@ -94,7 +95,7 @@ echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</
                 }
             }
             echo '</p>';
-            echo '<p>', $row['nickname'], '　';
+            echo '<p>', $row['member_nickname'], '　';
             echo $row['member_age'], '/';
             echo $row['member_skin'], '/';
             echo $row['member_color'], '</p>';
