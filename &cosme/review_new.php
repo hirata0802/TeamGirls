@@ -4,7 +4,7 @@
 $errmsg="";
 $statusMsg="";
 if($_GET['page'] == 0){
-    if(!empty($_POST['rate']) && isset($_POST['honbun'])){
+    if(isset($_POST['rate']) && !empty($_POST['honbun'])){
         if(!empty($_FILES['file']['name'])){
             $targetDir="image/uploads/";
             $fileName=basename($_FILES['file']['name']);
@@ -15,8 +15,8 @@ if($_GET['page'] == 0){
                 if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
                     $pdo=new PDO($connect, USER, PASS);
                     $fileup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
-                    $fileup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],$targetFilePath,$_POST['honbun']]);
-                    if($fileup){
+                    $result=$fileup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],$targetFilePath,$_POST['honbun']]);
+                    if($result==true){
                         header('Location: ./review.php');
                         exit();
                     }else{
@@ -27,6 +27,16 @@ if($_GET['page'] == 0){
                 }
             }else{
                 $statusMsg="申し訳ありませんが、アップロード可能なファイル（形式）は、JPG、JPEG、PNGのみです。";
+            }
+        }else{
+            $pdo=new PDO($connect, USER, PASS);
+            $reviewup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
+            $reviewup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],null,$_POST['honbun']]);
+            if($reviewup){
+                header('Location: ./review.php');
+                exit();
+            }else{
+                $statusMsg="投稿に失敗しました。もう一度お願いします。";
             }
         }
     }else{
