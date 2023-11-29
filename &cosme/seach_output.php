@@ -213,9 +213,9 @@
                         }else{
                             foreach($member as $a){
                                 if($a['delete_flag']==0){
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0" class="button">★</a></td></tr>';
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">★</a></td></tr>';
                                 }else{
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0" class="button">☆</a></td></tr>';
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                                 }
                                 break;
                             }

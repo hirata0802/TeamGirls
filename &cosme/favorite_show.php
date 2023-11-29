@@ -38,10 +38,15 @@
         $count = $sql2 -> rowCount();
         
         //表示
-        echo '<br>';
-        echo '<button onclick="location.href=`seach_input.php`">＜戻る</button>';
-        echo '<table width="100%">';
-        echo '<th align="left" style="font-size:30px;">',$count,'件</th>';
+        if($count==0){
+            echo '<br>';
+            echo '<p align="center" style="font-size:20px;">現在お気に入り登録はありません</p>';
+            echo '<table width="100%">';
+        }else{
+            echo '<br>';
+            echo '<p align="left" style="font-size:30px;">',$count,'件</p>';
+            echo '<table width="100%">';
+        }
         $sql = $pdo -> prepare('select * from Cosmetics as C inner join Favorites as F on C.cosme_id=F.cosme_id inner join Brands as B on C.brand_id=B.brand_id where F.member_code=? and delete_flag=0');
         $sql -> execute([$_SESSION['customer']['code']]);
         $rowcount = 1;
