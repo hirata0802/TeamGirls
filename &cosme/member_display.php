@@ -49,7 +49,10 @@
                     'pass' => $password];
                  }
              }
+        echo '<div id="mannaka">';
         echo 'お客様情報を更新しました。';
+        echo '</div>';
+        echo '<br>';
     }
         $pdo=new PDO($connect,USER,PASS);
         $sql=$pdo->prepare(
