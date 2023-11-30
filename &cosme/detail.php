@@ -101,7 +101,9 @@ foreach($cosme1 as $row){
             echo $row['member_color'], '</p>';
             echo '<p>', $row['review_text'], '</p>';
             if(!empty($row['image_path'])){
-                echo '<img src="', $row['image_path'], '" alt="">';   
+                echo '<div style="text-align: center">';
+                echo '<img src="', $row['image_path'], '" alt="" width="320px">';
+                echo '</div>';   
             }
             echo '</div>';            
         }
