@@ -81,6 +81,7 @@ foreach($cosme1 as $row){
         $sql->execute([$_SESSION['customer']['code'], $cosmeId]);
         $count = $sql -> rowCount();
 
+        echo '<h2>レビュー</h2>';
         if($count==0){
             echo '<p align="center">現在レビューはありません</p>';
         }else{
@@ -102,22 +103,12 @@ foreach($cosme1 as $row){
                 echo $row['member_color'], '</p>';
                 echo '<p>', $row['review_text'], '</p>';
                 if(!empty($row['image_path'])){
-                    echo '<img src="', $row['image_path'], '" alt="">';   
+                    echo '<div style="text-align: center">';
+                    echo '<img src="', $row['image_path'], '" alt="" width="320px">';
+                    echo '</div>';   
                 }
                 echo '</div>';            
             }
-            echo '</p>';
-            echo '<p>', $row['member_nickname'], '　';
-            echo $row['member_age'], '/';
-            echo $row['member_skin'], '/';
-            echo $row['member_color'], '</p>';
-            echo '<p>', $row['review_text'], '</p>';
-            if(!empty($row['image_path'])){
-                echo '<div style="text-align: center">';
-                echo '<img src="', $row['image_path'], '" alt="" width="320px">';
-                echo '</div>';   
-            }
-            echo '</div>';            
         }
     }
 ?>
