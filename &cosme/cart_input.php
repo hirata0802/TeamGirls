@@ -14,23 +14,22 @@
         }
     }
     else{   //個数の変更をDBに反映させる
-        $jsonUrl = "data.json"; //送信先のJSONのURL
-        if(file_exists($jsonUrl)){  //JSON内のデータを受け取る
-            $json = file_get_contents($jsonUrl);
-            $jsonData = json_decode($json, true);
-        }else{
-            echo "No Data";
-        }
-        $data = file_get_contents('php://input');   //JSからのデータを受け取る
-        $data = json_decode($data);
-        $jsonData = array_merge($jsonData, $data);  //配列を合体させて保存
-        $jsonData = json_encode($jsonData);
-        file_put_contents($jsonUrl, $jsonData);
-                /*$raw=file_get_contents('php://input');
-                $data=json_decode($raw);
-                echo $data;*/
+        $raw = file_get_contents('php://input');   //JSからのデータを受け取る
+        $data = json_decode($raw);
+        $pdo=new PDO($connect, USER, PASS);
+        $sql=$pdo->prepare('update Cart set quantity=? where member_code=? and cosme_id=? and delete_flag=0');
+        $sql->execute([$data['quantity'], $_SESSION['customer']['code'], $data['cosme_id']]);
+        echo 'a';
+        header('Location: ./cart.html');
+        exit();
     }
     $backURL = end($_SESSION['history']);
     header('Location: '.$backURL);
     exit();
+    /*$jsonData = array_merge($jsonData, $data);  //配列を合体させて保存
+    $jsonData = json_encode($jsonData);
+    file_put_contents($jsonUrl, $jsonData);
+            /*$raw=file_get_contents('php://input');
+            $data=json_decode($raw);
+            echo $data;*/
 ?>

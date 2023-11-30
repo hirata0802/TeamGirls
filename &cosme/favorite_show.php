@@ -1,7 +1,31 @@
 <?php session_start(); ?>
 <?php require 'db_connect.php'; ?>
 <?php require 'header.php'; ?>
-<?php require 'menu.php'; ?>
+<nav>
+    <ul>
+        <li><h1>&cosme</h1></li>
+        <li>
+            <img src="css/image/home.svg" onclick="location.href='home.php'" width="40" height="40" alt="home">
+            <div><font size="1">&nbsp;ホーム　　</font></div>
+        </li>
+        <li>
+            <img src="css/image/search.svg" onclick="location.href='seach_input.php'" width="40" height="40" alt="search">
+            <div><font size="1">　検索</font></div>
+        </li>
+        <li>  
+            <img src="css/image/favorite_black.svg" onclick="location.href='favorite_show.php'" width="40" height="40" alt="favorite">
+            <div><font size="1">お気に入り</font></div>
+        </li>
+        <li>
+            <img src="css/image/cart.svg" onclick="location.href='cart_show.php'" width="40" height="40" alt="cart">
+            <div><font size="1">&nbsp;カート</font></div>
+        </li>
+        <li>
+            <img src="css/image/mypage.svg" onclick="location.href='mypage.php'" width="40" height="40" alt="mypage">
+            <div><font size="1">マイページ</font></div>
+        </li>
+    </ul>
+</nav>
 
 <?php
     if(isset($_SESSION['customer'])){
@@ -14,10 +38,15 @@
         $count = $sql2 -> rowCount();
         
         //表示
-        echo '<br>';
-        echo '<button onclick="location.href=`seach_input.php`">＜戻る</button>';
-        echo '<table width="100%">';
-        echo '<th align="left" style="font-size:30px;">',$count,'件</th>';
+        if($count==0){
+            echo '<br>';
+            echo '<p align="center" style="font-size:20px;">現在お気に入り登録はありません</p>';
+            echo '<table width="100%">';
+        }else{
+            echo '<br>';
+            echo '<p align="left" style="font-size:30px;">',$count,'件</p>';
+            echo '<table width="100%">';
+        }
         $sql = $pdo -> prepare('select * from Cosmetics as C inner join Favorites as F on C.cosme_id=F.cosme_id inner join Brands as B on C.brand_id=B.brand_id where F.member_code=? and delete_flag=0');
         $sql -> execute([$_SESSION['customer']['code']]);
         $rowcount = 1;
