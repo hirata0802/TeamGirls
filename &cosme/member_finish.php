@@ -70,6 +70,7 @@ if(!isset($_SESSION['customer'])){
     echo '</div>';
     echo '<form action="home.php" method="post">';
     echo '<button class="ao">ホームへ</button>';
+    echo '<br>';
     echo '</form><hr width="250">';
     echo '<div id="mannaka">';
     echo '<p>登録情報を確認・変更できます</p>';
