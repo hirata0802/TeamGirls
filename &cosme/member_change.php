@@ -28,15 +28,13 @@
         $sql=$pdo->prepare('select * from Members where member_code=?');
         $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
-       echo '<div id="simei">';
-       echo '<input type="text" style="width: 120px;height: 30px;" name="sei" value="',$row['family_name'],'" required>';
-       echo '<input type="text" style="width: 120px;height: 30px;" name="mei" value="',$row['first_name'],'" required>';
-       echo '</div>';
-       echo '<div id="mannaka">';
+        echo '<div id="mannaka">';
+       echo '<input type="text" style="width: 125px;height: 30px;" name="sei" value="',$row['family_name'],'" required>';
+       echo '<input type="text" style="width: 125px;height: 30px;" name="mei" value="',$row['first_name'],'" required>';
        echo '<p><input type="text" style="width: 125px;height: 30px;" name="seikana" value="',$row['family_name_kana'],'" required>';
        echo '<input type="text" style="width: 125px;height: 30px;" name="meikana" value="',$row['first_name_kana'],'" required></p>';
        echo '</div>';
-       echo '<div id="yuubin">';
+       echo '<div id="toroku1">';
        echo '<input type="text" style="width: 240px;height: 27px;" name="zipcode" id="zipcode" value="',$row['post_code'],'" requiredy>';
        echo '</div>';
        echo ' <div id="kennsaku">';
@@ -50,15 +48,11 @@
       echo '<p><input type="text" name="bill" value="',$row['building'],'" ></p>';
       echo '</div>';
 
-       echo '<div id="tell">';
+      echo '<div id="toroku1">';
        echo '<p><input type="tel" style="width: 240px;height: 27px;" name="tel" maxlength="11" pattern="^[0-9]+$" value="',$row['phone'],'" required>';
-       echo '</div>';
        echo '<br>';
-       echo '<div id="meru2">';
        echo '<p><input type="email" style="width: 240px;height: 27px;" name="mail" value="',$row['email'],'" required>';
-       echo '</div>';
        echo '<br>';
-       echo '<div id="pas2">';
        echo '<p><input type="password" style="width: 240px;height: 27px;" name="pass" value="',$_SESSION['customer']['pass'],'" required>';
        echo '</div>';
        
