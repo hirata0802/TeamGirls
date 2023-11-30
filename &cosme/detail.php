@@ -106,6 +106,18 @@ foreach($cosme1 as $row){
                 }
                 echo '</div>';            
             }
+            echo '</p>';
+            echo '<p>', $row['member_nickname'], '　';
+            echo $row['member_age'], '/';
+            echo $row['member_skin'], '/';
+            echo $row['member_color'], '</p>';
+            echo '<p>', $row['review_text'], '</p>';
+            if(!empty($row['image_path'])){
+                echo '<div style="text-align: center">';
+                echo '<img src="', $row['image_path'], '" alt="" width="320px">';
+                echo '</div>';   
+            }
+            echo '</div>';            
         }
     }
 ?>

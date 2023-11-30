@@ -2,7 +2,7 @@
 <?php require 'db_connect.php'; ?>
 <?php require 'header.php'; ?>
 <h3>&cosme</h3>
-<hr>
+    <hr color="black">
     <!--個人情報画面に遷移-->
     <div class="modoru"><a href="mypage.php">戻る</a></div>
     <form action="member_change.php" method="post">
@@ -56,24 +56,39 @@
             'select * from Members where member_code=?');
         $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
-       echo '<p><input type="text" name="sei" value="',$row['family_name'],'" readonly>';
-       echo '<p><input type="text" name="mei" value="',$row['first_name'],'" readonly>';
-       echo '<p><input type="text" name="seikana" value="',$row['family_name_kana'],'" readonly>';
-       echo '<p><input type="text" name="meikana" value="',$row['first_name_kana'],'" readonly>';
-       echo '<p><input type="text" name="zipcode" value="',$row['post_code'],'" readonly>';
-       
+       echo '<div id="simei">';
+       echo '<input type="text" style="width: 102px;height: 30px;" name="sei" value="',$row['family_name'],'" readonly>';
+       echo '<input type="text" style="width: 102px;height: 30px;" name="mei" value="',$row['first_name'],'" readonly>';
+       echo '</div>';
+       echo '<div id="mannaka">';
+       echo '<p><input type="text" style="width: 125px;height: 30px;" name="seikana" value="',$row['family_name_kana'],'" readonly>';
+       echo '<input type="text" style="width: 125px;height: 30px;" name="meikana" value="',$row['first_name_kana'],'" readonly></p>';
+       echo '</div>';
+       echo '<div id="yuubin">';
+       echo '<input type="text" style="width: 240px;height: 27px;" name="zipcode" value="',$row['post_code'],'" readonly>';
+       echo '</div>';
+       echo '<div id="toroku1">';
        echo '<p><input type="text" name="prefecture" value="',$row['prefecture'],'" readonly></p>';
        echo '<p><input type="text" name="city" value="',$row['city'],'" readonly></p>';
        echo '<p><input type="text" name="address" value="',$row['section'],'" readonly></p>';
        echo '<p><input type="text" name="bill" value="',$row['building'],'" ></p>';
-
-       echo '<p><input type="text" name="tel" value="',$row['phone'],'" readonly>';
-       echo '<p><input type="text" name="mail" value="',$row['email'],'" readonly>';
-       echo '<p><input type="password" name="pass" value="',$_SESSION['customer']['pass'],'" readonly>';
+       echo '</div>';
+       echo '<div id="tell">';
+       echo '<input type="text" style="width: 240px;height: 27px;" name="tel" value="',$row['phone'],'" readonly>';
+       echo '</div>';
+       echo '<br>';
+       echo '<div id="meru2">';
+       echo '<input type="text" style="width: 240px;height: 27px;" name="mail" value="',$row['email'],'" readonly>';
+       echo '</div>';
+       echo '<br>';
+       echo '<div id="pas2">';
+       echo '<input type="password" style="width: 240px;height: 27px;" name="pass" value="',$_SESSION['customer']['pass'],'" readonly>';
+       echo '</div>';
        
     }
 
     ?>
+    <br>
 <p><button class="ao" type="submit" href="member_change.php">会員情報の変更</button></p>
     </form>
 <?php require 'footer.php'; ?>
