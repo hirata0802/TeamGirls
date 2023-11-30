@@ -33,7 +33,7 @@ if(!isset($_SESSION['customer'])){
         $_POST['tel']]);
 
     $nickname='unknown';
-    if(isset($_POST['nickname'])){
+    if(!empty($_POST['nickname'])){
         $nickname=$_POST['nickname'];
     }
     $sql3=$pdo->prepare('insert into Mypage (member_code,member_nickname) values(?,?)');

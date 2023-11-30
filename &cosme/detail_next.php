@@ -2,19 +2,30 @@
 <?php require 'db_connect.php'; ?>
 <?php
     $pdo = new PDO($connect, USER, PASS);
-    $minId = $pdo -> prepare('select min(cosme_id) from Cosmetics where group_id=?');
-    $minId -> execute([$_GET['group_id']]);
-    $maxId = $pdo -> prepare('select max(cosme_id) from Cosmetics where group_id=?');
-    $maxId -> execute([$_GET['group_id']]);
-    if($_GET['next']==0){   //前のcosme_idforeach($minId as $m){
-            if($minId == $_GET['cosme_id']){
-                header('Location: ./detail.php?cosmeId='.$maxId);
+    $nextId = $pdo -> prepare('select min(cosme_id), max(cosme_id) from Cosmetics where group_id=?');
+    $nextId -> execute([$_GET['group']]);
+    foreach($nextId as $row){
+        if($_GET['next']==0){   //前のcosme_idforeach($minId as $m){
+            if($row['min(cosme_id)'] == $_GET['cosmeId']){
+                header('Location: ./detail.php?cosme_id='.$row['max(cosme_id)']);
                 exit();
-            }else{
-                header('Location: ./detail.php?cosmeId='.$_GET['cosme_id']+1);
-                exit();
-
             }
+            else{
+                header('Location: ./detail.php?cosme_id='.$_GET['cosmeId']-1);
+                exit();
+            }
+        }
+        else if($_GET['next']==1){   //前のcosme_idforeach($minId as $m){
+            if($row['max(cosme_id)'] == $_GET['cosmeId']){
+                header('Location: ./detail.php?cosme_id='.$row['min(cosme_id)']);
+                exit();
+            }
+            else{
+                header('Location: ./detail.php?cosme_id='.$_GET['cosmeId']+1);
+                exit();
+            }
+        }
+
     }
     
 ?>

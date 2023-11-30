@@ -26,34 +26,25 @@ var app = new Vue({
       },
       cartUpdate(id){
         const index = app.getIndexBy(id);
-        send_data = JSON.stringify(app.allData[index]);
-        $ajax({
-          type: "POST",
-          url: "cart_input.php",
-          contentType: "Content-Type: application/json; charset=UTF-8",
-          data: send_data,
-          error : function(XMLHttpRequest, textStatus, errorThrown){
-            console.log("ajax通信に失敗しました");
-            //失敗した時の処理
-          },
-          success : function(response){
-            console.log("ajax通信に成功しました");
-            //成功した時の処理
-          }
-        })
+        fetch('cart_input.php', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},  //json指定
+          body: JSON.stringify(app.allData[index]) //json形式に変換して送付
+        }).then(function(response){
+          //allDataにSELECT文の結果が配列で格納
+          app.allData = response.data;
+        });
       },
       cartDelete(id){
         const index = app.getIndexBy(id);
         fetch('cart_delete.php', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},  //json指定
-          body: JSON.stringify(app.allData[index].quantity) //json形式に変換して送付
-        })
-        /*phpにデータを送る
-        .then(response => response.json())
-        .then(res => {
-          console.log(res);
-        });*/
+          body: JSON.stringify(app.allData[index]) //json形式に変換して送付
+        }).then(function(response){
+          //allDataにSELECT文の結果が配列で格納
+          app.allData = response.data;
+        });
 
       },
       getIndexBy(id){

@@ -29,7 +29,7 @@
       echo '<h2>新規会員登録</h2>';
       echo '</div>';
       if(!isset($mail)){
-          echo $error;
+          echo '<p><div id="mannaka">', $error, '</p></div>';
       }
       echo '<div id="simei">';
       echo '<input type="text" style="width: 100px;height: 30px;" name="sei" placeholder="氏名（姓）" value="',$sei,'" required>';

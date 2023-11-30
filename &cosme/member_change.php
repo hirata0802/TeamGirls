@@ -1,19 +1,11 @@
 <?php session_start(); ?>
 <?php require 'db_connect.php'; ?>
 <?php require 'header.php'; ?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>会員情報変更画面</title>
-</head>
-<body>
-    <h3>&cosme</h3>
-    <hr>
+<h3>&cosme</h3>
+    <hr color="black">
     <!--個人情報画面に遷移-->
     
-        <h2>会員情報変更</h2>
+    <div id="logtitle"><h2>会員情報変更</h2></div>
         <form action="member_display.php" method="post">
         <?php
         //   $sei=$mei=$seikana=$meikana=$nickname=$zipcode=$prefecture=$city=$address=$bill=$tel=$mail=$pass=$error='';
@@ -36,28 +28,44 @@
         $sql=$pdo->prepare('select * from Members where member_code=?');
         $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
-       echo '<p><input type="text" name="sei" value="',$row['family_name'],'" required>';
-       echo '<p><input type="text" name="mei" value="',$row['first_name'],'" required>';
-       echo '<p><input type="text" name="seikana" value="',$row['family_name_kana'],'" required>';
-       echo '<p><input type="text" name="meikana" value="',$row['first_name_kana'],'" required>';
-       echo '<p><input type="text" name="zipcode" id="zipcode" value="',$row['post_code'],'" requiredy>';
+       echo '<div id="simei">';
+       echo '<input type="text" style="width: 120px;height: 30px;" name="sei" value="',$row['family_name'],'" required>';
+       echo '<input type="text" style="width: 120px;height: 30px;" name="mei" value="',$row['first_name'],'" required>';
+       echo '</div>';
+       echo '<div id="mannaka">';
+       echo '<p><input type="text" style="width: 125px;height: 30px;" name="seikana" value="',$row['family_name_kana'],'" required>';
+       echo '<input type="text" style="width: 125px;height: 30px;" name="meikana" value="',$row['first_name_kana'],'" required></p>';
+       echo '</div>';
+       echo '<div id="yuubin">';
+       echo '<input type="text" style="width: 240px;height: 27px;" name="zipcode" id="zipcode" value="',$row['post_code'],'" requiredy>';
+       echo '</div>';
        echo ' <div id="kennsaku">';
        echo '<button type="button" class="ao" id="btn">検索</button></p>';
        echo '</div>';
 
+       echo '<div id="toroku1">';
       echo '<p><input type="text" name="prefecture" id="prefecture" value="',$row['prefecture'],'" required></p>';
       echo '<p><input type="text" name="city" id="city" value="',$row['city'],'" required></p>';
       echo '<p><input type="text" name="address" id="address" value="',$row['section'],'" required></p>';
       echo '<p><input type="text" name="bill" value="',$row['building'],'" ></p>';
+      echo '</div>';
 
-       echo '<p><input type="tel" name="tel" maxlength="11" pattern="^[0-9]+$" value="',$row['phone'],'" required>';
-       echo '<p><input type="email" name="mail" value="',$row['email'],'" required>';
-       echo '<p><input type="password" name="pass" value="',$_SESSION['customer']['pass'],'" required>';
+       echo '<div id="tell">';
+       echo '<p><input type="tel" style="width: 240px;height: 27px;" name="tel" maxlength="11" pattern="^[0-9]+$" value="',$row['phone'],'" required>';
+       echo '</div>';
+       echo '<br>';
+       echo '<div id="meru2">';
+       echo '<p><input type="email" style="width: 240px;height: 27px;" name="mail" value="',$row['email'],'" required>';
+       echo '</div>';
+       echo '<br>';
+       echo '<div id="pas2">';
+       echo '<p><input type="password" style="width: 240px;height: 27px;" name="pass" value="',$_SESSION['customer']['pass'],'" required>';
+       echo '</div>';
        
     }
 
     
-
+    echo '<br>';
    echo '<p><button class="ao" type="submit" href="member_change.php">変更</button></p>';
         ?>
         </form>
