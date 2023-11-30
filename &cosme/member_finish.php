@@ -58,15 +58,23 @@ if(!isset($_SESSION['customer'])){
             'pass' => $row['member_password']];
     }
     echo '<h3>&cosme</h3>';
-    echo '<hr>';
+    echo '<div id="hr2">';
+    echo '<hr color="black">';
+    echo '</div>';
+    echo '<div id="logtitle">';
     echo '<h2>登録完了</h2>';
+    echo '</div>';
+    echo '<div id="kaninkanryo">';
     echo '<p><font color="FF0000">',$_POST['sei'],$_POST['mei'],'様</font></p>';
     echo '<p><font color="FF0000">会員登録ありがとうございます。</font></p>';
+    echo '</div>';
     echo '<form action="home.php" method="post">';
     echo '<button class="ao">ホームへ</button>';
-    echo '</form><hr>';
+    echo '</form><hr width="250">';
+    echo '<div id="mannaka">';
     echo '<p>登録情報を確認・変更できます</p>';
     echo '<a href="mypage.php">＞マイページへ</a>';
+    echo '</div>';
 }
 ?>
 <?php require 'footer.php'; ?>
