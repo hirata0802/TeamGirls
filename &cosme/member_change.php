@@ -34,7 +34,7 @@
        echo '</div>';
        echo '<div id="mannaka">';
        echo '<p><input type="text" style="width: 125px;height: 30px;" name="seikana" value="',$row['family_name_kana'],'" required>';
-       echo '<input type="text" style="width: 125px;height: 30px;" name="meikana" value="',$row['first_name_kana'],'" required>'</p>;
+       echo '<input type="text" style="width: 125px;height: 30px;" name="meikana" value="',$row['first_name_kana'],'" required></p>';
        echo '</div>';
        echo '<div id="yuubin">';
        echo '<input type="text" style="width: 240px;height: 27px;" name="zipcode" id="zipcode" value="',$row['post_code'],'" requiredy>';
@@ -65,11 +65,10 @@
     }
 
     
-
+    echo '<br>';
    echo '<p><button class="ao" type="submit" href="member_change.php">変更</button></p>';
         ?>
         </form>
-        <br>
         <script src="./js/jquery-3.7.0.min.js"></script>
     <script src="./js/app.js"></script>
     <div class="modoru"><button onclick="history.back()">戻る</button></div>
