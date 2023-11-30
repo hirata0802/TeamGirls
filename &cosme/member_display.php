@@ -57,8 +57,8 @@
         $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
        echo '<div id="simei">';
-       echo '<input type="text" style="width: 105px;height: 30px;" name="sei" value="',$row['family_name'],'" readonly>';
-       echo '<input type="text" style="width: 105px;height: 30px;" name="mei" value="',$row['first_name'],'" readonly>';
+       echo '<input type="text" style="width: 102px;height: 30px;" name="sei" value="',$row['family_name'],'" readonly>';
+       echo '<input type="text" style="width: 102px;height: 30px;" name="mei" value="',$row['first_name'],'" readonly>';
        echo '</div>';
        echo '<div id="mannaka">';
        echo '<p><input type="text" style="width: 125px;height: 30px;" name="seikana" value="',$row['family_name_kana'],'" readonly>';
