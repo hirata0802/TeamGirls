@@ -68,7 +68,8 @@
                         echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
                     //カート、★
                         echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$cosmeId,'">カートに入れる</a></td>';
-                        echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=1">★</a></td></tr>';
+                        //echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=1">★</a></td></tr>';
+                        echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=1`">★</button></td></tr>';
                         echo '</table>';
                         echo '</td><td></td>';
                         echo '</tr>';
@@ -84,7 +85,8 @@
                             echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                             echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
                             echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$cosmeId,'">カートに入れる</a></td>';
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=1">★</a></td>';
+                            //echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=1">★</a></td>';
+                            echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=1`">★</button></td>';
                             echo '</tr>';
                         echo '</table>';
                     echo '</td>';
@@ -96,7 +98,9 @@
                             echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                             echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
                             echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$cosmeId,'">カートに入れる</a></td>';
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=1">★</a></td>';
+                            //echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=1">★</a></td>';
+                            echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=1`"><font size="5px">★</font></button></td>';
+                            
                             echo '</tr>';
                         echo '</table>';
                     echo '</td>';

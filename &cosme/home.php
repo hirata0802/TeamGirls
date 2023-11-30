@@ -25,24 +25,24 @@
     echo '<table align="center" width="80%">';
     echo '<tr><td>1位</td> <td>2位</td> <td>3位</td></tr>';
     echo "</table>";
-    
-    echo '<table align="center" width="80%"  cellpadding="30">';
+    //画像表示
+    echo '<table align="center" width="50%" cellpadding="20">';
     echo '<tr>';
     foreach($sql as $row){
-            echo '<td align="center"><a href="detail.php?cosmeId=',$cosmeId,'"><img src="',$row['image_path'],'" widh="100" height="100"></a></td>';
+            echo '<td align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'"><img src="',$row['image_path'],'" widh="80" height="80"></a><br><font size="-5px">',$row['cosme_name'],'</font></td>';
     }
     echo '</tr>';
     echo '</table><br><br>';
 
     //新作情報
-    $sql2 = $pdo -> query('select * from Cosmetics where creation_date >= date_add(now(), interval - 10 day)');    
+    $sql2 = $pdo -> query('select * from Cosmetics where creation_date >= date_add(now(), interval - 10 day)');       
     $count = 1;
     echo '⏰新作情報';
-    echo '<table align="center" width="80%"  cellpadding="30">';
+    echo '<table align="center" width="50%"  cellpadding="20">';
     echo '<tr>';
     foreach($sql2 as $row2){
         if($count%4!=0){
-            echo '<td align="center"><a href="detail.php?cosmeId=',$cosmeId,'"><img src="',$row2['image_path'],'" widh="100" height="100"></a></td>';
+            echo '<td align="center"><a href="detail.php?cosme_id=',$row2['cosme_id'],'"><img src="',$row2['image_path'],'" widh="80" height="80"></a><br><font size="-5px">',$row2['cosme_name'],'</font></td>';
         }else{
             echo '</tr><tr>';
         }
