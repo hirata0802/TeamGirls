@@ -170,12 +170,12 @@
                     if($rowcount%2!=0){
                         //テーブルの左側
                         echo '<td align="center">';
-                        echo '<table width="80%">';
+                        echo '<table width="60%">';
                         echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
-                        echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
-                        echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
+                        echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2"><strong>',$row['cosme_name'],'</font></strong></td></tr>';
+                        echo '<tr><td colspan="3" align="left"><font size="2">',$row['brand_name'],'</font></td></tr>';
                         echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
-                        echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
+                        echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
                         
                         //お気に入り
                         $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
@@ -198,12 +198,12 @@
                     }else{
                         //テーブルの右側 
                         echo '<td aligh="center">'; 
-                        echo '<table width="80%">';
+                        echo '<table width="60%">';
                         echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
-                        echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
-                        echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
+                        echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2"><strong>',$row['cosme_name'],'</font></strong></td></tr>';
+                        echo '<tr><td colspan="3" align="left"><font size="2">',$row['brand_name'],'</font></td></tr>';
                         echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
-                        echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
+                        echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
 
                         $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                         $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);

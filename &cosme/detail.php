@@ -32,10 +32,7 @@ foreach($cosme1 as $row){
         $cosmeId = $row['cosme_id'];
         $cosmeName = $row['cosme_name'];
         echo '<h3 align="center">',$row['cosme_name'],'</h3>';
-        echo '<div class="out">';
-        echo '<div class="in">';
-        //echo '<label><input type=radio name="slide" checked><span></span><a href="#">
-        //</a></label>';
+        echo '<div style="text-align: center">';
         foreach($groupCount as $a){
             if($a['count(group_id)']>1){
                 echo '<button onclick="location.href=`detail_next.php?group=', $row['group_id'], '&cosmeId=', $row['cosme_id'], '&next=0`">＜</button>';
@@ -46,7 +43,6 @@ foreach($cosme1 as $row){
             }
 
         }
-            echo '</div>';
             echo '</div>';
             echo '<p>販売価格：￥',$row['price'],'</p>';
             echo '<p>カラー：',$row['color_name'],'</p>';
@@ -63,47 +59,56 @@ foreach($cosme1 as $row){
       
     if($count > 0){
         foreach($cosme2 as $row){
-            if($row['delete_flag']==0){//1  //9
-                echo '<button onclick="location.href=`favorite.phpcosmeId=',$cosmeId,'& page=0`">★</button>';
+            if($row['delete_flag']==0){
+                echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=0`">★</button>';
             }else{
-                echo '<button onclick="location.href=`favorite.phpcosmeId=',$cosmeId,'& page=0`">☆</button>';
+                echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=0`">☆</button>';
             }
         }
     }else{
         //echo '<form action="favorite.php" method="get">';
-        echo '<button onclick="location.href=`favorite.phpcosmeId=',$cosmeId,'& page=2`">☆</button>';
+        echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=2`">☆</button>';
         //echo '<a href="favorite.php?cosmeId=',$cosmeId,'&page=2">☆</a>';
     }
-
+    echo '<div style="text-align: center">';
     echo '<p>商品詳細</p>';
     echo $detail;
-?>
-<?php
+    echo '</div>';
+
     if(isset($_SESSION['customer'])){
         $pdo=new PDO($connect, USER, PASS);
         $sql=$pdo->prepare('select * from Reviews R inner join Mypage M on R.member_code=M.member_code where R.member_code=? and R.cosme_id=?');
         $sql->execute([$_SESSION['customer']['code'], $cosmeId]);
-        foreach($sql as $row){
-            echo '<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">';
-            echo '<p>', $cosmeName, '　';
-            for($i=0; $i<5; $i++){
-                if($i<$row['level']){
-                    echo '★';
+        $count = $sql -> rowCount();
+
+        echo '<h2>レビュー</h2>';
+        if($count==0){
+            echo '<p align="center">現在レビューはありません</p>';
+        }else{
+            foreach($sql as $row){
+                echo '<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">';
+                echo '<p>', $cosmeName, '　';
+                for($i=0; $i<5; $i++){
+                    if($i<$row['level']){
+                        echo '★';
+                    }
+                    else{
+                        echo '☆';
+                    }
                 }
-                else{
-                    echo '☆';
+                echo '</p>';
+                echo '<p>', $row['member_nickname'], '　';
+                echo $row['member_age'], '/';
+                echo $row['member_skin'], '/';
+                echo $row['member_color'], '</p>';
+                echo '<p>', $row['review_text'], '</p>';
+                if(!empty($row['image_path'])){
+                    echo '<div style="text-align: center">';
+                    echo '<img src="', $row['image_path'], '" alt="" width="320px">';
+                    echo '</div>';   
                 }
+                echo '</div>';            
             }
-            echo '</p>';
-            echo '<p>', $row['member_nickname'], '　';
-            echo $row['member_age'], '/';
-            echo $row['member_skin'], '/';
-            echo $row['member_color'], '</p>';
-            echo '<p>', $row['review_text'], '</p>';
-            if(!empty($row['image_path'])){
-                echo '<img src="', $row['image_path'], '" alt="">';   
-            }
-            echo '</div>';            
         }
     }
 ?>

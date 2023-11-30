@@ -33,7 +33,7 @@
        echo '<input type="text" style="width: 125px;height: 30px;" name="mei" value="',$row['first_name'],'" required>';
        echo '<p><input type="text" style="width: 125px;height: 30px;" name="seikana" value="',$row['family_name_kana'],'" required>';
        echo '<input type="text" style="width: 125px;height: 30px;" name="meikana" value="',$row['first_name_kana'],'" required></p>';
-       echo '<input type="text" style="width: 250px;height: 27px;" name="zipcode" id="zipcode" value="',$row['post_code'],'" requiredy>';
+       echo '<input type="text" style="width: 255px;height: 27px;" name="zipcode" id="zipcode" value="',$row['post_code'],'" requiredy>';
        echo '</div>';
        echo ' <div id="kennsaku">';
        echo '<button type="button" class="ao" id="btn">検索</button></p>';
@@ -47,11 +47,11 @@
       echo '</div>';
 
       echo '<div id="mannaka">';
-       echo '<p><input type="tel" style="width: 250px;height: 27px;" name="tel" maxlength="11" pattern="^[0-9]+$" value="',$row['phone'],'" required>';
+       echo '<p><input type="tel" style="width: 255px;height: 27px;" name="tel" maxlength="11" pattern="^[0-9]+$" value="',$row['phone'],'" required>';
        echo '<br>';
-       echo '<p><input type="email" style="width: 250px;height: 27px;" name="mail" value="',$row['email'],'" required>';
+       echo '<p><input type="email" style="width: 255px;height: 27px;" name="mail" value="',$row['email'],'" required>';
        echo '<br>';
-       echo '<p><input type="password" style="width: 250px;height: 27px;" name="pass" value="',$_SESSION['customer']['pass'],'" required>';
+       echo '<p><input type="password" style="width: 255px;height: 27px;" name="pass" value="',$_SESSION['customer']['pass'],'" required>';
        echo '</div>';
        
     }
