@@ -14,11 +14,12 @@
             $sql2=$pdo->prepare('select * from OrderDetails OD inner join Cosmetics C on OD.cosme_id=C.cosme_id where OD.order_id=? order by C.cosme_id');
             $sql2->execute([$row['order_id']]);
             foreach($sql2 as $row2){
-                echo '<p><img src="', $row2['image_path'], '" alt="">';
-                echo $row2['cosme_name'];
-                echo $row2['color_name'];
-                echo $row2['quantity'];
-                echo '<button class="ao" onclick="location.href=`review_new.php?Rnew=', $row2['cosme_id'], '&page=1`">レビューを書く</button>';
+                echo '<table><tr>';
+                echo '<td><img src="', $row2['image_path'], '" alt="" width="120px"></td>';
+                echo '<td align="left">',$row2['cosme_name'],'<br>';
+                echo $row2['color_name'],'<br>';
+                echo $row2['quantity'],'個</td>';
+                echo '<td><button class="ao" onclick="location.href=`review_new.php?Rnew=', $row2['cosme_id'], '&page=1`" id="buttonsize">レビューを書く</button></td></tr></table>';
             }
             echo $row['total_price'], '円<br>';
             echo $row['pay_method'];
