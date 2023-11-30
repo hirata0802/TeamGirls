@@ -33,8 +33,6 @@
        echo '<input type="text" style="width: 125px;height: 30px;" name="mei" value="',$row['first_name'],'" required>';
        echo '<p><input type="text" style="width: 125px;height: 30px;" name="seikana" value="',$row['family_name_kana'],'" required>';
        echo '<input type="text" style="width: 125px;height: 30px;" name="meikana" value="',$row['first_name_kana'],'" required></p>';
-       echo '</div>';
-       echo '<div id="toroku1">';
        echo '<input type="text" style="width: 240px;height: 27px;" name="zipcode" id="zipcode" value="',$row['post_code'],'" requiredy>';
        echo '</div>';
        echo ' <div id="kennsaku">';
@@ -48,7 +46,7 @@
       echo '<p><input type="text" name="bill" value="',$row['building'],'" ></p>';
       echo '</div>';
 
-      echo '<div id="toroku1">';
+      echo '<div id="mannaka">';
        echo '<p><input type="tel" style="width: 240px;height: 27px;" name="tel" maxlength="11" pattern="^[0-9]+$" value="',$row['phone'],'" required>';
        echo '<br>';
        echo '<p><input type="email" style="width: 240px;height: 27px;" name="mail" value="',$row['email'],'" required>';
@@ -65,6 +63,6 @@
         </form>
         <script src="./js/jquery-3.7.0.min.js"></script>
     <script src="./js/app.js"></script>
-    <div class="grey"><button onclick="history.back()">戻る</button></div>
+    <button class="grey" onclick="history.back()">戻る</button>
 </body>
 </html>
