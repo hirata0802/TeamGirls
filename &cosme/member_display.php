@@ -57,8 +57,8 @@
         $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
        echo '<div id="simei">';
-       echo '<input type="text" style="width: 100px;height: 30px;" name="sei" value="',$row['family_name'],'" readonly>';
-       echo '<input type="text" style="width: 100px;height: 30px;" name="mei" value="',$row['first_name'],'" readonly>';
+       echo '<input type="text" style="width: 110px;height: 30px;" name="sei" value="',$row['family_name'],'" readonly>';
+       echo '<input type="text" style="width: 110px;height: 30px;" name="mei" value="',$row['first_name'],'" readonly>';
        echo '</div>';
        echo '<div id="mannaka">';
        echo '<p><input type="text" style="width: 125px;height: 30px;" name="seikana" value="',$row['family_name_kana'],'" readonly>';
@@ -77,9 +77,11 @@
        echo '<input type="text" style="width: 240px;height: 27px;" name="tel" value="',$row['phone'],'" readonly>';
        echo '</div>';
        echo '<br>';
+       echo '<div id="meru2">';
        echo '<input type="text" style="width: 240px;height: 27px;" name="mail" value="',$row['email'],'" readonly>';
        echo '</div>';
        echo '<br>';
+       echo '<div id="pas2">';
        echo '<input type="password" style="width: 240px;height: 27px;" name="pass" value="',$_SESSION['customer']['pass'],'" readonly>';
        echo '</div>';
        
