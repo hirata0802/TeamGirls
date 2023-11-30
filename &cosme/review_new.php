@@ -21,7 +21,7 @@ if($_GET['page'] == 0){
                     if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
                         $fileup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
                         $result=$fileup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],$targetFilePath,$_POST['honbun']]);
-                        header('Location: ./review.php');
+                        header('Location: ./detail.php?cosme_id='.$_GET['Rnew']);
                         exit();
                     }else{
                         $statusMsg="申し訳ありませんが、ファイルのアップロードに失敗しました。";
@@ -33,7 +33,7 @@ if($_GET['page'] == 0){
                 $reviewup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
                 $reviewup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],null,$_POST['honbun']]);
                 if($reviewup){
-                    header('Location: ./review.php');
+                    header('Location: ./detail.php?cosme_id='.$_GET['Rnew']);
                     exit();
                 }else{
                     $statusMsg="投稿に失敗しました。もう一度お願いします。";
