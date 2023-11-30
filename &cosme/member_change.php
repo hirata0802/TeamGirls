@@ -65,6 +65,6 @@
         </form>
         <script src="./js/jquery-3.7.0.min.js"></script>
     <script src="./js/app.js"></script>
-    <div class="modoru"><button onclick="history.back()">戻る</button></div>
+    <div class="grey"><button onclick="history.back()">戻る</button></div>
 </body>
 </html>
