@@ -4,43 +4,46 @@
 $errmsg="";
 $statusMsg="";
 if($_GET['page'] == 0){
-    if(isset($_POST['rate']) && !empty($_POST['honbun'])){
-        if(!empty($_FILES['file']['name'])){
-            $targetDir="image/uploads/";
-            $fileName=basename($_FILES['file']['name']);
-            $targetFilePath=$targetDir.$fileName;
-            $fileType=pathinfo($targetFilePath,PATHINFO_EXTENSION);
-            $allowTypes = array('jpg','png','jpeg');
-            if(in_array($fileType,$allowTypes)){
-                if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
-                    $pdo=new PDO($connect, USER, PASS);
-                    $fileup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
-                    $result=$fileup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],$targetFilePath,$_POST['honbun']]);
-                    if($result==true){
+    $pdo=new PDO($connect, USER, PASS);
+    $count = $pdo -> prepare('select * from Reviews where cosme_id = ? and member_code = ?');
+    $count -> execute([ $_GET['Rnew'],$_SESSION['customer']['code']]);
+    $reviewcount=$count->rowCount();
+    if($reviewcount==0){
+        if(isset($_POST['rate']) && !empty($_POST['honbun'])){
+            if(!empty($_FILES['file']['name'])){
+                $fileType=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+                $allowTypes = array('jpg','png','jpeg');
+                if(in_array($fileType,$allowTypes)){
+                $name=$_GET['Rnew'].'_'.$_SESSION['customer']['code'].'.'.$fileType;
+                $targetDir="image/uploads/";
+                $fileName=basename($name);
+                $targetFilePath=$targetDir.$fileName;
+                    if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
+                        $fileup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
+                        $result=$fileup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],$targetFilePath,$_POST['honbun']]);
                         header('Location: ./review.php');
                         exit();
                     }else{
-                        $statusMsg="投稿に失敗しました。もう一度お願いします。";
+                        $statusMsg="申し訳ありませんが、ファイルのアップロードに失敗しました。";
                     }
                 }else{
-                    $statusMsg="申し訳ありませんが、ファイルのアップロードに失敗しました。";
+                    $statusMsg="申し訳ありませんが、アップロード可能なファイル（形式）は、JPG、JPEG、PNGのみです。";
                 }
             }else{
-                $statusMsg="申し訳ありませんが、アップロード可能なファイル（形式）は、JPG、JPEG、PNGのみです。";
+                $reviewup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
+                $reviewup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],null,$_POST['honbun']]);
+                if($reviewup){
+                    header('Location: ./review.php');
+                    exit();
+                }else{
+                    $statusMsg="投稿に失敗しました。もう一度お願いします。";
+                }
             }
         }else{
-            $pdo=new PDO($connect, USER, PASS);
-            $reviewup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
-            $reviewup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],null,$_POST['honbun']]);
-            if($reviewup){
-                header('Location: ./review.php');
-                exit();
-            }else{
-                $statusMsg="投稿に失敗しました。もう一度お願いします。";
-            }
+            $errmsg='入力されていない項目があります';
         }
     }else{
-        $errmsg='入力されていない項目があります';
+        $statusMsg='すでに投稿されています。';
     }
 }
 ?>
