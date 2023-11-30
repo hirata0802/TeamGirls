@@ -262,9 +262,9 @@ height: 4;
   text-align: center;
 
 }
-#buttonsize {
-  font-size: 10%;
-}
+.history{
+  font-size:10%;
+  }
 /*☆*/
 .rate-form {
   display: flex;
