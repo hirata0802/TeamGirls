@@ -114,10 +114,7 @@ height: 4;
 }
 #toroku1{
   text-align:center;
-  padding-right: 95px;
-}
-#toroku2{
-  margin-right: 25px; 
+  padding-right: 110px;
 }
 #simei{
   text-align: center;
@@ -262,6 +259,9 @@ height: 4;
   text-align: center;
 
 }
+.history{
+  font-size:10%;
+  }
 /*☆*/
 .rate-form {
   display: flex;
