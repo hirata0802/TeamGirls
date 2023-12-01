@@ -4,43 +4,46 @@
 $errmsg="";
 $statusMsg="";
 if($_GET['page'] == 0){
-    if(isset($_POST['rate']) && !empty($_POST['honbun'])){
-        if(!empty($_FILES['file']['name'])){
-            $targetDir="image/uploads/";
-            $fileName=basename($_FILES['file']['name']);
-            $targetFilePath=$targetDir.$fileName;
-            $fileType=pathinfo($targetFilePath,PATHINFO_EXTENSION);
-            $allowTypes = array('jpg','png','jpeg');
-            if(in_array($fileType,$allowTypes)){
-                if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
-                    $pdo=new PDO($connect, USER, PASS);
-                    $fileup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
-                    $result=$fileup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],$targetFilePath,$_POST['honbun']]);
-                    if($result==true){
-                        header('Location: ./review.php');
+    $pdo=new PDO($connect, USER, PASS);
+    $count = $pdo -> prepare('select * from Reviews where cosme_id = ? and member_code = ?');
+    $count -> execute([ $_GET['Rnew'],$_SESSION['customer']['code']]);
+    $reviewcount=$count->rowCount();
+    if($reviewcount==0){
+        if(isset($_POST['rate']) && !empty($_POST['honbun'])){
+            if(!empty($_FILES['file']['name'])){
+                $fileType=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+                $allowTypes = array('jpg','png','jpeg');
+                if(in_array($fileType,$allowTypes)){
+                $name=$_GET['Rnew'].'_'.$_SESSION['customer']['code'].'.'.$fileType;
+                $targetDir="image/uploads/";
+                $fileName=basename($name);
+                $targetFilePath=$targetDir.$fileName;
+                    if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
+                        $fileup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
+                        $result=$fileup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],$targetFilePath,$_POST['honbun']]);
+                        header('Location: ./detail.php?cosme_id='.$_GET['Rnew']);
                         exit();
                     }else{
-                        $statusMsg="投稿に失敗しました。もう一度お願いします。";
+                        $statusMsg="申し訳ありませんが、ファイルのアップロードに失敗しました。";
                     }
                 }else{
-                    $statusMsg="申し訳ありませんが、ファイルのアップロードに失敗しました。";
+                    $statusMsg="申し訳ありませんが、アップロード可能なファイル（形式）は、JPG、JPEG、PNGのみです。";
                 }
             }else{
-                $statusMsg="申し訳ありませんが、アップロード可能なファイル（形式）は、JPG、JPEG、PNGのみです。";
+                $reviewup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
+                $reviewup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],null,$_POST['honbun']]);
+                if($reviewup){
+                    header('Location: ./detail.php?cosme_id='.$_GET['Rnew']);
+                    exit();
+                }else{
+                    $statusMsg="投稿に失敗しました。もう一度お願いします。";
+                }
             }
         }else{
-            $pdo=new PDO($connect, USER, PASS);
-            $reviewup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
-            $reviewup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],null,$_POST['honbun']]);
-            if($reviewup){
-                header('Location: ./review.php');
-                exit();
-            }else{
-                $statusMsg="投稿に失敗しました。もう一度お願いします。";
-            }
+            $errmsg='入力されていない項目があります';
         }
     }else{
-        $errmsg='入力されていない項目があります';
+        $statusMsg='すでに投稿されています。';
     }
 }
 ?>
@@ -56,15 +59,21 @@ if($_GET['page'] == 0){
     <body>
     <?php require 'menu.php'; ?>
     <button onclick="location.href='history.php'">＜戻る</button>
+    <div id="mannaka">
     <h3>商品レビューを書く</h3>
+    </div>
     <?php
     $pdo=new PDO($connect, USER, PASS);
     $sql=$pdo->prepare('select cosme_name from Cosmetics where cosme_id = ?');
     $sql->execute([$_GET['Rnew']]);
     $cosme_name=$sql->fetchColumn();
     $cosme_id=$_GET['Rnew'];
+    echo '<div id="mannaka">';
     echo '<p>',$cosme_name,'</p>';
+    echo '</div>';
+    echo '<div id="rebyutitle">';
     echo '<p>満足度';
+    echo '</div>';
     echo '<form action="review_new.php?Rnew=',$cosme_id,'&page=0" method="post" enctype="multipart/form-data">';
         echo '<div class="rate-form">';
             echo '<input id="star5" type="radio" name="rate" value="5">';
@@ -79,13 +88,22 @@ if($_GET['page'] == 0){
             echo '<label for="star1">★</label>';
         echo '</div>';
         echo '</p>';
+        echo '<div id="rebyutitle">';
         echo '<p>レビュー本文';
+        echo '</div>';
+        echo '<div id="mannaka">';
         echo '<textarea name="honbun" cols="30" rows="10"></textarea></p>';
+        echo '</div>';
+        echo '<div id="rebyutitle">';
         echo '<p>画像の追加（任意）';
             echo '<input type="file" name="file">';
         echo '</p>';
+        echo '</div>';
+        echo '<div id="mannaka">';
         echo '<font color="FF0000">',$errmsg,'</font>';
         echo '<font color="FF0000">',$statusMsg,'</font>';
+        echo '</div>';
+        echo '<br>';
         echo '<button type="submit" class="ao">投稿する</button></div>';
     echo '</form>';
 ?>

@@ -2,7 +2,7 @@
 <?php require 'db_connect.php'; ?>
 <?php
     $pdo = new PDO($connect,USER,PASS);
-    $delete_flag = $pdo -> prepare('select delete_flag from Favorites where member_code = ? and cosme_id = ?');
+    $delete_flag = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id = ?');
     $delete_flag -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
     $count=$delete_flag->rowCount();
 
@@ -27,7 +27,7 @@ foreach($delete_flag as $row){
             header('Location: ./favorite_show.php');
             exit();
         }
-        header('Location: ./favorite_show.php');
+        header('Location: ./favorite_show.php?cosme_id=');
         exit();
     }
 }

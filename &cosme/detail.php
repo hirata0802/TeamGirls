@@ -32,78 +32,81 @@ foreach($cosme1 as $row){
         $cosmeId = $row['cosme_id'];
         $cosmeName = $row['cosme_name'];
         echo '<h3 align="center">',$row['cosme_name'],'</h3>';
-        echo '<div class="out">';
-        echo '<div class="in">';
-        //echo '<label><input type=radio name="slide" checked><span></span><a href="#">
-        //</a></label>';
+        echo '<div style="text-align: center">';
         foreach($groupCount as $a){
             if($a['count(group_id)']>1){
                 echo '<button onclick="location.href=`detail_next.php?group=', $row['group_id'], '&cosmeId=', $row['cosme_id'], '&next=0`">＜</button>';
-                echo '<img src="',$row['image_path'],'" width="200" alt="',$row['color_name'],'">';
+                echo '<img src="',$row['image_path'],'" style="object-fit: contain; width: 200px; height: 200px;", alt="',$row['color_name'],'">';
                 echo '<button onclick="location.href=`detail_next.php?group=', $row['group_id'], '&cosmeId=', $row['cosme_id'], '&next=1`">＞</button>';
             }else{
-                echo '<img src="',$row['image_path'],'" width="200" alt="',$row['color_name'],'">';
+                echo '<img src="',$row['image_path'],'" style="object-fit: contain; width: 200px; height: 200px;", alt="',$row['color_name'],'">';
             }
 
         }
             echo '</div>';
-            echo '</div>';
+            echo '<br>';
             echo '<p>販売価格：￥',$row['price'],'</p>';
-            echo '<p>カラー：',$row['color_name'],'</p>';
+            echo '<p>カラー　：',$row['color_name'],'</p>';
     }
-
-        //echo '<table><tr>';
-        echo '<button onclick="location.href=`cart_input.php?cosmeId=',$cosmeId,'&page=0`">カートに入れる</button>';
-    //echo '<p><a href="cart_input.php?cosmeId=',$cosmeId,'&page=0"><button>カートに入れる</button></a></p>';
-        
-        //お気に入り
+        echo '<button class="ao"  onclick="location.href=`cart_input.php?cosmeId=',$cosmeId,'&page=0`"><img src="css/image/cart_black.svg" style="width: 20px; height: 20px;" alt="カートに入れる">カートに入れる</button>';
+    //お気に入り
     $cosme2 = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id=?');
     $cosme2 -> execute([$_SESSION['customer']['code'],$cosmeId]);//cosmeId=選んだコスメ
     $count = $cosme2 -> rowCount();
-      
+
     if($count > 0){
         foreach($cosme2 as $row){
-            if($row['delete_flag']==0){//1  //9
-                echo '<button onclick="location.href=`favorite.phpcosmeId=',$cosmeId,'& page=0`">★</button>';
+            if($row['delete_flag']==0){
+                echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=0`">★</button>';
             }else{
-                echo '<button onclick="location.href=`favorite.phpcosmeId=',$cosmeId,'& page=0`">☆</button>';
+                echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=0`">☆</button>';
             }
         }
     }else{
         //echo '<form action="favorite.php" method="get">';
-        echo '<button onclick="location.href=`favorite.phpcosmeId=',$cosmeId,'& page=2`">☆</button>';
+        echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=2`">☆</button>';
         //echo '<a href="favorite.php?cosmeId=',$cosmeId,'&page=2">☆</a>';
     }
-
-    echo '<p>商品詳細</p>';
+    echo '<div style="text-align: center">';
+    echo '<strong><p align="center">商品詳細</p></strong>';
     echo $detail;
-?>
-<?php
+    echo '</div><br>';
+
     if(isset($_SESSION['customer'])){
         $pdo=new PDO($connect, USER, PASS);
         $sql=$pdo->prepare('select * from Reviews R inner join Mypage M on R.member_code=M.member_code where R.member_code=? and R.cosme_id=?');
         $sql->execute([$_SESSION['customer']['code'], $cosmeId]);
-        foreach($sql as $row){
-            echo '<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">';
-            echo '<p>', $cosmeName, '　';
-            for($i=0; $i<5; $i++){
-                if($i<$row['level']){
-                    echo '★';
+        $count = $sql -> rowCount();
+
+        echo '<strong><p align="center">レビュー</p></strong>';
+        echo '<hr>';
+        if($count==0){
+            echo '<p align="center">現在レビューはありません</p>';
+        }else{
+            foreach($sql as $row){
+                echo '<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">';
+                echo '<p>', $cosmeName, '　';
+                for($i=0; $i<5; $i++){
+                    if($i<$row['level']){
+                        echo '★';
+                    }
+                    else{
+                        echo '☆';
+                    }
                 }
-                else{
-                    echo '☆';
+                echo '</p>';
+                echo '<p>', $row['member_nickname'], '　';
+                echo $row['member_age'], '/';
+                echo $row['member_skin'], '/';
+                echo $row['member_color'], '</p>';
+                echo '<p>', $row['review_text'], '</p>';
+                if(!empty($row['image_path'])){
+                    echo '<div style="text-align: center">';
+                    echo '<img src="', $row['image_path'], '" alt="" width="320px">';
+                    echo '</div>';   
                 }
+                echo '</div>';            
             }
-            echo '</p>';
-            echo '<p>', $row['member_nickname'], '　';
-            echo $row['member_age'], '/';
-            echo $row['member_skin'], '/';
-            echo $row['member_color'], '</p>';
-            echo '<p>', $row['review_text'], '</p>';
-            if(!empty($row['image_path'])){
-                echo '<img src="', $row['image_path'], '" alt="">';   
-            }
-            echo '</div>';            
         }
     }
 ?>

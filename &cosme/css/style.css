@@ -1,5 +1,6 @@
 
 @charset "UTF-8";
+
 /*メニューバー*/
 nav {
   position: sticky;
@@ -114,7 +115,7 @@ height: 4;
 }
 #toroku1{
   text-align:center;
-  padding-right: 95px;
+  padding-right: 101px;
 }
 #simei{
   text-align: center;
@@ -259,6 +260,9 @@ height: 4;
   text-align: center;
 
 }
+#buttonsize {
+  font-size: 10%;
+}
 /*☆*/
 .rate-form {
   display: flex;
@@ -312,6 +316,9 @@ height: 4;
 .name{
   border: 1px solid #000;
   text-align:center;
+  border-radius: 3px;
+}
+.nic{
   border-radius: 3px;
 }
 /*検索画面*/
@@ -418,4 +425,18 @@ button{
     font-size: 1em;
     cursor: pointer;
     width: 230px;
+}
+
+.a{
+  overflow: hidden;
+  white-space: nowrap;
+  width: 105px;
+  text-overflow:ellipsis;
+}
+
+.b{
+  overflow: hidden;
+  white-space: nowrap;
+  width: 160px;
+  text-overflow:ellipsis;
 }
