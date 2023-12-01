@@ -33,17 +33,10 @@
         </ul>
     </nav>
     <div id="cart">
-    <div id="mannaka">
-    <h2>カート</h2>
-    <hr width="150">
-</div>
-    <br>
-        <div v-for="row in allData" :key="row.cart_id">
-    <br>
-     <div id="mannaka">
-            <img :src="row.image_path" style="object-fit: contain; width: 100px; height: 100px;">
-        </div>
-            <div id="text3">
+    <div id="mannaka"><h2>カート</h2><hr width="150"></div><br>
+    <div v-for="row in allData" :key="row.cart_id"><br>
+        <div id="mannaka"><img :src="row.image_path" style="object-fit: contain; width: 100px; height: 100px;"></div>
+        <div id="text3">
             <p>ブランド名：{{ row.brand_name }}</p>
             <p>商品名：{{ row.cosme_name }}</p>
             <p>価格：{{ row.price }}円</p>
@@ -52,21 +45,17 @@
             {{ row.quantity }}
             <button type="submit" @click="increment(row.cart_id)">＋</button>
             <button class="ao2" type="submit" @click="cartUpdate(row.cart_id)">更新</button>
-            <button class="ao2" type="submit" @click="cartDelete(row.cart_id)">削除</button>
-            <br>
+            <button class="ao2" type="submit" @click="cartUpdate(row.cart_id)">削除</button>
         </div>
+    </div><br>
+    <hr class="tensen">
+    <div id="mannaka">
+        <p>合計金額:{{ total }}</p><br>
     </div>
-    <br>
-        <hr class="tensen">
-        <div id="mannaka">
-        <p>合計金額:{{ total }}</p>
-    </div>
-    </div>
-    <br>
-        <p><button class="ao" type="submit" onclick="location.href='order.php'">レジに進む</button></p>
-
-
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <p><button class="ao" type="submit" @click="order">レジに進む</button></p>
+    </div><br>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
     <script src="js/cart.js"></script>
 </body>

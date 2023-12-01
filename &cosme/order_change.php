@@ -2,6 +2,7 @@
 <?php require 'header.php'; ?>
 <?php require 'menu.php'; ?>
 <?php require 'db_connect.php'; ?>
+<button onclick="history.back()">＜戻る</button>
 <form action="order_db_insert.php" method="post">
 <?php
     $pdo=new PDO($connect, USER, PASS);

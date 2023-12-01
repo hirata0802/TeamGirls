@@ -440,3 +440,7 @@ button{
   width: 160px;
   text-overflow:ellipsis;
 }
+.c{
+  display: flex;
+  justify-content: center;
+  }
