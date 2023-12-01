@@ -163,7 +163,7 @@
                 foreach($sql as $row){
                     echo '<td align="center">';
                     echo '<table width="80%">';
-                    echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 150px; height: 150px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
+                    echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
                     echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
                     echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                     echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
@@ -193,8 +193,8 @@
                     if($rowcount%2!=0){
                         //テーブルの左側
                         echo '<td align="center">';
-                        echo '<table width="50%">';
-                        echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 150px; height: 150px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
+                        echo '<table width="60%">';
+                        echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
                         echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2"><strong>',$row['cosme_name'],'</font></strong></td></tr>';
                         echo '<tr><td colspan="3" align="left"><font size="2">',$row['brand_name'],'</font></td></tr>';
                         echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
@@ -221,8 +221,8 @@
                     }else{
                         //テーブルの右側 
                         echo '<td aligh="center">'; 
-                        echo '<table width="50%">';
-                        echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 150px; height: 150px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
+                        echo '<table width="60%">';
+                        echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
                         echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2"><strong>',$row['cosme_name'],'</font></strong></td></tr>';
                         echo '<tr><td colspan="3" align="left"><font size="2">',$row['brand_name'],'</font></td></tr>';
                         echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
