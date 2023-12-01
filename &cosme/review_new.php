@@ -68,7 +68,9 @@ if($_GET['page'] == 0){
     $sql->execute([$_GET['Rnew']]);
     $cosme_name=$sql->fetchColumn();
     $cosme_id=$_GET['Rnew'];
+    echo '<div id="mannaka">';
     echo '<p>',$cosme_name,'</p>';
+    echo '</div>';
     echo '<div id="rebyutitle">';
     echo '<p>満足度';
     echo '</div>';
