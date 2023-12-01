@@ -59,7 +59,7 @@
                 echo '<td align="center">';
                     echo '<table width="80%">';
                     //画像パス
-                    echo '<tr><td colspan="3" align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"><img src="',$row['image_path'],'" width=100px" height="100px"></a></td></tr>';
+                    echo '<tr><td colspan="3" align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"><img src="',$row['image_path'],'" style="object-fit: contain; width: 150px; height: 150px;"></a></td></tr>';
                     //コスメ名
                         echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
                     //ブランド名
