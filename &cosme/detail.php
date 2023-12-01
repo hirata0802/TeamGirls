@@ -48,7 +48,6 @@ foreach($cosme1 as $row){
             echo '<p>販売価格：￥',$row['price'],'</p>';
             echo '<p>カラー　：',$row['color_name'],'</p>';
     }
-    echo '<div id="mannaka">';
         echo '<button class="ao"  onclick="location.href=`cart_input.php?cosmeId=',$cosmeId,'&page=0`"><img src="css/image/cart_black.svg" style="width: 20px; height: 20px;" alt="カートに入れる">カートに入れる</button>';
     //お気に入り
     $cosme2 = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id=?');
@@ -68,7 +67,6 @@ foreach($cosme1 as $row){
         echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=2`">☆</button>';
         //echo '<a href="favorite.php?cosmeId=',$cosmeId,'&page=2">☆</a>';
     }
-    echo '</div>';
     echo '<div style="text-align: center">';
     echo '<strong><p align="center">商品詳細</p></strong>';
     echo $detail;
