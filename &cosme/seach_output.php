@@ -173,13 +173,16 @@
                     $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                     //$memberCount = $member -> rowCount();
                     if($member->rowCount() == 0){
-                        echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2">☆</a></td></tr>';
+                        echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=2`">☆</button></td></tr>';
+                        //echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2">☆</a></td></tr>';
                     }else{
                         foreach($member as $a){
                             if($a['delete_flag']==0){
-                                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">★</a></td></tr>';
+                                echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=0`">★</button></td></tr>';
+                                //echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">★</a></td></tr>';
                             }else{
-                                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
+                                echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=0`">☆</button></td></tr>';
+                                //echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                             }
                             break;
                         }
@@ -205,13 +208,16 @@
                         $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                         //$memberCount = $member -> rowCount();
                         if($member->rowCount() == 0){
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2" class="button">☆</a></td></tr>';
+                            echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=2`">☆</button></td></tr>';
+                            //echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2" class="button">☆</a></td></tr>';
                         }else{
                             foreach($member as $a){
                                 if($a['delete_flag']==0){
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0" class="button">★</a></td></tr>';
+                                    echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=0`">★</button></td></tr>';
+                                    //echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0" class="button">★</a></td></tr>';
                                 }else{
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0" class="button">☆</a></td></tr>';
+                                    echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=0`">☆</button></td></tr>';
+                                    //echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0" class="button">☆</a></td></tr>';
                                 }
                                 break;
                             }
@@ -232,13 +238,16 @@
                         $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                         //$memberCount = $member -> rowCount();
                         if($member->rowCount() == 0){
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2" class="button">☆</a></td></tr>';
+                            echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=2`">☆</button></td></tr>';
+                            //echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2" class="button">☆</a></td></tr>';
                         }else{
                             foreach($member as $a){
                                 if($a['delete_flag']==0){
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">★</a></td></tr>';
+                                    echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=0`">★</button></td></tr>';
+                                    //echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">★</a></td></tr>';
                                 }else{
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
+                                    echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=0`">☆</button></td></tr>';
+                                    //echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                                 }
                                 break;
                             }
