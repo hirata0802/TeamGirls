@@ -1,6 +1,15 @@
 <?php session_start(); ?>
 <?php require 'db_connect.php'; ?>
-<?php require 'header.php'; ?>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/aaa.css">
+<title>&cosme</title>
+</head>
+<body>
 <nav>
     <ul>
         <li><h1>&cosme</h1></li>
@@ -32,7 +41,6 @@
         
         $pdo = new PDO($connect, USER, PASS);
         $memberCode = $_SESSION['customer']['code'];
-()
         $sql2 = $pdo -> prepare('select * from Favorites where delete_flag=0 and member_code=?');
         $sql2 -> execute([$_SESSION['customer']['code']]);
         $count = $sql2 -> rowCount();
@@ -77,11 +85,10 @@
             foreach($sql as $row){
                 $cosmeId = $row['cosme_id'];
                 if($rowcount%2!=0){
-                    //echo '<td align="center">';
                     echo '<td>';
                         echo '<table width="60%">';
-                            echo '<tr><td colspan="3" align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"><img src="',$row['image_path'],'" style="object-fit: contain; width: 150px; height: 150px;" ></a></td></tr>';
-                            echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2px"><strong>',$row['cosme_name'],'</strong></font></td></tr>';
+                            echo '<tr><td colspan="3" align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"><img src="',$row['image_path'],'" style="object-fit: contain; width: 100px; height: 100px;" ></a></td></tr>';
+                            echo '<tr><td colspan="3" align="left"><font size="2px"><div class="b"><strong>',$row['cosme_name'],'</strong></div></font></td></tr>';
                             echo '<tr><td colspan="3" align="left"><font size="2px">',$row['brand_name'],'</font></td></tr>';
                             echo '<tr><td colspan="3"><font size="2px">￥',$row['price'],'</font></td></tr>';
                             echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart.php?cosmeId=',$cosmeId,'">カートに入れる</a></td>';
@@ -90,12 +97,10 @@
                         echo '</table>';
                     echo '</td>';
                 }else{
-                    //echo '<td align="center">';
                     echo '<td>';
                         echo '<table width="60%">';
-                            echo '<tr><td colspan="3" align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"><img src="',$row['image_path'],'" style="object-fit: contain; width: 150px; height: 150px;" ></a></td></tr>';
-                            echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2px"><strong>',$row['cosme_name'],'</font></strong></td></tr>';
-                            //echo '<tr><td colspan="3" align="left" white-space: pre-wrap><font size="2px"><strong>',$row['cosme_name'],'</strong></font></td></tr>';
+                            echo '<tr><td colspan="3" align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"><img src="',$row['image_path'],'" style="object-fit: contain; width: 100px; height: 100px;" ></a></td></tr>';
+                            echo '<tr><td colspan="3" align="left"><font size="2px"><div class="b"><strong>',$row['cosme_name'],'</div></font></strong></td></tr>';
                             echo '<tr><td colspan="3" align="left"><font size="2px">',$row['brand_name'],'</font></td></tr>';
                             echo '<tr><td colspan="3"><font size="2px">￥',$row['price'],'</font></td></tr>';
                             echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart.php?cosmeId=',$cosmeId,'">カートに入れる</a></td>';
