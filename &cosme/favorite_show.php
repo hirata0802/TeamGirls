@@ -81,7 +81,7 @@
                     //echo '<td align="center">';
                     echo '<td>';
                         echo '<table width="60%">';
-                            echo '<tr><td colspan="3" align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"><img src="',$row['image_path'],'" width=100px" height="100px"></a></td></tr>';
+                            echo '<tr><td colspan="3" align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"><img src="',$row['image_path'],'" style="object-fit: contain; width: 150px; height: 150px;" ></a></td></tr>';
                             echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2px"><strong>',$row['cosme_name'],'</strong></font></td></tr>';
                             echo '<tr><td colspan="3" align="left"><font size="2px">',$row['brand_name'],'</font></td></tr>';
                             echo '<tr><td colspan="3"><font size="2px">',$row['price'],'</font></td></tr>';
@@ -95,7 +95,7 @@
                     //echo '<td align="center">';
                     echo '<td>';
                         echo '<table width="60%">';
-                            echo '<tr><td colspan="3" align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"><img src="',$row['image_path'],'" width=100px" height="100px"></a></td></tr>';
+                            echo '<tr><td colspan="3" align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"><img src="',$row['image_path'],'" style="object-fit: contain; width: 150px; height: 150px;" ></a></td></tr>';
                             echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2px"><strong>',$row['cosme_name'],'</font></strong></td></tr>';
                             echo '<tr><td colspan="3" align="left"><font size="2px">',$row['brand_name'],'</font></td></tr>';
                             echo '<tr><td colspan="3"><font size="2px">',$row['price'],'</font></td></tr>';
