@@ -36,23 +36,25 @@ foreach($cosme1 as $row){
         foreach($groupCount as $a){
             if($a['count(group_id)']>1){
                 echo '<button onclick="location.href=`detail_next.php?group=', $row['group_id'], '&cosmeId=', $row['cosme_id'], '&next=0`">＜</button>';
-                echo '<img src="',$row['image_path'],'" width="200" alt="',$row['color_name'],'">';
+                echo '<img src="',$row['image_path'],'" style="object-fit: contain; width: 200px; height: 200px;", alt="',$row['color_name'],'">';
                 echo '<button onclick="location.href=`detail_next.php?group=', $row['group_id'], '&cosmeId=', $row['cosme_id'], '&next=1`">＞</button>';
             }else{
-                echo '<img src="',$row['image_path'],'" width="200" alt="',$row['color_name'],'">';
+                echo '<img src="',$row['image_path'],'" style="object-fit: contain; width: 200px; height: 200px;", alt="',$row['color_name'],'">';
             }
 
         }
             echo '</div>';
+            echo '<br>';
             echo '<p>販売価格：￥',$row['price'],'</p>';
             echo '<p>カラー　：',$row['color_name'],'</p>';
     }
-        echo '<button onclick="location.href=`cart_input.php?cosmeId=',$cosmeId,'&page=0`">カートに入れる</button>';
+    echo '<div id="mannaka">';
+        echo '<button class="ao"  onclick="location.href=`cart_input.php?cosmeId=',$cosmeId,'&page=0`"><img src="css/image/cart_black.svg" alt="カートに入れる">カートに入れる</button>';
     //お気に入り
     $cosme2 = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id=?');
     $cosme2 -> execute([$_SESSION['customer']['code'],$cosmeId]);//cosmeId=選んだコスメ
     $count = $cosme2 -> rowCount();
-      
+      echo '</div>';
     if($count > 0){
         foreach($cosme2 as $row){
             if($row['delete_flag']==0){
@@ -78,6 +80,7 @@ foreach($cosme1 as $row){
         $count = $sql -> rowCount();
 
         echo '<strong><p align="center">レビュー</p></strong>';
+        echo '<hr>';
         if($count==0){
             echo '<p align="center">現在レビューはありません</p>';
         }else{

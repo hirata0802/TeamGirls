@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/fav.css">
+    <link rel="stylesheet" href="css/aaa.css">
     <title>&cosme</title>
 </head>
 <body>
@@ -152,7 +153,6 @@
             $count=$sql->rowCount();
         }
     }
-
     echo '<table width="100%">';
         echo '<th align="left" style="font-size:30px;">',$count,'件</th>';
         echo '<form action="detail.php" method="post">';
@@ -192,11 +192,11 @@
                 foreach($sql as $row){
                     if($rowcount%2!=0){
                         //テーブルの左側
-                        echo '<td align="center">';
+                        echo '<td align="left">';
                         echo '<table width="60%">';
                         echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
-                        echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2"><strong>',$row['cosme_name'],'</font></strong></td></tr>';
-                        echo '<tr><td colspan="3" align="left"><font size="2">',$row['brand_name'],'</font></td></tr>';
+                        echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2px"><strong><div class="b">',$row['cosme_name'],'</div></font></strong></td></tr>';
+                        echo '<tr><td colspan="3" align="left"><font size="2px">',$row['brand_name'],'</font></td></tr>';
                         echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
                         echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
                         
@@ -220,11 +220,11 @@
                         echo '</td>';
                     }else{
                         //テーブルの右側 
-                        echo '<td aligh="center">'; 
+                        echo '<td align="left">'; 
                         echo '<table width="60%">';
                         echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
-                        echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2"><strong>',$row['cosme_name'],'</font></strong></td></tr>';
-                        echo '<tr><td colspan="3" align="left"><font size="2">',$row['brand_name'],'</font></td></tr>';
+                        echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2px"><strong><div class="b">',$row['cosme_name'],'</div></font></strong></td></tr>';
+                        echo '<tr><td colspan="3" align="left"><font size="2px">',$row['brand_name'],'</font></td></tr>';
                         echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
                         echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
 
@@ -251,6 +251,7 @@
                 }
             }
         echo '</table>';
+        echo '</div>';
     echo '</form>';
     ?>
 <?php require 'footer.php'; ?>
