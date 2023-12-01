@@ -59,7 +59,9 @@ if($_GET['page'] == 0){
     <body>
     <?php require 'menu.php'; ?>
     <button onclick="location.href='history.php'">＜戻る</button>
+    <div id="mannaka">
     <h3>商品レビューを書く</h3>
+    </div>
     <?php
     $pdo=new PDO($connect, USER, PASS);
     $sql=$pdo->prepare('select cosme_name from Cosmetics where cosme_id = ?');
@@ -67,7 +69,9 @@ if($_GET['page'] == 0){
     $cosme_name=$sql->fetchColumn();
     $cosme_id=$_GET['Rnew'];
     echo '<p>',$cosme_name,'</p>';
+    echo '<div id="rebyutitle">';
     echo '<p>満足度';
+    echo '</div>';
     echo '<form action="review_new.php?Rnew=',$cosme_id,'&page=0" method="post" enctype="multipart/form-data">';
         echo '<div class="rate-form">';
             echo '<input id="star5" type="radio" name="rate" value="5">';
@@ -82,13 +86,22 @@ if($_GET['page'] == 0){
             echo '<label for="star1">★</label>';
         echo '</div>';
         echo '</p>';
+        echo '<div id="rebyutitle">';
         echo '<p>レビュー本文';
+        echo '</div>';
+        echo '<div id="mannaka">';
         echo '<textarea name="honbun" cols="30" rows="10"></textarea></p>';
+        echo '</div>';
+        echo '<div id="rebyutitle">';
         echo '<p>画像の追加（任意）';
             echo '<input type="file" name="file">';
         echo '</p>';
+        echo '</div>';
+        echo '<div id="mannaka">';
         echo '<font color="FF0000">',$errmsg,'</font>';
         echo '<font color="FF0000">',$statusMsg,'</font>';
+        echo '</div>';
+        echo '<br>';
         echo '<button type="submit" class="ao">投稿する</button></div>';
     echo '</form>';
 ?>
