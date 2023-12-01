@@ -1,18 +1,20 @@
 var app = new Vue({
-    el: '#cart',
-    data:{
-      allData: '',
-      total: 0
+  el: '#cart',
+  data:{
+    allData: '',
+    total: 0,
+    deldata: []
+  },
+  methods: {
+    fetchItem:function(){
+      axios.post("./cart.php",{
+        
+      }).then(function(response){
+        //allDataにSELECT文の結果が配列で格納
+        app.total = response.data.pop();
+        app.allData = response.data;
+      });
     },
-    methods: {
-      fetchItem:function(){
-        axios.post("./cart.php",{
-
-        }).then(function(response){
-            //allDataにSELECT文の結果が配列で格納
-            app.allData = response.data;
-          });
-      },
       //数量を設定する
       increment(id){
         const index = app.getIndexBy(id);
@@ -37,15 +39,16 @@ var app = new Vue({
       },
       cartDelete(id){
         const index = app.getIndexBy(id);
-        fetch('cart_delete.php', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},  //json指定
-          body: JSON.stringify(app.allData[index]) //json形式に変換して送付
-        }).then(function(response){
-          //allDataにSELECT文の結果が配列で格納
-          app.allData = response.data;
-        });
-
+        this.deldata += app.allData[index];
+        
+        
+      },
+      order(){
+        alert("aaaa");
+        axios.post('cart_input.php', app.allData)
+        .then(response => {
+          console.log(response);
+        })
       },
       getIndexBy(id){
         //const filteredTodo=app.allData.filter(todo => todo.id === id)[0];
@@ -54,8 +57,9 @@ var app = new Vue({
         return index;
       }
     },
-      mounted () {
-        // インスタンス初期化時、DOMが生成された後に実行される
-        this.fetchItem()
-      }
-});
+    mounted () {
+      // インスタンス初期化時、DOMが生成された後に実行される
+      this.fetchItem()
+      //this.total=app.allData[1].total;
+    }
+  });
