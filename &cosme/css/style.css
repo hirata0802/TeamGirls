@@ -114,7 +114,7 @@ height: 4;
 }
 #toroku1{
   text-align:center;
-  padding-right: 95px;
+  padding-right: 101px;
 }
 #simei{
   text-align: center;
@@ -259,6 +259,9 @@ height: 4;
   text-align: center;
 
 }
+#buttonsize {
+  font-size: 10%;
+}
 /*☆*/
 .rate-form {
   display: flex;
@@ -312,6 +315,9 @@ height: 4;
 .name{
   border: 1px solid #000;
   text-align:center;
+  border-radius: 3px;
+}
+.nic{
   border-radius: 3px;
 }
 /*検索画面*/
