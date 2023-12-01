@@ -426,3 +426,17 @@ button{
     cursor: pointer;
     width: 230px;
 }
+
+.a{
+  overflow: hidden;
+  white-space: nowrap;
+  width: 105px;
+  text-overflow:ellipsis;
+}
+
+.b{
+  overflow: hidden;
+  white-space: nowrap;
+  width: 160px;
+  text-overflow:ellipsis;
+}
