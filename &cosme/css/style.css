@@ -317,6 +317,9 @@ height: 4;
   text-align:center;
   border-radius: 3px;
 }
+.nic{
+  border-radius: 3px;
+}
 /*検索画面*/
 .selectbox1 {
   display: inline-flex;
