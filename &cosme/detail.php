@@ -45,14 +45,10 @@ foreach($cosme1 as $row){
         }
             echo '</div>';
             echo '<p>販売価格：￥',$row['price'],'</p>';
-            echo '<p>カラー：',$row['color_name'],'</p>';
+            echo '<p>カラー　：',$row['color_name'],'</p>';
     }
-
-        //echo '<table><tr>';
         echo '<button onclick="location.href=`cart_input.php?cosmeId=',$cosmeId,'&page=0`">カートに入れる</button>';
-    //echo '<p><a href="cart_input.php?cosmeId=',$cosmeId,'&page=0"><button>カートに入れる</button></a></p>';
-        
-        //お気に入り
+    //お気に入り
     $cosme2 = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id=?');
     $cosme2 -> execute([$_SESSION['customer']['code'],$cosmeId]);//cosmeId=選んだコスメ
     $count = $cosme2 -> rowCount();
@@ -71,9 +67,9 @@ foreach($cosme1 as $row){
         //echo '<a href="favorite.php?cosmeId=',$cosmeId,'&page=2">☆</a>';
     }
     echo '<div style="text-align: center">';
-    echo '<p>商品詳細</p>';
+    echo '<strong><p align="center">商品詳細</p></strong>';
     echo $detail;
-    echo '</div>';
+    echo '</div><br>';
 
     if(isset($_SESSION['customer'])){
         $pdo=new PDO($connect, USER, PASS);
@@ -81,7 +77,7 @@ foreach($cosme1 as $row){
         $sql->execute([$_SESSION['customer']['code'], $cosmeId]);
         $count = $sql -> rowCount();
 
-        echo '<h2>レビュー</h2>';
+        echo '<strong><p align="center">レビュー</p></strong>';
         if($count==0){
             echo '<p align="center">現在レビューはありません</p>';
         }else{
