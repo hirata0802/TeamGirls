@@ -1,0 +1,7 @@
+.a{
+    overflow: hidden;
+    white-space: nowrap;
+    width: 105px;
+    text-overflow:ellipsis;
+}
+
