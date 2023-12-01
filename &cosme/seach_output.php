@@ -16,8 +16,31 @@
 </head>
 <body>
     <?php require 'db_connect.php'; ?>
-    <?php require 'menu.php'; ?>
-    <button onclick="location.href='seach_input.php'">＜戻る</button>
+<nav>
+    <ul>
+        <li><h1>&cosme</h1></li>
+        <li>
+            <img src="css/image/home.svg" onclick="location.href='home.php'" width="40" height="40" alt="home">
+            <div><font size="1">&nbsp;ホーム　　</font></div>
+        </li>
+        <li>
+            <img src="css/image/search_black.svg" onclick="location.href='seach_input.php'" width="40" height="40" alt="search">
+            <div><font size="1">　検索</font></div>
+        </li>
+        <li>  
+            <img src="css/image/favorite.svg" onclick="location.href='favorite_show.php'" width="40" height="40" alt="favorite">
+            <div><font size="1">お気に入り</font></div>
+        </li>
+        <li>
+            <img src="css/image/cart.svg" onclick="location.href='cart_show.php'" width="40" height="40" alt="cart">
+            <div><font size="1">&nbsp;カート</font></div>
+        </li>
+        <li>
+            <img src="css/image/mypage.svg" onclick="location.href='mypage.php'" width="40" height="40" alt="mypage">
+            <div><font size="1">マイページ</font></div>
+        </li>
+    </ul>
+</nav>    <button onclick="location.href='seach_input.php'">＜戻る</button>
     <hr>
     <?php
     $pdo=new PDO($connect, USER, PASS);
@@ -140,7 +163,7 @@
                 foreach($sql as $row){
                     echo '<td align="center">';
                     echo '<table width="80%">';
-                    echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
+                    echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 150px; height: 150px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
                     echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
                     echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                     echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
@@ -170,8 +193,8 @@
                     if($rowcount%2!=0){
                         //テーブルの左側
                         echo '<td align="center">';
-                        echo '<table width="60%">';
-                        echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
+                        echo '<table width="50%">';
+                        echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 150px; height: 150px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
                         echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2"><strong>',$row['cosme_name'],'</font></strong></td></tr>';
                         echo '<tr><td colspan="3" align="left"><font size="2">',$row['brand_name'],'</font></td></tr>';
                         echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
@@ -198,8 +221,8 @@
                     }else{
                         //テーブルの右側 
                         echo '<td aligh="center">'; 
-                        echo '<table width="60%">';
-                        echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" width="150px" height="150px" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
+                        echo '<table width="50%">';
+                        echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 150px; height: 150px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
                         echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2"><strong>',$row['cosme_name'],'</font></strong></td></tr>';
                         echo '<tr><td colspan="3" align="left"><font size="2">',$row['brand_name'],'</font></td></tr>';
                         echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
