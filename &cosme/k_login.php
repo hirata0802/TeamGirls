@@ -57,4 +57,4 @@ echo '<a href="k_member_new.php">新規登録</a>';
 echo '</div>';
 ?>
 <?php require 'footer.php'; ?>
-]
+
