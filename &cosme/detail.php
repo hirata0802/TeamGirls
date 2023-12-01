@@ -68,10 +68,13 @@ foreach($cosme1 as $row){
         echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=2`">☆</button>';
         //echo '<a href="favorite.php?cosmeId=',$cosmeId,'&page=2">☆</a>';
     }
-    echo '</div>';
+          echo '</div>';
     echo '<div style="text-align: center">';
     echo '<strong><p align="center">商品詳細</p></strong>';
+    echo '</div>';
+    echo '<div class="c">';
     echo $detail;
+
     echo '</div><br>';
 
     if(isset($_SESSION['customer'])){
