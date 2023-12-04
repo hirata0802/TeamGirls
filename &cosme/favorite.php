@@ -27,7 +27,7 @@ foreach($delete_flag as $row){
             header('Location: ./favorite_show.php');
             exit();
         }
-        header('Location: ./favorite_show.php?cosme_id=');
+        header('Location: ./favorite_show.php');
         exit();
     }
 }
