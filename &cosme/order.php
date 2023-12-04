@@ -40,7 +40,9 @@
     </dd>
     </dl>
     <hr>
-    <div class="ao"><button type="submit">確認する</button></div>
+    <button class="ao" type="submit">確認する</button></div>
 </form>
-<div class="grey"><button onclick="location.href='cart.html'">戻る</button></div>
+<button class="grey" onclick="location.href='cart.html'">戻る</button></div>
 <?php require 'footer.php'; ?>
+</body>
+</html>
