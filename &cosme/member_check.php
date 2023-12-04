@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 <?php require 'db_connect.php'; ?>
 <?php
+
  $_SESSION['members'] = [
     'sei' => $_POST['sei'],
     'mei' => $_POST['mei'],
@@ -65,7 +66,9 @@ if(!empty($sql->fetchAll())){
         ?>
     </form>
     <br>
-    <button onclick="history.back()" class="grey">変更</button></p><br>
+    
+     <button type="button" onclick="location.href='member_new.php'" class="grey">変更</button> 
+
     <button type="submit" form="next" class="ao">新規登録</button></p>
 </body>
 </html>
