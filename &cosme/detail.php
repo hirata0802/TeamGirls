@@ -19,7 +19,7 @@
 <?php require 'menu.php'; ?>
 <br><br>
 <?php
-echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</button>';
+//echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</button>';
 
 $pdo = new PDO($connect, USER, PASS);
 $cosme1 = $pdo -> prepare('select * from Cosmetics where cosme_id=?');

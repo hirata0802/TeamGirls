@@ -1,5 +1,6 @@
 <?php require 'header.php'; ?>
 <?php require 'menu.php'; ?>
+    <button onclick="history.back()">＜戻る</button>
     <form action="order_db_insert.php" method="post">
     <input type="text" name="name" placeholder="お届け先氏名" required>
     <p><input type="text" name="zipcode" id="zipcode" placeholder="郵便番号" required>

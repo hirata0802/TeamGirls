@@ -1,7 +1,15 @@
 <?php session_start(); ?>
 <?php require 'db_connect.php'; ?>
 <?php
-    $pdo = new PDO($connect,USER,PASS);
+    $json = file_get_contents('php://input');   //JSからのデータを受け取る
+    $data = json_decode($json);
+    echo json_encode($data, JSON_UNESCAPED_UNICODE);
+    $pdo=new PDO($connect, USER, PASS);
+    $sql=$pdo->prepare('update Cart set quantity=? where cart_id=?');
+    $sql->execute([$data['quantity'], $data['cart_id']]);
+    header('Location: ./order.php');
+    exit();
+    /*$pdo = new PDO($connect,USER,PASS);
     if($_GET['page']==0){   //カート追加
         $check=$pdo->prepare('select * from Cart where member_code=? and cosme_id=? and delete_flag=0');
         $check->execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
@@ -14,14 +22,6 @@
         }
     }
     else{   //個数の変更をDBに反映させる
-        $raw = file_get_contents('php://input');   //JSからのデータを受け取る
-        $data = json_decode($raw);
-        $pdo=new PDO($connect, USER, PASS);
-        $sql=$pdo->prepare('update Cart set quantity=? where member_code=? and cosme_id=? and delete_flag=0');
-        $sql->execute([$data['quantity'], $_SESSION['customer']['code'], $data['cosme_id']]);
-        echo 'a';
-        header('Location: ./cart.html');
-        exit();
     }
     $backURL = end($_SESSION['history']);
     header('Location: '.$backURL);

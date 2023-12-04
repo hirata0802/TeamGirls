@@ -166,19 +166,22 @@
                     echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
                     echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
                     echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
-                    echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
+                    echo '<tr><td colspan="3">￥',$row['price'],'</td></tr>';
                     echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
                     
                     $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                     $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                     //$memberCount = $member -> rowCount();
                     if($member->rowCount() == 0){
+                        //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=2`">☆</button></td></tr>';
                         echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2">☆</a></td></tr>';
                     }else{
                         foreach($member as $a){
                             if($a['delete_flag']==0){
+                                //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=0`">★</button></td></tr>';
                                 echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">★</a></td></tr>';
                             }else{
+                                //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=0`">☆</button></td></tr>';
                                 echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                             }
                             break;
@@ -197,7 +200,7 @@
                         echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
                         echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2px"><strong><div class="b">',$row['cosme_name'],'</div></font></strong></td></tr>';
                         echo '<tr><td colspan="3" align="left"><font size="2px">',$row['brand_name'],'</font></td></tr>';
-                        echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
+                        echo '<tr><td colspan="3">￥',$row['price'],'</td></tr>';
                         echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
                         
                         //お気に入り
@@ -205,13 +208,16 @@
                         $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                         //$memberCount = $member -> rowCount();
                         if($member->rowCount() == 0){
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2" class="button">☆</a></td></tr>';
+                            //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=2`">☆</button></td></tr>';
+                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2">☆</a></td></tr>';
                         }else{
                             foreach($member as $a){
                                 if($a['delete_flag']==0){
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0" class="button">★</a></td></tr>';
+                                    //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=0`">★</button></td></tr>';
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0" >★</a></td></tr>';
                                 }else{
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0" class="button">☆</a></td></tr>';
+                                    //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=0`">☆</button></td></tr>';
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                                 }
                                 break;
                             }
@@ -225,19 +231,22 @@
                         echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
                         echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2px"><strong><div class="b">',$row['cosme_name'],'</div></font></strong></td></tr>';
                         echo '<tr><td colspan="3" align="left"><font size="2px">',$row['brand_name'],'</font></td></tr>';
-                        echo '<tr><td colspan="3">',$row['price'],'</td></tr>';
+                        echo '<tr><td colspan="3">￥',$row['price'],'</td></tr>';
                         echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
 
                         $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                         $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                         //$memberCount = $member -> rowCount();
                         if($member->rowCount() == 0){
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2" class="button">☆</a></td></tr>';
+                            //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=2`">☆</button></td></tr>';
+                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2">☆</a></td></tr>';
                         }else{
                             foreach($member as $a){
                                 if($a['delete_flag']==0){
+                                    //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'&page=0`">★</button></td></tr>';
                                     echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">★</a></td></tr>';
                                 }else{
+                                    //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'&page=0`">☆</button></td></tr>';
                                     echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                                 }
                                 break;
