@@ -67,7 +67,7 @@
                     //価格
                         echo '<tr><td colspan="3">￥',$row['price'],'</td></tr>';
                     //カート、★
-                        echo '<tr><td colspan="2" align="left"><a href="cart.php?cosmeId=',$cosmeId,'">カートに入れる</a></td>';
+                        echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$cosmeId,'&page=0">カートに入れる</a></td>';
                         //echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=1">★</a></td></tr>';
                         echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=1`">★</button></td></tr>';
                         echo '</table>';
@@ -84,7 +84,7 @@
                             echo '<tr><td colspan="3" align="left"><font size="2px"><div class="b"><strong>',$row['cosme_name'],'</strong></div></font></td></tr>';
                             echo '<tr><td colspan="3" align="left"><font size="2px">',$row['brand_name'],'</font></td></tr>';
                             echo '<tr><td colspan="3"><font size="2px">￥',$row['price'],'</font></td></tr>';
-                            echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart.php?cosmeId=',$cosmeId,'">カートに入れる</a></td>';
+                            echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$cosmeId,'&page=0">カートに入れる</a></td>';
                             //echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=1">★</a></td>';
                             echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=1`">★</button></td>';
                             echo '</tr>';
@@ -97,7 +97,7 @@
                             echo '<tr><td colspan="3" align="left"><font size="2px"><div class="b"><strong>',$row['cosme_name'],'</div></font></strong></td></tr>';
                             echo '<tr><td colspan="3" align="left"><font size="2px">',$row['brand_name'],'</font></td></tr>';
                             echo '<tr><td colspan="3"><font size="2px">￥',$row['price'],'</font></td></tr>';
-                            echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart.php?cosmeId=',$cosmeId,'">カートに入れる</a></td>';
+                            echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$cosmeId,'&page=0">カートに入れる</a></td>';
                             //echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=1">★</a></td>';
                             echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=1`">★</button></td>';
                             

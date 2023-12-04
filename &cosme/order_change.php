@@ -9,7 +9,7 @@
     $sql=$pdo->prepare('select * from Addresses where member_code=?');
     $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
-        $ads=$row['prefecture'].$row['city'].$row['section'].$_POST['building'];
+        $ads=$row['prefecture'].$row['city'].$row['section'].$row['building'];
         echo '<input type="radio" name="address" value="', $row['address_id'], '">';
         echo '<dl>';
         echo '<dt>お届け先</dt><dd>', $row['address_name'], '　様<br>';
