@@ -1,21 +1,7 @@
-<?php session_start(); ?>
-<?php require 'db-connect.php'; ?>
+<?php require 'db_connect.php'; ?>
 <?php
-    $_SESSION['cosme']=[
-        '$cosme_name'=> $_POST['cosme_name'],
-        '$color_name'=> $_POST['color_name'],
-        '$group_id'=> $_POST['group_id'],
-        '$color_id'=> $_POST['color_id'],
-        '$brand_id'=> $_POST['brand_id'],
-        '$category_id'=> $_POST['category_id'],
-        '$cosme_detail'=> $_POST['cosme_detail'],
-        '$price'=> $_POST['price'],
-        '$image_path'=> $_POST['image_path'],
-        '$creation_date'=> $_POST['creation_date']
-    ];
-//仮
 $pdo = new PDO($connect, USER, PASS);
-$sql = $pdo -> prepare('select * from Cosmetics where ??');
+$sql = $pdo -> prepare('select * from Cosmetics where ?');
 $sql->execute([$_POST['mail']]);
 if(!empty($sql->fetchAll())){
     $_SESSION['members']['mail']=null;

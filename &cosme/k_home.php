@@ -13,7 +13,7 @@
         <button type="submit">売上管理</button>
     </form>
 
-    <form action="k_cosme_new.php">
+    <form action="k_cosme_new.php?page=0" method="post">
         <button type="submit">商品登録</button>
     </form>
 

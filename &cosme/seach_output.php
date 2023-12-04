@@ -231,7 +231,7 @@
                         echo '</table>';
                         echo '</td>';
                     }else{
-                        //テーブルの右側 
+                        //テーブルの右 
                         echo '<td align="left">'; 
                         echo '<table width="60%">';
                         echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'"></td></tr>';

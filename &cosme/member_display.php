@@ -59,35 +59,49 @@
             'select * from Members where member_code=?');
         $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
-       echo '<div id="simei">';
-       echo '<input type="text" style="width: 102px;height: 30px;" name="sei" value="',$row['family_name'],'" readonly>';
-       echo '<input type="text" style="width: 102px;height: 30px;" name="mei" value="',$row['first_name'],'" readonly>';
-       echo '</div>';
-       echo '<div id="mannaka">';
-       echo '<p><input type="text" style="width: 125px;height: 30px;" name="seikana" value="',$row['family_name_kana'],'" readonly>';
-       echo '<input type="text" style="width: 125px;height: 30px;" name="meikana" value="',$row['first_name_kana'],'" readonly></p>';
-       echo '</div>';
-       echo '<div id="yuubin">';
-       echo '<input type="text" style="width: 240px;height: 27px;" name="zipcode" value="',$row['post_code'],'" readonly>';
-       echo '</div>';
-       echo '<div id="toroku1">';
-       echo '<p><input type="text" name="prefecture" value="',$row['prefecture'],'" readonly></p>';
-       echo '<p><input type="text" name="city" value="',$row['city'],'" readonly></p>';
-       echo '<p><input type="text" name="address" value="',$row['section'],'" readonly></p>';
-       echo '<p><input type="text" name="bill" value="',$row['building'],'" ></p>';
-       echo '</div>';
-       echo '<div id="tell">';
-       echo '<input type="text" style="width: 240px;height: 27px;" name="tel" value="',$row['phone'],'" readonly>';
-       echo '</div>';
-       echo '<br>';
-       echo '<div id="meru2">';
-       echo '<input type="text" style="width: 240px;height: 27px;" name="mail" value="',$row['email'],'" readonly>';
-       echo '</div>';
-       echo '<br>';
-       echo '<div id="pas2">';
-       echo '<input type="password" style="width: 240px;height: 27px;" name="pass" value="',$_SESSION['customer']['pass'],'" readonly>';
-       echo '</div>';
+        echo '<table align="center">';
+        echo '<div id="simei"></div>';
+            echo '<input type="hidden" name="sei" value="',$row['family_name'],'">';
+            echo '<input type="hidden" name="mei" value="',$row['first_name'],'">';
+            echo '<p align="center">姓名：',$row['family_name'],'　　',$row['first_name'],'</p>';
        
+
+       echo '<div id="mannaka"></div>';
+            echo '<input type="hidden" name="seikana" value="',$row['family_name_kana'],'">';
+            echo '<input type="hidden" name="meikana" value="',$row['first_name_kana'],'">';
+            echo '<p align="center">セイメイ：',$row['family_name_kana'],'　　',$row['first_name_kana'],'</p>';
+       
+
+       echo '<div id="yuubin"></div>';
+            echo '<input type="hidden" name="zipcode" value="',$row['post_code'],'">';
+            echo '<p align="center">郵便番号：',$row['post_code'],'</p>';
+
+       echo '<div id="toroku1"></div>';
+       echo '<input type="hidden" name="prefecture" value="',$row['prefecture'],'">';
+       echo '<input type="hidden" name="city" value="',$row['city'],'">';
+       echo '<input type="hidden" name="address" value="',$row['section'],'">';
+       echo '<input type="hidden" name="bill" value="',$row['building'],'">';
+       echo '<p align="center">都道府県：',$row['prefecture'],'</p>';
+       echo '<p align="center">市町村：',$row['city'],'</p>';
+       echo '<p align="center">番地：',$row['section'],'</p>';
+       echo '<p align="center">ビル・マンション名：',$row['building'],'</p>';
+
+
+       echo '<div id="tell"></div>';
+            echo '<input type="hidden" name="tel" value="',$row['phone'],'">';
+            echo '<p align="center">電話番号：',$row['phone'],'</p>';
+
+       echo '<br>';
+       echo '<div id="meru2"></div>';
+       echo '<input type="hidden" name="mail" value="',$row['email'],'">';
+       echo '<p align="center">メールアドレス：',$row['email'],'</p>';
+
+       echo '<br>';
+       echo '<div id="pas2"></div>';
+       echo '<input type="hidden" name="pass" value="',$_SESSION['customer']['pass'],'">';
+       echo '<p align="center">パスワード：',$_SESSION['customer']['pass'],'</p>';
+
+       echo '</table>';
     }
 
     ?>
