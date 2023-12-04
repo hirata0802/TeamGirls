@@ -444,3 +444,6 @@ button{
   display: flex;
   justify-content: center;
   }
+  table {
+    margin: 0 auto; /* 左右のマージンを自動で調整して中央に配置 */
+}

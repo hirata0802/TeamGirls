@@ -2,8 +2,7 @@ var app = new Vue({
   el: '#cart',
   data:{
     allData: '',
-    total: 0,
-    deldata: []
+    total: 0
   },
   methods: {
     fetchItem:function(){
@@ -26,28 +25,51 @@ var app = new Vue({
         app.allData[index].quantity--;
         this.total -= app.allData[index].price
       },
-      cartUpdate(id){
-        const index = app.getIndexBy(id);
-        fetch('cart_input.php', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},  //json指定
-          body: JSON.stringify(app.allData[index]) //json形式に変換して送付
-        }).then(function(response){
-          //allDataにSELECT文の結果が配列で格納
-          app.allData = response.data;
-        });
-      },
       cartDelete(id){
         const index = app.getIndexBy(id);
-        this.deldata += app.allData[index];
-        
-        
+        app.allData[index].delete_flag = 1;
+        this.total -= app.allData[index].price
       },
-      order(){
-        alert("aaaa");
-        axios.post('cart_input.php', app.allData)
+      nextOrder(){
+        axios.post('./cart_next.php', app.allData)
         .then(response => {
           console.log(response);
+          window.location.href="./order.php";
+        })
+      },
+      nextHome(){
+        axios.post('./cart_next.php', app.allData)
+        .then(response => {
+          console.log(response);
+          window.location.href="./home.php";
+        })
+      },
+      nextSearch(){
+        axios.post('./cart_next.php', app.allData)
+        .then(response => {
+          console.log(response);
+          window.location.href="./seach_input.php";
+        })
+      },
+      nextFavorite(){
+        axios.post('./cart_next.php', app.allData)
+        .then(response => {
+          console.log(response);
+          window.location.href="./favorite_show.php";
+        })
+      },
+      nextCart(){
+        axios.post('./cart_next.php', app.allData)
+        .then(response => {
+          console.log(response);
+          window.location.href="./cart.php";
+        })
+      },
+      nextMypage(){
+        axios.post('./cart_next.php', app.allData)
+        .then(response => {
+          console.log(response);
+          window.location.href="./mypage.php";
         })
       },
       getIndexBy(id){
@@ -57,9 +79,17 @@ var app = new Vue({
         return index;
       }
     },
+    computed: {
+      /*displayData(){
+        return app.allData.filter(data => data.delete_flag === 0);
+      }/*,
+      isInValidNum(id){
+        const index = app.getIndexBy(id);
+        return app.allData[index][1] > 0;
+      }*/
+    },
     mounted () {
       // インスタンス初期化時、DOMが生成された後に実行される
       this.fetchItem()
-      //this.total=app.allData[1].total;
-    }
+    },
   });

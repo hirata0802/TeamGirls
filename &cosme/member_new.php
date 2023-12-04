@@ -7,6 +7,7 @@
 
     <form action="member_check.php" method="post">
         <?php
+       
         unset($_SESSION['customer']);
     $sei=$mei=$seikana=$meikana=$nickname=$zipcode=$prefecture=$city=$address=$bill=$tel=$mail=$pass=$error='';
     if(isset($_SESSION['members'])){
@@ -60,7 +61,7 @@
       echo '</div>';
       echo '<br>';
       echo '<div id="meru2">';
-      echo '<input type="email" style="width: 240px;height: 27px;" name="mail" placeholder="メールアドレス" required>';
+      echo '<input type="email" style="width: 240px;height: 27px;" name="mail" placeholder="メールアドレス" value="',$mail,'" required>';
       echo '</div>';
       echo '<br>';
       echo '<div id="pas2">';
