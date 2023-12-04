@@ -5,22 +5,25 @@
     }
     array_push($_SESSION['history'], $_SERVER['REQUEST_URI']);
 ?>
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css">
-        <!--<link rel="stylesheet" href="css/detail.css">-->
-        <title>&cosme</title>
-    </head>
-    <body>
-<?php require 'db_connect.php'; ?>
+    <!DOCTYPE html>
+    <html lang="ja">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="css/style.css">
+            <!--<link rel="stylesheet" href="css/detail.css">-->
+            <title>&cosme</title>
+        </head>
+        <body>
+            <?php require 'db_connect.php'; ?>
 <?php require 'menu.php'; ?>
 <br><br>
 <?php
 //echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</button>';
 
+if(isset($_GET['page']) && $_GET['page']==20){
+    echo 'カートに追加しました';
+}
 $pdo = new PDO($connect, USER, PASS);
 $cosme1 = $pdo -> prepare('select * from Cosmetics where cosme_id=?');
 $cosme1 -> execute([$_GET['cosme_id']]);
@@ -49,7 +52,7 @@ foreach($cosme1 as $row){
             echo '<p>カラー　：',$row['color_name'],'</p>';
     }
     echo '<div id="mannaka">';
-        echo '<button class="ao"  onclick="location.href=`cart_input.php?cosmeId=',$cosmeId,'&page=0`"><img src="css/image/cart_black.svg" style="width: 20px; height: 20px;" alt="カートに入れる">カートに入れる</button>';
+        echo '<button class="ao"  onclick="location.href=`cart_input.php?cosmeId=',$cosmeId,'&page=1`"><img src="css/image/cart_black.svg" style="width: 20px; height: 20px;" alt="カートに入れる">カートに入れる</button>';
     //お気に入り
     $cosme2 = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id=?');
     $cosme2 -> execute([$_SESSION['customer']['code'],$cosmeId]);//cosmeId=選んだコスメ

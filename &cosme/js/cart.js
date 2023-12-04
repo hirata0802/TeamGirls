@@ -28,7 +28,7 @@ var app = new Vue({
       cartDelete(id){
         const index = app.getIndexBy(id);
         app.allData[index].delete_flag = 1;
-        this.total -= app.allData[index].price
+        this.total -= app.allData[index].price*app.allData[index].quantity
       },
       nextOrder(){
         axios.post('./cart_next.php', app.allData)
@@ -80,13 +80,9 @@ var app = new Vue({
       }
     },
     computed: {
-      /*displayData(){
+      displayData(){
         return app.allData.filter(data => data.delete_flag === 0);
-      }/*,
-      isInValidNum(id){
-        const index = app.getIndexBy(id);
-        return app.allData[index][1] > 0;
-      }*/
+      }
     },
     mounted () {
       // インスタンス初期化時、DOMが生成された後に実行される

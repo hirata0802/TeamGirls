@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php session_start();
+    //ページのURLをセッションに保存
+    if(!isset($_SESSION['history'])){
+        $_SESSION['history'] = array();
+    }
+    array_push($_SESSION['history'], $_SERVER['REQUEST_URI']);
+?>
 <?php require 'db_connect.php'; ?>
 <?php require 'header.php'; ?>
 
@@ -38,6 +44,9 @@
         $count = $sql2 -> rowCount();
         
         //表示
+        if(isset($_GET['page']) && $_GET['page']==20){
+            echo 'カートに追加しました';
+        }       
         if($count==0){
             echo '<br>';
             echo '<p align="center" style="font-size:20px;">現在お気に入り登録はありません</p>';
