@@ -46,15 +46,13 @@
 <div id="dai">
     <dt>お支払い方法</dt>
 </div>
-    <dd>
     <div id="text1">
     <div class="radio-wrap">
     <input type="radio" name="pay" value="現金払い" required>現金払い<br>
     <input type="radio" name="pay" value="コンビニ払い">コンビニ払い<br>
     <input type="radio" name="pay" value="クレジットカード払い">クレジットカード払い<br>
     </div>
-</div>
-    </dd>
+    </div>
     </dl>
     <br>
     <hr class="tensen">
