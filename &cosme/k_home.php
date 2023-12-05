@@ -9,7 +9,7 @@
 <h3>&cosme</h3>
 <h2>管理者ホーム</h2>
     <div id="sen"><hr color="black"></div>
-    <form action="k_uriage.php">
+    <form action="k_seles.php">
         <button type="submit">売上管理</button>
     </form>
 
