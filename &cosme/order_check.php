@@ -2,7 +2,9 @@
 <?php require 'header.php'; ?>
 <?php require 'menu.php'; ?>
 <?php require 'db_connect.php'; ?>
+<div id="logtitle">
     <h2>注文内容の確認</h2>
+</div>
 <form action="order_finish.php" method="post">
 <?php
     $pdo=new PDO($connect, USER, PASS);
@@ -28,9 +30,11 @@
     foreach($cart as $row){
         //echo '<img src="', $row['image_path'], '" style="object-fit: contain; width: 100px; height: 100px;">';
         echo $row['cosme_name'], '　';
+        echo '<br>';
         echo 'カラー：', $row['color_name'];
         echo $row['quantity'];
         echo'<br>';
+        echo '<br>';
     }
     echo '<input type="hidden" name="pay" value="', $_POST['pay'], '">';
     echo '<input type="hidden" name="total" value="', $_POST['total'], '">';
