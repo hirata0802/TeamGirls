@@ -16,7 +16,9 @@
         echo '〒', $row['post_code'], '<br>';
         echo $ads, '<br>';
         echo $row['phone'], '</dd>';
+        echo '<br>';
         echo '支払い方法：', $_POST['pay'];
+        echo '<br>';
         echo '<dt>商品合計</dt><dd>', $_POST['total'], '円</dd>';
     }
     echo '<dl>';
@@ -28,10 +30,14 @@
         echo $row['cosme_name'], '　';
         echo 'カラー：', $row['color_name'];
         echo $row['quantity'];
+        echo'<br>';
     }
     echo '<input type="hidden" name="pay" value="', $_POST['pay'], '">';
     echo '<input type="hidden" name="total" value="', $_POST['total'], '">';
 ?>
+<br>
+<hr class="tensen">
+<br>
 <button type="submit" class="ao">注文を確定する</button></p>
 </form>
 <button type="submit" onclick="location.href='order.php'" class="grey">変更</button></p><br>
