@@ -386,6 +386,16 @@ height: 4;
 #text3 {
 margin-left: 90px;
 }
+/*レジ*/
+#text1 {
+	margin-left: 120px;
+}
+#text10 {
+	margin-left: 50px;
+}
+#dai{
+  margin-left: 50px;
+}
 /*共通*/
 button{
   background: none; 
