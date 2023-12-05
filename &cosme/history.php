@@ -3,7 +3,9 @@
 <?php require 'menu.php'; ?>
 <?php require 'db_connect.php'; ?>
 <button onclick="location.href='mypage.php'">＜戻る</button>
+<div id="logtitle">
 <h2>ご注文履歴</h2>
+</div>
 <?php
     if(isset($_SESSION['customer'])){
         $pdo=new PDO($connect, USER, PASS);
