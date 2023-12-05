@@ -23,9 +23,10 @@
         echo '<dd><div class="white"><button type="submit" onclick="location.href=`order_add.php`">お届け先追加</button></div></dd>';
         if($address->rowCount() > 1){
             echo '<dd><div class="white"><button type="submit" onclick="location.href=`order_change.php`">お届け先変更</button></div></dd>';
-            echo '</div>';
+           
         }
     }
+    echo '</div>';
     echo '<br>';
     //商品合計
     $total=$pdo->prepare('select sum(C.quantity * CO.price) as total from Cart as C inner join Cosmetics as CO on C.cosme_id=CO.cosme_id inner join Brands as B on CO.brand_id=B.brand_id where member_code=? and delete_flag=0');
@@ -42,18 +43,16 @@
     echo '<input type="hidden" name="total" value="', $row['total'], '">';
 ?>
 <br>
-    echo '<div id="dai">';
+<div id="dai">
     <dt>お支払い方法</dt>
-    echo '</div>';
-    <dd>
+</div>
     <div id="text1">
     <div class="radio-wrap">
     <input type="radio" name="pay" value="現金払い" required>現金払い<br>
     <input type="radio" name="pay" value="コンビニ払い">コンビニ払い<br>
     <input type="radio" name="pay" value="クレジットカード払い">クレジットカード払い<br>
     </div>
-</div>
-    </dd>
+    </div>
     </dl>
     <br>
     <hr class="tensen">

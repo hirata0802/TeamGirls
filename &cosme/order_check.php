@@ -14,25 +14,43 @@
     foreach($sql as $row){
         $ads=$row['prefecture'].$row['city'].$row['section'].$row['building'];
         echo '<dl>';
-        echo '<dt>お届け先：</dt><dd>', $row['address_name'], '　様<br>';
+        echo '<div id="dai">';
+        echo '<dt>お届け先：</dt><dd>';
+        echo '</div>';
+        echo '<div id="text1">';
+        echo $row['address_name'], '　様<br>';
         echo '〒', $row['post_code'], '<br>';
         echo $ads, '<br>';
         echo $row['phone'], '</dd>';
+        echo '</div>';
         echo '<br>';
-        echo '支払い方法：', $_POST['pay'];
+        echo '<div id="dai">';
+        echo '支払い方法：';
+        echo '</div>';
+        echo '<div id="text1">';
+        echo  $_POST['pay'];
+        echo '</div>';
         echo '<br>';
-        echo '<dt>商品合計</dt><dd>', $_POST['total'], '円</dd>';
+        echo '<div id="dai">';
+        echo '<dt>商品合計</dt><dd>';
+        echo '</div>';
+        echo '<div id="text1">';
+        echo  $_POST['total'], '円</dd>';
+        echo '</div>';
     }
     echo '<dl>';
+    
     //購入商品
     $cart=$pdo->prepare('select * from Cart as C inner join Cosmetics as CO on C.cosme_id=CO.cosme_id where member_code=? and C.delete_flag=0');
     $cart->execute([$_SESSION['customer']['code']]);
     foreach($cart as $row){
         //echo '<img src="', $row['image_path'], '" style="object-fit: contain; width: 100px; height: 100px;">';
+        echo '<div id="text1">';
         echo $row['cosme_name'], '　';
         echo '<br>';
         echo 'カラー：', $row['color_name'];
         echo $row['quantity'];
+        echo '</div>';
         echo'<br>';
         echo '<br>';
     }
