@@ -9,7 +9,7 @@
     $sql=$pdo->prepare('select * from Addresses where member_code=?');
     $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
-        echo '<div id="mannaka">';
+        echo '<div id="text1">';
         $ads=$row['prefecture'].$row['city'].$row['section'].$row['building'];
         echo '<input type="radio" name="address" value="', $row['address_id'], '">';
         echo '<dl>';
