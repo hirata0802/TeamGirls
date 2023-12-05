@@ -386,6 +386,11 @@ height: 4;
 #text3 {
 margin-left: 90px;
 }
+/*レジ*/
+#text1 {
+	margin-left: 100px;
+}
+
 /*共通*/
 button{
   background: none; 

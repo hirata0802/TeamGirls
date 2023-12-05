@@ -13,7 +13,7 @@
         $ads=$row['prefecture'].$row['city'].$row['section'].$row['building'];
         echo '<dl>';
         echo '<dt>お届け先</dt><dd>';
-        echo '<div id="mannaka">';
+        echo '<div id="text1">';
         echo $row['address_name'], '　様<br>';
         echo '〒', $row['post_code'], '<br>';
         echo $ads, '<br>';
@@ -30,7 +30,7 @@
     $total->execute([$_SESSION['customer']['code']]);
     foreach($total as $row){
         echo '<dt>商品合計</dt><dd>';
-        echo '<div id="mannaka">';
+        echo '<div id="text1">';
         echo  $row['total'], '円</dd>';
         echo '</div>';
     }
@@ -40,7 +40,7 @@
 <br>
     <dt>お支払い方法</dt>
     <dd>
-    <div id="mannaka">
+    <div id="text1">
     <div class="radio-wrap">
     <input type="radio" name="pay" value="現金払い" required>現金払い<br>
     <input type="radio" name="pay" value="コンビニ払い">コンビニ払い<br>
