@@ -12,14 +12,15 @@ if($rowcount>=1){
     $fileName=basename($name);
     $targetFilePath=$targetDir.$fileName;
 }else{
-    $sql2=$pdo->query('select max(group_id) as max from Cosmetics');
-    $group_id=mysqli_fetch_assoc($sql2);
-    $name=$group_id['max'].'_1.jpg';
+    $res=$pdo->query('select max(group_id) from Cosmetics');
+    $group_id=$res->fetchColumn();
+    $group_id++;
+    $name=$group_id.'_1.jpg';
     $targetDir="image/";
     $fileName=basename($name);
     $targetFilePath=$targetDir.$fileName;
 }
-echo $targetFilePath;
+echo $name;
 ?>
 <!DOCTYPE html>
 <html lang="ja">

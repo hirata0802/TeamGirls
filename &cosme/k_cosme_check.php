@@ -40,7 +40,7 @@ if(!empty($sql->fetchAll())){
         echo '<input type="hidden" name="file" value="',$fileName,'">';
         
         ?>
-    <button onclick="location.href='k_cosme_new.php?page=0'" class="grey">変更</button><br>
+    <button type="button" onclick="location.href='k_cosme_new.php?page=0'" class="grey">変更</button><br>
     <button type="submit" class="ao">商品新規登録</button>
 </form>
 </body>
