@@ -11,6 +11,7 @@
     $address->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
         $ads=$row['prefecture'].$row['city'].$row['section'].$row['building'];
+        echo '<div id="mannaka">';
         echo '<dl>';
         echo '<dt>お届け先</dt><dd>', $row['address_name'], '　様<br>';
         echo '〒', $row['post_code'], '<br>';
@@ -21,6 +22,7 @@
             echo '<dd><div class="white"><button type="submit" onclick="location.href=`order_change.php`">お届け先変更</button></div></dd>';
         }
     }
+    echo '<br>';
     //商品合計
     $total=$pdo->prepare('select sum(C.quantity * CO.price) as total from Cart as C inner join Cosmetics as CO on C.cosme_id=CO.cosme_id inner join Brands as B on CO.brand_id=B.brand_id where member_code=? and delete_flag=0');
     $total->execute([$_SESSION['customer']['code']]);
@@ -29,7 +31,10 @@
     }
     echo '<form action="order_check.php" method="post">';
     echo '<input type="hidden" name="total" value="', $row['total'], '">';
+    echo '</div>';
 ?>
+<br>
+<div id="mannaka">
     <dt>お支払い方法</dt>
     <dd>
     <div class="radio-wrap">
@@ -37,10 +42,13 @@
     <input type="radio" name="pay" value="コンビニ払い">コンビニ払い<br>
     <input type="radio" name="pay" value="クレジットカード払い">クレジットカード払い<br>
     </div>
+</div>
     </dd>
     </dl>
-    <hr>
+    <br>
+    <hr class="tensen">
     <button class="ao" type="submit">確認する</button></div>
+    <br>
 </form>
 <button class="grey" onclick="location.href='cart.html'">戻る</button></div>
 <?php require 'footer.php'; ?>

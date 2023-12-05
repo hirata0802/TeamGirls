@@ -8,7 +8,7 @@
 
 if($count>0){
 foreach($delete_flag as $row){
-    if($_GET['page'] == 1){//お気に入り画面からの遷移
+    if($_GET['page'] == 1){//お気に入り画面からの遷
         if($row["delete_flag"] == 0){//お気に入り削除
             $sql = $pdo -> prepare('update Favorites set delete_flag=1,register_date=current_date where member_code = ? and cosme_id = ?');
             $sql -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
