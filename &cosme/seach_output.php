@@ -12,7 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/fav.css">
-    <link rel="stylesheet" href="css/aaa.css">
     <title>&cosme</title>
 </head>
 <body>
@@ -42,93 +41,118 @@
         </li>
     </ul>
 </nav>    <button onclick="location.href='seach_input.php'">＜戻る</button>
-    <hr>
-    <?php
+<hr>
+<?php
     $pdo=new PDO($connect, USER, PASS);
+    $count;
+    
+    //検索内容をセッションに追加
+    if(isset($_GET['page']) && $_GET['page']==10){
+        unset($_SESSION['search']);
+        if(isset($_POST['multiseach'])){
+            $_SESSION['search'] = [
+                'multiseach' => $_POST['multiseach'],
+                'max' => $_POST['max'],
+                'categorySelect' => $_POST['categorySelect'],
+                'colorSelect' => $_POST['colorSelect'],
+                'brandSelect' => $_POST['brandSelect'],
+                'keyword' => $_POST['keyword']
+            ];
+        }else{
+            $_SESSION['search'] = [
+                'max' => $_POST['max'],
+                'categorySelect' => $_POST['categorySelect'],
+                'colorSelect' => $_POST['colorSelect'],
+                'brandSelect' => $_POST['brandSelect'],
+                'keyword' => $_POST['keyword']
+            ];
+        }
+    }
 
     //複数選択
-    if(isset($_POST['multiseach'])){
+    echo '<form action="seach_output.php" method="post">';
+    if(isset($_SESSION['search']['multiseach'])){
         if(!empty($_POST['max'])){
-            if($_POST['categorySelect']==0 && $_POST['brandSelect']==0 && $_POST['colorSelect']==0){
+            if($_SESSION['search']['categorySelect']==0 && $_SESSION['search']['brandSelect']==0 && $_SESSION['search']['colorSelect']==0){
                 //料金あり　選択なし
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.price <= ?');
-                $sql->execute([$_POST['max']]);
+                $sql->execute([$_SESSION['search']['max']]);
                 $count=$sql->rowCount();
-            }else if($_POST['categorySelect']!=0 && $_POST['brandSelect']!=0 && $_POST['colorSelect']!=0){
+            }else if($_SESSION['search']['categorySelect']!=0 && $_SESSION['search']['brandSelect']!=0 && $_SESSION['search']['colorSelect']!=0){
                 //料金あり　全選択
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ? and C.brand_id = ? and C.color_id = ? and C.price <= ?');
-                $sql->execute([$_POST['categorySelect'],$_POST['brandSelect'],$_POST['colorSelect'],$_POST['max']]);
+                $sql->execute([$_SESSION['search']['categorySelect'],$_SESSION['search']['brandSelect'],$_SESSION['search']['colorSelect'],$_SESSION['search']['max']]);
                 $count=$sql->rowCount();
-            }else if($_POST['categorySelect']!=0 && $_POST['brandSelect']!=0 && $_POST['colorSelect']==0){
+            }else if($_SESSION['search']['categorySelect']!=0 && $_SESSION['search']['brandSelect']!=0 && $_SESSION['search']['colorSelect']==0){
                 //料金あり　カテゴリー、ブランド選択
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ? and C.brand_id = ? and C.price <= ?');
-                $sql->execute([$_POST['categorySelect'],$_POST['brandSelect'],$_POST['max']]);
+                $sql->execute([$_SESSION['search']['categorySelect'],$_SESSION['search']['brandSelect'],$_SESSION['search']['max']]);
                 $count=$sql->rowCount();
-            }else if($_POST['categorySelect']!=0 && $_POST['brandSelect']==0 && $_POST['colorSelect']==0){
+            }else if($_SESSION['search']['categorySelect']!=0 && $_SESSION['search']['brandSelect']==0 && $_SESSION['search']['colorSelect']==0){
                 //料金あり　カテゴリー選択
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ? and C.price <= ?');
-                $sql->execute([$_POST['categorySelect'],$_POST['max']]);
+                $sql->execute([$_SESSION['search']['categorySelect'],$_SESSION['search']['max']]);
                 $count=$sql->rowCount();
-            }else if($_POST['categorySelect']==0 && $_POST['brandSelect']!=0 && $_POST['colorSelect']==0){
+            }else if($_SESSION['search']['categorySelect']==0 && $_SESSION['search']['brandSelect']!=0 && $_SESSION['search']['colorSelect']==0){
                 //料金あり　ブランド選択
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.brand_id = ? and C.price <= ?');
-                $sql->execute([$_POST['brandSelect'],$_POST['max']]);
+                $sql->execute([$_SESSION['search']['brandSelect'],$_SESSION['search']['max']]);
                 $count=$sql->rowCount();
-            }else if($_POST['categorySelect']==0 && $_POST['brandSelect']!=0 && $_POST['colorSelect']!=0){
+            }else if($_SESSION['search']['categorySelect']==0 && $_SESSION['search']['brandSelect']!=0 && $_SESSION['search']['colorSelect']!=0){
                 //料金あり　ブランド、カラー選択
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.brand_id = ? and C.color_id = ? and C.price <= ?');
-                $sql->execute([$_POST['brandSelect'],$_POST['colorSelect'],$_POST['max']]);
+                $sql->execute([$_SESSION['search']['brandSelect'],$_SESSION['search']['colorSelect'],$_SESSION['search']['max']]);
                 $count=$sql->rowCount();
-            }else if($_POST['categorySelect']==0 && $_POST['brandSelect']==0 && $_POST['colorSelect']!=0){
+            }else if($_SESSION['search']['categorySelect']==0 && $_SESSION['search']['brandSelect']==0 && $_SESSION['search']['colorSelect']!=0){
                 //料金あり　カラー選択
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.color_id = ? and C.price <= ?');
-                $sql->execute([$_POST['colorSelect'],$_POST['max']]);
+                $sql->execute([$_SESSION['search']['colorSelect'],$_SESSION['search']['max']]);
                 $count=$sql->rowCount();
-            }else if($_POST['categorySelect']!=0 && $_POST['brandSelect']==0 && $_POST['colorSelect']!=0){
+            }else if($_SESSION['search']['categorySelect']!=0 && $_SESSION['search']['brandSelect']==0 && $_SESSION['search']['colorSelect']!=0){
                 //料金あり　カテゴリー、カラー選択
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ? and C.color_id = ? and C.price <= ?');
-                $sql->execute([$_POST['categorySelect'],$_POST['colorSelect'],$_POST['max']]);
+                $sql->execute([$_SESSION['search']['categorySelect'],$_SESSION['search']['colorSelect'],$_SESSION['search']['max']]);
                 $count=$sql->rowCount();
             }
         }else{
-            if($_POST['categorySelect']==0 && $_POST['brandSelect']==0 && $_POST['colorSelect']==0){
+            if($_SESSION['search']['categorySelect']==0 && $_SESSION['search']['brandSelect']==0 && $_SESSION['search']['colorSelect']==0){
                 //選択なし
                 $sql=$pdo->query('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id');
                 $count=$sql->rowCount();
-            }else if($_POST['categorySelect']!=0 && $_POST['brandSelect']!=0 && $_POST['colorSelect']!=0){
+            }else if($_SESSION['search']['categorySelect']!=0 && $_SESSION['search']['brandSelect']!=0 && $_SESSION['search']['colorSelect']!=0){
                 //全選択
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ? and C.brand_id = ? and C.color_id = ?');
-                $sql->execute([$_POST['categorySelect'],$_POST['brandSelect'],$_POST['colorSelect']]);
+                $sql->execute([$_SESSION['search']['categorySelect'],$_SESSION['search']['brandSelect'],$_SESSION['search']['colorSelect']]);
                 $count=$sql->rowCount();
-            }else if($_POST['categorySelect']!=0 && $_POST['brandSelect']!=0 && $_POST['colorSelect']==0){
+            }else if($_SESSION['search']['categorySelect']!=0 && $_SESSION['search']['brandSelect']!=0 && $_SESSION['search']['colorSelect']==0){
                 //カテゴリー、ブランド選択
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ? and C.brand_id = ?');
-                $sql->execute([$_POST['categorySelect'],$_POST['brandSelect']]);
+                $sql->execute([$_SESSION['search']['categorySelect'],$_SESSION['search']['brandSelect']]);
                 $count=$sql->rowCount();
-            }else if($_POST['categorySelect']!=0 && $_POST['brandSelect']==0 && $_POST['colorSelect']==0){
+            }else if($_SESSION['search']['categorySelect']!=0 && $_SESSION['search']['brandSelect']==0 && $_SESSION['search']['colorSelect']==0){
                 //カテゴリー選択
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ?');
-                $sql->execute([$_POST['categorySelect']]);
+                $sql->execute([$_SESSION['search']['categorySelect']]);
                 $count=$sql->rowCount();
-            }else if($_POST['categorySelect']==0 && $_POST['brandSelect']!=0 && $_POST['colorSelect']==0){
+            }else if($_SESSION['search']['categorySelect']==0 && $_SESSION['search']['brandSelect']!=0 && $_SESSION['search']['colorSelect']==0){
                 //ブランド選択
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.brand_id = ?');
-                $sql->execute([$_POST['brandSelect']]);
+                $sql->execute([$_SESSION['search']['brandSelect']]);
                 $count=$sql->rowCount();
-            }else if($_POST['categorySelect']==0 && $_POST['brandSelect']!=0 && $_POST['colorSelect']!=0){
+            }else if($_SESSION['search']['categorySelect']==0 && $_SESSION['search']['brandSelect']!=0 && $_SESSION['search']['colorSelect']!=0){
                 //ブランド、カラー選択
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.brand_id = ? and C.color_id = ?');
-                $sql->execute([$_POST['brandSelect'],$_POST['colorSelect']]);
+                $sql->execute([$_SESSION['search']['brandSelect'],$_SESSION['search']['colorSelect']]);
                 $count=$sql->rowCount();
-            }else if($_POST['categorySelect']==0 && $_POST['brandSelect']==0 && $_POST['colorSelect']!=0){
+            }else if($_SESSION['search']['categorySelect']==0 && $_SESSION['search']['brandSelect']==0 && $_SESSION['search']['colorSelect']!=0){
                 //カラー選択
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.color_id = ?');
-                $sql->execute([$_POST['colorSelect']]);
+                $sql->execute([$_SESSION['search']['colorSelect']]);
                 $count=$sql->rowCount();
-            }else if($_POST['categorySelect']!=0 && $_POST['brandSelect']==0 && $_POST['colorSelect']!=0){
+            }else if($_SESSION['search']['categorySelect']!=0 && $_SESSION['search']['brandSelect']==0 && $_SESSION['search']['colorSelect']!=0){
                 //カテゴリー、カラー選択
                 $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.category_id = ? and C.color_id = ?');
-                $sql->execute([$_POST['categorySelect'],$_POST['colorSelect']]);
+                $sql->execute([$_SESSION['search']['categorySelect'],$_SESSION['search']['colorSelect']]);
                 $count=$sql->rowCount();
             }
         }
@@ -146,16 +170,18 @@
             $count=$sql->rowCount();
         }else if($_GET['kubun']==3){
             $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.cosme_name like ?');
-            $sql->execute(['%'.$_POST['keyword'].'%']);
+            $sql->execute(['%'.$_SESSION['search']['keyword'].'%']);
             $count=$sql->rowCount();
         }else{
             $sql=$pdo->query('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id');
             $count=$sql->rowCount();
         }
     }
+    if(isset($_GET['page']) && $_GET['page']==20){
+        echo 'カートに追加しました';
+    }
     echo '<table width="100%">';
         echo '<th align="left" style="font-size:30px;">',$count,'件</th>';
-        echo '<form action="detail.php" method="post">';
             $rowcount=1;
             echo '<tr>';
             if($count==1){
@@ -163,25 +189,21 @@
                 foreach($sql as $row){
                     echo '<td align="center">';
                     echo '<table width="80%">';
-                    echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
+                    echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'"></td></tr>';
                     echo '<tr><td colspan="3" align="left" white-space: nowrap>',$row['cosme_name'],'</td></tr>';
                     echo '<tr><td colspan="3" align="left">',$row['brand_name'],'</td></tr>';
                     echo '<tr><td colspan="3">￥',$row['price'],'</td></tr>';
-                    echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
+                    echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">カートに入れる</a></td>';
                     
                     $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                     $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
-                    //$memberCount = $member -> rowCount();
                     if($member->rowCount() == 0){
-                        //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=2`">☆</button></td></tr>';
                         echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2">☆</a></td></tr>';
                     }else{
                         foreach($member as $a){
                             if($a['delete_flag']==0){
-                                //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=0`">★</button></td></tr>';
                                 echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">★</a></td></tr>';
                             }else{
-                                //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=0`">☆</button></td></tr>';
                                 echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                             }
                             break;
@@ -197,26 +219,22 @@
                         //テーブルの左側
                         echo '<td align="left">';
                         echo '<table width="60%">';
-                        echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
+                        echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'"></td></tr>';
                         echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2px"><strong><div class="b">',$row['cosme_name'],'</div></font></strong></td></tr>';
                         echo '<tr><td colspan="3" align="left"><font size="2px">',$row['brand_name'],'</font></td></tr>';
                         echo '<tr><td colspan="3">￥',$row['price'],'</td></tr>';
-                        echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
+                        echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">カートに入れる</a></td>';
                         
                         //お気に入り
                         $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                         $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
-                        //$memberCount = $member -> rowCount();
                         if($member->rowCount() == 0){
-                            //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=2`">☆</button></td></tr>';
                             echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2">☆</a></td></tr>';
                         }else{
                             foreach($member as $a){
                                 if($a['delete_flag']==0){
-                                    //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=0`">★</button></td></tr>';
                                     echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0" >★</a></td></tr>';
                                 }else{
-                                    //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=0`">☆</button></td></tr>';
                                     echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                                 }
                                 break;
@@ -228,25 +246,21 @@
                         //テーブルの右 
                         echo '<td align="left">'; 
                         echo '<table width="60%">';
-                        echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'&group_id=',$row['group_id'],'&brand_id=',$row['brand_id'],'&category_id=',$row['category_id'],'"></td></tr>';
+                        echo '<tr><td colspan="3"align="center"><input type="image" src="',$row['image_path'],'" alt="',$row['cosme_name'],'" style="object-fit: contain; width: 100px; height: 100px;" formaction="detail.php?cosme_id=',$row['cosme_id'],'"></td></tr>';
                         echo '<tr><td colspan="3" align="left" white-space: nowrap><font size="2px"><strong><div class="b">',$row['cosme_name'],'</div></font></strong></td></tr>';
                         echo '<tr><td colspan="3" align="left"><font size="2px">',$row['brand_name'],'</font></td></tr>';
                         echo '<tr><td colspan="3">￥',$row['price'],'</td></tr>';
-                        echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=0">カートに入れる</a></td>';
+                        echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">カートに入れる</a></td>';
 
                         $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                         $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
-                        //$memberCount = $member -> rowCount();
                         if($member->rowCount() == 0){
-                            //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'& page=2`">☆</button></td></tr>';
                             echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2">☆</a></td></tr>';
                         }else{
                             foreach($member as $a){
                                 if($a['delete_flag']==0){
-                                    //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'&page=0`">★</button></td></tr>';
                                     echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">★</a></td></tr>';
                                 }else{
-                                    //echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$row['cosme_id'],'&page=0`">☆</button></td></tr>';
                                     echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
                                 }
                                 break;

@@ -90,6 +90,6 @@
     }
     ?>
     </table>
-    <p><button onclick="location.href='k_home.html'">ホームへ</button></p>
+    <p><button onclick="location.href='k_home.php'">ホームへ</button></p>
 </body>
 </html>
