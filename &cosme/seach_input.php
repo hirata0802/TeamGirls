@@ -33,7 +33,7 @@
         </li>
     </ul>
 </nav>
-    <form action="seach_output.php" method="post">
+    <form action="seach_output.php?page=10" method="post">
         <p align="center"><input type="text" name="keyword" placeholder="キーワードで検索">
         <input type="image" src="./image/seach.jpg" alt="検索" width="25px" formaction="seach_output.php?kubun=3&id=key'"></p>
         <hr width="70%">
@@ -99,9 +99,9 @@
             foreach($sql as $row){
                 $category_id=$row['category_id'];
                 if($count%3!=0){
-                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" style="object-fit: contain; width="100px" height="100px" formaction="seach_output.php?kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" style="object-fit: contain; width="100px" height="100px" formaction="seach_output.php?page=10&kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
                 }else{
-                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" style="object-fit: contain; width="100px" height="100px" formaction="seach_output.php?kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" style="object-fit: contain; width="100px" height="100px" formaction="seach_output.php?page=10&kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
                     echo '</tr><tr>';
                 }
                 $count++;
@@ -118,9 +118,9 @@
             foreach($sql as $row){
                 $brand_id=$row['brand_id'];
                 if($count%3!=0){
-                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"></td>';
+                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?page=10&kubun=2&id=',$brand_id,'"></td>';
                 }else{
-                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?kubun=2&id=',$brand_id,'"></td>';
+                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?page=10&kubun=2&id=',$brand_id,'"></td>';
                     echo '</tr><tr>';
                 }
                 $count++;
