@@ -11,7 +11,6 @@
     $address->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
         $ads=$row['prefecture'].$row['city'].$row['section'].$row['building'];
-        echo '<div id="mannaka">';
         echo '<dl>';
         echo '<dt>お届け先</dt><dd>', $row['address_name'], '　様<br>';
         echo '〒', $row['post_code'], '<br>';
@@ -31,10 +30,8 @@
     }
     echo '<form action="order_check.php" method="post">';
     echo '<input type="hidden" name="total" value="', $row['total'], '">';
-    echo '</div>';
 ?>
 <br>
-<div id="mannaka">
     <dt>お支払い方法</dt>
     <dd>
     <div class="radio-wrap">
@@ -42,11 +39,11 @@
     <input type="radio" name="pay" value="コンビニ払い">コンビニ払い<br>
     <input type="radio" name="pay" value="クレジットカード払い">クレジットカード払い<br>
     </div>
-</div>
     </dd>
     </dl>
     <br>
     <hr class="tensen">
+    <br>
     <button class="ao" type="submit">確認する</button></div>
     <br>
 </form>
