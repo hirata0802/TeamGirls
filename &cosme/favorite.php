@@ -15,7 +15,7 @@ foreach($delete_flag as $row){
         }
         header('Location: ./favorite_show.php');
         exit();
-    }else if($_GET['page'] == 0){//商品詳細画面からの遷移
+    }else if($_GET['page'] == 0){//商品詳細画面、検索結果からの遷移
         if($row["delete_flag"] == 0){//お気に入り削除
             $sql = $pdo -> prepare('update Favorites set delete_flag=1,register_date=current_date where member_code = ? and cosme_id = ?');
             $sql -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
