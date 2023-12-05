@@ -42,9 +42,9 @@
     echo '<input type="hidden" name="total" value="', $row['total'], '">';
 ?>
 <br>
-    echo '<div id="dai">';
+   <div id="dai">
     <dt>お支払い方法</dt>
-    echo '</div>';
+    </div>
     <dd>
     <div id="text1">
     <div class="radio-wrap">
