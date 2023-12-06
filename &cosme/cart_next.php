@@ -1,5 +1,10 @@
+<?php session_start(); ?>
 <?php require 'db_connect.php'; ?>
 <?php
+if(empty($_SESSION['customer'])){
+    header('Location: ./error.php');
+    exit();
+}
     $pdo=new PDO($connect, USER, PASS);
     $data=json_decode(file_get_contents('php://input'), true);
     foreach($data as $js){

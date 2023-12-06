@@ -10,7 +10,7 @@ if(isset($_POST['mail'])){
     $sql -> execute([$_POST['mail']]);
     $password=$_POST['pass'];    
     foreach($sql as $row){
-          if(password_verify($_POST['pass'],$row['member_password'])==true){
+        if(password_verify($_POST['pass'],$row['member_password'])==true){
             $_SESSION['customer'] = [
                 'code' => $row['member_code'],
                 'familyName' => $row['family_name'],
@@ -24,9 +24,10 @@ if(isset($_POST['mail'])){
                 'building'=>$row['building'],
                 'phone' => $row['phone'],
                 'mail' => $row['email'],
-                'pass' => $password];
-             }
-         }
+                'pass' => $password
+            ];
+        }
+    }
 
     if(isset($_SESSION['customer'])){
         header('Location: ./home.php');

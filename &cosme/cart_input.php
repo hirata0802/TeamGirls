@@ -1,6 +1,10 @@
 <?php session_start(); ?>
 <?php require 'db_connect.php'; ?>
 <?php
+if(empty($_SESSION['customer'])){
+    header('Location: ./error.php');
+    exit();
+}
     $pdo = new PDO($connect,USER,PASS);
     $check=$pdo->prepare('select * from Cart where member_code=? and cosme_id=? and delete_flag=0');
     $check->execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
@@ -19,5 +23,4 @@
         header('Location: '.$backURL.'&page=20');
         exit();
     }
-
 ?>

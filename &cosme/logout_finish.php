@@ -1,8 +1,8 @@
 <?php session_start(); ?>
 <?php require 'header.php'; ?>
-    <h3>&cosme</h3>
-    <div id="sen"><hr color="black"></div>
-    <?php
+<h3>&cosme</h3>
+<div id="sen"><hr color="black"></div>
+<?php
 if(isset($_SESSION['customer'])){
     unset($_SESSION['customer']);
     echo '<div id="logtitle3">';
@@ -12,7 +12,6 @@ if(isset($_SESSION['customer'])){
     echo '<form action="login.php" method="post">';
     echo '<button class="ao">ログイン画面へ戻る</button>';
     echo '</form>';//変更
-   
 }else{
     echo '<div id="logtitle3">';
     echo '<h3>すでにログアウトしています。</h3>';
@@ -23,9 +22,4 @@ if(isset($_SESSION['customer'])){
     echo '</form>';
 }
 ?>
-
 <?php require 'footer.php'; ?>
-
-    
-</body>
-</html>

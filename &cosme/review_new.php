@@ -5,19 +5,15 @@ $errmsg="";
 $statusMsg="";
 if($_GET['page'] == 0){
     $pdo=new PDO($connect, USER, PASS);
-    $count = $pdo -> prepare('select * from Reviews where cosme_id = ? and member_code = ?');
-    $count -> execute([ $_GET['Rnew'],$_SESSION['customer']['code']]);
-    $reviewcount=$count->rowCount();
-    if($reviewcount==0){
-        if(isset($_POST['rate']) && !empty($_POST['honbun'])){
-            if(!empty($_FILES['file']['name'])){
+    if(isset($_POST['rate']) && !empty($_POST['honbun'])){
+        if(!empty($_FILES['file']['name'])){
                 $fileType=pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
                 $allowTypes = array('jpg','png','jpeg');
                 if(in_array($fileType,$allowTypes)){
-                $name=$_GET['Rnew'].'_'.$_SESSION['customer']['code'].'.'.$fileType;
-                $targetDir="image/uploads/";
-                $fileName=basename($name);
-                $targetFilePath=$targetDir.$fileName;
+                    $name=$_GET['Rnew'].'_'.$_SESSION['customer']['code'].'.'.$fileType;
+                    $targetDir="image/uploads/";
+                    $fileName=basename($name);
+                    $targetFilePath=$targetDir.$fileName;
                     if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
                         $fileup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
                         $fileup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],$targetFilePath,$_POST['honbun']]);
@@ -42,10 +38,7 @@ if($_GET['page'] == 0){
         }else{
             $errmsg='入力されていない項目があります';
         }
-    }else{
-        $statusMsg='すでに投稿されています。';
     }
-}
 ?>
 
 <!DOCTYPE html>

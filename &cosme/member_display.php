@@ -1,16 +1,17 @@
 <?php session_start(); ?>
-<?php require 'db_connect.php'; ?>
-<?php require 'header.php'; ?>
-<h3>&cosme</h3>
-    <hr color="black">
-    <!--個人情報画面に遷移-->
-    <div class="modoru"><a href="mypage.php">戻る</a></div>
-    <form action="member_change.php" method="post">
-        <div id="logtitle"><h2>個人情報</h2></div>
-        <?php
-         if(isset($_POST['sei'])){
-            $password=$_POST['pass'];
-        $pdo=new PDO($connect,USER,PASS);
+<?php
+if (!empty($_SESSION['customer'])) {
+    require 'header.php';
+    require 'db_connect.php';
+    echo '<h3>&cosme</h3>';
+    echo '<hr color="black">';
+    echo '<div class="modoru"><a href="mypage.php">戻る</a></div>';
+    echo '<form action="member_change.php" method="post">';
+    echo '<div id="logtitle"><h2>個人情報</h2></div>';
+    $pdo=new PDO($connect,USER,PASS);
+    if(isset($_POST['sei'])){
+        $password=$_POST['pass'];
+        //会員情報変更
         $sql=$pdo->prepare('update Members set family_name=?,first_name=?,family_name_kana=?,first_name_kana=?,post_code=?,prefecture=?,city=?,section=?,building=?,phone=?,email=?,member_password=? where member_code=?');
         $sql->execute([
             $_POST['sei'],
@@ -32,35 +33,32 @@
         $sql -> execute([$_POST['mail']]);
         $password=$_POST['pass'];    
         foreach($sql as $row){
-              if(password_verify($_POST['pass'],$row['member_password'])==true){
-                    $_SESSION['customer'] = [
-                        'code' => $row['member_code'],
-                        'familyName' => $row['family_name'],
-                        'firstName' => $row['first_name'],
-                        'familyKana' => $row['family_name_kana'],
-                        'firstKana' => $row['first_name_kana'],
-                        'post' => $row['post_code'],
-                        'prefecture'=>$row['prefecture'],
-                        'city'=>$row['city'],
-                        'section'=>$row['section'],
-                        'building'=>$row['building'],
-                        'phone' => $row['phone'],
-                        'mail' => $row['email'],
-                        'pass' => $password
-                    ];
-                }
-             }
-
+            if(password_verify($_POST['pass'],$row['member_password'])==true){
+                $_SESSION['customer'] = [
+                    'code' => $row['member_code'],
+                    'familyName' => $row['family_name'],
+                    'firstName' => $row['first_name'],
+                    'familyKana' => $row['family_name_kana'],
+                    'firstKana' => $row['first_name_kana'],
+                    'post' => $row['post_code'],
+                    'prefecture'=>$row['prefecture'],
+                    'city'=>$row['city'],
+                    'section'=>$row['section'],
+                    'building'=>$row['building'],
+                    'phone' => $row['phone'],
+                    'mail' => $row['email'],
+                    'pass' => $password
+                ];
+            }
+        }
         echo '<div id="mannaka">';
         echo '<p font color="red">お客様情報を更新しました。<p>';
         echo '</div>';
         echo '<br>';
     }
-        $pdo=new PDO($connect,USER,PASS);
-        $count;
-        $sql=$pdo->prepare(
-            'select * from Members where member_code=?');
-        $sql->execute([$_SESSION['customer']['code']]);
+    $count;
+    $sql=$pdo->prepare('select * from Members where member_code=?');
+    $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
         echo '<input type="hidden" name="sei" value="',$row['family_name'],'">';
         echo '<input type="hidden" name="mei" value="',$row['first_name'],'">';
@@ -76,38 +74,40 @@
         echo '<input type="hidden" name="pass" value="',$_SESSION['customer']['pass'],'">';
         $count = (strlen($_SESSION['customer']['pass']));
         $pass = str_repeat("*", $count);
-
         echo '<table align="center">';
-            echo '<tr><td>';
-                echo '<p align="center"><div id="simei">　　',$row['family_name'],'　',$row['first_name'],'(',$row['family_name_kana'],'　',$row['first_name_kana'],')</div></p>';
-            echo '</td></tr>';
-
-            echo '<tr><td>';
-                echo '<p align="center"><div id="yuubin">　　',$row['post_code'],'</div></p>';
-            echo '</td></tr>';
-
-            echo '<tr><td>';
-                echo '<p align="center">',$row['prefecture'],'　',$row['city'],'　',$row['section'],'<br>';
-                echo $row['building'],'</p>';
-            echo '</tr></td>';
-
-            echo '<tr><td>';
-                echo '<p align="center"><div id="tell">　　',$row['phone'],'</div></p>';
-            echo '</tr></td>';
-
-            echo '<tr><td>';
-                echo '<p align="center"><div id="meru2">　　',$row['email'],'</div></p>';
-            echo '</tr></td>';
-
-
-            echo '<tr><td>';
-                echo '<p align="center"><div id="pas2">　　',$pass,'</div></p>';
-            echo '</tr></td>';
-       echo '</table>';
+        //名前
+        echo '<tr><td>';
+        echo '<p align="center"><div id="simei">　　',$row['family_name'],'　',$row['first_name'],'(',$row['family_name_kana'],'　',$row['first_name_kana'],')</div></p>';
+        echo '</td></tr>';
+        //郵便番号
+        echo '<tr><td>';
+        echo '<p align="center"><div id="yuubin">　　',$row['post_code'],'</div></p>';
+        echo '</td></tr>';
+        //住所
+        echo '<tr><td>';
+        echo '<p align="center">',$row['prefecture'],'　',$row['city'],'　',$row['section'],'<br>';
+        echo $row['building'],'</p>';
+        echo '</tr></td>';
+        //電話番号
+        echo '<tr><td>';
+        echo '<p align="center"><div id="tell">　　',$row['phone'],'</div></p>';
+        echo '</tr></td>';
+        //メールアドレス
+        echo '<tr><td>';
+        echo '<p align="center"><div id="meru2">　　',$row['email'],'</div></p>';
+        echo '</tr></td>';
+        //パスワード
+        echo '<tr><td>';
+        echo '<p align="center"><div id="pas2">　　',$pass,'</div></p>';
+        echo '</tr></td>';
+        echo '</table>';
     }
-
-    ?>
-    <br>
-<p><button class="ao" type="submit" href="member_change.php">会員情報の変更</button></p>
-    </form>
-<?php require 'footer.php'; ?>
+    echo '<br>';
+    echo '<p><button class="ao" type="submit" href="member_change.php">会員情報の変更</button></p>';
+    echo '</form>';
+    require 'footer.php';
+}
+else{
+    echo 'このページを表示できません';
+}
+?>
