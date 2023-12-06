@@ -20,7 +20,7 @@ if($_GET['page'] == 0){
                 $targetFilePath=$targetDir.$fileName;
                     if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
                         $fileup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
-                        $fileup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],$targetFilePath,$_POST['honbun']]);
+                        $result=$fileup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],$targetFilePath,$_POST['honbun']]);
                         header('Location: ./detail.php?cosme_id='.$_GET['Rnew']);
                         exit();
                     }else{

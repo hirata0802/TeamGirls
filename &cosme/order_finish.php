@@ -1,5 +1,6 @@
 <?php session_start(); ?>
 <?php require 'header.php'; ?>
+<?php require 'menu.php'; ?>
 <?php require 'db_connect.php'; ?>
 <?php
     $pdo=new PDO($connect, USER, PASS);
@@ -18,16 +19,10 @@
         $delcart->execute([$row['cart_id']]);
     }
     echo '<h3>&cosme</h3>';
-    echo '<div id="hr2">';
-    echo '<hr color="black">';
-    echo '</div>';
-    echo '<div id="logtitle">';
+    echo '<hr>';
     echo '<h2>購入完了</h2>';
-    echo '</div>';
-    echo '<div id="logtitle3">';
     echo '<p><font color="FF0000">', $_SESSION['customer']['familyName'], '　', $_SESSION['customer']['firstName'], '　様</font></p>';
     echo '<p><font color="FF0000">ご購入ありがとうございます。</font></p>';
-    echo '</div>';
-    echo '<button class="ao" onclick="location.href=`home.php`">ホームへ</button></div>';
+    echo '<div class="ao"><button onclick="location.href=`home.php`">ホームへ</button></div>';
 ?>
 <?php require 'footer.php'; ?>

@@ -9,7 +9,6 @@
     $sql=$pdo->prepare('select * from Addresses where member_code=?');
     $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
-        echo '<div id="text10">';
         $ads=$row['prefecture'].$row['city'].$row['section'].$row['building'];
         echo '<input type="radio" name="address" value="', $row['address_id'], '">';
         echo '<dl>';
@@ -17,12 +16,9 @@
         echo '〒', $row['post_code'], '<br>';
         echo $ads, '<br>';
         echo $row['phone'], '</dd>';
-        echo '</div>';
     }
     ?>
 <input type="hidden" name="order" value="1">
-<div id="mannaka">
-<button class="ao">選択</button>
-</div>
+<button>選択</button>
 </form>
 <?php require 'footer.php'; ?>
