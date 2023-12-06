@@ -5,38 +5,39 @@
     $delete_flag = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id = ?');
     $delete_flag -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
     $count=$delete_flag->rowCount();
-
-if($count>0){
-foreach($delete_flag as $row){
-    if($_GET['page'] == 1){//お気に入り画面からの遷
-        if($row["delete_flag"] == 0){//お気に入り削除
-            $sql = $pdo -> prepare('update Favorites set delete_flag=1,register_date=current_date where member_code = ? and cosme_id = ?');
-            $sql -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
+    
+    $backURL = end($_SESSION['history']);
+    if($count>0){
+        foreach($delete_flag as $row){
+            if($row["delete_flag"] == 0){//お気に入り削除
+                $sql = $pdo -> prepare('update Favorites set delete_flag=1,register_date=current_date where member_code = ? and cosme_id = ?');
+                $sql -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
+            }else if($row['delete_flag'] == 1){//お気に入り追加 過去に追加したことあるコスメ
+                $sql = $pdo -> prepare('update Favorites set delete_flag=0,register_date=current_date where cosme_id = ? and member_code = ?');
+                $sql -> execute([$_GET['cosmeId'], $_SESSION['customer']['code']]); 
+            }
+            if($_GET['page'] == 0){//GETなし
+                if($row["delete_flag"] == 0){
+                    header('Location: '.$backURL.'?page=31');
+                    exit();
+                }else{
+                    header('Location: '.$backURL.'?page=32');
+                    exit();
+                }
+            }else{//商品詳細画面、検索結果からの遷移
+                if($row["delete_flag"] == 0){
+                    header('Location: '.$backURL.'&page=31');
+                    exit();
+                }else{
+                    header('Location: '.$backURL.'&page=32');
+                    exit();
+                }
+            }
         }
-        header('Location: ./favorite_show.php');
-        exit();
-    }else if($_GET['page'] == 0){//商品詳細画面、検索結果からの遷移
-        if($row["delete_flag"] == 0){//お気に入り削除
-            $sql = $pdo -> prepare('update Favorites set delete_flag=1,register_date=current_date where member_code = ? and cosme_id = ?');
-            $sql -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
-            header('Location: ./favorite_show.php');
-            exit();
-        }else if($row['delete_flag'] == 1){//お気に入り追加 過去に追加したことあるコスメ
-            $sql = $pdo -> prepare('update Favorites set delete_flag=0,register_date=current_date where cosme_id = ? and member_code = ?');
-            $sql -> execute([$_GET['cosmeId'], $_SESSION['customer']['code']]); 
-            header('Location: ./favorite_show.php');
-            exit();
-        }
-        header('Location: ./favorite_show.php');
-        exit();
-    }
-}
-}else{ //一度もお気に入りに追加したことないコスメ
-    if($_GET['page'] == 2){
+    }else{ //一度もお気に入りに追加したことないコスメ
         $sql = $pdo -> prepare('insert into Favorites values(?, ?, current_date, 0)');
         $sql -> execute([$_GET['cosmeId'], $_SESSION['customer']['code']]); 
+        header('Location: '.$backURL.'&page=32');
+        exit();
     }
-        header('Location: ./favorite_show.php');
-         exit();
-}
 ?>

@@ -177,8 +177,16 @@
             $count=$sql->rowCount();
         }
     }
-    if(isset($_GET['page']) && $_GET['page']==20){
-        echo 'カートに追加しました';
+    if(isset($_GET['page'])){
+        if($_GET['page']==20){
+            echo 'カートに追加しました';
+        }
+        else if($_GET['page']==31){
+            echo 'お気に入りから削除しました';
+        }
+        else if($_GET['page']==32){
+            echo 'お気に入りに追加しました';
+        }
     }
     echo '<table width="100%">';
         echo '<th align="left" style="font-size:30px;">',$count,'件</th>';
@@ -198,13 +206,13 @@
                     $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                     $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                     if($member->rowCount() == 0){
-                        echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2">☆</a></td></tr>';
+                        echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">☆</a></td></tr>';
                     }else{
                         foreach($member as $a){
                             if($a['delete_flag']==0){
-                                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">★</a></td></tr>';
+                                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">★</a></td></tr>';
                             }else{
-                                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
+                                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">☆</a></td></tr>';
                             }
                             break;
                         }
@@ -229,13 +237,13 @@
                         $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                         $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                         if($member->rowCount() == 0){
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2">☆</a></td></tr>';
+                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">☆</a></td></tr>';
                         }else{
                             foreach($member as $a){
                                 if($a['delete_flag']==0){
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0" >★</a></td></tr>';
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">★</a></td></tr>';
                                 }else{
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">☆</a></td></tr>';
                                 }
                                 break;
                             }
@@ -255,13 +263,13 @@
                         $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                         $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                         if($member->rowCount() == 0){
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=2">☆</a></td></tr>';
+                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">☆</a></td></tr>';
                         }else{
                             foreach($member as $a){
                                 if($a['delete_flag']==0){
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">★</a></td></tr>';
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">★</a></td></tr>';
                                 }else{
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=0">☆</a></td></tr>';
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">☆</a></td></tr>';
                                 }
                                 break;
                             }
