@@ -20,7 +20,8 @@
             foreach($sql2 as $row2){
                 echo '<table width="100%"><tr>';
                 echo '<td><img src="', $row2['image_path'], '" alt="" style="object-fit: contain; width: 100px; height: 100px;"></td>';
-                echo '<td align="left">',$row2['cosme_name'],'<br>';
+                echo '<td align="left">';
+                echo $row2['cosme_name'],'<br>';
                 echo $row2['color_name'],'<br>';
                 echo $row2['quantity'],'個</td></tr>';
                 $reviewCount = $pdo -> prepare('select * from Reviews where cosme_id = ? and member_code = ?');
@@ -28,12 +29,12 @@
                 //レビューを書いたことがないものだけ表示
                 if($reviewcount->rowCount()==0){
                     echo '<tr><td colspan="2"><button class="ao" onclick="location.href=`review_new.php?Rnew=', $row2['cosme_id'], '&page=1`" id="buttonsize">レビューを書く</button></td></tr></table>';
+                    echo '</div>';
                 }
             }
             echo '<div id="mannaka">';
             echo $row['total_price'], '円<br>';
             echo $row['pay_method'];
-            echo '</div>';
             echo '</div>';
         }
         require 'footer.php';

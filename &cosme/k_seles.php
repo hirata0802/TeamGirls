@@ -11,8 +11,10 @@
     <hr>
     <h1>売上管理画面</h1>
     <form action="k_seles.php" method="post">
+        <div id="center">
         <input type="date" name="min">～<input type="date" name="max">
         <button type="submit">検索</button>
+        </div>
     </form>
     <table border="1">
       <tr>
@@ -90,6 +92,11 @@
     }
     ?>
     </table>
+<<<<<<< HEAD
+    <link rel="stylesheet" href="css/k_style.css">
+    <p><button onclick="location.href='k_home.html'"class="ao" style="width: 150px;height: 30px;">ホームへ</button></p>
+=======
     <p><button onclick="location.href='k_home.php'">ホームへ</button></p>
+>>>>>>> 6d87234ec72cc0b4882b2067e9bfffda988e55db
 </body>
 </html>

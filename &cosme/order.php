@@ -10,7 +10,7 @@
     $address=$pdo->prepare('select * from Addresses where member_code=?');
     $address->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
-        $ads=$row['prefecture'].$row['city'].$row['section'].$row['building'];
+        $ads=$row['prefecture'].$row['city'].$row['section']. "<br>" .$row['building'];
         echo '<dl>';
         echo '<div id="dai">';
         echo '<dt>お届け先</dt><dd>';
@@ -20,9 +20,9 @@
         echo '〒', $row['post_code'], '<br>';
         echo $ads, '<br>';
         echo $row['phone'], '</dd>';
-        echo '<dd><div class="white"><button type="submit" onclick="location.href=`order_add.php`">お届け先追加</button></div></dd>';
+        echo '<dd><button class="ao" type="submit" onclick="location.href=`order_add.php`">お届け先追加</button></dd>';
         if($address->rowCount() > 1){
-            echo '<dd><div class="white"><button type="submit" onclick="location.href=`order_change.php`">お届け先変更</button></div></dd>';
+            echo '<dd><button class="ao" type="submit" onclick="location.href=`order_change.php`">お届け先変更</button></dd>';
            
         }
     }
