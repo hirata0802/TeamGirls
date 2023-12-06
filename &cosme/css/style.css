@@ -260,6 +260,18 @@ height: 4;
   text-align: center;
 
 }
+.todoke{
+  display: block;
+  margin: 0 auto;
+  background-color: #89c3fd;
+  border-color: rgb(221, 221, 221);
+  font-family: 'Century Gothic', sans-serif;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+}
 #buttonsize {
   font-size: 10%;
 }

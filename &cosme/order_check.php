@@ -12,7 +12,7 @@
     $sql->execute([$_SESSION['customer']['code'], $_SESSION['customer']['code']]);
 
     foreach($sql as $row){
-        $ads=$row['prefecture'].$row['city'].$row['section'].$row['building'];
+        $ads=$row['prefecture'].$row['city'].$row['section']. "<br>" .$row['building'];
         echo '<dl>';
         echo '<div id="dai">';
         echo '<dt>お届け先：</dt><dd>';
