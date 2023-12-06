@@ -1,48 +1,44 @@
 <?php require 'db_connect.php'; ?>
 <?php
 $pdo = new PDO($connect, USER, PASS);
-$sql = $pdo -> prepare('select * from Cosmetics where cosme_name = ? and color_name = ?');
-$sql->execute([$_POST['cosme_name'],$_POST['color_name']]);
+$sql = $pdo -> prepare('select * from Cosmetics where ?');
+$sql->execute([$_POST['mail']]);
 if(!empty($sql->fetchAll())){
-    header('Location: ./k_cosme_new.php?page=1');
-    exit();
-}else if($_POST['colorSelect']==0||$_POST['brandSelect']==0||$_POST['categorySelect']==0){
-    header('Location: ./k_cosme_new.php?page=2');
+    $_SESSION['members']['mail']=null;
+    header('Location: ./member_new.php');
     exit();
 }
 ?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>商品登録確認</title>
-</head>
-<body>
+<?php require 'header.php'; ?>
 <h3>&cosme</h3>
-<div id="hr2"><hr color="black"></div>
-<div id="logtitle">
-    <h2>商品登録確認</h2>
-</div>
-    <form action="k_cosme_finish.php" method="post" enctype="multipart/form-data">
+<h2>コスメ登録確認</h2>
+
+    <form action="k_cosme_finish.php" method="post" id="next">
         <?php
-        $pdo=new PDO($connect, USER, PASS);
-        echo '<p><input type="text" name="cosme_name" value="',$_POST['cosme_name'],'" readonly></p>';
-        echo '<p><input type="text" name="color_name" value="',$_POST['color_name'],'" readonly>　';
-        $color=[1=>'レッド', 2=>'オレンジ', 3=>'ピンク', 4=>'ベージュ', 5=>'ホワイト', 6=>'ブラウン', 7=>'ブラック', 8=>'シルバー', 9=>'ゴールド', 10=>'その他'];
-        $key=$_POST['colorSelect'];
-        echo '<input type="text" name="colorSelect"  value="',$color[$key],'" readonly></p>';
-        echo '<p><input type="text" name="brandSelect" value="',$_POST['brandSelect'],'" readonly>　';
-        echo '<input type="text" name="categorySelect" value="',$_POST['categorySelect'],'" readonly></p>';
-        echo '<p><textarea name="cosme_detail" placeholder="',$_POST['cosme_detail'],'" rows="5" cols="40" readonly></textarea></p>';
-        echo '<p><input type="number" name="price" value="',$_POST['price'],'"></p>';
-        echo '<input type="hidden" name="file" value="',$fileName,'">';
-        
+        echo '<div id="simei">';
+        echo '<input type="text" style="width: 100px;height: 30px;" name="cosme_name" value="',$_POST['cosme_name'], '" placeholder="',$_POST['cosme_name'],'" readonly>';
+        echo '<input type="text" style="width: 100px;height: 30px;" name="color_name" value="',$_POST['color_name'], '" placeholder="',$_POST['color_name'],'" readonly>';
+        echo '</div>';
+        echo '<div id="mannaka">';
+        echo '<p><input type="text" style="width: 125px;height: 30px;" name="group_id" value="',$_POST['group_id'], '" placeholder="',$_POST['group_id'],'" readonly>';
+        echo '<input type="text" style="width: 125px;height: 30px;" name="color_id" value="',$_POST['color_id'], '" placeholder="',$_POST['color_id'],'" readonly></p>';
+        echo '<div id="toroku0">';
+        echo '<p><input type="text" style="width: 260px;height: 30px;" name="brand_id" value="',$_POST['brand_id'], '" placeholder="',$_POST['brand_id'],'" readonly></p>';
+        echo '</div>';
+        echo '<div id="yuubin">';
+        echo '<input type="text" style="width: 240px;height: 27px;" name="category_id" value="',$_POST['category_id'], '" placeholder="',$_POST['category_id'],'" readonly>';
+        echo '</div>';
+        echo '<div id="toroku1">';
+        echo '<p><input type="text" name="cosme_detail" value="',$_POST['cosme_detail'], '" placeholder="',$_POST['cosme_detail'],'" readonly></p>';
+        echo '<p><input type="text" name="price" value="',$_POST['price'], '" placeholder="',$_POST['price'],'" readonly></p>';
+        echo '<p><input type="text" name="image_path" value="',$_POST['image_path'], '" placeholder="',$_POST['image_path'],'" readonly></p>';
+        echo '<p><input type="text" name="creation_date" value="',$_POST['creation_date'], '" placeholder="',$_POST['creation_date'],'" readonly></p>';
+        echo '</div>';
         ?>
-    <button type="button" onclick="location.href='k_cosme_new.php?page=0'" class="grey">変更</button><br>
-    <button type="submit" class="ao">商品新規登録</button>
-</form>
+    </form>
+    <br>
+    <button onclick="history.back()" class="grey">変更</button></p><br>
+    <button type="submit" form="next" class="ao">コスメ新規登録</button></p>
 </body>
 </html>
 <?php require 'footer.php'; ?>

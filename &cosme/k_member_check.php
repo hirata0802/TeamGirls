@@ -13,8 +13,9 @@ if(!empty($sql->fetchAll())){
     header('Location: ./k_member_new.php');
     exit();
 }
+echo '<link rel="stylesheet" href="css/k_style.css">';
 ?>
-<?php require 'header.php'; ?>
+
 <h3>&cosme</h3>
 <div id="hr2"><hr color="black"></div>
 <div id="logtitle"><h2>登録確認</h2></div>
