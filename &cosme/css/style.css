@@ -260,6 +260,9 @@ height: 4;
   text-align: center;
 
 }
+.todoke{
+  border: 1px solid #000; 
+}
 #buttonsize {
   font-size: 10%;
 }
