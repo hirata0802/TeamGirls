@@ -25,7 +25,9 @@ if(isset($_POST['admin_email'])){
         $msg = '<font color="FF0000">ログイン名またはパスワードが違います</font>';
     }
 }
-require 'header.php';
+
+echo '<link rel="stylesheet" href="css/k_style.css">';
+
 echo '<h3>&cosme</h3>';
 echo '<h2>ログイン</h2>';
 echo '<div id="hr2">';
@@ -36,9 +38,11 @@ echo '</div>';
 
 echo '<form action="k_login.php" method="post">';
 
-echo '<input type="text" name="admin_email" placeholder="メールアドレス"><br>';
-echo '<input type="password" name="admin_password"placeholder="パスワード">';
-
+echo '<div id="center">';
+echo '<input type="text" style="width: 400px;height: 30px;" name="admin_email" placeholder="メールアドレス">';
+echo '<br>';
+echo '<input type="password" style="width: 400px;height: 30px;" name="admin_password"placeholder="パスワード">';
+echo '</div>';
 if(isset($msg)){
     echo '<p><div id="mannaka">', $msg, '</p></div>';
 }
@@ -47,13 +51,9 @@ echo '<br>';
 echo '<p><button class="ao" type="submit" href="k_home.php">ログイン</button></p>';
 echo '</form>';
 echo '<div id="hr1">';
-echo '<hr width="250">';
 echo '</div>';
 echo '<br>';
 echo '<div id="mannaka">';
-echo '<p>アカウントをお持ちでない方はこちら</p>';
-echo '<br>';
-echo '<a href="k_member_new.php">新規登録</a>';
 echo '</div>';
 ?>
 <?php require 'footer.php'; ?>
