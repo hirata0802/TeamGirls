@@ -33,74 +33,76 @@
         $password=$_POST['pass'];    
         foreach($sql as $row){
               if(password_verify($_POST['pass'],$row['member_password'])==true){
-                $_SESSION['customer'] = [
-                    'code' => $row['member_code'],
-                    'familyName' => $row['family_name'],
-                    'firstName' => $row['first_name'],
-                    'familyKana' => $row['family_name_kana'],
-                    'firstKana' => $row['first_name_kana'],
-                    'post' => $row['post_code'],
-                    'prefecture'=>$row['prefecture'],
-                    'city'=>$row['city'],
-                    'section'=>$row['section'],
-                    'building'=>$row['building'],
-                    'phone' => $row['phone'],
-                    'mail' => $row['email'],
-                    'pass' => $password];
-                 }
+                    $_SESSION['customer'] = [
+                        'code' => $row['member_code'],
+                        'familyName' => $row['family_name'],
+                        'firstName' => $row['first_name'],
+                        'familyKana' => $row['family_name_kana'],
+                        'firstKana' => $row['first_name_kana'],
+                        'post' => $row['post_code'],
+                        'prefecture'=>$row['prefecture'],
+                        'city'=>$row['city'],
+                        'section'=>$row['section'],
+                        'building'=>$row['building'],
+                        'phone' => $row['phone'],
+                        'mail' => $row['email'],
+                        'pass' => $password
+                    ];
+                }
              }
+
         echo '<div id="mannaka">';
-        echo 'お客様情報を更新しました。';
+        echo '<p font color="red">お客様情報を更新しました。<p>';
         echo '</div>';
         echo '<br>';
     }
         $pdo=new PDO($connect,USER,PASS);
+        $count;
         $sql=$pdo->prepare(
             'select * from Members where member_code=?');
         $sql->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
+        echo '<input type="hidden" name="sei" value="',$row['family_name'],'">';
+        echo '<input type="hidden" name="mei" value="',$row['first_name'],'">';
+        echo '<input type="hidden" name="seikana" value="',$row['family_name_kana'],'">';
+        echo '<input type="hidden" name="meikana" value="',$row['first_name_kana'],'">';
+        echo '<input type="hidden" name="zipcode" value="',$row['post_code'],'">';
+        echo '<input type="hidden" name="prefecture" value="',$row['prefecture'],'">';
+        echo '<input type="hidden" name="city" value="',$row['city'],'">';
+        echo '<input type="hidden" name="address" value="',$row['section'],'">';
+        echo '<input type="hidden" name="bill" value="',$row['building'],'">';
+        echo '<input type="hidden" name="tel" value="',$row['phone'],'">';
+        echo '<input type="hidden" name="mail" value="',$row['email'],'">';
+        echo '<input type="hidden" name="pass" value="',$_SESSION['customer']['pass'],'">';
+        $count = (strlen($_SESSION['customer']['pass']));
+        $pass = str_repeat("*", $count);
+
         echo '<table align="center">';
-        echo '<div id="simei"></div>';
-            echo '<input type="hidden" name="sei" value="',$row['family_name'],'">';
-            echo '<input type="hidden" name="mei" value="',$row['first_name'],'">';
-            echo '<p align="center">姓名：',$row['family_name'],'　　',$row['first_name'],'</p>';
-       
+            echo '<tr><td>';
+                echo '<p align="center"><div id="simei">　　',$row['family_name'],'　',$row['first_name'],'(',$row['family_name_kana'],'　',$row['first_name_kana'],')</div></p>';
+            echo '</td></tr>';
 
-       echo '<div id="mannaka"></div>';
-            echo '<input type="hidden" name="seikana" value="',$row['family_name_kana'],'">';
-            echo '<input type="hidden" name="meikana" value="',$row['first_name_kana'],'">';
-            echo '<p align="center">セイメイ：',$row['family_name_kana'],'　　',$row['first_name_kana'],'</p>';
-       
+            echo '<tr><td>';
+                echo '<p align="center"><div id="yuubin">　　',$row['post_code'],'</div></p>';
+            echo '</td></tr>';
 
-       echo '<div id="yuubin"></div>';
-            echo '<input type="hidden" name="zipcode" value="',$row['post_code'],'">';
-            echo '<p align="center">郵便番号：',$row['post_code'],'</p>';
+            echo '<tr><td>';
+                echo '<p align="center">',$row['prefecture'],'　',$row['city'],'　',$row['section'],'<br>';
+                echo $row['building'],'</p>';
+            echo '</tr></td>';
 
-       echo '<div id="toroku1"></div>';
-       echo '<input type="hidden" name="prefecture" value="',$row['prefecture'],'">';
-       echo '<input type="hidden" name="city" value="',$row['city'],'">';
-       echo '<input type="hidden" name="address" value="',$row['section'],'">';
-       echo '<input type="hidden" name="bill" value="',$row['building'],'">';
-       echo '<p align="center">都道府県：',$row['prefecture'],'</p>';
-       echo '<p align="center">市町村：',$row['city'],'</p>';
-       echo '<p align="center">番地：',$row['section'],'</p>';
-       echo '<p align="center">ビル・マンション名：',$row['building'],'</p>';
+            echo '<tr><td>';
+                echo '<p align="center"><div id="tell">　　',$row['phone'],'</div></p>';
+            echo '</tr></td>';
+
+            echo '<tr><td>';
+                echo '<p align="center"><div id="meru2">　　',$row['email'],'</div></p>';
+            echo '</tr></td>';
 
 
-       echo '<div id="tell"></div>';
-            echo '<input type="hidden" name="tel" value="',$row['phone'],'">';
-            echo '<p align="center">電話番号：',$row['phone'],'</p>';
-
-       echo '<br>';
-       echo '<div id="meru2"></div>';
-       echo '<input type="hidden" name="mail" value="',$row['email'],'">';
-       echo '<p align="center">メールアドレス：',$row['email'],'</p>';
-
-       echo '<br>';
-       echo '<div id="pas2"></div>';
-       echo '<input type="hidden" name="pass" value="',$_SESSION['customer']['pass'],'">';
-       echo '<p align="center">パスワード：',$_SESSION['customer']['pass'],'</p>';
-
+            echo '<tr><td>';
+                echo '<p align="center"><div id="pas2">　　',$pass,'</div></p>';
+            echo '</tr></td>';
        echo '</table>';
     }
 

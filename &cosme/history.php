@@ -3,7 +3,9 @@
 <?php require 'menu.php'; ?>
 <?php require 'db_connect.php'; ?>
 <button onclick="location.href='mypage.php'">＜戻る</button>
+<div id="logtitle">
 <h2>ご注文履歴</h2>
+</div>
 <?php
     if(isset($_SESSION['customer'])){
         $pdo=new PDO($connect, USER, PASS);
@@ -17,14 +19,19 @@
             $sql2->execute([$row['order_id']]);
             foreach($sql2 as $row2){
                 echo '<table width="100%"><tr>';
-                echo '<td><img src="', $row2['image_path'], '" alt="" width="80px"></td>';
-                echo '<td align="left">',$row2['cosme_name'],'<br>';
+                echo '<td><img src="', $row2['image_path'], '" alt="" style="object-fit: contain; width: 100px; height: 100px;"></td>';
+                echo '<td align="left">';
+                echo '<div id="text10">';
+                echo $row2['cosme_name'],'<br>';
                 echo $row2['color_name'],'<br>';
                 echo $row2['quantity'],'個</td></tr>';
+                echo '</div>';
                 echo '<tr><td colspan="2"><button class="ao" onclick="location.href=`review_new.php?Rnew=', $row2['cosme_id'], '&page=1`" id="buttonsize">レビューを書く</button></td></tr></table>';
             }
+            echo '<div id="mannaka">';
             echo $row['total_price'], '円<br>';
             echo $row['pay_method'];
+            echo '</div>';
             echo '</div>';
         }
     }

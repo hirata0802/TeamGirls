@@ -92,7 +92,11 @@
     }
     ?>
     </table>
+<<<<<<< HEAD
     <link rel="stylesheet" href="css/k_style.css">
     <p><button onclick="location.href='k_home.html'"class="ao" style="width: 150px;height: 30px;">ホームへ</button></p>
+=======
+    <p><button onclick="location.href='k_home.php'">ホームへ</button></p>
+>>>>>>> 6d87234ec72cc0b4882b2067e9bfffda988e55db
 </body>
 </html>

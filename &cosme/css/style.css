@@ -185,7 +185,7 @@ height: 4;
 #yuubin{
   text-align: center;
   position: relative;
-  margin-right: 30px; 
+  margin-right: 10px; 
   
 }
 
@@ -385,6 +385,16 @@ height: 4;
 
 #text3 {
 margin-left: 90px;
+}
+/*レジ*/
+#text1 {
+	margin-left: 120px;
+}
+#text10 {
+	margin-left: 60px;
+}
+#dai{
+  margin-left: 50px;
 }
 /*共通*/
 button{
