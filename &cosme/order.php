@@ -20,9 +20,9 @@
         echo '〒', $row['post_code'], '<br>';
         echo $ads, '<br>';
         echo $row['phone'], '</dd>';
-        echo '<dd><button class="todoke" type="submit" onclick="location.href=`order_add.php`">お届け先追加</button></div></dd>';
+        echo '<dd><button class="ao" type="submit" onclick="location.href=`order_add.php`">お届け先追加</button></div></dd>';
         if($address->rowCount() > 1){
-            echo '<dd><button class="todoke" type="submit" onclick="location.href=`order_change.php`">お届け先変更</button></div></dd>';
+            echo '<dd><button class="ao" type="submit" onclick="location.href=`order_change.php`">お届け先変更</button></div></dd>';
            
         }
     }
