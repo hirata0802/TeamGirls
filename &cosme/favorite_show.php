@@ -44,9 +44,17 @@
         $count = $sql2 -> rowCount();
         
         //表示
-        if(isset($_GET['page']) && $_GET['page']==20){
-            echo 'カートに追加しました';
-        }       
+        if(isset($_GET['page'])){
+            if($_GET['page']==20){
+                echo 'カートに追加しました';
+            }
+            else if($_GET['page']==31){
+                echo 'お気に入りから削除しました';
+            }
+            else if($_GET['page']==32){
+                echo 'お気に入りに追加しました';
+            }
+        }      
         if($count==0){
             echo '<br>';
             echo '<p align="center" style="font-size:20px;">現在お気に入り登録はありません</p>';
@@ -76,9 +84,8 @@
                     //価格
                         echo '<tr><td colspan="3">￥',$row['price'],'</td></tr>';
                     //カート、★
-                        echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$cosmeId,'&page=0">カートに入れる</a></td>';
-                        //echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=1">★</a></td></tr>';
-                        echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=1`">★</button></td></tr>';
+                        echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$cosmeId,'&page=',count($_GET),'">カートに入れる</a></td>';
+                        echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`">★</button></td></tr>';
                         echo '</table>';
                         echo '</td><td></td>';
                         echo '</tr>';
@@ -93,9 +100,8 @@
                             echo '<tr><td colspan="3" align="left"><font size="2px"><div class="b"><strong>',$row['cosme_name'],'</strong></div></font></td></tr>';
                             echo '<tr><td colspan="3" align="left"><font size="2px">',$row['brand_name'],'</font></td></tr>';
                             echo '<tr><td colspan="3"><font size="2px">￥',$row['price'],'</font></td></tr>';
-                            echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$cosmeId,'&page=0">カートに入れる</a></td>';
-                            //echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=1">★</a></td>';
-                            echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=1`">★</button></td>';
+                            echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$cosmeId,'&page=',count($_GET),'">カートに入れる</a></td>';
+                            echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`">★</button></td>';
                             echo '</tr>';
                         echo '</table>';
                     echo '</td>';
@@ -106,9 +112,8 @@
                             echo '<tr><td colspan="3" align="left"><font size="2px"><div class="b"><strong>',$row['cosme_name'],'</div></font></strong></td></tr>';
                             echo '<tr><td colspan="3" align="left"><font size="2px">',$row['brand_name'],'</font></td></tr>';
                             echo '<tr><td colspan="3"><font size="2px">￥',$row['price'],'</font></td></tr>';
-                            echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$cosmeId,'&page=0">カートに入れる</a></td>';
-                            //echo '<td align="right"><a href="favorite.php?cosmeId=',$cosmeId,'&page=1">★</a></td>';
-                            echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'& page=1`">★</button></td>';
+                            echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$cosmeId,'&page=',count($_GET),'">カートに入れる</a></td>';
+                            echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`">★</button></td>';
                             
                             echo '</tr>';
                         echo '</table>';
