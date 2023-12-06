@@ -10,7 +10,7 @@
     $address=$pdo->prepare('select * from Addresses where member_code=?');
     $address->execute([$_SESSION['customer']['code']]);
     foreach($sql as $row){
-        $ads=$row['prefecture'].$row['city'].$row['section']. "\n" .$row['building'];
+        $ads=$row['prefecture'].$row['city'].$row['section']. "<br>" .$row['building'];
         echo '<dl>';
         echo '<div id="dai">';
         echo '<dt>お届け先</dt><dd>';
