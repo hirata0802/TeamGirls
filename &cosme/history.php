@@ -20,9 +20,12 @@
             foreach($sql2 as $row2){
                 echo '<table width="100%"><tr>';
                 echo '<td><img src="', $row2['image_path'], '" alt="" style="object-fit: contain; width: 100px; height: 100px;"></td>';
-                echo '<td align="left">',$row2['cosme_name'],'<br>';
+                echo '<td align="left">';
+                echo '<div id="text10">';
+                echo $row2['cosme_name'],'<br>';
                 echo $row2['color_name'],'<br>';
                 echo $row2['quantity'],'個</td></tr>';
+                echo '</div>';
                 echo '<tr><td colspan="2"><button class="ao" onclick="location.href=`review_new.php?Rnew=', $row2['cosme_id'], '&page=1`" id="buttonsize">レビューを書く</button></td></tr></table>';
             }
             echo '<div id="mannaka">';
