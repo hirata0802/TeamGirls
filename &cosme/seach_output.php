@@ -15,37 +15,13 @@
     <title>&cosme</title>
 </head>
 <body>
-    <?php require 'db_connect.php'; ?>
-<nav>
-    <ul>
-        <li><h1>&cosme</h1></li>
-        <li>
-            <img src="css/image/home.svg" onclick="location.href='home.php'" width="40" height="40" alt="home">
-            <div><font size="1">&nbsp;ホーム　　</font></div>
-        </li>
-        <li>
-            <img src="css/image/search_black.svg" onclick="location.href='seach_input.php'" width="40" height="40" alt="search">
-            <div><font size="1">　検索</font></div>
-        </li>
-        <li>  
-            <img src="css/image/favorite.svg" onclick="location.href='favorite_show.php'" width="40" height="40" alt="favorite">
-            <div><font size="1">お気に入り</font></div>
-        </li>
-        <li>
-            <img src="css/image/cart.svg" onclick="location.href='cart_show.php'" width="40" height="40" alt="cart">
-            <div><font size="1">&nbsp;カート</font></div>
-        </li>
-        <li>
-            <img src="css/image/mypage.svg" onclick="location.href='mypage.php'" width="40" height="40" alt="mypage">
-            <div><font size="1">マイページ</font></div>
-        </li>
-    </ul>
-</nav>    <button onclick="location.href='seach_input.php'">＜戻る</button>
+<?php require 'db_connect.php'; ?>
+<?php require 'menu_search.php'; ?>
+<button onclick="location.href='seach_input.php'">＜戻る</button>
 <hr>
 <?php
     $pdo=new PDO($connect, USER, PASS);
     $count;
-    
     //検索内容をセッションに追加
     if(isset($_GET['page']) && $_GET['page']==10){
         unset($_SESSION['search']);
@@ -68,7 +44,7 @@
             ];
         }
     }
-
+    
     //複数選択
     echo '<form action="seach_output.php" method="post">';
     if(isset($_SESSION['search']['multiseach'])){
@@ -169,6 +145,7 @@
             $sql->execute([$_GET['id']]);
             $count=$sql->rowCount();
         }else if($_GET['kubun']==3){
+            //キーワード
             $sql=$pdo->prepare('select * from Cosmetics C inner join Brands B on C.brand_id = B.brand_id where C.cosme_name like ?');
             $sql->execute(['%'.$_SESSION['search']['keyword'].'%']);
             $count=$sql->rowCount();

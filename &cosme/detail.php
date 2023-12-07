@@ -28,6 +28,8 @@ if(empty($_SESSION['customer'])){
             echo 'お気に入りに追加しました';
         }
     }
+    echo '<br><br>';
+    echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</button>';
     $pdo = new PDO($connect, USER, PASS);
     $cosme1 = $pdo -> prepare('select * from Cosmetics where cosme_id=?');
     $cosme1 -> execute([$_GET['cosme_id']]);

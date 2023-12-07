@@ -1,9 +1,3 @@
-<?php
-if(empty($_SESSION['customer'])){
-    header('Location: ./error.php');
-    exit();
-  }
-?>
 <nav>
     <ul>
         <li><h1>&cosme</h1></li>
