@@ -27,7 +27,7 @@ if(!empty($_SESSION['customer'])){
         echo '</table><br><br>';
         
         //新作情報
-        $sql2 = $pdo -> query('select min(cosme_id), image_path, cosme_name from Cosmetics where creation_date >= date_add(now(), interval - 100 day) group by group_id'); 
+        $sql2 = $pdo -> query('select min(cosme_id), image_path, cosme_name from Cosmetics where creation_date >= date_add(now(), interval - 1 day) group by group_id'); 
         
         $count = 1;
         echo '⏰新作情報';
