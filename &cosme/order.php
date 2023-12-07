@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <?php require 'header.php'; ?>
-<?php require 'menu.php'; ?>
+<?php require 'menu_cart.php'; ?>
 <?php require 'db_connect.php'; ?>
 <?php
     //お届け先
