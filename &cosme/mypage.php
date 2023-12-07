@@ -1,10 +1,14 @@
 <?php session_start(); ?>
 <?php 
-if(empty($_SESSION['customer'])){
-    header('Location: ./error.php');
-    exit();
-}
-    require 'db_connect.php';
+    if(empty($_SESSION['customer'])){
+        header('Location: ./error.php');
+        exit();
+    }
+?>
+<?php require 'db_connect.php'; ?>
+<?php
+    $pdo=new PDO($connect, USER, PASS);
+    $message='';
     if(isset($_POST['nickname']) && isset($_POST['age']) && isset($_POST['sei']) && isset($_POST['skin']) && isset($_POST['p_color'])){
         $age=$sei=$skin=$p_color=NULL;
         if(!empty($_POST['age'])){
@@ -19,7 +23,6 @@ if(empty($_SESSION['customer'])){
         if(!empty($_POST['p_color'])){
             $p_color = $_POST['p_color'];
         }
-        $pdo=new PDO($connect, USER, PASS);
         $sql=$pdo->prepare('update Mypage set member_nickname=?, member_age=?, member_gender=?, member_skin=?, member_color=? where member_code=?');
         $sql->execute([
             $_POST['nickname'],
@@ -29,15 +32,16 @@ if(empty($_SESSION['customer'])){
             $p_color,
             $_SESSION['customer']['code']
         ]);
+        $message='マイページを更新しました。';
     }
 
     require 'header.php';
     require 'menu_mypage.php';
     echo '<form action="mypage.php" method="post">';
-    $pdo=new PDO($connect, USER, PASS);
     $sql=$pdo->prepare('select * from Mypage where member_code=?');
     $sql->execute([$_SESSION['customer']['code']]);
     echo '<div id="mannaka">';
+    echo '<p font color="red">', $message, '</p>';
     foreach($sql as $row){
         echo '<p>ニックネーム</p>';
         echo '<p><input type="text" class="nic" style="width: 230px;height: 40px;" name="nickname" value="', $row['member_nickname'], '"></p>';
@@ -93,12 +97,12 @@ if(empty($_SESSION['customer'])){
         echo '</select>';
         echo '</label>';
     }
-echo '<p><input type="submit" value="保存"></p>';
-echo '<br>';
-echo '<p><a href="history.php">購入履歴</a></p>';
-echo '<p><a href="member_display.php">個人情報</a></p>';
-echo '<p><a href="logout.php">ログアウト</a></p>';
-echo '</div>';
-echo '</form>';
-require 'footer.php';
 ?>
+<p><input type="submit" value="保存"></p>
+<br>
+<p><a href="history.php">購入履歴</a></p>
+<p><a href="member_display.php">個人情報</a></p>
+<p><a href="logout.php">ログアウト</a></p>
+</div>
+</form>
+<?php require 'footer.php'; ?>

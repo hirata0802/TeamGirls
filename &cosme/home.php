@@ -1,16 +1,20 @@
 <?php session_start(); ?>
-<?php 
-if(!empty($_SESSION['customer'])){
-    require 'header.php';
-    require 'menu_home.php';
-    require 'db_connect.php';
-    
+<?php
+if(empty($_SESSION['customer'])){
+    header('Location: ./error.php');
+    exit();
+}
+?>
+<?php require 'header.php'; ?>
+<?php require 'menu_home.php'; ?>
+<?php require 'db_connect.php'; ?>
+<?php
     echo '<table>';
         echo '👑今週のランキング';
         $pdo = new PDO($connect, USER, PASS);
-        $sql = $pdo -> query('select * from Cosmetics order by cosme_id desc limit 3');
+        $sql = $pdo -> query('select * from OrderDetails as O join Cosmetics as C on O.cosme_id = C.cosme_id order by quantity desc limit 3');
+        //$sql = $pdo -> query('select * from OrderDetails as O join Cosmetics as C on O.cosme_id = C.cosme_id group by O.cosme_id order by quantity desc limit 3');
         $count = 1;
-        //select * from OrderDetails as O join Cosmetics as C on O.cosme_id = C.cosme_id group by cosme_id order by quantity desc limit 3
         echo '<br>';
         echo '<br>';
         //順位
@@ -27,7 +31,7 @@ if(!empty($_SESSION['customer'])){
         echo '</table><br><br>';
         
         //新作情報
-        $sql2 = $pdo -> query('select min(cosme_id), image_path, cosme_name from Cosmetics where creation_date >= date_add(now(), interval - 10 day) group by group_id'); 
+        $sql2 = $pdo -> query('select min(cosme_id), image_path, cosme_name from Cosmetics where creation_date >= date_add(now(), interval - 1 day) group by group_id'); 
         
         $count = 1;
         echo '⏰新作情報';
@@ -45,10 +49,5 @@ if(!empty($_SESSION['customer'])){
         }
         echo '</table>';
     echo '</table>';
-    require 'footer.php';
-    
-}
-else{
-    echo 'このページを表示できません';
-}
 ?>
+<?php require 'footer.php'; ?>
