@@ -52,7 +52,7 @@ if (!empty($_SESSION['customer'])) {
             }
         }
         echo '<div id="mannaka">';
-        echo '<p font color="red">お客様情報を更新しました。<p>';
+        echo '<p style="color:red">お客様情報を更新しました。<p>';
         echo '</div>';
         echo '<br>';
     }
