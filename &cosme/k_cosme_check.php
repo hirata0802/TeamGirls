@@ -56,23 +56,29 @@ if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
         $brand=$pdo->prepare('select brand_name from Brands where brand_id = ?');
         $brand->execute([$_POST['brandSelect']]);
         $brand_name=$brand->fetchColumn();
+        $category=$pdo->prepare('select category_name from Categories where category_id = ?');
+        $category->execute([$_POST['categorySelect']]);
+        $category_name=$category->fetchColumn();
         echo '<p><input type="text" name="cosme_name" value="',$_POST['cosme_name'],'" readonly></p>';
         echo '<p><input type="text" name="color_name" value="',$_POST['color_name'],'" readonly>　';
         $color=[1=>'レッド', 2=>'オレンジ', 3=>'ピンク', 4=>'ベージュ', 5=>'ホワイト', 6=>'ブラウン', 7=>'ブラック', 8=>'シルバー', 9=>'ゴールド', 10=>'その他'];
         $key=$_POST['colorSelect'];
         echo '<input type="text" value="',$color[$key],'" readonly></p>';
         echo '<p><input type="text" value="',$brand_name,'" readonly>　';
-        echo '<input type="text" value="',$_POST['categorySelect'],'" readonly></p>';
+        echo '<input type="text" value="',$category_name,'" readonly></p>';
         echo '<p><textarea name="cosme_detail" placeholder="',$_POST['cosme_detail'],'" rows="5" cols="40" readonly></textarea></p>';
         echo '<p><input type="number" name="price" value="',$_POST['price'],'"></p>';
         echo '<input type="text" name="file" value="',$targetFilePath,'">';
         echo '<input type="hidden" name="colorSelect" value="',$key,'">';
         echo '<input type="hidden" name="group_id" value="',$group_id,'">';
         echo '<input type="hidden" name="brandSelect" value="',$_POST['brandSelect'],'">';
-        echo '<input type="hidden" name="categorySelect" value="',$group_id,'">';
+        echo '<input type="hidden" name="categorySelect" value="',$_POST['categorySelect'],'">';
+        echo '<button type="submit" class="ao">商品新規登録</button><br>';
+        echo '</form>';
+        echo '<form action="k_cosme_new.php?page=0" method="post">';
+        echo '<input type="hidden" name="file" value="',$targetFilePath,'">'
         ?>
-    <button type="button" onclick="location.href='k_cosme_new.php?page=0'" class="grey">変更</button><br>
-    <button type="submit" class="ao">商品新規登録</button>
+        <button type="submit" class="grey" name="back">変更</button>
 </form>
 </body>
 </html>
