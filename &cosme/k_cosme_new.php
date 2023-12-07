@@ -33,7 +33,7 @@
     echo '<p><select name="brandSelect">';
         echo '<option value="0" selected hidden>ブランド名</option>';
         foreach($sql as $row){
-            echo '<option value="',$row['brand_name'],'">',$row['brand_name'],'</option>';
+            echo '<option value="',$row['brand_id'],'">',$row['brand_name'],'</option>';
         }
     echo '</select>　';
 
@@ -41,7 +41,7 @@
     echo '<select name="categorySelect">';
         echo '<option value="0" selected hidden>カテゴリー</option>';
         foreach($sql as $row){
-            echo '<option value="',$row['category_name'],'">',$row['category_name'],'</option>';
+            echo '<option value="',$row['category_id'],'">',$row['category_name'],'</option>';
         }
     echo '</select></p>';
     echo '<p><textarea name="cosme_detail" placeholder="商品説明" rows="5" cols="40" maxlength="200" title="200文字以内で入力してください" required></textarea></p>';
@@ -51,6 +51,8 @@
         echo '<br><font color="FF0000">すでに登録された商品です</font>';
     }else if($_GET['page']==2){
         echo '<br><font color="FF0000">カラーID,ブランド名,カテゴリーを選択してください</font>';
+    }else if($_GET['page']==3){
+        echo '<br><font color="FF0000">ファイルのアップロードに失敗しました。</font>';
     }
     ?>
     <br><button type="submit" class="ao">確認</button><br>
