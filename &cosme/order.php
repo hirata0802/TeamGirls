@@ -20,14 +20,14 @@
         echo '〒', $row['post_code'], '<br>';
         echo $ads, '<br>';
         echo $row['phone'], '</dd>';
+        echo '</div>';
         echo '<button class="ao" type="submit" onclick="location.href=`order_add.php`">お届け先追加</button>';
-        echo '<br>';
         if($address->rowCount() > 1){
             echo '<button class="ao" type="submit" onclick="location.href=`order_change.php`">お届け先変更</button>';
            
         }
     }
-    echo '</div>';
+
     echo '<br>';
     //商品合計
     $total=$pdo->prepare('select sum(C.quantity * CO.price) as total from Cart as C inner join Cosmetics as CO on C.cosme_id=CO.cosme_id inner join Brands as B on CO.brand_id=B.brand_id where member_code=? and delete_flag=0');

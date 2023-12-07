@@ -14,6 +14,7 @@ nav {
 
 ul {
   display: flex;
+  padding: 0;
   
 }
 li {
@@ -468,7 +469,4 @@ button{
   }
   table {
     margin: 0 auto; /* 左右のマージンを自動で調整して中央に配置 */
-}
-ul {
-  padding: 0; /* ul要素の内側の余白を0に設定 */
 }
