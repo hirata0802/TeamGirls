@@ -8,7 +8,8 @@ if(!empty($_SESSION['customer'])){
     echo '<table>';
         echo '👑今週のランキング';
         $pdo = new PDO($connect, USER, PASS);
-        $sql = $pdo -> query('select * from OrderDetails as O join Cosmetics as C on O.cosme_id = C.cosme_id group by O.cosme_id order by quantity desc limit 3');
+        $sql = $pdo -> query('select * from OrderDetails as O join Cosmetics as C on O.cosme_id = C.cosme_id order by quantity desc limit 3');
+        //$sql = $pdo -> query('select * from OrderDetails as O join Cosmetics as C on O.cosme_id = C.cosme_id group by O.cosme_id order by quantity desc limit 3');
         $count = 1;
         echo '<br>';
         echo '<br>';
