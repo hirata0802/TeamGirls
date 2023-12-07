@@ -41,7 +41,7 @@
             <p>商品名：{{ row.cosme_name }}</p>
             <p>価格：{{ row.price }}円</p>
             <p>カラー：{{ row.color_name }}</p>
-            <button type="submit" @click="decrement(row.cart_id)" v-if="row.quantity>1">－</button>
+            <button type="submit" @click="decrement(row.cart_id)">－</button>
             {{ row.quantity }}
             <button type="submit" @click="increment(row.cart_id)">＋</button>
             <button class="ao2" type="submit" @click="cartDelete(row.cart_id)">削除</button>

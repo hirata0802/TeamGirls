@@ -38,7 +38,7 @@
         echo '<input type="hidden" name="zipcode" value="',$_POST['zipcode'],'">';
         echo '<input type="hidden" name="prefecture" value="',$_POST['prefecture'],'">';
         echo '<input type="hidden" name="city" value="',$_POST['city'],'">';
-        echo '<input type="hidden" name="address" value="',$r_POST['address'],'">';
+        echo '<input type="hidden" name="address" value="',$_POST['address'],'">';
         echo '<input type="hidden" name="bill" value="',$_POST['bill'],'">';
         echo '<input type="hidden" name="tel" value="',$_POST['tel'],'">';
         echo '<input type="hidden" name="mail" value="',$_POST['mail'],'">';
