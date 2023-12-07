@@ -40,11 +40,11 @@
     echo '<p><input type="text" style="width: 260px;height: 30px;" name="nickname" placeholder="ニックネーム" value="',$nickname,'" ></p>';
     echo '</div>';
     echo '<div id="yuubin">';
-    echo '<input type="text" style="width: 240px;height: 27px;" name="zipcode" id="zipcode" placeholder="郵便番号" value="',$zipcode,'" required>';
+    echo '<input type="text" style="width: 240px;height: 27px;" name="zipcode" id="zipcode" placeholder="郵便番号(ハイフンなし)" value="',$zipcode,'" required>';
     echo '</div>';
     //↓検索ボタンで住所自動入力
     echo ' <div id="kennsaku">';
-    echo '<button type="button" class="ao" id="btn">検索</button></p>';
+    echo '<button type="button" class="ao" id="btn">住所検索</button></p>';
     echo '</div>';
     echo '<div id="toroku1">';
     echo '<p><input type="text" name="prefecture" id="prefecture" placeholder="都道府県" value="',$prefecture,'" required></p>';
@@ -53,7 +53,7 @@
     echo '<p><input type="text" name="bill" placeholder="マンション・ビル名" value="',$bill,'" ></p>';
     echo '</div>';
     echo '<div id="tell">';
-    echo '<input type="tel" style="width: 240px;height: 27px;" name="tel" maxlength="11" pattern="^[0-9]+$" placeholder="電話番号" value="',$tel,'" required>';
+    echo '<input type="tel" style="width: 240px;height: 27px;" name="tel" maxlength="11" pattern="^[0-9]+$" placeholder="電話番号(ハイフンなし)" value="',$tel,'" required>';
     echo '</div>';
     echo '<br>';
     echo '<div id="meru2">';
