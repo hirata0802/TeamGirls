@@ -25,7 +25,10 @@ div {
   text-decoration: none;
   color: rgb(0, 0, 0);
 }
-
+.menu{
+  text-decoration: none; /* 下線を消す */
+  color: black; /* 文字を黒くする */
+}
 /*ホーム画面*/
 #weekranking{
   margin-left: 120px;

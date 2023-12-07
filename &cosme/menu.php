@@ -12,7 +12,7 @@
         <li><h1>&cosme　</h1></li>
         <li>
             <img src="css/image/home.svg" onclick="location.href='home.php'" width="40" height="40" alt="home">
-            <div><a href="home.php"><font size="1">&nbsp;ホーム　　</font></a></div>
+            <div><a class="menu" href="home.php"><font size="1">&nbsp;ホーム　　</font></a></div>
         </li>
         <li>
             <img src="css/image/search.svg" onclick="location.href='seach_input.php'" width="40" height="40" alt="search">
