@@ -470,3 +470,7 @@ button{
   table {
     margin: 0 auto; /* 左右のマージンを自動で調整して中央に配置 */
 }
+a {
+  text-decoration: none; /* 下線を消す */
+  color: black; /* 文字を黒くする */
+}
