@@ -24,11 +24,11 @@
         </li>
         <li>
             <img src="css/image/cart.svg" onclick="location.href='cart_show.php'" width="40" height="40" alt="cart">
-            <div><<a class="menu" href="cart_show.php"><font size="1">&nbsp;カート</font></a></div>
+            <div><a class="menu" href="cart_show.php"><font size="1">&nbsp;カート</font></a></div>
         </li>
         <li>
             <img src="css/image/mypage.svg" onclick="location.href='mypage.php'" width="40" height="40" alt="mypage">
-            <div><<a class="menu" href="mypage.php"><font size="1">マイページ</font></a></div>
+            <div><a class="menu" href="mypage.php"><font size="1">マイページ</font></a></div>
         </li>
     </ul>
 </nav>
