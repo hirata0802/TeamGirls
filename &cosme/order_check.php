@@ -6,7 +6,7 @@ if(empty($_SESSION['customer'])){
 }
 ?>
 <?php require 'header.php'; ?>
-<?php require 'menu.php'; ?>
+<?php require 'menu_cart.php'; ?>
 <?php require 'db_connect.php'; ?>
 <?php
     echo '<div id="logtitle">';
