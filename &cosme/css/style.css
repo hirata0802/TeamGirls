@@ -280,7 +280,7 @@ height: 4;
 }
 #ka-to{
   display: flex;
-justify-content: center;
+  right: -36px;
 }
 
 .todoke{
