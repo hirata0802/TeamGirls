@@ -6,29 +6,36 @@ if(empty($_SESSION['customer'])){
     exit();
 }
     $pdo = new PDO($connect, USER, PASS);
-    $nextId -> execute([$_GET['group']]);
-    $nextId = $pdo -> prepare('select cosme_id from Cosmetics where group_id=?');
-    foreach($nextId as $row){
+    $groupCosme = $pdo -> prepare('select cosme_id from Cosmetics where group_id=?');
+    $groupCosme -> execute([$_GET['group']]);
+    $cosme = [];
+    $id;
+    foreach($groupCosme as $i => $row){
         $cosme[] = $row;
+        if($cosme[$i][0] == $_GET['cosmeId']){
+            $id = $i;
+        }
     }
     $max=count($cosme)-1;
     if($_GET['next']==0){   //前のcosme_id取得
-        if($cosme[0] == $_GET['cosmeId']){
-            header('Location: ./detail.php?cosme_id='.$cosme[$max]);
+        if($cosme[0][0] == $_GET['cosmeId']){
+            header('Location: ./detail.php?cosme_id='.$cosme[$max][0].'&page='.count($_GET));
             exit();
         }
         else{
-            header('Location: ./detail.php?cosme_id='.$_GET['cosmeId']-1);
+            $id--;
+            header('Location: ./detail.php?cosme_id='.$cosme[$id][0].'&page='.count($_GET));
             exit();
         }
     }
     else if($_GET['next']==1){   //次のcosme_id取得
-        if($cosme[$max] == $_GET['cosmeId']){
-            header('Location: ./detail.php?cosme_id='.$cosme[0]);
+        if($cosme[$max][0] == $_GET['cosmeId']){
+            header('Location: ./detail.php?cosme_id='.$cosme[0][0].'&page='.count($_GET));
             exit();
         }
         else{
-            header('Location: ./detail.php?cosme_id='.$_GET['cosmeId']+1);
+            $id++;
+            header('Location: ./detail.php?cosme_id='.$cosme[$id][0].'&page='.count($_GET));
             exit();
         }
     }

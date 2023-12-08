@@ -41,13 +41,14 @@ if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/k_style.css">
     <title>商品登録確認</title>
 </head>
 <body>
 <h3>&cosme</h3>
+<div id="center"><h2>商品登録確認</h2></div>
 <div id="hr2"><hr color="black"></div>
-<div id="logtitle">
+<div id="center">
     <h2>商品登録確認</h2>
 </div>
     <form action="k_cosme_finish.php" method="post" enctype="multipart/form-data">
@@ -67,7 +68,9 @@ if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
         echo '<p><input type="text" value="',$brand_name,'" readonly>　';
         echo '<input type="text" value="',$category_name,'" readonly></p>';
         echo '<p><textarea name="cosme_detail" placeholder="',$_POST['cosme_detail'],'" rows="5" cols="40" readonly></textarea></p>';
-        echo '<p><input type="number" name="price" value="',$_POST['price'],'"></p>';
+        echo '<p>';
+        echo '<input type="number" name="price" value="',$_POST['price'],'">';
+        echo '</p>';
         echo '<input type="text" name="file" value="',$targetFilePath,'">';
         echo '<input type="hidden" name="colorSelect" value="',$key,'">';
         echo '<input type="hidden" name="group_id" value="',$group_id,'">';

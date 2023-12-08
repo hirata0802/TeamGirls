@@ -20,11 +20,12 @@ if(isset($_POST['back'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/k_style.css">
     <title>商品登録</title>
 </head>
 <body>
 <h3>&cosme</h3>
+<div id="center"><h2>商品登録</h2></div>
 <div id="hr2"><hr color="black"></div>
     
 
@@ -32,11 +33,15 @@ if(isset($_POST['back'])){
     <?php
 
     $pdo = new PDO($connect, USER, PASS);
-    echo '<div id="logtitle">';
+    echo '<div id="center">';
     echo '<h2>商品登録</h2>';
     echo '</div>';
-    echo '<p><input type="text" name="cosme_name" placeholder="商品名" required></p>';
-    echo '<p><input type="text" name="color_name" placeholder="カラー名" required>　';
+    echo '<div id="center">';
+    echo '<p><input type="text" class="ao" style="width: 300px;height: 30px;" name="cosme_name" placeholder="商品名" required></p>';
+    echo '</div>';
+    echo '<br>';
+    echo '<div id="center2">';
+    echo '<p><input type="text" name="color_name" placeholder="カラー名" required>';
     $color=[1=>'レッド', 2=>'オレンジ', 3=>'ピンク', 4=>'ベージュ', 5=>'ホワイト', 6=>'ブラウン', 7=>'ブラック', 8=>'シルバー', 9=>'ゴールド', 10=>'その他'];
     echo '<select name="colorSelect">';
         echo '<option value="0" selected hidden>カラーID</option>';
@@ -44,14 +49,16 @@ if(isset($_POST['back'])){
             echo '<option value="',$key,'">',$value,'</option>';
         }
     echo '</select></p>';
+    echo '</div>';
 
+    echo '<div id="center">';
     $sql=$pdo->query('select * from Brands');
     echo '<p><select name="brandSelect">';
         echo '<option value="0" selected hidden>ブランド名</option>';
         foreach($sql as $row){
             echo '<option value="',$row['brand_id'],'">',$row['brand_name'],'</option>';
         }
-    echo '</select>　';
+    echo '</select>';
 
     $sql=$pdo->query('select * from Categories');
     echo '<select name="categorySelect">';
@@ -61,9 +68,10 @@ if(isset($_POST['back'])){
         }
     echo '</select></p>';
     echo '<p><textarea name="cosme_detail" placeholder="商品説明" rows="5" cols="40" maxlength="200" title="200文字以内で入力してください" required></textarea></p>';
-    echo '<p><input type="number" name="price" placeholder="価格" min=0 required></p>';
+    echo '<p><input type="number" class="ao" style="width: 300px;height: 30px;" name="cosme_name" placeholder="価格" min=0 required></p>';
     echo '<input type="file" name="file" accept=".jpg" required>';
     echo '<br><font color="FF0000">',$errormsg,'</font>';
+    echo '</div>';
     ?>
     <br><button type="submit" class="ao">確認</button><br>
     <button onclick="location.href='k_home.php'" class="grey">戻る</button>

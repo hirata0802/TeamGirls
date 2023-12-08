@@ -5,7 +5,7 @@ if (!empty($_SESSION['customer'])) {
     require 'db_connect.php';
     echo '<h3>&cosme</h3>';
     echo '<hr color="black">';
-    echo '<div class="modoru"><a href="mypage.php">戻る</a></div>';
+    echo '<div class="modoru"><a href="mypage.php">＜戻る</a></div>';
     echo '<form action="member_change.php" method="post">';
     echo '<div id="logtitle"><h2>個人情報</h2></div>';
     $pdo=new PDO($connect,USER,PASS);
