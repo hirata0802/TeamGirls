@@ -15,7 +15,7 @@
         $admin_password=$_SESSION['admin']['pass'];
         $error='<font color="FF0000">メールアドレスが既に登録されています。</font>';
     }
-      echo '<div id="logtitle">';
+      echo '<div id="center">';
       echo '<h2>新規管理者登録</h2>';
       echo '</div>';
     

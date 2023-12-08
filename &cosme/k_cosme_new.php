@@ -32,7 +32,7 @@ if(isset($_POST['back'])){
     <?php
 
     $pdo = new PDO($connect, USER, PASS);
-    echo '<div id="logtitle">';
+    echo '<div id="center">';
     echo '<h2>商品登録</h2>';
     echo '</div>';
     echo '<p><input type="text" name="cosme_name" placeholder="商品名" required></p>';

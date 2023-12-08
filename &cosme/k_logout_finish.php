@@ -5,7 +5,7 @@
     <?php
 if(isset($_SESSION['admins'])){
     unset($_SESSION['admins']);
-    echo '<div id="logtitle3">';
+    echo '<div id="center">';
     echo '<h3>ログアウトしました。</h3>';
     echo '<hr width="250">';
     echo '</div>';
