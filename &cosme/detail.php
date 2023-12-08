@@ -67,9 +67,9 @@ if(empty($_SESSION['customer'])){
     if($count > 0){
         foreach($cosme2 as $row){
             if($row['delete_flag']==0){
-                echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`">★</button>';
+                echo '<button class="hosi" onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`">★</button>';
             }else{
-                echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`">☆</button>';
+                echo '<button class="hosi" onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`">☆</button>';
             }
         }
     }else{
@@ -98,10 +98,10 @@ if(empty($_SESSION['customer'])){
             echo '<p>', $cosmeName, '　';
             for($i=0; $i<5; $i++){
                 if($i<$row['level']){
-                    echo '<font size="5">★</font>';
+                    echo '★';
                 }
                 else{
-                    echo '<font size="5">☆</font>';
+                    echo '☆';
                 }
             }
             echo '</p>';

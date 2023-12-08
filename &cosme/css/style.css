@@ -474,3 +474,6 @@ button{
   table {
     margin: 0 auto; /* 左右のマージンを自動で調整して中央に配置 */
 }
+.hosi{
+  font-size: 24px;
+}
