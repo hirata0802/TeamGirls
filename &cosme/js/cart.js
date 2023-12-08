@@ -25,6 +25,9 @@ var app = new Vue({
     decrement(id){
       const index = app.getIndexBy(id);
       app.allData[index].quantity--;
+      if(app.allData[index].quantity<1){
+        app.allData[index].quantity==1;
+      }
       this.total -= app.allData[index].price;
     },
     cartDelete(id){

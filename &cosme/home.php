@@ -1,10 +1,14 @@
 <?php session_start(); ?>
-<?php 
-if(!empty($_SESSION['customer'])){
-    require 'header.php';
-    require 'menu_home.php';
-    require 'db_connect.php';
-    
+<?php
+if(empty($_SESSION['customer'])){
+    header('Location: ./error.php');
+    exit();
+}
+?>
+<?php require 'header.php'; ?>
+<?php require 'menu_home.php'; ?>
+<?php require 'db_connect.php'; ?>
+<?php
     echo '<table>';
         echo '👑今週のランキング';
         $pdo = new PDO($connect, USER, PASS);
@@ -45,10 +49,5 @@ if(!empty($_SESSION['customer'])){
         }
         echo '</table>';
     echo '</table>';
-    require 'footer.php';
-    
-}
-else{
-    echo 'このページを表示できません';
-}
 ?>
+<?php require 'footer.php'; ?>

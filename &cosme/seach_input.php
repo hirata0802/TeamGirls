@@ -8,34 +8,10 @@
 </head>
 <body>
 <?php require 'db_connect.php'; ?>
-<nav>
-    <ul>
-        <li><h1>&cosme</h1></li>
-        <li>
-            <img src="css/image/home.svg" onclick="location.href='home.php'" width="40" height="40" alt="home">
-            <div><a href="home.php"><font size="1">&nbsp;ホーム　　</font></a></div>
-        </li>
-        <li>
-            <img src="css/image/search_black.svg" onclick="location.href='seach_input.php'" width="40" height="40" alt="search">
-            <div><a href="seach_input.php"><font size="1">　検索</font></a></div>
-        </li>
-        <li>  
-            <img src="css/image/favorite.svg" onclick="location.href='favorite_show.php'" width="40" height="40" alt="favorite">
-            <div><a href="favorite_show.php"><font size="1">お気に入り</font></a></div>
-        </li>
-        <li>
-            <img src="css/image/cart.svg" onclick="location.href='cart_show.php'" width="40" height="40" alt="cart">
-            <div><a href="cart_show.php"><font size="1">&nbsp;カート</font></a></div>
-        </li>
-        <li>
-            <img src="css/image/mypage.svg" onclick="location.href='mypage.php'" width="40" height="40" alt="mypage">
-            <div><a href="mypage.php"><font size="1">マイページ</font></a></div>
-        </li>
-    </ul>
-</nav>
+<?php require 'menu_search.php'; ?>
     <form action="seach_output.php?page=10" method="post">
         <p align="center"><input type="text" name="keyword" placeholder="キーワードで検索">
-        <input type="image" src="./image/seach.jpg" alt="検索" width="25px" formaction="seach_output.php?kubun=3&id=key'"></p>
+        <input type="image" src="./image/seach.jpg" alt="検索" width="25px" formaction="seach_output.php?kubun=3&id=key&page=10"></p>
         <hr width="70%">
         <h4 align="center">複数絞り込み</h4>
         <table width="50%" align="center">
@@ -81,7 +57,7 @@
                 ?>
             </tr>
             <tr>
-                <td colspan="3" align="center"><br>～　<input type="number" name="max" placeholder="￥99,999"></td>
+                <td colspan="3" align="center"><br>～　<input type="number" min=0 name="max" placeholder="￥99,999"></td>
             </tr>
             <tr>
                 <td colspan="3"><br><button type="submit" class="ao" name="multiseach">検索</button></td>
