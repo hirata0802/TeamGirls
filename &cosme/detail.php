@@ -98,10 +98,10 @@ if(empty($_SESSION['customer'])){
             echo '<p>', $cosmeName, '　';
             for($i=0; $i<5; $i++){
                 if($i<$row['level']){
-                    echo '★';
+                    echo '<font size="5">★</font>';
                 }
                 else{
-                    echo '☆';
+                    echo '<font size="5">☆</font>';
                 }
             }
             echo '</p>';
