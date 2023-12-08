@@ -1,4 +1,10 @@
 <?php session_start(); ?>
+<?php
+if(empty($_SESSION['customer'])){
+    header('Location: ./error.php');
+    exit();
+}
+?> 
 <?php require 'db_connect.php'; ?>
 <?php
 $errmsg="";
@@ -29,7 +35,7 @@ if($_GET['page'] == 0){
                 $reviewup=$pdo->prepare('insert into Reviews values(?, ?, ?, ?, ?)');
                 $reviewup->execute([$_GET['Rnew'],$_SESSION['customer']['code'],$_POST['rate'],null,$_POST['honbun']]);
                 if($reviewup){
-                    header('Location: ./detail.php?cosme_id='.$_GET['Rnew']);
+                    header('Location: ./detail.php?cosme_id='.$_GET['Rnew'].'&favorite=0');
                     exit();
                 }else{
                     $statusMsg="投稿に失敗しました。もう一度お願いします。";

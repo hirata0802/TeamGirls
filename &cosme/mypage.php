@@ -41,7 +41,7 @@
     $sql=$pdo->prepare('select * from Mypage where member_code=?');
     $sql->execute([$_SESSION['customer']['code']]);
     echo '<div id="mannaka">';
-    echo '<p font color="red">', $message, '</p>';
+    echo '<p style="color: red;">', $message, '</p>';
     foreach($sql as $row){
         echo '<p>ニックネーム</p>';
         echo '<p><input type="text" class="nic" style="width: 230px;height: 40px;" name="nickname" value="', $row['member_nickname'], '"></p>';

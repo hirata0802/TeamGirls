@@ -1,4 +1,22 @@
 <?php session_start(); 
+    if(isset($_GET['search'])){
+        unset($_SESSION['detail']);
+        $_SESSION['detail']=end($_SESSION['history']);
+        if($_GET['page']==0){
+            $_SESSION['detail'].='?detail=0';
+        }else{
+            $_SESSION['detail'].='&detail=0';
+        }
+    }else if(isset($_GET['favorite'])){
+        unset($_SESSION['detail']);
+        $_SESSION['detail']='./favorite_show.php';
+    }else if(isset($_GET['review'])){
+        unset($_SESSION['detail']);
+        $_SESSION['detail']='./history.php';
+    }else if(isset($_GET['home'])){
+        unset($_SESSION['detail']);
+        $_SESSION['detail']='./home.php';
+    }
     //ページのURLをセッションに保存
     if(!isset($_SESSION['history'])){
         $_SESSION['history'] = array();
@@ -15,9 +33,10 @@ if(empty($_SESSION['customer'])){
 <?php require 'db_connect.php'; ?>
 <?php require 'menu.php'; ?>
 <?php
-    echo '<br><br>';
     //カート、お気に入りの処理後表示
     if(isset($_GET['page'])){
+        echo '<div id="mannaka">';
+        echo '<p style="color: red;">';
         if($_GET['page']==20){
             echo 'カートに追加しました';
         }
@@ -27,9 +46,10 @@ if(empty($_SESSION['customer'])){
         else if($_GET['page']==32){
             echo 'お気に入りに追加しました';
         }
+        echo '</p>';
+        echo '</div>';
     }
-    echo '<br><br>';
-    echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</button>';
+    echo '<button onclick="location.href=`',$_SESSION['detail'],'`">＜戻る</button>';
     $pdo = new PDO($connect, USER, PASS);
     $cosme1 = $pdo -> prepare('select * from Cosmetics where cosme_id=?');
     $cosme1 -> execute([$_GET['cosme_id']]);
@@ -55,7 +75,9 @@ if(empty($_SESSION['customer'])){
         echo '</div>';
         echo '<br>';
         echo '<p>販売価格：￥',$row['price'],'</p>';
-        echo '<p>カラー　：',$row['color_name'],'</p>';
+        if(!empty($row['color_name'])){
+            echo '<p>カラー　：',$row['color_name'],'</p>';
+        }
     }
     echo '<div id="ka-to">';
     //カート
@@ -74,7 +96,7 @@ if(empty($_SESSION['customer'])){
             }
         }
     }else{
-        echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`">☆</button>';
+        echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></button>';
     }
     echo '</div>';
     echo '<br>';

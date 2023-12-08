@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 if(empty($_SESSION['customer'])){
     header('Location: ./error.php');
