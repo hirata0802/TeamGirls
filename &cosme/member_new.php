@@ -40,7 +40,7 @@
     echo '<p><input type="text" style="width: 260px;height: 30px;" name="nickname" placeholder="ニックネーム" value="',$nickname,'" ></p>';
     echo '</div>';
     echo '<div id="yuubin">';
-    echo '<input type="text" style="width: 240px;height: 27px;" name="zipcode" id="zipcode" placeholder="郵便番号(ハイフンなし)" value="',$zipcode,'" required>';
+    echo '<input type="text" name="zipcode" id="zipcode" placeholder="郵便番号(ハイフンなし)" value="',$zipcode,'" required>';
     echo '</div>';
     //↓検索ボタンで住所自動入力
     echo ' <div id="kennsaku">';
