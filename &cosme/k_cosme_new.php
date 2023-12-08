@@ -41,7 +41,7 @@ if(isset($_POST['back'])){
     echo '</div>';
     echo '<br>';
     echo '<div id="center2">';
-    echo '<p><input type="text" placeholder="カラー名" required>';
+    echo '<p><input type="text" name="color_name" placeholder="カラー名" required>';
     $color=[1=>'レッド', 2=>'オレンジ', 3=>'ピンク', 4=>'ベージュ', 5=>'ホワイト', 6=>'ブラウン', 7=>'ブラック', 8=>'シルバー', 9=>'ゴールド', 10=>'その他'];
     echo '<select name="colorSelect">';
         echo '<option value="0" selected hidden>カラーID</option>';

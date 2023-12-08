@@ -68,7 +68,9 @@ if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
         echo '<p><input type="text" value="',$brand_name,'" readonly>　';
         echo '<input type="text" value="',$category_name,'" readonly></p>';
         echo '<p><textarea name="cosme_detail" placeholder="',$_POST['cosme_detail'],'" rows="5" cols="40" readonly></textarea></p>';
-        echo '<p><input type="number" name="price" value="',$_POST['price'],'"></p>';
+        echo '<p>';
+        echo '<input type="number" name="price" value="',$_POST['price'],'">';
+        echo '</p>';
         echo '<input type="text" name="file" value="',$targetFilePath,'">';
         echo '<input type="hidden" name="colorSelect" value="',$key,'">';
         echo '<input type="hidden" name="group_id" value="',$group_id,'">';
