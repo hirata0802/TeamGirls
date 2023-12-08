@@ -12,8 +12,9 @@ $detailup->execute([$_POST['cosme_name'],$_POST['color_name'],$_POST['group_id']
 </head>
 <body>
     <h3>&cosme</h3>
+    <div id="center"><h2>商品登録完了</h2></div>
     <div id="hr2"><hr color="black"></div>
-    <div id="logtitle">
+    <div id="center">
     <h3>商品登録完了</h3>
     </div>
     <p><font color="FF0000">商品登録が完了しました</font></p>

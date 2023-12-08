@@ -20,11 +20,12 @@ if(isset($_POST['back'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/k_style.css">
     <title>商品登録</title>
 </head>
 <body>
 <h3>&cosme</h3>
+<div id="center"><h2>商品登録</h2></div>
 <div id="hr2"><hr color="black"></div>
     
 
@@ -32,7 +33,7 @@ if(isset($_POST['back'])){
     <?php
 
     $pdo = new PDO($connect, USER, PASS);
-    echo '<div id="logtitle">';
+    echo '<div id="center">';
     echo '<h2>商品登録</h2>';
     echo '</div>';
     echo '<p><input type="text" name="cosme_name" placeholder="商品名" required></p>';

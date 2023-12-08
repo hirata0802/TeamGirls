@@ -41,13 +41,14 @@ if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/k_style.css">
     <title>商品登録確認</title>
 </head>
 <body>
 <h3>&cosme</h3>
+<div id="center"><h2>商品登録確認</h2></div>
 <div id="hr2"><hr color="black"></div>
-<div id="logtitle">
+<div id="center">
     <h2>商品登録確認</h2>
 </div>
     <form action="k_cosme_finish.php" method="post" enctype="multipart/form-data">

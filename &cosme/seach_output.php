@@ -83,9 +83,11 @@
     $count=$result->rowCount();
 
     //カート、お気に入りの処理後表示
+    echo '<div id="mannaka">';
     if(isset($_GET['page'])){
         echo '<p style="color: red;">';
         if($_GET['page']==20){
+            
             echo 'カートに追加しました';
         }
         else if($_GET['page']==31){
@@ -98,6 +100,7 @@
     }
     //画面表示
     echo '<p align="left" style="font-size:30px;">',$count,'件</p>';
+    echo '</div>';
     echo '<table width="100%">';
             $rowcount=1;
             echo '<tr>';
@@ -115,13 +118,13 @@
                     $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                     $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                     if($member->rowCount() == 0){
-                        echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">☆</a></td></tr>';
+                        echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                     }else{
                         foreach($member as $a){
                             if($a['delete_flag']==0){
-                                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">★</a></td></tr>';
+                                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                             }else{
-                                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">☆</a></td></tr>';
+                                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                             }
                             break;
                         }
@@ -146,13 +149,13 @@
                         $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                         $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                         if($member->rowCount() == 0){
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">☆</a></td></tr>';
+                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                         }else{
                             foreach($member as $a){
                                 if($a['delete_flag']==0){
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">★</a></td></tr>';
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></a></td></tr>';                               
                                 }else{
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">☆</a></td></tr>';
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                                 }
                                 break;
                             }
@@ -172,13 +175,13 @@
                         $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                         $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                         if($member->rowCount() == 0){
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">☆</a></td></tr>';
+                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                         }else{
                             foreach($member as $a){
                                 if($a['delete_flag']==0){
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">★</a></td></tr>';
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                                 }else{
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">☆</a></td></tr>';
+                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                                 }
                                 break;
                             }

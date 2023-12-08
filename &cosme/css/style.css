@@ -25,7 +25,7 @@ div {
   text-decoration: none;
   color: rgb(0, 0, 0);
 }
-a {
+.menu{
   text-decoration: none; /* 下線を消す */
   color: black; /* 文字を黒くする */
 }
@@ -252,6 +252,19 @@ height: 4;
   text-align: center;
 
 }
+.ao1{
+   
+  display: block;
+  background-color: #89c3fd;
+  border-color: rgb(221, 221, 221);
+  font-family: 'Century Gothic', sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
+
+}
 .grey{
   display: block;
   margin: 0 auto;
@@ -265,6 +278,11 @@ height: 4;
   text-align: center;
 
 }
+#ka-to{
+  display: flex;
+  margin-left: 100px;
+}
+
 .todoke{
   display: block;
   margin: 0 auto;
