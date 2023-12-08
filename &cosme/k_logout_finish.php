@@ -1,13 +1,18 @@
 <?php session_start(); ?>
 <?php require 'header.php'; ?>
-<title>管理者ログアウト完了画面</title>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<link rel="stylesheet" href="css/k_style.css">
+    <title>管理者ログアウト完了画面</title>
+</head>
+<body>
     <h3>&cosme</h3>
     <div id="center"><h2>ログアウト完了</h2></div>
-    <div id="sen"><hr color="black"></div>
+    <div id="center"><hr color="black"></div>
     <?php
 if(isset($_SESSION['admins'])){
     unset($_SESSION['admins']);
-    echo '<link rel="stylesheet" href="css/k_style.css">';
     echo '<div id="center">';
     echo '<h3>ログアウトしました。</h3>';
     echo '<hr width="250">';
