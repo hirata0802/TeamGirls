@@ -15,7 +15,7 @@ if(!empty($sql->fetchAll())){
 }
 echo '<link rel="stylesheet" href="css/k_style.css">';
 ?>
-
+<title>登録確認</title>
 <h3>&cosme</h3>
 <div id="hr2"><hr color="black"></div>
 <div id="center"><h2>登録確認</h2></div>

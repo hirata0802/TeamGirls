@@ -46,6 +46,7 @@ if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFilePath)){
 </head>
 <body>
 <h3>&cosme</h3>
+<div id="center"><h2>商品登録確認</h2></div>
 <div id="hr2"><hr color="black"></div>
 <div id="center">
     <h2>商品登録確認</h2>
