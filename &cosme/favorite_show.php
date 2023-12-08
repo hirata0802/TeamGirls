@@ -40,7 +40,6 @@ if(empty($_SESSION['customer'])){
             echo '<p align="center" style="font-size:20px;">現在お気に入り登録はありません</p>';
             echo '<table width="100%">';
         }else{
-            echo '<br>';
             echo '<p align="left" style="font-size:30px;">',$count,'件</p>';
             echo '<table width="100%">';
         }
