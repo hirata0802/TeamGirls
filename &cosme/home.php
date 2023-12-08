@@ -25,7 +25,7 @@ if(empty($_SESSION['customer'])){
         echo '<table width="100%">';
         echo '<tr>';
         foreach($sql as $row){
-            echo '<td align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'"><img src="',$row['image_path'],'" widh="80" height="80"></a><br><font size="-1px"><div class="a">',$row['cosme_name'],'</div></font></td>';
+            echo '<td align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'&home=0"><img src="',$row['image_path'],'" widh="80" height="80"></a><br><font size="-1px"><div class="a">',$row['cosme_name'],'</div></font></td>';
         }
         echo '</tr>';
         echo '</table><br><br>';

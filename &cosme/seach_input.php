@@ -1,3 +1,10 @@
+<?php session_start(); ?>
+<?php
+if(empty($_SESSION['customer'])){
+    header('Location: ./error.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -11,9 +18,6 @@
 <?php require 'menu_search.php'; ?>
     <form action="seach_output.php?page=10" method="post">
         <p align="center"><input type="text" name="keyword" placeholder="キーワードで検索">
-        <input type="image" src="./image/seach.jpg" alt="検索" width="25px" formaction="seach_output.php?kubun=3&id=key&page=10"></p>
-        <hr width="70%">
-        <h4 align="center">複数絞り込み</h4>
         <table width="50%" align="center">
             <?php
             $pdo=new PDO($connect, USER, PASS);
@@ -57,7 +61,7 @@
                 ?>
             </tr>
             <tr>
-                <td colspan="3" align="center"><br>～　<input type="number" min=0 name="max" placeholder="￥99,999"></td>
+                <td colspan="3" align="center"><br>～　<input type="number" min=0 name="max" placeholder="￥1,000"></td>
             </tr>
             <tr>
                 <td colspan="3"><br><button type="submit" class="ao" name="multiseach">検索</button></td>
@@ -75,9 +79,9 @@
             foreach($sql as $row){
                 $category_id=$row['category_id'];
                 if($count%3!=0){
-                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" style="object-fit: contain; width="100px" height="100px" formaction="seach_output.php?page=10&kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" style="object-fit: contain; width="90px" height="90px" formaction="seach_output.php?page=10&kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
                 }else{
-                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" style="object-fit: contain; width="100px" height="100px" formaction="seach_output.php?page=10&kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" style="object-fit: contain; width="90px" height="90px" formaction="seach_output.php?page=10&kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
                     echo '</tr><tr>';
                 }
                 $count++;

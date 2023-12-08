@@ -30,16 +30,16 @@ if(empty($_SESSION['customer'])){
             echo $row2['color_name'],'<br>';
             echo $row2['quantity'],'個</td></tr>';
             $reviewCount = $pdo -> prepare('select * from Reviews where cosme_id = ? and member_code = ?');
-            $reviewCount -> execute([ $_GET['Rnew'],$_SESSION['customer']['code']]);
+            $reviewCount -> execute([ $row2['cosme_id'],$_SESSION['customer']['code']]);
             //レビューを書いたことがないものだけ表示
-            if($reviewcount->rowCount()==0){
+            if($reviewCount->rowCount()==0){
                 echo '<tr><td colspan="2"><button class="ao" onclick="location.href=`review_new.php?Rnew=', $row2['cosme_id'], '&page=1`" id="buttonsize">レビューを書く</button></td></tr></table>';
-                echo '</div>';
             }
         }
         echo '<div id="mannaka">';
         echo $row['total_price'], '円<br>';
         echo $row['pay_method'];
+        echo '</div>';
         echo '</div>';
     }
 ?>
