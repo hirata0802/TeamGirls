@@ -3,7 +3,7 @@
     <h2>ログアウト</h2>
     <hr color="black">
     <form action="k_logout_finish.php" method="post">
-    <div id="logtitle2"><h3>ログアウトしますか？</h3></div>
+    <div id="center"><h3>ログアウトしますか？</h3></div>
     <p><button class="ao" type="submit">ログアウト</button></p></div>
     <div hr1><hr width="250"></div>
     <br>

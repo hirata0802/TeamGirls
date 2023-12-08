@@ -10,7 +10,9 @@ if(!isset($_SESSION['admins'])){
 
     echo '<h3>&cosme</h3>';
     echo '<hr>';
+    echo '<div id="center">';
     echo '<h2>登録完了</h2>';
+    echo '</div>';
     echo '<p><font color="FF0000">',$_POST['admin_email'],'様</font></p>';
     echo '<p><font color="FF0000">会員登録ありがとうございます。</font></p>';
     echo '<form action="k_home.php" method="post">';
