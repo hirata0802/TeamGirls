@@ -17,6 +17,7 @@ if(empty($_SESSION['customer'])){
 <?php
     echo '<br><br>';
     //カート、お気に入りの処理後表示
+    echo '<div id="mannaka">';
     if(isset($_GET['page'])){
         if($_GET['page']==20){
             echo 'カートに追加しました';
@@ -28,6 +29,7 @@ if(empty($_SESSION['customer'])){
             echo 'お気に入りに追加しました';
         }
     }
+    echo '</div>';
     echo '<br><br>';
     echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</button>';
     $pdo = new PDO($connect, USER, PASS);
