@@ -77,6 +77,7 @@ if(empty($_SESSION['customer'])){
         echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`">☆</button>';
     }
     echo '</div>';
+    echo '<br>';
     echo '<div style="text-align: center">';
     echo '<strong><p align="center">商品詳細</p></strong>';
     echo '</div>';
