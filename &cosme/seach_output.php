@@ -218,9 +218,10 @@
                         }else{
                             foreach($member as $a){
                                 if($a['delete_flag']==0){
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></a></td></tr>';
+                                    echo '<td align="right"><button onclick="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></button></td></tr>';    
+                                                              
                                 }else{
-                                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
+                                    echo '<td align="right"><button onclick="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                                 }
                                 break;
                             }
