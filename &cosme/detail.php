@@ -68,9 +68,9 @@ if(empty($_SESSION['customer'])){
     if($count > 0){
         foreach($cosme2 as $row){
             if($row['delete_flag']==0){
-                echo '<button class="hosi star" onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/favorite_black.svg" style="width: 20px; height: 20px;"></button>';
+                echo '<button class="hosi star" onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></button>';
             }else{
-                echo '<button class="hosi star" onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/favorite.svg" style="width: 20px; height: 20px;"></button>';
+                echo '<button class="hosi star" onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></button>';
             }
         }
     }else{
