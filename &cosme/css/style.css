@@ -252,6 +252,7 @@ height: 4;
   text-align: center;
 
 }
+
 .grey{
   display: block;
   margin: 0 auto;
@@ -264,6 +265,10 @@ height: 4;
   border-radius: 5px;
   text-align: center;
 
+}
+#ka-to{
+  display: flex;
+justify-content: center;
 }
 
 .todoke{

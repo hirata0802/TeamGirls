@@ -57,10 +57,10 @@ if(empty($_SESSION['customer'])){
         echo '<p>販売価格：￥',$row['price'],'</p>';
         echo '<p>カラー　：',$row['color_name'],'</p>';
     }
-    echo '<div id="mannaka">';
+    echo '<div id="ka-to">';
     //カート
     echo '<button class="ao"  onclick="location.href=`cart_input.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/cart_black.svg" style="width: 20px; height: 20px;" alt="カートに入れる">カートに入れる</button>';
-    echo '</div>';
+
     //お気に入り
     $cosme2 = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id=?');
     $cosme2 -> execute([$_SESSION['customer']['code'],$cosmeId]);//cosmeId=選んだコスメ
@@ -70,13 +70,13 @@ if(empty($_SESSION['customer'])){
             if($row['delete_flag']==0){
                 echo '<button class="hosi star" onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/favorite_black.svg"></button>';
             }else{
-                echo '<button class="hosi star" onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`">☆</button>';
+                echo '<button class="hosi star" onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/favorite.svg"></button>';
             }
         }
     }else{
         echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`">☆</button>';
     }
-   
+    echo '</div>';
     echo '<div style="text-align: center">';
     echo '<strong><p align="center">商品詳細</p></strong>';
     echo '</div>';
