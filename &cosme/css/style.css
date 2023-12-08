@@ -265,6 +265,9 @@ height: 4;
   text-align: center;
 
 }
+.hosi.star {
+  font-size: 24px; /* Change this value to adjust the size */
+}
 .todoke{
   display: block;
   margin: 0 auto;
@@ -473,8 +476,4 @@ button{
   }
   table {
     margin: 0 auto; /* 左右のマージンを自動で調整して中央に配置 */
-}
-.hosi{
-  width: 50%;
-  height: 50%;
 }
