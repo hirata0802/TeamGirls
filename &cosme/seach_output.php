@@ -240,7 +240,7 @@
                         $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                         $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                         if($member->rowCount() == 0){
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">☆</a></td></tr>';
+                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                         }else{
                             foreach($member as $a){
                                 if($a['delete_flag']==0){
