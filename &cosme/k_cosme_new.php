@@ -1,4 +1,20 @@
 <?php require 'db_connect.php'; ?>
+<?php
+$errormsg="";
+if($_GET['page']==1){
+    $errormsg='すでに登録された商品です';
+}else if($_GET['page']==2){
+    $errormsg='カラーID,ブランド名,カテゴリーを選択してください';
+}else if($_GET['page']==3){
+    $errormsg='ファイルのアップロードに失敗しました';
+}
+if(isset($_POST['back'])){
+    $path1=$_POST['file'];
+    if(unlink($path1)){
+        $errormsg="";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -33,7 +49,7 @@
     echo '<p><select name="brandSelect">';
         echo '<option value="0" selected hidden>ブランド名</option>';
         foreach($sql as $row){
-            echo '<option value="',$row['brand_name'],'">',$row['brand_name'],'</option>';
+            echo '<option value="',$row['brand_id'],'">',$row['brand_name'],'</option>';
         }
     echo '</select>　';
 
@@ -41,17 +57,13 @@
     echo '<select name="categorySelect">';
         echo '<option value="0" selected hidden>カテゴリー</option>';
         foreach($sql as $row){
-            echo '<option value="',$row['category_name'],'">',$row['category_name'],'</option>';
+            echo '<option value="',$row['category_id'],'">',$row['category_name'],'</option>';
         }
     echo '</select></p>';
     echo '<p><textarea name="cosme_detail" placeholder="商品説明" rows="5" cols="40" maxlength="200" title="200文字以内で入力してください" required></textarea></p>';
     echo '<p><input type="number" name="price" placeholder="価格" min=0 required></p>';
     echo '<input type="file" name="file" accept=".jpg" required>';
-    if($_GET['page']==1){
-        echo '<br><font color="FF0000">すでに登録された商品です</font>';
-    }else if($_GET['page']==2){
-        echo '<br><font color="FF0000">カラーID,ブランド名,カテゴリーを選択してください</font>';
-    }
+    echo '<br><font color="FF0000">',$errormsg,'</font>';
     ?>
     <br><button type="submit" class="ao">確認</button><br>
     <button onclick="location.href='k_home.php'" class="grey">戻る</button>

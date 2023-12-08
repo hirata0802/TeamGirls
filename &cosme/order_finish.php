@@ -1,4 +1,10 @@
 <?php session_start(); ?>
+<?php
+if(empty($_SESSION['customer'])){
+    header('Location: ./error.php');
+    exit();
+  }
+?>
 <?php require 'header.php'; ?>
 <?php require 'db_connect.php'; ?>
 <?php

@@ -1,16 +1,22 @@
 <?php session_start(); ?>
-<?php require 'header.php'; ?>
-<?php require 'menu.php'; ?>
-<?php require 'db_connect.php'; ?>
-<div id="logtitle">
-    <h2>注文内容の確認</h2>
-</div>
-<form action="order_finish.php" method="post">
 <?php
+if(empty($_SESSION['customer'])){
+    header('Location: ./error.php');
+    exit();
+}
+?>
+<?php require 'header.php'; ?>
+<?php require 'menu_cart.php'; ?>
+<?php require 'db_connect.php'; ?>
+<?php
+    echo '<div id="logtitle">';
+    echo '<h2>注文内容の確認</h2>';
+    echo '</div>';
+    echo '<form action="order_finish.php" method="post">';
     $pdo=new PDO($connect, USER, PASS);
     $sql=$pdo->prepare('select * from Addresses where member_code=? and register_date=(select max(register_date) from Addresses where member_code=?)');
     $sql->execute([$_SESSION['customer']['code'], $_SESSION['customer']['code']]);
-
+    
     foreach($sql as $row){
         $ads=$row['prefecture'].$row['city'].$row['section']. "<br>" .$row['building'];
         echo '<dl>';
@@ -56,11 +62,11 @@
     }
     echo '<input type="hidden" name="pay" value="', $_POST['pay'], '">';
     echo '<input type="hidden" name="total" value="', $_POST['total'], '">';
+    echo '<br>';
+    echo '<hr class="tensen">';
+    echo '<br>';
+    echo '<button type="submit" class="ao">注文を確定する</button></p>';
+    echo '</form>';
+    echo `<button type="button" onclick="location.href='order.php'" class="grey">変更</button></p><br>`;
 ?>
-<br>
-<hr class="tensen">
-<br>
-<button type="submit" class="ao">注文を確定する</button></p>
-</form>
-<button type="button" onclick="location.href='order.php'" class="grey">変更</button></p><br>
 <?php require 'footer.php'; ?>

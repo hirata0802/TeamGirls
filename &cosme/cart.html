@@ -10,26 +10,26 @@
     <div id="cart">
     <nav>
         <ul>
-            <li><h1>&cosme</h1></li>
+            <li><h1>&cosme　</h1></li>
             <li>
                 <img src="css/image/home.svg" @click="nextHome" width="40" height="40" alt="home">
-                <div><font size="1">&nbsp;ホーム　　</font></div>
+                <div><a class="menu" href="home.php"><font size="1">&nbsp;ホーム　　</font></a></div>
             </li>
             <li>
                 <img src="css/image/search.svg" @click="nextSearch" width="40" height="40" alt="search">
-                <div><font size="1">　検索</font></div>
+                <div><a class="menu" href="seach_input.php"><font size="1">　検索</font></a></div>
             </li>
             <li>  
                 <img src="css/image/favorite.svg" @click="nextFavorite" width="40" height="40" alt="favorite">
-                <div><font size="1">お気に入り</font></div>
+                <div><a class="menu" href="favorite_show.php"><font size="1">お気に入り</font></a></div>
             </li>
             <li>
                 <img src="css/image/cart_black.svg" @click="nextCart" width="40" height="40" alt="cart">
-                <div><font size="1">&nbsp;カート</font></div>
+                <div><a class="menu" href="cart_show.php"><font size="1">&nbsp;カート</font></a></div>
             </li>
             <li>
                 <img src="css/image/mypage.svg" @click="nextMypage" width="40" height="40" alt="mypage">
-                <div><font size="1">マイページ</font></div>
+                <div><a class="menu" href="mypage.php"><font size="1">マイページ</font></a></div>
             </li>
         </ul>
     </nav>
@@ -41,7 +41,7 @@
             <p>商品名：{{ row.cosme_name }}</p>
             <p>価格：{{ row.price }}円</p>
             <p>カラー：{{ row.color_name }}</p>
-            <button type="submit" @click="decrement(row.cart_id)" v-if="row.quantity>1">－</button>
+            <button type="submit" @click="decrement(row.cart_id)">－</button>
             {{ row.quantity }}
             <button type="submit" @click="increment(row.cart_id)">＋</button>
             <button class="ao2" type="submit" @click="cartDelete(row.cart_id)">削除</button>

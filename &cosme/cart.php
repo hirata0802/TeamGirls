@@ -1,6 +1,10 @@
 <?php session_start(); ?>
 <?php require 'db_connect.php'; ?>
 <?php
+if(empty($_SESSION['customer'])){
+  header('Location: ./error.php');
+  exit();
+}
   $pdo=new PDO($connect, USER, PASS);
   //合計金額
   $sumPrice=$pdo->prepare('select sum(C.quantity * CO.price) as kei from Cart as C inner join Cosmetics as CO on C.cosme_id=CO.cosme_id inner join Brands as B on CO.brand_id=B.brand_id where member_code=? and delete_flag=0');

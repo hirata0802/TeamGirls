@@ -1,11 +1,16 @@
 <?php session_start(); ?>
 <?php require 'db_connect.php'; ?>
 <?php
+if(empty($_SESSION['customer'])){
+    header('Location: ./error.php');
+    exit();
+}
+?>
+<?php  
     $pdo = new PDO($connect,USER,PASS);
     $delete_flag = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id = ?');
     $delete_flag -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
     $count=$delete_flag->rowCount();
-    
     $backURL = end($_SESSION['history']);
     if($count>0){
         foreach($delete_flag as $row){
