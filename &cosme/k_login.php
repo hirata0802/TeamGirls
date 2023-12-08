@@ -40,6 +40,8 @@ echo '</div>';
 
 echo '<form action="k_login.php" method="post">';
 
+echo '<br>';
+echo '<br>';
 echo '<div id="center">';
 echo '<input type="text" style="width: 400px;height: 30px;" name="admin_email" placeholder="メールアドレス">';
 echo '<br>';
