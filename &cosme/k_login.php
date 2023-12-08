@@ -29,7 +29,9 @@ if(isset($_POST['admin_email'])){
 echo '<link rel="stylesheet" href="css/k_style.css">';
 
 echo '<h3>&cosme</h3>';
+echo '<div id="center">';
 echo '<h2>ログイン</h2>';
+echo '</div>';
 echo '<div id="hr2">';
 
 echo '<hr color="black">';
@@ -40,6 +42,7 @@ echo '<form action="k_login.php" method="post">';
 
 echo '<div id="center">';
 echo '<input type="text" style="width: 400px;height: 30px;" name="admin_email" placeholder="メールアドレス">';
+echo '<br>';
 echo '<br>';
 echo '<input type="password" style="width: 400px;height: 30px;" name="admin_password"placeholder="パスワード">';
 echo '</div>';
