@@ -15,7 +15,6 @@ if(empty($_SESSION['customer'])){
 <?php require 'db_connect.php'; ?>
 <?php require 'menu.php'; ?>
 <?php
-    echo '<br><br>';
     //カート、お気に入りの処理後表示
     echo '<div id="mannaka">';
     if(isset($_GET['page'])){
@@ -30,7 +29,6 @@ if(empty($_SESSION['customer'])){
         }
     }
     echo '</div>';
-    echo '<br><br>';
     echo '<button onclick="location.href=`',$_SERVER['HTTP_REFERER'],'`">＜戻る</button>';
     $pdo = new PDO($connect, USER, PASS);
     $cosme1 = $pdo -> prepare('select * from Cosmetics where cosme_id=?');
