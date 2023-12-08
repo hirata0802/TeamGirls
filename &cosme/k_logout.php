@@ -1,5 +1,11 @@
 <?php require 'header.php'; ?>
-<title>管理者ログアウト画面</title>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<link rel="stylesheet" href="css/k_style.css">
+    <title>管理者ログアウト画面</title>
+</head>
+<body>
     <h3>&cosme</h3>
     <div id="center"><h2>ログアウト</h2></div>
     <hr color="black"><br>
