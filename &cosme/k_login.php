@@ -28,6 +28,7 @@ if(isset($_POST['admin_email'])){
 
 echo '<link rel="stylesheet" href="css/k_style.css">';
 
+echo '<title>管理者ログイン画面</title>';
 echo '<h3>&cosme</h3>';
 echo '<div id="center">';
 echo '<h2>ログイン</h2>';
