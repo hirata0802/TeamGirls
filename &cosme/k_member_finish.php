@@ -8,6 +8,7 @@ if(!isset($_SESSION['admins'])){
         $_POST['admin_email'],
         password_hash($_POST['admin_password'],PASSWORD_DEFAULT)]);
 
+    echo '<title>登録完了</title>';
     echo '<h3>&cosme</h3>';
     echo '<hr>';
     echo '<div id="center">';

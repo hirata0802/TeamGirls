@@ -11,15 +11,15 @@
 <div id="center"><h2>管理者ホーム</h2></div>
     <div id="center"><hr color="black"></div>
     <form action="k_seles.php">
-        <div id="center"><button type="submit">売上管理</button></div>
+        <div id="center"><button type="submit" class="ao" style="width: 300px;height: 30px;">売上管理</button></p></div>
     </form>
 
     <form action="k_cosme_new.php?page=0" method="post">
-    <div id="center"><button type="submit">商品登録</button></div>
+    <div id="center"><button type="submit" class="ao" style="width: 300px;height: 30px;">商品登録</button></p></div>
     </form>
 
     <form action="k_logout.php">
-    <div id="center"><button type="submit">ログアウト</button></div>
+    <div id="center"><button type="submit" class="ao" style="width: 300px;height: 30px;">ログアウト</button></p></div>
     </form>
 </body>
 </html>
