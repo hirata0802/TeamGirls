@@ -74,7 +74,7 @@ if(empty($_SESSION['customer'])){
             }
         }
     }else{
-        echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`">☆</button>';
+        echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></button>';
     }
     echo '</div>';
     echo '<br>';
