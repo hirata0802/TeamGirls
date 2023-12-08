@@ -154,8 +154,10 @@
             $count=$sql->rowCount();
         }
     }
+    echo '<div id="mannaka">';
     if(isset($_GET['page'])){
         if($_GET['page']==20){
+            
             echo 'カートに追加しました';
         }
         else if($_GET['page']==31){
@@ -165,6 +167,7 @@
             echo 'お気に入りに追加しました';
         }
     }
+    echo '</div>';
     echo '<table width="100%">';
         echo '<th align="left" style="font-size:30px;">',$count,'件</th>';
             $rowcount=1;

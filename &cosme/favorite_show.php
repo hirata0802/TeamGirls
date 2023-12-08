@@ -22,6 +22,7 @@ if(empty($_SESSION['customer'])){
         $count = $sql2 -> rowCount();
         
         //表示
+        echo '<div id="mannaka">';
         if(isset($_GET['page'])){
             if($_GET['page']==20){
                 echo 'カートに追加しました';
@@ -32,7 +33,8 @@ if(empty($_SESSION['customer'])){
             else if($_GET['page']==32){
                 echo 'お気に入りに追加しました';
             }
-        }      
+        }   
+        echo '</div>';   
         if($count==0){
             echo '<br>';
             echo '<p align="center" style="font-size:20px;">現在お気に入り登録はありません</p>';
