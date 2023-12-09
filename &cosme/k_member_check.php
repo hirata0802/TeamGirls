@@ -1,7 +1,13 @@
-<?php session_start(); ?>
+<?php
+session_start();
+if(empty($_SESSION['admin'])){
+    header('Location: ./k_error.php');
+    exit();
+}
+?>
 <?php require 'db_connect.php'; ?>
 <?php
- $_SESSION['admin'] = [
+ $_SESSION['newAdmin'] = [
     'mail' => $_POST['admin_email'],
     'pass' => $_POST['admin_password']
 ];
@@ -9,17 +15,16 @@ $pdo=new PDO($connect,USER,PASS);
 $sql=$pdo->prepare('select * from Admins where admin_email=?');
 $sql->execute([$_POST['admin_email']]);
 if(!empty($sql->fetchAll())){
-    $_SESSION['admin']['mail']=null;
+    $_SESSION['newAdmin']['mail']=null;
     header('Location: ./k_member_new.php');
     exit();
 }
 echo '<link rel="stylesheet" href="css/k_style.css">';
 ?>
-<title>登録確認</title>
+<?php require 'k_header.php'; ?>
 <h3>&cosme</h3>
 <div id="hr2"><hr color="black"></div>
 <div id="center"><h2>登録確認</h2></div>
-
     <form action="k_member_finish.php" method="post" id="next">
         <?php
         echo '<div id="meru2">';

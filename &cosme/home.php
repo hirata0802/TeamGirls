@@ -39,7 +39,7 @@ if(empty($_SESSION['customer'])){
         echo '<tr>';
         foreach($sql2 as $row2){
             if($count%4!=0){
-                echo '<td align="center"><a href="detail.php?cosme_id=',$row2['min(cosme_id)'],'"><img src="',$row2['image_path'],'" widh="80" height="80"></a><br><font size="-1px">
+                echo '<td align="center"><a href="detail.php?cosme_id=',$row2['min(cosme_id)'],'&home=0"><img src="',$row2['image_path'],'" widh="80" height="80"></a><br><font size="-1px">
                 <div class="a">',$row2['cosme_name'],'</div></font></td>';
                 //ｃｓｓ
             }else{
