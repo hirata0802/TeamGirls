@@ -86,11 +86,11 @@ if(empty($_SESSION['admin'])){
         echo '<input type="hidden" name="file" value="',$targetFilePath,'">';
         //↑↑非表示↑↑
         
-        echo '<button type="submit" class="ao">商品新規登録</button><br>';
+        echo '<button type="submit" class="ao" style="width: 300px;height: 30px;">商品新規登録</button><br>';
         echo '</form>';
         echo '<form action="k_cosme_new.php?page=0" method="post">';
         echo '<input type="hidden" name="file" value="',$targetFilePath,'">';
-        echo '<button type="submit" class="grey" name="back">変更</button>';
+        echo '<button type="submit" class="grey" style="width: 300px;height: 30px;" name="back">変更</button>';
         echo '</form>';
         echo '</div>';
         ?>

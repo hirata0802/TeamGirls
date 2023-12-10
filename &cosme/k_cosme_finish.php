@@ -17,10 +17,10 @@ $detailup->execute([$_POST['cosme_name'],$_POST['color_name'],$_POST['group_id']
 <div id="hr2"><hr color="black"></div>
 <p><font color="FF0000">商品登録が完了しました。</font></p>
 <form action="k_home.php" method="post">
-    <button type="submit">ホームへ</button>
+    <button type="submit" class="ao" style="width: 300px;height: 30px;">ホームへ</button></p>
 </form>
     <form action="k_cosme_new.php" method="post">
-        <button type="submit">続けて登録</button>
+        <button type="submit" class="grey" style="width: 300px;height: 30px;">続けて登録</button>
     </form>
 </div>
 <?php require 'footer.php'; ?>

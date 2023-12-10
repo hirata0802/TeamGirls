@@ -12,18 +12,18 @@ unset($_SESSION['newAdmin']);
     <div id="center"><hr color="black"></div>
     <br><br>
     <form action="k_seles.php">
-        <div id="center"><button type="submit" class="ao" style="width: 300px;height: 30px;">売上管理</button></p></div>
+        <div id="center"><button type="submit" class="ao" style="width: 400px;height: 40px;">売上管理</button></p></div>
     </form>
 
     <form action="k_cosme_new.php?" method="post">
-        <div id="center"><button type="submit" class="ao" style="width: 300px;height: 30px;">商品登録</button></p></div>
+        <div id="center"><button type="submit" class="ao" style="width: 400px;height: 40px;">商品登録</button></p></div>
     </form>
 
     <form action="k_member_new.php" method="post">
-        <div id="center"><button type="submit" class="ao" style="width: 300px;height: 30px;">管理者登録</button></p></div>
+        <div id="center"><button type="submit" class="ao" style="width: 400px;height: 40px;">管理者登録</button></p></div>
     </form>
 
     <form action="k_logout.php">
-        <div id="center"><button type="submit" class="ao" style="width: 300px;height: 30px;">ログアウト</button></p></div>
+        <div id="center"><button type="submit" class="grey" style="width: 400px;height: 40px;">ログアウト</button></p></div>
     </form>
 <?php require 'footer.php'; ?>
