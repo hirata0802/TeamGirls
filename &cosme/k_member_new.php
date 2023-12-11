@@ -32,6 +32,6 @@ if(empty($_SESSION['admin'])){
     <p><button type="submit" class="next">確認</button></p></div>
 </form>
 <form action="k_home.php" method="post">
-    <div id="center"><button type="submit" class="grey">ホームへ</button></div>
+    <div id="center"><button type="submit" class="return">ホームへ</button></div>
 </form>
 <?php require 'footer.php'; ?>

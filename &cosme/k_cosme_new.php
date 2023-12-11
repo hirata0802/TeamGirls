@@ -49,11 +49,11 @@ if(empty($_SESSION['admin'])){
     echo '<br><font color="FF0000">',$errormsg,'</font>';
     
     //商品名
-    echo '<p><input type="text" name="cosme_name" placeholder="商品名" value="', $_SESSION['newCosme']['name'], '" required></p>';
+    echo '<p><input type="text" class="ao" name="cosme_name" placeholder="商品名" value="', $_SESSION['newCosme']['name'], '" required></p>';
     echo '<br>';
     
     //カラー名
-    echo '<p><input type="text" name="color_name" placeholder="カラー名" value="', $_SESSION['newCosme']['color'], '" required>';
+    echo '<p><input type="text" class="ao"  name="color_name" placeholder="カラー名" value="', $_SESSION['newCosme']['color'], '" required>';
     
     //カラーID
     $color=[1=>'レッド', 2=>'オレンジ', 3=>'ピンク', 4=>'ベージュ', 5=>'ホワイト', 6=>'ブラウン', 7=>'ブラック', 8=>'シルバー', 9=>'ゴールド', 10=>'その他'];

@@ -5,18 +5,13 @@
         header('Location: ./error.php');
         exit();
     }
-    //ページのURLをセッションに保存
-    if(!isset($_SESSION['history'])){
-        $_SESSION['history'] = array();
-    }
-    array_push($_SESSION['history'], $_SERVER['REQUEST_URI']);
+    $backURL = end($_SESSION['history']);
 ?>
 <?php  
     $pdo = new PDO($connect,USER,PASS);
     $delete_flag = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id = ?');
     $delete_flag -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
     $count=$delete_flag->rowCount();
-    $backURL = end($_SESSION['history']);
     if($count>0){
         foreach($delete_flag as $row){
             if($row["delete_flag"] == 0){//お気に入り削除
