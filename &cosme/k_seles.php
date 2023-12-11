@@ -17,6 +17,7 @@ if(empty($_SESSION['admin'])){
         <button type="submit" class="next">検索</button>
         </div>
     </form>
+    <br>
     <table border="1">
         <tr>
             <th>売上日</th><th>商品名</th><th>カラー名</th><th>売上金額</th><th>売上数</th>
