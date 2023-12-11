@@ -96,6 +96,16 @@ table{
   font-size: 1em;
 }
 
+table{  width: 100%;}
+table th{  position: relative;
+text-align: left;
+width: 15%;
+}table th:after{  display: block;  
+content: "";  width: 30px;  height: 2px;
+background-color: #333;  position: absolute;  
+top:calc(50% - 1px);  right:-15px;}
+table td{  text-align: left;  padding:7px 0 7px 30px;  width: 85%;}
+
 
 /*商品登録画面のcss*/
 #h3{
