@@ -25,6 +25,7 @@ echo '<link rel="stylesheet" href="css/k_style.css">';
 <h3>&cosme</h3>
 <div id="hr2"><hr color="black"></div>
 <div id="center"><h2>登録確認</h2></div>
+<hr color="black">
     <form action="k_member_finish.php" method="post" id="next">
         <?php
         echo '<div id="center">';
