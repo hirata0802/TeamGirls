@@ -33,6 +33,7 @@ select[name="kategori"] {   border: 1px solid #89c3fd; }
     color: #7a7e7f;
     font-size: 1em;
 }
+
 .return{
   display: flex;
     justify-content: center;
@@ -64,7 +65,7 @@ select[name="kategori"] {   border: 1px solid #89c3fd; }
 }
 
 .next{
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   width: 150px;
