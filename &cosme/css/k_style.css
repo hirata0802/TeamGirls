@@ -8,8 +8,8 @@
   text-align: center;
 }
 
-input[type="text"] {   border: 1px solid #89c3fd; font-size: 150%}
-input[type="number"] {   border: 1px solid #89c3fd;  font-size: 130% }
+input[type="text"] {   border: 1px solid #89c3fd; }
+input[type="number"] {   border: 1px solid #89c3fd; }
 input[type="email"] {   border: 1px solid #89c3fd; }
 input[type="password"] {   border: 1px solid #89c3fd; }
 input[type="date"] {   border: 1px solid #7a7e7f; }
@@ -94,7 +94,11 @@ select[name="kategori"] {   border: 1px solid #89c3fd; }
 }
 
 
-table {   border-collapse: collapse;   width: 100%; } /* ここから偶数行のスタイル */tr:nth-child(even) {   background-color: #eaf6ff !important; /* 薄い水色に変更 */} th, td {   border: 1px solid #dddddd;   text-align: left;   padding: 8px; } th {   background-color: #f2f2f2;   font-weight: bold; }
+table{border-collapse: collapse; width: 100%; }
+ /* ここから偶数行のスタイル */
+ tr:nth-child(even){background-color: #eaf6ff !important;/* 薄い水色に変更 */}
+ th, td {border: 1px solid #dddddd; text-align: left;padding: 8px; } 
+ th {   background-color: #f2f2f2;   font-weight: bold; }
 
 
 /*商品登録画面のcss*/
