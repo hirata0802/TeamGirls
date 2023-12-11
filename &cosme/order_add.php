@@ -13,7 +13,7 @@ if(empty($_SESSION['customer'])){
             <input type="text" name="name" placeholder="お届け先氏名" required>
             <p><input type="text" name="zipcode" id="zipcode" placeholder="郵便番号" required>
                 <!---↓検索ボタンで住所自動入力-->
-            <button type="button" class="ao" id="btn">検索</button></p>
+            <button type="button" class="ao" id="btn">住所検索</button></p>
             <p><input type="text" name="prefecture" id="prefecture" placeholder="都道府県" required></p>
             <p><input type="text" name="city" id="city" placeholder="市区町村" required></p>
             <p><input type="text" name="address" id="address" placeholder="番地" required></p>

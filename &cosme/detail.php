@@ -1,12 +1,8 @@
-<?php session_start(); 
+<?php session_start();
+if(!(isset($_GET['page']) && ($_GET['page'] == 31 || $_GET['page'] == 32 || $_GET['page'] == 20))){
     if(isset($_GET['search'])){
         unset($_SESSION['detail']);
-        $_SESSION['detail']=end($_SESSION['history']);
-        if($_GET['page']==0){
-            $_SESSION['detail'].='?detail=0';
-        }else{
-            $_SESSION['detail'].='&detail=0';
-        }
+        $_SESSION['detail']='./seach_output.php';
     }else if(isset($_GET['favorite'])){
         unset($_SESSION['detail']);
         $_SESSION['detail']='./favorite_show.php';
@@ -17,6 +13,7 @@
         unset($_SESSION['detail']);
         $_SESSION['detail']='./home.php';
     }
+}
     //ページのURLをセッションに保存
     if(!isset($_SESSION['history'])){
         $_SESSION['history'] = array();
