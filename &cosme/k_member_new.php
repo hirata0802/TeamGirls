@@ -28,9 +28,10 @@ if(empty($_SESSION['admin'])){
     echo '</div>';
 ?>
     <br><br>
-    <p><button type="submit" class="next">確認</button></p>
+    <div id="center">
+    <p><button type="submit" class="next">確認</button></p></div>
 </form>
 <form action="k_home.php" method="post">
-    <button type="submit" class="return">ホームへ</button>
+    <div id="center"><button type="submit" class="grey">ホームへ</button></div>
 </form>
 <?php require 'footer.php'; ?>
