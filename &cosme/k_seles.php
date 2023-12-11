@@ -8,16 +8,17 @@ if(empty($_SESSION['admin'])){
 <?php require 'k_header.php'; ?>
 <?php require 'db_connect.php'; ?>
     <h3>&cosme</h3>
-    <hr>
     <div id="center"><h1>売上管理画面</h1></div>
-    <p><button onclick="location.href='k_home.php'"class="return">ホームへ</button></p>
+    <hr color="black">
+    <div id="center">
+    <p><button onclick="location.href='k_home.php'"class="return">ホームへ</button></p></div>
     <form action="k_seles.php" method="post">
         <div id="center">
         <input type="date" name="min">～<input type="date" name="max">
         <button type="submit" class="next">検索</button>
         </div>
     </form>
-    <table border="1">
+    <table>
         <tr>
             <th>売上日</th><th>商品名</th><th>カラー名</th><th>売上金額</th><th>売上数</th>
         </tr>
