@@ -93,18 +93,8 @@ select[name="kategori"] {   border: 1px solid #89c3fd; }
   font-size: 1em;
 }
 
-table{border-collapse: collapse; width: 100%;}
-th, td {border: 1px solid #dddddd; text-align: left;padding: 8px;}
-th {background-color: #f2f2f2; font-weight: bold;}
-tr:nth-child(even) {background-color: #eaf6ff; /* 薄い水色に変更 */}
-table th{  position: relative;
-text-align: left;
-width: 15%;}
-table th:after{  display: block;  
-content: "";  width: 30px;  height: 2px;
-background-color: #333;  position: absolute;  
-top:calc(50% - 1px);  right:-15px;}
-table td{  text-align: left;  padding:7px 0 7px 30px;  width: 85%;}
+
+table {   border-collapse: collapse;   width: 100%; } /* ここから偶数行のスタイル */tr:nth-child(even) {   background-color: #eaf6ff !important; /* 薄い水色に変更 */} th, td {   border: 1px solid #dddddd;   text-align: left;   padding: 8px; } th {   background-color: #f2f2f2;   font-weight: bold; }
 
 
 /*商品登録画面のcss*/
