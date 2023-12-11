@@ -65,7 +65,7 @@ select[name="kategori"] {   border: 1px solid #89c3fd; }
 }
 
 .next{
-  display: block;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 150px;
@@ -97,7 +97,6 @@ select[name="kategori"] {   border: 1px solid #89c3fd; }
 
   table {
     border-collapse: collapse;
-    width: 100%;
     margin: 3px auto;
   }
   
