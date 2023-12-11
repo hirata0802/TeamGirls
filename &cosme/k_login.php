@@ -17,6 +17,7 @@ if(isset($_POST['admin_email'])){
                 'pass' => $password];
              }
          }
+         echo '<div id="center">';
     if(isset($_SESSION['admin'])){
         header('Location: ./k_home.php');
         exit();
@@ -24,6 +25,7 @@ if(isset($_POST['admin_email'])){
         $msg = '<font color="FF0000">ログイン名またはパスワードが違います。</font>';
     }
 }
+echo '</div>';
 require 'k_header.php';
 echo '<h3>&cosme</h3>';
 echo '<div id="center"><h2>ログイン</h2></div>';
@@ -40,7 +42,7 @@ if(isset($msg)){
     echo '<p><div id="mannaka">', $msg, '</p></div>';
 }
 echo '<br>';
-echo '<p><button class="ao" type="submit" href="k_home.php">ログイン</button></p>';
+echo '<p><button class="next" type="submit" href="k_home.php">ログイン</button></p>';
 echo '</form>';
 ?>
 <?php require 'footer.php'; ?>
