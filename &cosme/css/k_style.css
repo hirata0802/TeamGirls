@@ -10,7 +10,9 @@
 
 input[type="text"] {   border: 1px solid #89c3fd; }
 input[type="number"] {   border: 1px solid #89c3fd; }
+input[type="email"] {   border: 1px solid #89c3fd; }
 input[type="password"] {   border: 1px solid #89c3fd; }
+input[type="date"] {   border: 1px solid #7a7e7f; }
 select[name="brand"] {   border: 1px solid #89c3fd; }
 select[name="kategori"] {   border: 1px solid #89c3fd; }
 #uriage{
@@ -24,7 +26,22 @@ table{
   display: flex;
     justify-content: center;
     align-items: center;
-    width: 250px;
+    width: 400px;
+    height: 40px;
+    margin:0 auto;
+    padding: .9em 2em;
+    border: 1px solid #7a7e7f;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #7a7e7f;
+    font-size: 1em;
+}
+.return{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 30px;
     margin:0 auto;
     padding: .9em 2em;
     border: 1px solid #7a7e7f;
@@ -38,7 +55,8 @@ table{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 250px;
+  width: 400px;
+  height: 40px;
   margin:0 auto;
   padding: .9em 2em;
   border: 1px solid #2589d0;
@@ -47,6 +65,38 @@ table{
   color: #2589d0;
   font-size: 1em;
 }
+
+.next{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 30px;
+  margin:0 auto;
+  padding: .9em 2em;
+  border: 1px solid #2589d0;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #2589d0;
+  font-size: 1em;
+}
+
+.ao2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 30px;
+  margin:0 auto;
+  padding: .9em 2em;
+  border: 1px solid #2589d0;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #2589d0;
+  font-size: 1em;
+}
+
+
 /*商品登録画面のcss*/
 #h3{
   text-align: left;
