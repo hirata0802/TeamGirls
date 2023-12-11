@@ -108,7 +108,7 @@ if(empty($_SESSION['admin'])){
         echo '<input type="file" name="file" accept=".jpg" required>';
         echo '</div>';
         ?>
-    <br><button type="submit" class="ao" >確認</button><br>
-    <button onclick="location.href='k_home.php'" class="grey" style="width: 300px;height: 30px;">ホームへ</button>
+    <br><button type="submit" class="next" >確認</button><br>
+    <button onclick="location.href='k_home.php'" class="return" >ホームへ</button>
 </form>
 <?php require 'footer.php'; ?>
