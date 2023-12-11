@@ -76,6 +76,7 @@ if (!empty($_SESSION['customer'])) {
         $pass = str_repeat("*", $count);
         echo '<table align="center">';
         //名前
+        echo '<div id="textsinki">';
         echo '<tr><td>';
         echo '<p align="center"><div id="simei">　　',$row['family_name'],'　',$row['first_name'],'(',$row['family_name_kana'],'　',$row['first_name_kana'],')</div></p>';
         echo '</td></tr>';
@@ -100,6 +101,7 @@ if (!empty($_SESSION['customer'])) {
         echo '<tr><td>';
         echo '<p align="center"><div id="pas2">　　',$pass,'</div></p>';
         echo '</tr></td>';
+        echo '</div>';
         echo '</table>';
     }
     echo '<br>';
