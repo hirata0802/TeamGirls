@@ -38,13 +38,13 @@
     <div v-for="row in filterData" :key="row.cart_id"><br>
         <div id="mannaka"><img :src="row.image_path" style="object-fit: contain; width: 100px; height: 100px;"></div>
         <div id="text3">
-            <p>ブランド名：{{ row.brand_name }}</p>
-            <p>商品名：{{ row.cosme_name }}</p>
-            <p>価格：{{ row.price }}円</p>
-            <p>カラー：{{ row.color_name }}</p>
-            <button type="submit" @click="decrement(row.cart_id)">－</button>
+            <p>{{ row.cosme_name }}</p>
+            <p>{{ row.brand_name }}</p>
+            <p>{{ row.color_name }}</p>
+            <p>{{ row.price }}円</p>
+            <button @click="decrement(row.cart_id)">－</button>
             {{ row.quantity }}
-            <button type="submit" @click="increment(row.cart_id)">＋</button>
+            <button @click="increment(row.cart_id)">＋</button>
             <button class="ao2" type="submit" @click="cartDelete(row.cart_id)">削除</button>
         </div>
     </div><br>
