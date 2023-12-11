@@ -74,7 +74,7 @@
         //ブランドアイコン
         if($_GET['kubun']==2){
             $sql.=' and C.brand_id = ?';
-            $contains=$_GET['id'];
+            $contains[]=$_GET['id'];
         }
     }
 
