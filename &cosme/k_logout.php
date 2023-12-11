@@ -12,10 +12,10 @@ if(empty($_SESSION['admin'])){
 <form action="k_logout_finish.php" method="post">
     <link rel="stylesheet" href="css/k_style.css">
     <div id="center"><h3>ログアウトしますか？</h3><br></div>
-    <p><button class="ao" type="submit" style="width: 300px;height: 30px;">ログアウト</button></p></div>
+    <p><button class=".next" type="submit" style="width: 300px;height: 30px;">ログアウト</button></p></div>
     <br>
 </form>
 <form action="k_home.php" method="post">
-    <button type="submit" class="grey" style="width: 300px;height: 30px;">ホームへ</button>
+    <button type="submit" class="return" style="width: 300px;height: 30px;">ホームへ</button>
 </form>
 <?php require 'footer.php'; ?>
