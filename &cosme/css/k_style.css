@@ -96,14 +96,15 @@ select[name="kategori"] {   border: 1px solid #89c3fd; }
 
 table{
   border-collapse: collapse;
+  margin: 3px auto;
 }
 table th, table td {
   border: solid 1px black;
   /*実線 1px 黒*/
 }
 th {
-  color: #2589d0;;/*文字色*/
-  background: #fff5e5;/*背景色*/	
+  color: #000000;;/*文字色*/
+  background: #2589d0;/*背景色*/	
 }
 
 /*商品登録画面のcss*/
