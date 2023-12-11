@@ -94,12 +94,17 @@ select[name="kategori"] {   border: 1px solid #89c3fd; }
 }
 
 
-table{border-collapse: collapse; width: 100%; }
- /* ここから偶数行のスタイル */
- tr:nth-child(even){background-color: #eaf6ff !important;/* 薄い水色に変更 */}
- th, td {border: 1px solid #dddddd; text-align: left;padding: 8px; } 
- th {   background-color: #f2f2f2;   font-weight: bold; }
-
+table{
+  border-collapse: collapse;
+}
+table th, table td {
+  border: solid 1px black;
+  /*実線 1px 黒*/
+}
+th {
+  color: #2589d0;;/*文字色*/
+  background: #fff5e5;/*背景色*/	
+}
 
 /*商品登録画面のcss*/
 #h3{
