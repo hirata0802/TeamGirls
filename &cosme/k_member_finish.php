@@ -23,7 +23,7 @@ $pdo=new PDO($connect,USER,PASS);
     echo '<p><font color="FF0000">',$_POST['admin_email'],'の管理者登録が完了しました。</font></p>';
     echo '</div>';
     echo '<form action="k_home.php" method="post">';
-    echo '<button class="ao" style="width: 300px;height: 30px;">ホームへ</button>';
+    echo '<button class="next" style="width: 300px;height: 30px;">ホームへ</button>';
     echo '</form><hr>';
     unset($_SESSION['newAdmin']);
 ?>
