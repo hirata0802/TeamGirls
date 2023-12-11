@@ -49,11 +49,11 @@ if(empty($_SESSION['admin'])){
     echo '<br><font color="FF0000">',$errormsg,'</font>';
     
     //商品名
-    echo '<p><input type="text" class="ao" style="width: 300px;height: 30px;" name="cosme_name" placeholder="商品名" value="', $_SESSION['newCosme']['name'], '" required></p>';
+    echo '<p><input type="text" name="cosme_name" placeholder="商品名" value="', $_SESSION['newCosme']['name'], '" required></p>';
     echo '<br>';
     
     //カラー名
-    echo '<p><input type="text" class="ao" style="width: 300px;height: 30px;" name="color_name" placeholder="カラー名" value="', $_SESSION['newCosme']['color'], '" required>';
+    echo '<p><input type="text" name="color_name" placeholder="カラー名" value="', $_SESSION['newCosme']['color'], '" required>';
     
     //カラーID
     $color=[1=>'レッド', 2=>'オレンジ', 3=>'ピンク', 4=>'ベージュ', 5=>'ホワイト', 6=>'ブラウン', 7=>'ブラック', 8=>'シルバー', 9=>'ゴールド', 10=>'その他'];
@@ -102,13 +102,13 @@ if(empty($_SESSION['admin'])){
         echo '<p><textarea name="cosme_detail" placeholder="商品説明" rows="5" cols="40" maxlength="200" title="200文字以内で入力してください" required>', $_SESSION['newCosme']['detail'], '</textarea></p>';
         
         //値段
-        echo '<p><input type="number" class="ao" style="width: 300px;height: 30px;" name="price" placeholder="価格" min=0  value="', $_SESSION['newCosme']['price'], '" required></p>';
+        echo '<p><input type="number" name="price" placeholder="価格" min=0  value="', $_SESSION['newCosme']['price'], '" required></p>';
         
         //画像
         echo '<input type="file" name="file" accept=".jpg" required>';
         echo '</div>';
         ?>
-    <br><button type="submit" class="ao" style="width: 300px;height: 30px;">確認</button><br>
-    <button onclick="location.href='k_home.php'" class="grey" style="width: 300px;height: 30px;">戻る</button>
+    <br><button type="submit" class="ao" >確認</button><br>
+    <button onclick="location.href='k_home.php'" class="grey" style="width: 300px;height: 30px;">ホームへ</button>
 </form>
 <?php require 'footer.php'; ?>
