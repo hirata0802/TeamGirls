@@ -33,8 +33,16 @@
             'categorySelect' => $_POST['categorySelect'],
             'colorSelect' => $_POST['colorSelect'],
             'brandSelect' => $_POST['brandSelect'],
-            'keyword' => $_POST['keyword']
+            'keyword' => $_POST['keyword'],
+            //'brand' => $_GET['brand'],
+            //'category' => $_GET['category']
         ];
+        if(isset($_GET['brand'])){
+            $_SESSION['search']['brand'] = $_GET['brand'];
+        }else if(isset($_GET['category'])){
+            $_SESSION['search']['category'] = $_GET['category'];
+        }
+
     }
     
     echo '<form action="detail.php" method="post">';
@@ -65,6 +73,16 @@
         $sql.=' and C.cosme_name like ?';
         $contains[]='%'.$_SESSION['search']['keyword'].'%';
     }
+    //カテゴリ
+    if(!empty($_SESSION['search']['category'])){
+        $sql.=' and C.category_id = ?';
+        $contains[]=$_SESSION['search']['category'];
+    }
+    //ブランド
+    if(!empty($_SESSION['search']['brand'])){
+        $sql.=' and C.brand_id = ?';
+        $contains[]=$_SESSION['search']['brand'];
+    }
     /*if(!empty($_GET['kubun'])){
         //カテゴリアイコン
         if($_GET['kubun']==1){
@@ -77,6 +95,7 @@
             $contains[]=$_GET['id'];
         }
     }*/
+    $_POST['categorySelect'];
 
     $result=$pdo->prepare($sql);
     $result->execute($contains);
