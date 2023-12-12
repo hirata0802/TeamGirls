@@ -24,7 +24,7 @@ $pdo=new PDO($connect,USER,PASS);
     echo '</div>';
     echo '<form action="k_home.php" method="post">';
     echo '<button class="next" >ホームへ</button>';
-    echo '</form><hr>';
+    echo '</form>';
     unset($_SESSION['newAdmin']);
 ?>
 <?php require 'footer.php'; ?>
