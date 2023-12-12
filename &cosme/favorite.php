@@ -5,9 +5,16 @@
         header('Location: ./error.php');
         exit();
     }
-    $backURL = end($_SESSION['history']);
 ?>
 <?php  
+    $backURL='';
+    if($_GET['page']==11){//検索結果
+        $backURL='./seach_output.php';
+    }else if($_GET['page']==30){//お気に入り
+        $backURL='./favorite_show.php';
+    }else if($_GET['page']==40){//商品詳細
+        $backURL='./detail.php';
+    }
     $pdo = new PDO($connect,USER,PASS);
     $delete_flag = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id = ?');
     $delete_flag -> execute([$_SESSION['customer']['code'], $_GET['cosmeId']]);
@@ -21,37 +28,18 @@
                 $sql = $pdo -> prepare('update Favorites set delete_flag=0,register_date=CURRENT_TIMESTAMP where cosme_id = ? and member_code = ?');
                 $sql -> execute([$_GET['cosmeId'], $_SESSION['customer']['code']]); 
             }
-            if($_GET['page'] == 0){//GETなし
-                if($row["delete_flag"] == 0){
-                    header('Location: '.$backURL.'?page=31');
-                    exit();
-                }else{
-                    header('Location: '.$backURL.'?page=32');
-                    exit();
-                }
-            }else if($_GET['page'] == 11){
-                if($row["delete_flag"] == 0){
-                    header('Location: ./seach_output.php?page=31');
-                    exit();
-                }else{
-                    header('Location: ./seach_output.php?page=32');
-                    exit();
-                }
-            }
-            else{//商品詳細画面、検索結果からの遷移
-                if($row["delete_flag"] == 0){
-                    header('Location: '.$backURL.'&page=31');
-                    exit();
-                }else{
-                    header('Location: '.$backURL.'&page=32');
-                    exit();
-                }
+            if($row["delete_flag"] == 0){
+                header('Location: '.$backURL.'?page=31');
+                exit();
+            }else{
+                header('Location: '.$backURL.'?page=32');
+                exit();
             }
         }
     }else{ //一度もお気に入りに追加したことないコスメ
         $sql = $pdo -> prepare('insert into Favorites values(?, ?, CURRENT_TIMESTAMP, 0)');
         $sql -> execute([$_GET['cosmeId'], $_SESSION['customer']['code']]); 
-        header('Location: '.$backURL.'&page=32');
+        header('Location: '.$backURL.'?page=32');
         exit();
     }
 ?>

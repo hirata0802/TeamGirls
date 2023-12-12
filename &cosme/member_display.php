@@ -30,8 +30,7 @@ if (!empty($_SESSION['customer'])) {
         ]);
         unset($_SESSION['customer']);
         $sql = $pdo -> prepare('select * from Members where email=?');
-        $sql -> execute([$_POST['mail']]);
-        $password=$_POST['pass'];    
+        $sql -> execute([$_POST['mail']]);    
         foreach($sql as $row){
             if(password_verify($_POST['pass'],$row['member_password'])==true){
                 $_SESSION['customer'] = [
@@ -87,7 +86,8 @@ if (!empty($_SESSION['customer'])) {
         echo '</td></tr>';
         //住所
         echo '<tr><td>';
-        echo '<p align="center">',$row['prefecture'],'　',$row['city'],'　',$row['section'],'<br>';
+        echo '<p align="center">',$row['prefecture'],'　',$row['city'],'<br>';
+        echo $row['section'],'<br>';
         echo $row['building'],'</p>';
         echo '</tr></td>';
         //電話番号
