@@ -16,7 +16,6 @@ if(isset($_SESSION['admin'])){
 }else{
     echo '<div id="center">';
     echo '<h3>すでにログアウトしています。</h3>';
-    echo '<hr width="250">';
     echo '</div>';
     echo '<form action="k_login.php" method="post">';
     echo '<button class="next" style="width: 300px;height: 30px;">ログイン画面へ戻る</button>';
