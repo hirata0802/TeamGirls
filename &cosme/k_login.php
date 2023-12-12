@@ -26,8 +26,6 @@ if(isset($_POST['admin_email'])){
         echo '</div>';
     }
 }
-
-
 echo '<h3>&cosme</h3>';
 echo '<div id="center"><h2>管理者ログイン</h2></div>';
 echo '<div id="hr2"><hr color="black"></div>';
