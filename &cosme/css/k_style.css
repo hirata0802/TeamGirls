@@ -124,7 +124,7 @@ select[name="kategori"] {   border: 1px solid #89c3fd; }
   display: flex;
   margin: center;
   }
-  .select-style {
+  .select{
     display: flex;
     justify-content: center;
     align-items: center;
