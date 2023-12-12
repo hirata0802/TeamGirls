@@ -17,7 +17,9 @@ if(empty($_SESSION['admin'])){
         $admin_email=$_SESSION['newAdmin']['mail'];
         $admin_password=$_SESSION['newAdmin']['pass'];
         if(!isset($_SESSION['newAdmin']['mail'])){
+            echo '<div id="center">';
             $error='<font color="FF0000">メールアドレスが既に登録されています。</font>';
+            echo '</div>';
         }
     }
     

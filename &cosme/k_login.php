@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php require 'k_header.php'; ?>
 <?php require 'db_connect.php'; ?>
 <?php
 $msg;
@@ -28,7 +29,7 @@ if(isset($_POST['admin_email'])){
     }
 }
 
-require 'k_header.php';
+
 echo '<h3>&cosme</h3>';
 echo '<div id="center"><h2>ログイン</h2></div>';
 echo '<div id="hr2"><hr color="black"></div>';
