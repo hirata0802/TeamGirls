@@ -67,6 +67,6 @@ if(empty($_SESSION['customer'])){
     echo '<br>';
     echo '<button type="submit" class="ao">注文を確定する</button></p>';
     echo '</form>';
-    echo `<button type="button" onclick="location.href='order.php'" class="grey">変更</button></p><br>`;
+    echo '<button type="button" onclick="location.href=`order.php`" class="grey">変更</button></p><br>';
 ?>
 <?php require 'footer.php'; ?>
