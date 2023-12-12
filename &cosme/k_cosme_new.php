@@ -59,7 +59,7 @@ if(empty($_SESSION['admin'])){
     
     //カラーID
     $color=[1=>'レッド', 2=>'オレンジ', 3=>'ピンク', 4=>'ベージュ', 5=>'ホワイト', 6=>'ブラウン', 7=>'ブラック', 8=>'シルバー', 9=>'ゴールド', 10=>'その他'];
-    echo '<p><select name="colorSelect" class="ao" required>';
+    echo '<p><select name="colorSelect" required>';
     if(isset($_SESSION['newCosme']['color'])){
         foreach($color as $key => $value){
             if($_SESSION['newCosme']['color'] == $key){
@@ -76,7 +76,7 @@ if(empty($_SESSION['admin'])){
         
         //ブランド名
         $sql=$pdo->query('select * from Brands');
-        echo '<p><select name="brandSelect" class="ao" required>';
+        echo '<p><select name="brandSelect" required>';
         if(isset($_SESSION['newCosme']['brand'])){
             echo '<option value="',$_SESSION['newCosme']['brand'],'" selected hidden>',$_SESSION['newCosme']['brand'],'</option>';
         }else{
@@ -89,7 +89,7 @@ if(empty($_SESSION['admin'])){
 
         //カテゴリ
         $sql=$pdo->query('select * from Categories');
-        echo '<p><select name="categorySelect" class="ao" required>';
+        echo '<p><select name="categorySelect" required>';
         if(isset($_SESSION['newCosme']['category'])){
             echo '<option value="',$_SESSION['newCosme']['category'],'" selected hidden>',$_SESSION['newCosme']['category'],'</option>';
         }else{
