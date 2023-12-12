@@ -124,7 +124,20 @@ select[name="kategori"] {   border: 1px solid #89c3fd; }
   display: flex;
   margin: center;
   }
-
+  .select-style {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 230px;
+    height: 30px;
+    margin: 0 auto;
+    padding: .9em 2em;
+    border: 1px solid #2589d0;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #2589d0;
+    font-size: 1em;
+  }
 /*商品登録完了のcss 同じ処理のみ完了*/
 
 
