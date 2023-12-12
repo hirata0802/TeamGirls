@@ -21,9 +21,7 @@ if(isset($_POST['admin_email'])){
         header('Location: ./k_home.php');
         exit();
     }else{
-        echo '<div id="center">';
         $msg = '<font color="FF0000">ログイン名またはパスワードが違います。</font>';
-        echo '</div>';
     }
 }
 echo '<h3>&cosme</h3>';
