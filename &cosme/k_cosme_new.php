@@ -10,15 +10,15 @@ if(empty($_SESSION['admin'])){
 <?php
     $pdo=new PDO($connect, USER, PASS);
     $errormsg="";
-    echo '<div id="center">';
     if(isset($_GET['page'])){
         if($_GET['page']==1){
+            echo '<div id="center">';
             $errormsg='すでに登録された商品です';
         }else if($_GET['page']==2){
             $errormsg='ファイルのアップロードに失敗しました';
+            echo '</div>';
         }
     }
-    echo '</div>';
     else{
         $_SESSION['newCosme'] = [
             'name' => null,
