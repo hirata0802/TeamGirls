@@ -59,6 +59,7 @@ if (!empty($_SESSION['customer'])) {
     $count;
     $sql=$pdo->prepare('select * from Members where member_code=?');
     $sql->execute([$_SESSION['customer']['code']]);
+
     foreach($sql as $row){
         echo '<input type="hidden" name="sei" value="',$row['family_name'],'">';
         echo '<input type="hidden" name="mei" value="',$row['first_name'],'">';
@@ -76,6 +77,7 @@ if (!empty($_SESSION['customer'])) {
         $pass = str_repeat("*", $count);
         echo '<table align="center">';
         //名前
+     
         echo '<tr><td>';
         echo '<p align="center"><div id="simei">　　',$row['family_name'],'　',$row['first_name'],'(',$row['family_name_kana'],'　',$row['first_name_kana'],')</div></p>';
         echo '</td></tr>';

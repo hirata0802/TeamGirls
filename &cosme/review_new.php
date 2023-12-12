@@ -4,7 +4,7 @@ if(empty($_SESSION['customer'])){
     header('Location: ./error.php');
     exit();
 }
-?> 
+?>
 <?php require 'db_connect.php'; ?>
 <?php
 $errmsg="";

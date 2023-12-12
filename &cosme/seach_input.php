@@ -79,9 +79,11 @@ if(empty($_SESSION['customer'])){
             foreach($sql as $row){
                 $category_id=$row['category_id'];
                 if($count%3!=0){
-                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" style="object-fit: contain; width="90px" height="90px" formaction="seach_output.php?page=10&kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" style="object-fit: contain; width="90px" height="90px" formaction="seach_output.php?page=10&category=',$category_id,'"><br>',$row['category_name'],'</td>';
+                    //echo '<input type="hidden" name="category" value="',$category_id,'">';
                 }else{
-                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" style="object-fit: contain; width="90px" height="90px" formaction="seach_output.php?page=10&kubun=1&id=',$category_id,'"><br>',$row['category_name'],'</td>';
+                    echo '<td align="center"><input type="image" src="',$row['image_path'],'" alt="',$category_id,'" style="object-fit: contain; width="90px" height="90px" formaction="seach_output.php?page=10&category=',$category_id,'"><br>',$row['category_name'],'</td>';
+                    //echo '<input type="hidden" name="category" value="',$category_id,'">';
                     echo '</tr><tr>';
                 }
                 $count++;
@@ -98,9 +100,11 @@ if(empty($_SESSION['customer'])){
             foreach($sql as $row){
                 $brand_id=$row['brand_id'];
                 if($count%3!=0){
-                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?page=10&kubun=2&id=',$brand_id,'"></td>';
+                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?page=10&brand=',$brand_id,'"></td>';
+                    //echo '<input type="hidden" name="brand" value="',$brand_id,'">';
                 }else{
-                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?page=10&kubun=2&id=',$brand_id,'"></td>';
+                    echo '<td align="center"><input type="image" src="',$row['brand_image_path'],'" alt="',$brand_id,'" width="100px" formaction="seach_output.php?page=10&brand=',$brand_id,'"></td>';
+                    //echo '<input type="hidden" name="brand" value="',$brand_id,'">';
                     echo '</tr><tr>';
                 }
                 $count++;

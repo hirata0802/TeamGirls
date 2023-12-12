@@ -76,7 +76,9 @@ if(empty($_SESSION['admin'])){
         echo '<p><textarea name="cosme_detail" placeholder="',$_POST['cosme_detail'],'" rows="5" cols="40" readonly></textarea><p>';
         echo '<input type="number" name="price" value="',$_POST['price'],'"></p>';
         echo '<input type="text" value="',$_FILES['file']['name'],'">';
+        echo '<div id="center">';
         echo '<p><font color="FF0000">ファイル名を「', $name, '」に変更して登録します。</font></p>';
+        echo '</div>';
         
         //↓↓非表示↓↓
         echo '<input type="hidden" name="colorSelect" value="',$key,'">';

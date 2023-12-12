@@ -37,8 +37,8 @@ echo '<link rel="stylesheet" href="css/k_style.css">';
         ?>
     </form>
     <br>
-    <button onclick="history.back()" class="grey" style="width: 300px;height: 30px;">変更</button></p><br>
-    <button type="submit" form="next" class="ao" style="width: 300px;height: 30px;">新規登録</button></p>
+    <button onclick="history.back()" class="next" >変更</button></p><br>
+    <button type="submit" form="next" class="return" >新規登録</button></p>
 </body>
 </html>
 <?php require 'footer.php'; ?>

@@ -1,32 +1,33 @@
 <?php session_start(); ?>
+<?php require 'k_header.php'; ?>
 <?php require 'db_connect.php'; ?>
 <?php
 $msg;
 if(isset($_POST['admin_email'])){
     unset($_SESSION['admin']);
-    
     $pdo = new PDO($connect, USER, PASS);
     $sql = $pdo -> prepare('select * from Admins where admin_email=?');
     $sql -> execute([$_POST['admin_email']]);
     $password=$_POST['admin_password'];    
     foreach($sql as $row){
-          if(password_verify($_POST['admin_password'],$row['admin_password'])==true){
+        if(password_verify($_POST['admin_password'],$row['admin_password'])==true){
             $_SESSION['admin'] = [
                 'code' => $row['admin_code'],
                 'mail' => $row['admin_email'],
                 'pass' => $password];
-             }
-         }
+        }
+    }
     if(isset($_SESSION['admin'])){
         header('Location: ./k_home.php');
         exit();
     }else{
+        echo '<div id="center">';
         $msg = '<font color="FF0000">ログイン名またはパスワードが違います。</font>';
+        echo '</div>';
     }
 }
-require 'k_header.php';
 echo '<h3>&cosme</h3>';
-echo '<div id="center"><h2>ログイン</h2></div>';
+echo '<div id="center"><h2>管理者ログイン</h2></div>';
 echo '<div id="hr2"><hr color="black"></div>';
 
 echo '<form action="k_login.php" method="post">';
@@ -40,7 +41,7 @@ if(isset($msg)){
     echo '<p><div id="mannaka">', $msg, '</p></div>';
 }
 echo '<br>';
-echo '<p><button class="ao" type="submit" href="k_home.php">ログイン</button></p>';
+echo '<p><button class="next" type="submit" href="k_home.php">ログイン</button></p>';
 echo '</form>';
 ?>
 <?php require 'footer.php'; ?>

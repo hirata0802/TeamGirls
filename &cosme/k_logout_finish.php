@@ -11,15 +11,15 @@ if(isset($_SESSION['admin'])){
     echo '<hr width="250">';
     echo '</div>';
     echo '<form action="k_login.php" method="post">';
-    echo '<button class="ao">ログイン画面へ戻る</button>';
+    echo '<button class="next">ログイン画面へ戻る</button>';
     echo '</form>';   
 }else{
-    echo '<div id="logtitle3">';
+    echo '<div id="center">';
     echo '<h3>すでにログアウトしています。</h3>';
     echo '<hr width="250">';
     echo '</div>';
     echo '<form action="k_login.php" method="post">';
-    echo '<button class="ao">ログイン画面へ戻る</button>';
+    echo '<button class="next" style="width: 300px;height: 30px;">ログイン画面へ戻る</button>';
     echo '</form>';
 }
 ?>
