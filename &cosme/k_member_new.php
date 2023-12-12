@@ -27,7 +27,7 @@ if(empty($_SESSION['admin'])){
     echo '<input type="password" name="admin_password" placeholder="パスワード" pattern="^([a-zA-Z0-9]{6,})$" title="半角英数字6文字以上で入力ください" value="',$admin_password,'" required>';
     echo '</div>';
 ?>
-    <br><br>
+    <br>
     <div id="center">
     <p><button type="submit" class="next">確認</button></p></div>
 </form>
