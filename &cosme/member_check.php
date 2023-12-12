@@ -46,6 +46,7 @@
 
         echo '<table align="center">';
         //名前
+
         echo '<tr><td>';
         echo '<p align="center"><div id="simei">　　',$_POST['sei'],'　',$_POST['mei'],'(',$_POST['seikana'],'　',$_POST['meikana'],')</div></p>';
         echo '</td></tr>';

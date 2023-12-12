@@ -59,7 +59,7 @@ if (!empty($_SESSION['customer'])) {
     $count;
     $sql=$pdo->prepare('select * from Members where member_code=?');
     $sql->execute([$_SESSION['customer']['code']]);
-    echo '<div id="textsinki">';
+
     foreach($sql as $row){
         echo '<input type="hidden" name="sei" value="',$row['family_name'],'">';
         echo '<input type="hidden" name="mei" value="',$row['first_name'],'">';
@@ -102,7 +102,6 @@ if (!empty($_SESSION['customer'])) {
         echo '<tr><td>';
         echo '<p align="center"><div id="pas2">　　',$pass,'</div></p>';
         echo '</tr></td>';
-        echo '</div>';
         echo '</table>';
     }
     echo '<br>';
