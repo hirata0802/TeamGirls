@@ -18,7 +18,7 @@ if(isset($_SESSION['customer'])){
     echo '<hr width="250">';
     echo '</div>';
     echo '<form action="login.php" method="post">';
-    echo '<button class="ao">ログイン画面へ戻る</button>';
+    echo '<button class="next" style="width: 300px;height: 30px;">ログイン画面へ戻る</button>';
     echo '</form>';
 }
 ?>

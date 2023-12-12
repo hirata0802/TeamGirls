@@ -53,14 +53,13 @@ if(empty($_SESSION['admin'])){
     
     //商品名
     echo '<p><input type="text" class="ao" name="cosme_name" placeholder="商品名" value="', $_SESSION['newCosme']['name'], '" required></p>';
-    echo '<br>';
     
     //カラー名
     echo '<p><input type="text" class="ao"  name="color_name" placeholder="カラー名" value="', $_SESSION['newCosme']['color'], '" required>';
     
     //カラーID
     $color=[1=>'レッド', 2=>'オレンジ', 3=>'ピンク', 4=>'ベージュ', 5=>'ホワイト', 6=>'ブラウン', 7=>'ブラック', 8=>'シルバー', 9=>'ゴールド', 10=>'その他'];
-    echo '<select name="colorSelect" class="ao" required>';
+    echo '<p><select name="colorSelect" class="ao" required>';
     if(isset($_SESSION['newCosme']['color'])){
         foreach($color as $key => $value){
             if($_SESSION['newCosme']['color'] == $key){
@@ -86,11 +85,11 @@ if(empty($_SESSION['admin'])){
         foreach($sql as $row){
             echo '<option value="',$row['brand_id'],'">',$row['brand_name'],'</option>';
         }
-        echo '</select>';
+        echo '</select></p>';
 
         //カテゴリ
         $sql=$pdo->query('select * from Categories');
-        echo '<select name="categorySelect" class="ao" required>';
+        echo '<p><select name="categorySelect" class="ao" required>';
         if(isset($_SESSION['newCosme']['category'])){
             echo '<option value="',$_SESSION['newCosme']['category'],'" selected hidden>',$_SESSION['newCosme']['category'],'</option>';
         }else{
@@ -102,7 +101,7 @@ if(empty($_SESSION['admin'])){
         echo '</select></p>';
         
         //商品説明
-        echo '<p><textarea name="cosme_detail" placeholder="商品説明" rows="5" cols="40" maxlength="200" title="200文字以内で入力してください" required>', $_SESSION['newCosme']['detail'], '</textarea></p>';
+        echo '<p><textarea name="cosme_detail" class="ao" placeholder="商品説明" rows="5" cols="40" maxlength="200" title="200文字以内で入力してください" required>', $_SESSION['newCosme']['detail'], '</textarea></p>';
         
         //値段
         echo '<p><input type="number" class="ao" name="price" placeholder="価格" min=0  value="', $_SESSION['newCosme']['price'], '" required></p>';
