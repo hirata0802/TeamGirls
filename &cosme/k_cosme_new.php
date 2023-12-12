@@ -5,10 +5,12 @@ if(empty($_SESSION['admin'])){
     exit();
 }
 ?>
+<?php require 'k_header.php'; ?>
 <?php require 'db_connect.php'; ?>
 <?php
     $pdo=new PDO($connect, USER, PASS);
     $errormsg="";
+    echo '<div id="center">';
     if(isset($_GET['page'])){
         if($_GET['page']==1){
             $errormsg='すでに登録された商品です';
@@ -16,6 +18,7 @@ if(empty($_SESSION['admin'])){
             $errormsg='ファイルのアップロードに失敗しました';
         }
     }
+    echo '</div>';
     else{
         $_SESSION['newCosme'] = [
             'name' => null,
@@ -35,7 +38,7 @@ if(empty($_SESSION['admin'])){
         }
     }
 ?>
-<?php require 'k_header.php'; ?>
+
 <h3>&cosme</h3>
 <div id="center"><h2>商品登録</h2></div>
 <div id="hr2"><hr color="black"></div>
@@ -57,7 +60,7 @@ if(empty($_SESSION['admin'])){
     
     //カラーID
     $color=[1=>'レッド', 2=>'オレンジ', 3=>'ピンク', 4=>'ベージュ', 5=>'ホワイト', 6=>'ブラウン', 7=>'ブラック', 8=>'シルバー', 9=>'ゴールド', 10=>'その他'];
-    echo '<select name="colorSelect" required>';
+    echo '<select name="colorSelect" class="ao" required>';
     if(isset($_SESSION['newCosme']['color'])){
         foreach($color as $key => $value){
             if($_SESSION['newCosme']['color'] == $key){
@@ -74,7 +77,7 @@ if(empty($_SESSION['admin'])){
         
         //ブランド名
         $sql=$pdo->query('select * from Brands');
-        echo '<p><select name="brandSelect" required>';
+        echo '<p><select name="brandSelect" class="ao" required>';
         if(isset($_SESSION['newCosme']['brand'])){
             echo '<option value="',$_SESSION['newCosme']['brand'],'" selected hidden>',$_SESSION['newCosme']['brand'],'</option>';
         }else{
@@ -87,7 +90,7 @@ if(empty($_SESSION['admin'])){
 
         //カテゴリ
         $sql=$pdo->query('select * from Categories');
-        echo '<select name="categorySelect" required>';
+        echo '<select name="categorySelect" class="ao" required>';
         if(isset($_SESSION['newCosme']['category'])){
             echo '<option value="',$_SESSION['newCosme']['category'],'" selected hidden>',$_SESSION['newCosme']['category'],'</option>';
         }else{
@@ -102,7 +105,7 @@ if(empty($_SESSION['admin'])){
         echo '<p><textarea name="cosme_detail" placeholder="商品説明" rows="5" cols="40" maxlength="200" title="200文字以内で入力してください" required>', $_SESSION['newCosme']['detail'], '</textarea></p>';
         
         //値段
-        echo '<p><input type="number" name="price" placeholder="価格" min=0  value="', $_SESSION['newCosme']['price'], '" required></p>';
+        echo '<p><input type="number" class="ao" name="price" placeholder="価格" min=0  value="', $_SESSION['newCosme']['price'], '" required></p>';
         
         //画像
         echo '<input type="file" name="file" accept=".jpg" required>';
