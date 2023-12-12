@@ -31,7 +31,7 @@ if(isset($_POST['admin_email'])){
 
 
 echo '<h3>&cosme</h3>';
-echo '<div id="center"><h2>ログイン</h2></div>';
+echo '<div id="center"><h2>管理者ログイン</h2></div>';
 echo '<div id="hr2"><hr color="black"></div>';
 
 echo '<form action="k_login.php" method="post">';
