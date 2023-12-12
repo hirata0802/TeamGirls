@@ -60,7 +60,8 @@
         echo '</td></tr>';
         //住所
         echo '<tr><td>';
-        echo '<p align="center">',$_POST['prefecture'],'　',$_POST['city'],'　',$_POST['address'],'<br>';
+        echo '<p align="center">',$_POST['prefecture'],'　',$_POST['city'],'<br>';
+        echo $_POST['address'],'<br>';
         echo $_POST['bill'],'</p>';
         echo '</tr></td>';
         //電話番号

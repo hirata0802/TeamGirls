@@ -5,6 +5,7 @@
     if(!isset($_SESSION['customer'])){
         $pdo=new PDO($connect,USER,PASS);
         //Members登録
+        $password=$_POST['pass'];
         $sql=$pdo->prepare('insert into Members values(null,?,?,?,?,?,?,?,?,?,?,?,?)');
         $sql->execute([
             $_POST['sei'],
@@ -58,7 +59,7 @@
                 'building'=>$row['building'],
                 'phone' => $row['phone'],
                 'mail' => $row['email'],
-                'pass' => $row['member_password']
+                'pass' => $password
             ];
         }
         echo '<h3>&cosme</h3>';

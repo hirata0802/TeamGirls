@@ -47,7 +47,7 @@ if(!empty($_SESSION['customer'])){
     echo '</form>';
     echo '<script src="./js/jquery-3.7.0.min.js"></script>';
     echo '<script src="./js/app.js"></script>';
-    echo '<button class="grey" onclick="history.back()">戻る</button>';
+    echo '<button type="button" class="grey" onclick="history.back()">戻る</button>';
     require 'footer.php';
 }
 else{

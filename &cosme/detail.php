@@ -1,4 +1,8 @@
 <?php session_start();
+if(empty($_SESSION['customer'])){
+    header('Location: ./error.php');
+    exit();
+}
 if(!(isset($_GET['page']) && ($_GET['page'] == 31 || $_GET['page'] == 32 || $_GET['page'] == 20))){
     if(isset($_GET['search'])){
         unset($_SESSION['detail']);
@@ -14,17 +18,15 @@ if(!(isset($_GET['page']) && ($_GET['page'] == 31 || $_GET['page'] == 32 || $_GE
         $_SESSION['detail']='./home.php';
     }
 }
-    //ページのURLをセッションに保存
+if(isset($_GET['cosme_id'])){
+    unset($_SESSION['cosmeId']);
+    $_SESSION['cosmeId']=$_GET['cosme_id'];
+}
+    /*ページのURLをセッションに保存
     if(!isset($_SESSION['history'])){
         $_SESSION['history'] = array();
     }
-    array_push($_SESSION['history'], $_SERVER['REQUEST_URI']);
-?>
-<?php 
-if(empty($_SESSION['customer'])){
-    header('Location: ./error.php');
-    exit();
-}
+    array_push($_SESSION['history'], $_SERVER['REQUEST_URI']);*/
 ?>
 <?php require 'header.php'; ?>
 <?php require 'db_connect.php'; ?>
@@ -48,10 +50,10 @@ if(empty($_SESSION['customer'])){
     }
     echo '<button onclick="location.href=`',$_SESSION['detail'],'`">＜戻る</button>';
     $pdo = new PDO($connect, USER, PASS);
-    $cosme1 = $pdo -> prepare('select * from Cosmetics where cosme_id=?');
-    $cosme1 -> execute([$_GET['cosme_id']]);
+    $cosme1 = $pdo -> prepare('select * from Cosmetics C inner join Brands B on C.brand_id=B.brand_id where cosme_id=?');
+    $cosme1 -> execute([$_SESSION['cosmeId']]);
     $groupCount = $pdo -> prepare('select count(group_id) from Cosmetics where group_id=(select group_id from Cosmetics where cosme_id=?)');
-    $groupCount -> execute([$_GET['cosme_id']]);
+    $groupCount -> execute([$_SESSION['cosmeId']]);
     //商品詳細表示
     foreach($cosme1 as $row){ 
         $detail = $row['cosme_detail'];
@@ -71,14 +73,15 @@ if(empty($_SESSION['customer'])){
         }
         echo '</div>';
         echo '<br>';
-        echo '<p>販売価格：￥',$row['price'],'</p>';
+        echo '<p>ブランド：',$row['brand_name'],'</p>';
         if(!empty($row['color_name'])){
             echo '<p>カラー　：',$row['color_name'],'</p>';
         }
+        echo '<p>販売価格：￥',$row['price'],'</p>';
     }
     echo '<div id="ka-to">';
     //カート
-    echo '<button class="ao1"  onclick="location.href=`cart_input.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/cart_black.svg" style="width: 20px; height: 20px;" alt="カートに入れる">カートに入れる</button>';
+    echo '<button class="ao1"  onclick="location.href=`cart_input.php?cosmeId=',$cosmeId,'&page=40`"><img src="css/image/cart_black.svg" style="width: 20px; height: 20px;" alt="カートに入れる">カートに入れる</button>';
 
     //お気に入り
     $cosme2 = $pdo -> prepare('select * from Favorites where member_code = ? and cosme_id=?');
@@ -87,13 +90,13 @@ if(empty($_SESSION['customer'])){
     if($count > 0){
         foreach($cosme2 as $row){
             if($row['delete_flag']==0){
-                echo '<button class="hosi star" onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></button>';
+                echo '<button class="hosi star" onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=40`"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></button>';
             }else{
-                echo '<button class="hosi star" onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></button>';
+                echo '<button class="hosi star" onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=40`"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></button>';
             }
         }
     }else{
-        echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></button>';
+        echo '<button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=40`"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></button>';
     }
     echo '</div>';
     echo '<br>';
