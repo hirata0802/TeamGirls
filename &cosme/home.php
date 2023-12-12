@@ -12,22 +12,25 @@ if(empty($_SESSION['customer'])){
     echo '<table>';
         echo '👑今週のランキング';
         $pdo = new PDO($connect, USER, PASS);
-        $sql = $pdo -> query('select * from OrderDetails as O join Cosmetics as C on O.cosme_id = C.cosme_id order by quantity desc limit 3');
-        //$sql = $pdo -> query('select * from OrderDetails as O join Cosmetics as C on O.cosme_id = C.cosme_id group by O.cosme_id order by quantity desc limit 3');
+        $sql = $pdo -> query('select C.cosme_name, C.cosme_id, C.image_path, SUM(OD.quantity) from Cosmetics C inner join OrderDetails OD ON C.cosme_id=OD.cosme_id INNER JOIN Orders O ON OD.order_id=O.order_id WHERE order_date>=(NOW()-INTERVAL 7 day) GROUP BY C.cosme_id ORDER BY SUM(OD.quantity) DESC LIMIT 7');
+        $countRank = 1;
         $count = 1;
         echo '<br>';
         echo '<br>';
         //順位
-        echo '<table align="center" width="80%">';
-        echo '<tr><td>1位</td> <td>2位</td> <td>3位</td></tr>';
-        echo "</table>";
+       
         //画像表示
         echo '<table width="100%">';
+        echo '<tr><td>1位</td> <td>2位</td> <td>3位</td></tr>';
         echo '<tr>';
         foreach($sql as $row){
-            echo '<td align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'&home=0"><img src="',$row['image_path'],'" widh="80" height="80"></a><br><font size="-1px"><div class="a">',$row['cosme_name'],'</div></font></td>';
+            if($countRank%4!=0){
+                echo '<td align="center"><a href="detail.php?cosme_id=',$row['cosme_id'],'&home=0"><img src="',$row['image_path'],'" widh="80" height="80"></a><br><font size="-1px"><div class="a">',$row['cosme_name'],'</div></font></td>';
+            }else{
+                echo '</tr><tr><td>4位</td> <td>5位</td> <td>6位</td></tr>';
+            }
+            $countRank++;
         }
-        echo '</tr>';
         echo '</table><br><br>';
         
         //新作情報
