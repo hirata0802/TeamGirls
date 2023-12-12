@@ -53,8 +53,8 @@ select[name="kategori"] {   border: 1px solid #89c3fd; }
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px;
-  height: 40px;
+  width: 300px;
+  height: 30px;
   margin:0 auto;
   padding: .9em 2em;
   border: 1px solid #2589d0;

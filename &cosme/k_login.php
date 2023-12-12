@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php require 'k_header.php'; ?>
 <?php require 'db_connect.php'; ?>
 <?php
 $msg;
@@ -22,10 +23,11 @@ if(isset($_POST['admin_email'])){
     }else{
         echo '<div id="center">';
         $msg = '<font color="FF0000">ログイン名またはパスワードが違います。</font>';
+        echo '</div>';
     }
 }
-echo '</div>';
-require 'k_header.php';
+
+
 echo '<h3>&cosme</h3>';
 echo '<div id="center"><h2>ログイン</h2></div>';
 echo '<div id="hr2"><hr color="black"></div>';
