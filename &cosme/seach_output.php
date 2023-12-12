@@ -28,15 +28,15 @@
     //検索内容をセッションに追加
     if(isset($_GET['page']) && $_GET['page']==10){
         unset($_SESSION['search']);
-        $_SESSION['search'] = [
-            'max' => $_POST['max'],
-            'categorySelect' => $_POST['categorySelect'],
-            'colorSelect' => $_POST['colorSelect'],
-            'brandSelect' => $_POST['brandSelect'],
-            'keyword' => $_POST['keyword'],
-            //'brand' => $_GET['brand'],
-            //'category' => $_GET['category']
-        ];
+        if(isset($_POST['max']) || isset($_POST['categorySelect']) || isset($_POST['colorSelect']) || isset($_POST['brandSelect']) || isset($_POST['keyword'])){
+            $_SESSION['search'] = [
+                'max' => $_POST['max'],
+                'categorySelect' => $_POST['categorySelect'],
+                'colorSelect' => $_POST['colorSelect'],
+                'brandSelect' => $_POST['brandSelect'],
+                'keyword' => $_POST['keyword'],
+            ];
+        }
         if(isset($_GET['brand'])){
             $_SESSION['search']['brand'] = $_GET['brand'];
         }else if(isset($_GET['category'])){
@@ -83,20 +83,7 @@
         $sql.=' and C.brand_id = ?';
         $contains[]=$_SESSION['search']['brand'];
     }
-    /*if(!empty($_GET['kubun'])){
-        //カテゴリアイコン
-        if($_GET['kubun']==1){
-            $sql.=' and C.category_id = ?';
-            $contains[]=$_GET['id'];
-        }
-        //ブランドアイコン
-        if($_GET['kubun']==2){
-            $sql.=' and C.brand_id = ?';
-            $contains[]=$_GET['id'];
-        }
-    }*/
-    $_POST['categorySelect'];
-
+    
     $result=$pdo->prepare($sql);
     $result->execute($contains);
     $count=$result->rowCount();
@@ -139,18 +126,18 @@
             echo '<tr><td colspan="3" align="left">',$row['color_name'],'</td></tr>';
             //値段
             echo '<tr><td colspan="3">￥',$row['price'],'</td></tr>';
-            echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">カートに入れる</a></td>';
+            echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=11">カートに入れる</a></td>';
             
             $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
             $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
             if($member->rowCount() == 0){
-                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
+                echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=11"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
             }else{
                 foreach($member as $a){
                     if($a['delete_flag']==0){
-                        echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></a></td></tr>';
+                        echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=11"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                     }else{
-                        echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
+                        echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=11"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                     }
                     break;
                 }
@@ -175,19 +162,19 @@
                 echo '<tr><td colspan="3" align="left"><font size="2px">',$row['color_name'],'</font></td></tr>';
                 //値段
                 echo '<tr><td colspan="3">￥',$row['price'],'</td></tr>';
-                echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">カートに入れる</a></td>';
+                echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=11">カートに入れる</a></td>';
                 
                 //お気に入り
                 $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                 $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                 if($member->rowCount() == 0){
-                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
+                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=11"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                 }else{
                     foreach($member as $a){
                         if($a['delete_flag']==0){
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></a></td></tr>';                               
+                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=11"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></a></td></tr>';                               
                         }else{
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
+                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=11"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                         }
                         break;
                     }
@@ -208,18 +195,18 @@
                 echo '<tr><td colspan="3" align="left"><font size="2px">',$row['color_name'],'</font></td></tr>';
                 //値段
                 echo '<tr><td colspan="3">￥',$row['price'],'</td></tr>';
-                echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'">カートに入れる</a></td>';
+                echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$row['cosme_id'],'&page=11">カートに入れる</a></td>';
                 
                 $member = $pdo -> prepare('select * from Favorites where cosme_id=? and member_code=?');
                 $member -> execute([$row['cosme_id'], $_SESSION['customer']['code']]);
                 if($member->rowCount() == 0){
-                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
+                    echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=11"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                 }else{
                     foreach($member as $a){
                         if($a['delete_flag']==0){
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></a></td></tr>';
+                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=11"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                         }else{
-                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=',count($_GET),'"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
+                            echo '<td align="right"><a href="favorite.php?cosmeId=',$row['cosme_id'],'&page=11"><img src="css/image/favorite.svg" style="width: 30px; height: 30px;"></a></td></tr>';
                         }
                         break;
                     }

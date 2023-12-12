@@ -4,24 +4,23 @@
 $msg;
 if(isset($_POST['admin_email'])){
     unset($_SESSION['admin']);
-    
     $pdo = new PDO($connect, USER, PASS);
     $sql = $pdo -> prepare('select * from Admins where admin_email=?');
     $sql -> execute([$_POST['admin_email']]);
     $password=$_POST['admin_password'];    
     foreach($sql as $row){
-          if(password_verify($_POST['admin_password'],$row['admin_password'])==true){
+        if(password_verify($_POST['admin_password'],$row['admin_password'])==true){
             $_SESSION['admin'] = [
                 'code' => $row['admin_code'],
                 'mail' => $row['admin_email'],
                 'pass' => $password];
-             }
-         }
-         echo '<div id="center">';
+        }
+    }
     if(isset($_SESSION['admin'])){
         header('Location: ./k_home.php');
         exit();
     }else{
+        echo '<div id="center">';
         $msg = '<font color="FF0000">ログイン名またはパスワードが違います。</font>';
     }
 }

@@ -38,6 +38,13 @@ var app = new Vue({
       this.total -= app.allData[index].price*app.allData[index].quantity;
       app.filterData = app.allData.filter(data => data.delete_flag === 0);
       this.message='カートから削除しました。';
+      if(this.total==0){
+        axios.post('./cart_next.php', app.allData)
+        .then(response => {
+          console.log(response);
+          window.location.href="./cart_nothing.php";
+        })
+      }
     },
     nextOrder(){
         axios.post('./cart_next.php', app.allData)

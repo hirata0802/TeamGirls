@@ -29,7 +29,16 @@
                     header('Location: '.$backURL.'?page=32');
                     exit();
                 }
-            }else{//商品詳細画面、検索結果からの遷移
+            }else if($_GET['page'] == 11){
+                if($row["delete_flag"] == 0){
+                    header('Location: ./seach_output.php?page=31');
+                    exit();
+                }else{
+                    header('Location: ./seach_output.php?page=32');
+                    exit();
+                }
+            }
+            else{//商品詳細画面、検索結果からの遷移
                 if($row["delete_flag"] == 0){
                     header('Location: '.$backURL.'&page=31');
                     exit();
