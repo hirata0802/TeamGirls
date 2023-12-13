@@ -59,7 +59,6 @@ if(empty($_SESSION['admin'])){
     
     //カラーID
     $color=[1=>'レッド', 2=>'オレンジ', 3=>'ピンク', 4=>'ベージュ', 5=>'ホワイト', 6=>'ブラウン', 7=>'ブラック', 8=>'シルバー', 9=>'ゴールド', 10=>'その他'];
-    echo '<label class="selectbox">';
     echo '<p><select name="colorSelect" class="as" required>';
     if(isset($_SESSION['newCosme']['color'])){
         foreach($color as $key => $value){
@@ -73,11 +72,10 @@ if(empty($_SESSION['admin'])){
         foreach($color as $key => $value){
             echo '<option value="',$key,'">',$value,'</option>';
         }
-        echo '</select></label></p>';
+        echo '</select></p>';
         
         //ブランド名
         $sql=$pdo->query('select * from Brands');
-        echo '<label class="selectbox">';
         echo '<p><select name="brandSelect" class="as" required>';
         if(isset($_SESSION['newCosme']['brand'])){
             echo '<option value="',$_SESSION['newCosme']['brand'],'" selected hidden>',$_SESSION['newCosme']['brand'],'</option>';
@@ -87,11 +85,10 @@ if(empty($_SESSION['admin'])){
         foreach($sql as $row){
             echo '<option value="',$row['brand_id'],'">',$row['brand_name'],'</option>';
         }
-        echo '</select></label></p>';
+        echo '</select></p>';
 
         //カテゴリ
         $sql=$pdo->query('select * from Categories');
-        echo '<label class="selectbox">';
         echo '<p><select name="categorySelect" class="as" required>';
         if(isset($_SESSION['newCosme']['category'])){
             echo '<option value="',$_SESSION['newCosme']['category'],'" selected hidden>',$_SESSION['newCosme']['category'],'</option>';
@@ -101,7 +98,7 @@ if(empty($_SESSION['admin'])){
         foreach($sql as $row){
             echo '<option value="',$row['category_id'],'">',$row['category_name'],'</option>';
         }
-        echo '</select></label></p>';
+        echo '</select></p>';
         
         //商品説明
         echo '<p><textarea name="cosme_detail" class="ao" placeholder="商品説明" rows="5" cols="40" maxlength="200" title="200文字以内で入力してください" required>', $_SESSION['newCosme']['detail'], '</textarea></p>';
