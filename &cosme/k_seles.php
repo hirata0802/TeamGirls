@@ -25,7 +25,7 @@ if(empty($_SESSION['admin'])){
     <?php
     $pdo=new PDO($connect, USER, PASS);
     if(!empty($_POST['min'])&&!empty($_POST['max'])){
-        $sql=$pdo->prepare('select * from Orders where order_date between ? and ? order by order_date desc');
+        $sql=$pdo->prepare('select * from Orders where order_date between ? and ? order by order_date');
         $sql->execute([$_POST['min'],$_POST['max']]);
         foreach($sql as $row){
             echo '<tr>';
