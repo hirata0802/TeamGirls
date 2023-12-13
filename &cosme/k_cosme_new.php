@@ -28,7 +28,7 @@ if(empty($_SESSION['admin'])){
             'category' => null,
             'detail' => null,
             'price' => null,
-            'file' => null,
+            'file' => null
         ];
     }
     if(isset($_POST['back'])){
@@ -63,7 +63,7 @@ if(empty($_SESSION['admin'])){
     if(isset($_SESSION['newCosme']['color'])){
         foreach($color as $key => $value){
             if($_SESSION['newCosme']['color'] == $key){
-                echo '<option value="',$key,'" selected hidden>',$value,'</option>';
+                echo '<option value="',$key,'" hidden selected>',$value,'</option>';
             }
         }
         }else{
