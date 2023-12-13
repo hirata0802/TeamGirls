@@ -38,7 +38,7 @@ select[name="kategori"] {   border: 1px solid #89c3fd; }
   display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
+    width: 170px;
     height: 30px;
     margin:0 auto;
     padding: .9em 2em;
@@ -68,7 +68,7 @@ select[name="kategori"] {   border: 1px solid #89c3fd; }
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 150px;
+  width: 170px;
   height: 30px;
   margin:0 auto;
   padding: .9em 2em;
