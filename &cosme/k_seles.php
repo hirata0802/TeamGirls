@@ -42,7 +42,7 @@ if(empty($_SESSION['admin'])){
             echo '</tr>';
         }
     }else if(!empty($_POST['min'])&&empty($_POST['max'])){
-        $sql=$pdo->prepare('select * from Orders where order_date >= ? order by order_date desc');
+        $sql=$pdo->prepare('select * from Orders where order_date >= ? order by order_date');
         $sql->execute([$_POST['min']]);
         foreach($sql as $row){
             echo '<tr>';
