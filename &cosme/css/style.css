@@ -131,7 +131,7 @@ height: 4;
 #pas2 {
   text-align: center;
   position: relative;
-  margin-right: 30px; 
+  margin-right: 60px; 
 }
 
 #pas2::before {
@@ -152,7 +152,7 @@ height: 4;
 #meru2 {
   text-align: center;
   position: relative;
-  margin-right: 30px; 
+  margin-right: 60px; 
   
 }
 
@@ -190,7 +190,7 @@ height: 4;
 #yuubin{
   text-align: center;
   position: relative;
-  margin-right: 10px; 
+  margin-right: 60px; 
   
 }
 
@@ -212,7 +212,7 @@ height: 4;
 #tell{
   text-align: center;
   position: relative;
-  margin-right: 30px; 
+  margin-right: 60px; 
   
 }
 

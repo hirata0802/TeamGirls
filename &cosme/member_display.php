@@ -74,10 +74,9 @@ if (!empty($_SESSION['customer'])) {
         echo '<input type="hidden" name="pass" value="',$_SESSION['customer']['pass'],'">';
         $count = (strlen($_SESSION['customer']['pass']));
         $pass = str_repeat("*", $count);
-        echo '<div id="mannaka">';
+
         echo '<table align="center">';
         //名前
-     
         echo '<tr><td>';
         echo '<p align="center"><div id="simei">　　',$row['family_name'],'　',$row['first_name'],'(',$row['family_name_kana'],'　',$row['first_name_kana'],')</div></p>';
         echo '</td></tr>';
@@ -105,7 +104,6 @@ if (!empty($_SESSION['customer'])) {
         echo '</tr></td>';
         echo '</table>';
     }
-    echo '</div>';
     echo '<br>';
     echo '<p><button class="ao" type="submit" href="member_change.php">会員情報の変更</button></p>';
     echo '</form>';
