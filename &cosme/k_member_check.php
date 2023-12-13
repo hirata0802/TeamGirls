@@ -28,11 +28,11 @@ echo '<link rel="stylesheet" href="css/k_style.css">';
     <form action="k_member_finish.php" method="post" id="next">
         <?php
         echo '<div id="center">';
-        echo '<input type="text" style="width: 240px;height: 27x;" name="admin_email" value="',$_POST['admin_email'], '" placeholder="',$_POST['admin_email'],'" readonly>';
+        echo '<input type="text" name="admin_email" value="',$_POST['admin_email'], '" placeholder="',$_POST['admin_email'],'" readonly>';
         echo '</div>';
         echo '<br>';
         echo '<div id="center">';
-        echo '<input type="text" style="width: 240px;height: 27x;" name="admin_password" value="',$_POST['admin_password'], '" placeholder="',$_POST['admin_password'],'" readonly>';
+        echo '<input type="text" name="admin_password" value="',$_POST['admin_password'], '" placeholder="',$_POST['admin_password'],'" readonly>';
         echo '</div>';
         ?>
     </form>
