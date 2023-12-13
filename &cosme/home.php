@@ -38,7 +38,7 @@ if(empty($_SESSION['customer'])){
         
         $count = 1;
         echo '⏰新作情報';
-        echo '<table width="100%" cellpadding="10">';
+        echo '<table width="100%" >';
         echo '<tr>';
         foreach($sql2 as $row2){
             if($count%4!=0){
