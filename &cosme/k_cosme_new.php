@@ -13,9 +13,9 @@ if(empty($_SESSION['admin'])){
     if(isset($_GET['page'])){
         if($_GET['page']==1){
             echo '<div id="center">';
-            $errormsg='すでに登録された商品です';
+            $errormsg='すでに登録された商品です。';
         }else if($_GET['page']==2){
-            $errormsg='ファイルのアップロードに失敗しました';
+            $errormsg='ファイルのアップロードに失敗しました。';
             echo '</div>';
         }
     }

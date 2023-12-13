@@ -61,7 +61,7 @@ if(empty($_SESSION['customer'])){
                 ?>
             </tr>
             <tr>
-                <td colspan="3" align="center"><br>～　<input type="number" min=0 name="max" placeholder="￥1,000"></td>
+                <td colspan="3" align="center"><br><input type="number" min=0 name="max" placeholder="～￥1,000"></td>
             </tr>
             <tr>
                 <td colspan="3"><br><button type="submit" class="ao" name="multiseach">検索</button></td>
