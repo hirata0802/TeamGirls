@@ -42,7 +42,6 @@
         }else if(isset($_GET['category'])){
             $_SESSION['search']['category'] = $_GET['category'];
         }
-
     }
     
     echo '<form action="detail.php" method="post">';
@@ -83,7 +82,7 @@
         $sql.=' and C.brand_id = ?';
         $contains[]=$_SESSION['search']['brand'];
     }
-    
+    $sql.=' order by C.group_id';
     $result=$pdo->prepare($sql);
     $result->execute($contains);
     $count=$result->rowCount();
@@ -111,7 +110,12 @@
     echo '<table width="100%">';
     $rowcount=1;
     echo '<tr>';
-    if($count==1){
+    if($count==0){
+        echo '<div id="mannaka">';
+        echo 'お探しの商品はありません。';
+        echo '</div>';
+    }
+    else if($count==1){
         //1件だけの場合
         foreach($result as $row){
             echo '<td align="center">';

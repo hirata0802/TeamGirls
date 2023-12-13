@@ -37,13 +37,13 @@ if(isset($_GET['cosme_id'])){
         echo '<div id="mannaka">';
         echo '<p style="color: red;">';
         if($_GET['page']==20){
-            echo 'カートに追加しました';
+            echo 'カートに追加しました。';
         }
         else if($_GET['page']==31){
-            echo 'お気に入りから削除しました';
+            echo 'お気に入りから削除しました。';
         }
         else if($_GET['page']==32){
-            echo 'お気に入りに追加しました';
+            echo 'お気に入りに追加しました。';
         }
         echo '</p>';
         echo '</div>';
@@ -115,7 +115,7 @@ if(isset($_GET['cosme_id'])){
     echo '<strong><p align="center">レビュー</p></strong>';
     echo '<hr>';
     if($count==0){
-        echo '<p align="center">現在レビューはありません</p>';
+        echo '<p align="center">現在レビューはありません。</p>';
     }else{
         foreach($sql as $row){
             echo '<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;">';

@@ -24,19 +24,19 @@
             echo '<div id="mannaka">';
             echo '<p style="color: red;">';
             if($_GET['page']==20){
-                echo 'カートに追加しました';
+                echo 'カートに追加しました。';
             }
             else if($_GET['page']==31){
-                echo 'お気に入りから削除しました';
+                echo 'お気に入りから削除しました。';
             }
             else if($_GET['page']==32){
-                echo 'お気に入りに追加しました';
+                echo 'お気に入りに追加しました。';
             }
             echo '</p>';
             echo '</div>';   
         }   
         if($count==0){
-            echo '<p align="center" style="font-size:20px;">現在お気に入り登録はありません</p>';
+            echo '<p align="center" style="font-size:20px;">現在お気に入り登録はありません。</p>';
             echo '<table width="100%">';
         }else{
             echo '<p align="left" style="font-size:30px;">',$count,'件</p>';
