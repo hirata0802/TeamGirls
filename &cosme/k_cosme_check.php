@@ -68,14 +68,14 @@ if(empty($_SESSION['admin'])){
         $key=$_POST['colorSelect'];
         
         echo '<div id="center">';
-        echo '<p><input type="text" name="cosme_name" value="',$_POST['cosme_name'],'" readonly></p>';
-        echo '<p><input type="text" name="color_name" value="',$_POST['color_name'],'" readonly>　';
-        echo '<input type="text" value="',$color[$key],'" readonly></p>';
-        echo '<p><input type="text" value="',$brand_name,'" readonly>　';
-        echo '<input type="text" value="',$category_name,'" readonly></p>';
-        echo '<p><textarea name="cosme_detail" placeholder="',$_POST['cosme_detail'],'" rows="5" cols="40" readonly></textarea><p>';
-        echo '<input type="number" name="price" value="',$_POST['price'],'"></p>';
-        echo '<input type="text" value="',$_FILES['file']['name'],'">';
+        echo '<p><input type="text" class="ao" name="cosme_name" value="',$_POST['cosme_name'],'" readonly></p>';
+        echo '<p><input type="text" class="ao" name="color_name" value="',$_POST['color_name'],'" readonly></p>';
+        echo '<p><input type="text" class="ao" value="',$color[$key],'" readonly></p>';
+        echo '<p><input type="text" class="ao" value="',$brand_name,'" readonly></p>';
+        echo '<p><input type="text" class="ao" value="',$category_name,'" readonly></p>';
+        echo '<p><textarea name="cosme_detail" class="ao" placeholder="',$_POST['cosme_detail'],'" rows="5" cols="40" readonly></textarea></p>';
+        echo '<p><input type="number" class="ao" name="price" value="',$_POST['price'],'"></p>';
+        echo '<input type="text" class="ao" value="',$_FILES['file']['name'],'">';
         echo '<div id="center">';
         echo '<p><font color="FF0000">ファイル名を「', $name, '」に変更して登録します。</font></p>';
         echo '</div>';
@@ -88,11 +88,11 @@ if(empty($_SESSION['admin'])){
         echo '<input type="hidden" name="file" value="',$targetFilePath,'">';
         //↑↑非表示↑↑
         
-        echo '<button type="submit" class="ao" style="width: 300px;height: 30px;">商品新規登録</button><br>';
+        echo '<button type="submit" class="next">商品新規登録</button><br>';
         echo '</form>';
         echo '<form action="k_cosme_new.php?page=0" method="post">';
         echo '<input type="hidden" name="file" value="',$targetFilePath,'">';
-        echo '<button type="submit" class="grey" style="width: 300px;height: 30px;" name="back">変更</button>';
+        echo '<button type="submit" class="return" name="back">変更</button>';
         echo '</form>';
         echo '</div>';
         ?>
