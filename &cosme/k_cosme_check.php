@@ -73,7 +73,7 @@ if(empty($_SESSION['admin'])){
         echo '<p><input type="text" class="ao" value="',$color[$key],'" readonly></p>';
         echo '<p><input type="text" class="ao" value="',$brand_name,'" readonly></p>';
         echo '<p><input type="text" class="ao" value="',$category_name,'" readonly></p>';
-        echo '<p><textarea name="cosme_detail" class="ao" value="',$_POST['cosme_detail'],'" placeholder="',$_POST['cosme_detail'],'" rows="5" cols="40" readonly></textarea></p>';
+        echo '<p><textarea class="ao" placeholder="',$_POST['cosme_detail'],'" rows="5" cols="40" readonly></textarea></p>';
         echo '<p><input type="number" class="ao" name="price" value="',$_POST['price'],'"></p>';
         echo '<input type="text" class="ao" value="',$_FILES['file']['name'],'">';
         echo '<div id="center">';
@@ -85,6 +85,7 @@ if(empty($_SESSION['admin'])){
         echo '<input type="hidden" name="group_id" value="',$group_id,'">';
         echo '<input type="hidden" name="brandSelect" value="',$_POST['brandSelect'],'">';
         echo '<input type="hidden" name="categorySelect" value="',$_POST['categorySelect'],'">';
+        echo '<input type="hidden" name="cosme_detail" value="',$_POST['cosme_detail'],'">';
         echo '<input type="hidden" name="file" value="',$targetFilePath,'">';
         //↑↑非表示↑↑
         
