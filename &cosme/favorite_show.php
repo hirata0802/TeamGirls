@@ -1,15 +1,13 @@
 <?php session_start();
-    //ページのURLをセッションに保存
+    if(empty($_SESSION['customer'])){
+        header('Location: ./error.php');
+        exit();
+    }
+    /*ページのURLをセッションに保存
     if(!isset($_SESSION['history'])){
         $_SESSION['history'] = array();
     }
-    array_push($_SESSION['history'], $_SERVER['REQUEST_URI']);
-?>
-<?php
-if(empty($_SESSION['customer'])){
-    header('Location: ./error.php');
-    exit();
-}
+    array_push($_SESSION['history'], $_SERVER['REQUEST_URI']);*/
 ?>
 <?php require 'db_connect.php'; ?>
 <?php require 'header.php'; ?>
@@ -66,8 +64,8 @@ if(empty($_SESSION['customer'])){
                 //価格
                 echo '<tr><td colspan="3">￥',$row['price'],'</td></tr>';
                 //カート、★
-                echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$cosmeId,'&page=',count($_GET),'">カートに入れる</a></td>';
-                echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></button></td></tr>';
+                echo '<tr><td colspan="2" align="left"><a href="cart_input.php?cosmeId=',$cosmeId,'&page=30">カートに入れる</a></td>';
+                echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=30`"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></button></td></tr>';
                 echo '</table>';
                 echo '</td><td></td>';
                 echo '</tr>';
@@ -88,8 +86,8 @@ if(empty($_SESSION['customer'])){
                     echo '<tr><td colspan="3" align="left"><font size="2px">',$row['color_name'],'</font></td></tr>';
                     //値段
                     echo '<tr><td colspan="3"><font size="2px">￥',$row['price'],'</font></td></tr>';
-                    echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$cosmeId,'&page=',count($_GET),'">カートに入れる</a></td>';
-                    echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></button></td>';
+                    echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$cosmeId,'&page=30">カートに入れる</a></td>';
+                    echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=30`"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></button></td>';
                     echo '</tr>';
                     echo '</table>';
                     echo '</td>';
@@ -106,8 +104,8 @@ if(empty($_SESSION['customer'])){
                     echo '<tr><td colspan="3" align="left">',$row['color_name'],'</td></tr>';
                     //値段
                     echo '<tr><td colspan="3"><font size="2px">￥',$row['price'],'</font></td></tr>';
-                    echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$cosmeId,'&page=',count($_GET),'">カートに入れる</a></td>';
-                    echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=',count($_GET),'`"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></button></td>';                   
+                    echo '<tr><td colspan="2" align="left" white-space: nowrap><a href="cart_input.php?cosmeId=',$cosmeId,'&page=30">カートに入れる</a></td>';
+                    echo '<td align="right"><button onclick="location.href=`favorite.php?cosmeId=',$cosmeId,'&page=30`"><img src="css/image/favorite_black.svg" style="width: 30px; height: 30px;"></button></td>';                   
                     echo '</tr>';
                     echo '</table>';
                     echo '</td>';

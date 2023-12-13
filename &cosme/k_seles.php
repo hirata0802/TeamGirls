@@ -7,6 +7,7 @@ if(empty($_SESSION['admin'])){
 ?>
 <?php require 'k_header.php'; ?>
 <?php require 'db_connect.php'; ?>
+<h3>&cosme</h3>
 <div id="center"><h2>売上管理画面</h2></div>
     <div id="center"><hr color="black"></div>
     <p><button onclick="location.href='k_home.php'"class="return">ホームへ</button></p>
