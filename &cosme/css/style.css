@@ -44,7 +44,10 @@ height: 4;
   margin-left: 120px;
 }
 .yoko{
-  display: flex; /*横並び*/
+  position: relative;
+  /* 値は調整してください */
+  top: 5px;
+  left: 5px;
 }
 /*ログイン、ログアウト画面*/
 #hr1{

@@ -40,8 +40,10 @@ if(empty($_SESSION['customer'])){
         
         $count = 1;
         echo '<div class="yoko">';
-        echo '<img src="css/image/clock.svg" width="40" height="40">新作情報<br>';
+        echo '<img src="css/image/clock.svg" width="40" height="40">新作情報';
         echo '</div>';
+        echo '<br>';
+        echo '<br>';
         echo '<table width="100%" >';
         echo '<tr>';
         foreach($sql2 as $row2){
