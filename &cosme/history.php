@@ -38,6 +38,7 @@ if(empty($_SESSION['customer'])){
                 }
                 echo '</td></tr></table>';
             }
+            echo '<br><hr class="tensen"><br>';
             echo '<div id="mannaka">';
             echo $row['total_price'], '円<br>';
             echo $row['pay_method'];

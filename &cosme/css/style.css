@@ -520,8 +520,9 @@ height: 4;
   height: auto; /* レスポンシブにするために高さを自動調整 */
 }
 .tensen{
-    border: none;
-    border-top: 2px dotted rgb(146, 146, 146);
+  width: 80%;
+  border: none;
+  border-top: 2px dotted rgb(146, 146, 146);
 }
 .ao2{
   border: 2px solid #89c3fd; /* 青い外枠 */
