@@ -46,42 +46,40 @@ height: 4;
 /*H2見出し*/
 
 #yoko1 {
-  text-align: center;
   position: relative;
   margin-right: 25px; 
   
 }
 #yoko1::before {
   content: "";
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   background: url(clock.svg) no-repeat center center / auto 100%;
   display: inline-block;
   position: relative; /* 相対位置指定に変更 */
   margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
-  top: 10px; /* アイコンの位置を微調整 */
- left: 35px;
+  top: 9px; /* アイコンの位置を微調整 */
+ left: 3px;
 }
 
 #yoko1 input {
   padding: 3px 0 3px 2em;
 }
 #yoko {
-  text-align: center;
   position: relative;
   margin-right: 25px; 
   
 }
 #yoko::before {
   content: "";
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
   background: url(ranking.svg) no-repeat center center / auto 100%;
   display: inline-block;
   position: relative; /* 相対位置指定に変更 */
   margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
-  top: 10px; /* アイコンの位置を微調整 */
- left: 35px;
+  top: 9px; /* アイコンの位置を微調整 */
+ left: 3px;
 }
 
 #yoko input {
