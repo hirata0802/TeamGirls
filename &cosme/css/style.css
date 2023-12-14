@@ -44,28 +44,51 @@ height: 4;
   margin-left: 120px;
 }
 /*H2見出し*/
-#yoko1{
-  padding:5px 10px;  /*内側の余白*/
+
+#yoko1 {
+  text-align: center;
+  position: relative;
+  margin-right: 25px; 
   
 }
-
-#yoko1:before {
-  content: url(clock.svg);
-  margin-right:20px;  /*画像右の余白*/
-  width: 40px; /* 幅を50pxに設定 */
-  height: 40px; /*
+#yoko1::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: url(clock.svg) no-repeat center center / auto 100%;
+  display: inline-block;
+  position: relative; /* 相対位置指定に変更 */
+  margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
+  top: 10px; /* アイコンの位置を微調整 */
+ left: 35px;
 }
-#yoko{
-  padding:5px 10px;  /*内側の余白*/
+
+#yoko1 input {
+  padding: 3px 0 3px 2em;
+}
+#yoko {
+  text-align: center;
+  position: relative;
+  margin-right: 25px; 
   
 }
-
-#yoko:before {
-  content: url(ranking.svg);
-  margin-right:20px;  /*画像右の余白*/
-  width: 40px; /* 幅を50pxに設定 */
-  height: 40px; /*
+#yoko::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: url(ranking.svg) no-repeat center center / auto 100%;
+  display: inline-block;
+  position: relative; /* 相対位置指定に変更 */
+  margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
+  top: 10px; /* アイコンの位置を微調整 */
+ left: 35px;
 }
+
+#yoko input {
+  padding: 3px 0 3px 2em;
+}
+
+
 /*ログイン、ログアウト画面*/
 #hr1{
   margin: 0 auto;
