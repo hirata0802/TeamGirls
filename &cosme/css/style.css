@@ -52,6 +52,8 @@ height: 4;
 #yoko1:before {
   content: url(clock.svg);
   margin-right:20px;  /*画像右の余白*/
+  width: 40px; /* 幅を50pxに設定 */
+  height: 40px; /*
 }
 #yoko{
   padding:5px 10px;  /*内側の余白*/
@@ -61,6 +63,8 @@ height: 4;
 #yoko:before {
   content: url(ranking.svg);
   margin-right:20px;  /*画像右の余白*/
+  width: 40px; /* 幅を50pxに設定 */
+  height: 40px; /*
 }
 /*ログイン、ログアウト画面*/
 #hr1{
