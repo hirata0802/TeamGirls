@@ -24,21 +24,21 @@ echo '<link rel="stylesheet" href="css/k_style.css">';
 <?php require 'k_header.php'; ?>
 <h3>&cosme</h3>
 <div id="center"><h2>登録確認</h2></div>
-<div id="hr2"><hr color="black"></div>
+<div id="hr2"><hr color="black"></div><br><br>
     <form action="k_member_finish.php" method="post" id="next">
         <?php
         echo '<div id="center">';
-        echo '<input type="text" name="admin_email" value="',$_POST['admin_email'], '" placeholder="',$_POST['admin_email'],'" readonly>';
+        echo '<input type="text" style="width:450px;height:45px;" name="admin_email" value="',$_POST['admin_email'], '" placeholder="',$_POST['admin_email'],'" readonly>';
         echo '</div>';
         echo '<br>';
         echo '<div id="center">';
-        echo '<input type="text" name="admin_password" value="',$_POST['admin_password'], '" placeholder="',$_POST['admin_password'],'" readonly>';
+        echo '<input type="text" style="width:450px;height:45px;" name="admin_password" value="',$_POST['admin_password'], '" placeholder="',$_POST['admin_password'],'" readonly>';
         echo '</div>';
         ?>
+        <br>
+        <button class="next" >新規登録</button></p>
     </form>
-    <br>
-    <button onclick="history.back()" class="next" >変更</button></p><br>
-    <button type="submit" form="next" class="return" >新規登録</button></p>
+    <button type="button" onclick="location.href='./k_member_new.php'" class="return" >変更</button></p>
 </body>
 </html>
 <?php require 'footer.php'; ?>

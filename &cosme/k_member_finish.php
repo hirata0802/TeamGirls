@@ -18,12 +18,13 @@ $pdo=new PDO($connect,USER,PASS);
     echo '<div id="center">';
     echo '<h2>登録完了</h2>';
     echo '<hr color="black">';
-    echo '</div>';
+    echo '</div><br><br>';
     echo '<div id="center">'; 
     echo '<p><font color="FF0000">',$_POST['admin_email'],'の管理者登録が完了しました。</font></p>';
     echo '</div>';
     echo '<form action="k_home.php" method="post">';
-    echo '<button class="next" >ホームへ</button>';
+    echo '<br><br>';
+    echo '<p><button class="next" >ホームへ</button></p>';
     echo '</form>';
     unset($_SESSION['newAdmin']);
 ?>
