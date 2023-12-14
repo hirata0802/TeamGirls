@@ -11,7 +11,7 @@ if(empty($_SESSION['customer'])){
 <?php
     echo '<table>';
         echo '<div class="yoko">';
-        echo '<img src="css/image/ranking.svg" width="40" height="40">今週のランキング';
+        echo '今週のランキング';
         echo '</div>';
         $pdo = new PDO($connect, USER, PASS);
         $sql = $pdo -> query('select C.cosme_name, C.cosme_id, C.image_path, SUM(OD.quantity) from Cosmetics C inner join OrderDetails OD ON C.cosme_id=OD.cosme_id INNER JOIN Orders O ON OD.order_id=O.order_id WHERE order_date>=(NOW()-INTERVAL 7 day) GROUP BY C.cosme_id ORDER BY SUM(OD.quantity) DESC LIMIT 7');
@@ -39,8 +39,8 @@ if(empty($_SESSION['customer'])){
         $sql2 = $pdo -> query('select min(cosme_id), image_path, cosme_name from Cosmetics where creation_date >= date_add(now(), interval - 10 day) group by group_id order by cosme_id desc'); 
         
         $count = 1;
-        echo '<div class="yoko">';
-        echo '<img src="css/image/clock.svg" width="40" height="40">新作情報';
+        echo '<div class="yoko1">';
+        echo '新作情報';
         echo '</div>';
         echo '<br>';
         echo '<br>';

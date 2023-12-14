@@ -43,11 +43,24 @@ height: 4;
 #new{
   margin-left: 120px;
 }
+/*H2見出し*/
+.yoko1{
+  padding:5px 10px;  /*内側の余白*/
+  
+}
+
+.yoko1:before {
+  content: url("clock.svg");
+  margin-right:20px;  /*画像右の余白*/
+}
 .yoko{
-  position: relative;
-  /* 値は調整してください */
-  top: 5px;
-  left: 5px;
+  padding:5px 10px;  /*内側の余白*/
+  
+}
+
+.yoko:before {
+  content: url("ranking.svg");
+  margin-right:20px;  /*画像右の余白*/
 }
 /*ログイン、ログアウト画面*/
 #hr1{
