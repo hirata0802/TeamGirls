@@ -43,6 +43,9 @@ height: 4;
 #new{
   margin-left: 120px;
 }
+.yoko{
+  display: flex; /*横並び*/
+}
 /*ログイン、ログアウト画面*/
 #hr1{
   margin: 0 auto;
