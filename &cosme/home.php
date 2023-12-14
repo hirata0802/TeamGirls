@@ -10,7 +10,9 @@ if(empty($_SESSION['customer'])){
 <?php require 'db_connect.php'; ?>
 <?php
     echo '<table>';
-        echo '👑今週のランキング';
+        echo '<div id="yoko">';
+        echo '今週のランキング';
+        echo '</div>';
         $pdo = new PDO($connect, USER, PASS);
         $sql = $pdo -> query('select C.cosme_name, C.cosme_id, C.image_path, SUM(OD.quantity) from Cosmetics C inner join OrderDetails OD ON C.cosme_id=OD.cosme_id INNER JOIN Orders O ON OD.order_id=O.order_id WHERE order_date>=(NOW()-INTERVAL 7 day) GROUP BY C.cosme_id ORDER BY SUM(OD.quantity) DESC LIMIT 7');
         $countRank = 1;
@@ -37,7 +39,11 @@ if(empty($_SESSION['customer'])){
         $sql2 = $pdo -> query('select min(cosme_id), image_path, cosme_name from Cosmetics where creation_date >= date_add(now(), interval - 10 day) group by group_id order by cosme_id desc'); 
         
         $count = 1;
-        echo '⏰新作情報';
+        echo '<div id="yoko1">';
+        echo '新作情報';
+        echo '</div>';
+        echo '<br>';
+        echo '<br>';
         echo '<table width="100%" >';
         echo '<tr>';
         foreach($sql2 as $row2){
@@ -52,5 +58,6 @@ if(empty($_SESSION['customer'])){
         }
         echo '</table>';
     echo '</table>';
+    echo '<br>';
 ?>
 <?php require 'footer.php'; ?>

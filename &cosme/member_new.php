@@ -50,15 +50,15 @@
     echo '<p><input type="text" name="address" id="address" placeholder="番地" value="',$address,'" required></p>';
     echo '<p><input type="text" name="bill" placeholder="マンション・ビル名" value="',$bill,'" ></p>';
     echo '</div>';
-    echo '<div id="tell">';
+    echo '<div id="tell1">';
     echo '<input type="tel" style="width: 240px;height: 27px;" name="tel" maxlength="11" pattern="^[0-9]+$" placeholder="電話番号(ハイフンなし)" value="',$tel,'" required>';
     echo '</div>';
     echo '<br>';
-    echo '<div id="meru2">';
+    echo '<div id="meru1">';
     echo '<input type="email" style="width: 240px;height: 27px;" name="mail" placeholder="メールアドレス" value="',$mail,'" required>';
     echo '</div>';
     echo '<br>';
-    echo '<div id="pas2">';
+    echo '<div id="pas1">';
     echo '<input type="password" style="width: 240px;height: 27px;" name="pass" placeholder="パスワード" pattern="^([a-zA-Z0-9]{6,})$" title="半角英数字6文字以上で入力ください" value="',$pass,'" required>';
     echo '</div>';
 ?>
