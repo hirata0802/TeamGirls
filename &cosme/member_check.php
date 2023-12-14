@@ -79,6 +79,7 @@
         echo '</table>';            
     echo '</form><br>';
     echo '<button type="button" onclick="location.href=`member_new.php`" class="grey">変更</button>'; 
+    echo '<br>';
     echo '<button type="submit" form="next" class="ao">新規登録</button></p>';
     require 'footer.php';
 ?>
