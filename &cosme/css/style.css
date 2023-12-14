@@ -163,7 +163,7 @@ height: 4;
 }
 #toroku1{
   text-align:center;
-  padding-right: 60px;
+  padding-right: 70px;
 }
 #simei{
   text-align: center;
@@ -214,7 +214,49 @@ height: 4;
 #meru2 input {
   padding: 3px 0 3px 2em;
 }
+#pas1 {
+  text-align: center;
+  position: relative;
+  margin-right: 35px; 
+}
 
+#pas1::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: url(key.svg) no-repeat center center / auto 100%;
+  display: inline-block;
+  position: relative; /* 相対位置指定に変更 */
+  margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
+  top: 10px; /* アイコンの位置を微調整 */
+  right: -35px;
+}
+
+#pas1 input {
+  padding: 3px 0 3px 2em;
+}
+#meru1 {
+  text-align: center;
+  position: relative;
+  margin-right: 35px; 
+  
+}
+
+#meru1::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: url(mail.svg) no-repeat center center / auto 100%;
+  display: inline-block;
+  position: relative; /* 相対位置指定に変更 */
+  margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
+  top: 10px; /* アイコンの位置を微調整 */
+  right: -35px;
+}
+
+#meru1 input {
+  padding: 3px 0 3px 2em;
+}
 #simei::before {
   content: "";
   width: 25px;
@@ -272,6 +314,28 @@ height: 4;
 }
 
 #tell input {
+  padding: 3px 0 3px 2em;
+}
+#tell1{
+  text-align: center;
+  position: relative;
+  margin-right: 35px; 
+  
+}
+
+#tell1::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background: url(tell.svg) no-repeat center center / auto 100%;
+  display: inline-block;
+  position: relative; /* 相対位置指定に変更 */
+  margin-right: 10px; /* アイコンとテキストボックスの間隔を調整 */
+  top: 8px; /* アイコンの位置を微調整 */
+  right: -35px;
+}
+
+#tell1 input {
   padding: 3px 0 3px 2em;
 }
 /*新規完了*/
