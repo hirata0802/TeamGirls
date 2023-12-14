@@ -44,21 +44,21 @@ height: 4;
   margin-left: 120px;
 }
 /*H2見出し*/
-.yoko1{
+#yoko1{
   padding:5px 10px;  /*内側の余白*/
   
 }
 
-.yoko1:before {
+#yoko1:before {
   content: url(clock.svg);
   margin-right:20px;  /*画像右の余白*/
 }
-.yoko{
+#yoko{
   padding:5px 10px;  /*内側の余白*/
   
 }
 
-.yoko:before {
+#yoko:before {
   content: url(ranking.svg);
   margin-right:20px;  /*画像右の余白*/
 }

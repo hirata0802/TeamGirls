@@ -10,7 +10,7 @@ if(empty($_SESSION['customer'])){
 <?php require 'db_connect.php'; ?>
 <?php
     echo '<table>';
-        echo '<div class="yoko">';
+        echo '<div id="yoko">';
         echo '今週のランキング';
         echo '</div>';
         $pdo = new PDO($connect, USER, PASS);
@@ -39,7 +39,7 @@ if(empty($_SESSION['customer'])){
         $sql2 = $pdo -> query('select min(cosme_id), image_path, cosme_name from Cosmetics where creation_date >= date_add(now(), interval - 10 day) group by group_id order by cosme_id desc'); 
         
         $count = 1;
-        echo '<div class="yoko1">';
+        echo '<div id="yoko1">';
         echo '新作情報';
         echo '</div>';
         echo '<br>';
