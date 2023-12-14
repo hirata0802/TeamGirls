@@ -13,32 +13,30 @@ if(empty($_SESSION['customer'])){
     </div>
     <?php
     $pdo=new PDO($connect, USER, PASS);
-    $sql=$pdo->prepare('select * from Orders where member_code=? order by order_date desc');
+    $sql=$pdo->prepare('select * from Orders where member_code=? order by order_id desc');
     $sql->execute([$_SESSION['customer']['code']]);
-    if($sql->rowCount() == 0){
-        echo '<div id="mannaka">ご注文履歴がありません。</div>';
-    }
-    else{
+    if($sql->rowCount() > 0){
         //注文履歴表示
         foreach($sql as $row){
             echo '<div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333; border-radius: 10px;" class="history">';
             echo '<p>', $row['order_date'], '</p>';
-            $sql2=$pdo->prepare('select * from OrderDetails OD inner join Cosmetics C on OD.cosme_id=C.cosme_id where OD.order_id=? order by C.cosme_id');
+            $sql2=$pdo->prepare('select * from OrderDetails as OD inner join Cosmetics as C on OD.cosme_id=C.cosme_id where OD.order_id=?');
             $sql2->execute([$row['order_id']]);
             //注文詳細表示
-            foreach($sql2 as $row2){
+            foreach($sql2 as $detail){
                 echo '<table width="100%"><tr>';
-                echo '<td><img src="', $row2['image_path'], '" alt="" style="object-fit: contain; width: 100px; height: 100px;"></td>';
-                echo '<td align="left">';
-                echo $row2['cosme_name'],'<br>';
-                echo $row2['color_name'],'<br>';
-                echo $row2['quantity'],'個</td></tr>';
+                echo '<td width="100"><img src="', $detail['image_path'], '" alt="" style="object-fit: contain; width: 100px; height: 100px;"></td>';
+                echo '<td>';
+                echo $detail['cosme_name'],'<br>';
+                echo $detail['color_name'],'<br>';
+                echo $detail['quantity'],'個';
                 $reviewCount = $pdo -> prepare('select * from Reviews where cosme_id = ? and member_code = ?');
-                $reviewCount -> execute([ $row2['cosme_id'],$_SESSION['customer']['code']]);
+                $reviewCount -> execute([ $detail['cosme_id'],$_SESSION['customer']['code']]);
                 //レビューを書いたことがないものだけ表示
                 if($reviewCount->rowCount()==0){
-                    echo '<tr><td colspan="2"><button class="ao" onclick="location.href=`review_new.php?Rnew=', $row2['cosme_id'], '&page=1`" id="buttonsize">レビューを書く</button></td></tr></table>';
+                    echo '<button class="review" onclick="location.href=`review_new.php?Rnew=', $detail['cosme_id'], '&page=1`" id="buttonsize">レビューを書く</button>';
                 }
+                echo '</td></tr></table>';
             }
             echo '<div id="mannaka">';
             echo $row['total_price'], '円<br>';
@@ -46,6 +44,9 @@ if(empty($_SESSION['customer'])){
             echo '</div>';
             echo '</div>';
         }
+    }
+    else{
+        echo '<div id="mannaka">ご注文履歴がありません。</div>';
     }
 ?>
 <?php require 'footer.php'; ?>

@@ -255,7 +255,7 @@ height: 4;
 
 }
 .ao1{
-   
+  
   display: block;
   background-color: #89c3fd;
   border-color: rgb(221, 221, 221);
@@ -265,7 +265,7 @@ height: 4;
   font-weight: bold;
   border-radius: 5px;
   text-align: center;
-
+  
 }
 .grey{
   display: block;
@@ -278,7 +278,18 @@ height: 4;
   font-weight: bold;
   border-radius: 5px;
   text-align: center;
-
+}
+.review{   
+  display: block;
+  margin: 0;
+  background-color: #89c3fd;
+  border-color: rgb(221, 221, 221);
+  font-family: 'Century Gothic', sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  text-align: center;
 }
 #ka-to{
   display: flex;

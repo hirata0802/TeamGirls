@@ -24,7 +24,7 @@
         //Addresses登録
         $id=$pdo->lastInsertId();
         $adsName=$_POST['sei'].$_POST['mei'];
-        $sql2=$pdo->prepare('insert into Addresses values(null,?,?,?,?,?,?,?,?,CURRENT_DATE)');
+        $sql2=$pdo->prepare('insert into Addresses values(null,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP)');
         $sql2->execute([
             $id,
             $adsName,

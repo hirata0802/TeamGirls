@@ -10,7 +10,6 @@ if(empty($_SESSION['customer'])){
 <?php require 'db_connect.php'; ?>
 <?php
     echo '<div id="logtitle">';
-    echo '<h2>注文内容の確認</h2>';
     echo '</div>';
     echo '<form action="order_finish.php" method="post">';
     $pdo=new PDO($connect, USER, PASS);
@@ -38,14 +37,16 @@ if(empty($_SESSION['customer'])){
         echo '</div>';
         echo '<br>';
         echo '<div id="dai">';
-        echo '<dt>商品合計</dt><dd>';
+        echo '<dt>商品合計：</dt><dd>';
         echo '</div>';
         echo '<div id="text1">';
         echo  $_POST['total'], '円</dd>';
         echo '</div>';
     }
-    echo '<dl>';
-    
+    echo '<dl><br>';
+    echo '<div id="dai">';
+    echo '<dt>購入商品：</dt>';
+    echo '</div>';
     //購入商品
     $cart=$pdo->prepare('select * from Cart as C inner join Cosmetics as CO on C.cosme_id=CO.cosme_id where member_code=? and C.delete_flag=0');
     $cart->execute([$_SESSION['customer']['code']]);

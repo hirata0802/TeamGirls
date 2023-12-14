@@ -47,54 +47,54 @@ var app = new Vue({
       }
     },
     nextOrder(){
-        axios.post('./cart_next.php', app.allData)
-        .then(response => {
-          console.log(response);
-          window.location.href="./order.php";
-        })
-      },
-      nextHome(){
-        axios.post('./cart_next.php', app.allData)
-        .then(response => {
-          console.log(response);
-          window.location.href="./home.php";
-        })
-      },
-      nextSearch(){
-        axios.post('./cart_next.php', app.allData)
-        .then(response => {
-          console.log(response);
-          window.location.href="./seach_input.php";
-        })
-      },
-      nextFavorite(){
-        axios.post('./cart_next.php', app.allData)
-        .then(response => {
-          console.log(response);
-          window.location.href="./favorite_show.php";
-        })
-      },
-      nextCart(){
-        axios.post('./cart_next.php', app.allData)
-        .then(response => {
-          console.log(response);
-          window.location.href="./cart_show.php";
-        })
-      },
-      nextMypage(){
-        axios.post('./cart_next.php', app.allData)
-        .then(response => {
-          console.log(response);
-          window.location.href="./mypage.php";
-        })
-      },
-      getIndexBy(id){
-        const index = app.allData.findIndex(data => data.cart_id === id);
-        return index;
-      }
+      axios.post('./cart_next.php', app.allData)
+      .then(response => {
+        console.log(response);
+        window.location.href="./order.php";
+      })
     },
-    mounted () {
-      // インスタンス初期化時、DOMが生成された後に実行される
-      this.fetchItem()
+    nextHome(){
+      axios.post('./cart_next.php', app.allData)
+      .then(response => {
+        console.log(response);
+        window.location.href="./home.php";
+      })
     },
-  });
+    nextSearch(){
+      axios.post('./cart_next.php', app.allData)
+      .then(response => {
+        console.log(response);
+        window.location.href="./seach_input.php";
+      })
+    },
+    nextFavorite(){
+      axios.post('./cart_next.php', app.allData)
+      .then(response => {
+        console.log(response);
+        window.location.href="./favorite_show.php";
+      })
+    },
+    nextCart(){
+      axios.post('./cart_next.php', app.allData)
+      .then(response => {
+        console.log(response);
+        window.location.href="./cart_show.php";
+      })
+    },
+    nextMypage(){
+      axios.post('./cart_next.php', app.allData)
+      .then(response => {
+        console.log(response);
+        window.location.href="./mypage.php";
+      })
+    },
+    getIndexBy(id){
+      const index = app.allData.findIndex(data => data.cart_id === id);
+      return index;
+    }
+  },
+  mounted () {
+    // インスタンス初期化時、DOMが生成された後に実行される
+    this.fetchItem()
+  },
+});
