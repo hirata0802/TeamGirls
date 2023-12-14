@@ -50,7 +50,7 @@ height: 4;
 }
 
 .yoko1:before {
-  content: url("clock.svg");
+  content: url(clock.svg);
   margin-right:20px;  /*画像右の余白*/
 }
 .yoko{
@@ -59,7 +59,7 @@ height: 4;
 }
 
 .yoko:before {
-  content: url("ranking.svg");
+  content: url(ranking.svg);
   margin-right:20px;  /*画像右の余白*/
 }
 /*ログイン、ログアウト画面*/
