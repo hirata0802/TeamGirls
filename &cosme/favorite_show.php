@@ -3,11 +3,6 @@
         header('Location: ./error.php');
         exit();
     }
-    /*ページのURLをセッションに保存
-    if(!isset($_SESSION['history'])){
-        $_SESSION['history'] = array();
-    }
-    array_push($_SESSION['history'], $_SERVER['REQUEST_URI']);*/
 ?>
 <?php require 'db_connect.php'; ?>
 <?php require 'header.php'; ?>

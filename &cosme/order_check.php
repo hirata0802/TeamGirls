@@ -51,14 +51,15 @@ if(empty($_SESSION['customer'])){
     $cart=$pdo->prepare('select * from Cart as C inner join Cosmetics as CO on C.cosme_id=CO.cosme_id where member_code=? and C.delete_flag=0');
     $cart->execute([$_SESSION['customer']['code']]);
     foreach($cart as $row){
-        //echo '<img src="', $row['image_path'], '" style="object-fit: contain; width: 100px; height: 100px;">';
-        echo '<div id="text1">';
-        echo $row['cosme_name'], '　';
-        echo '<br>';
-        echo 'カラー：', $row['color_name'];
-        echo $row['quantity'];
+        echo '<div id="text2">';
+        echo '<table width="100%"><tr>';
+        echo '<td width="100"><img src="', $row['image_path'], '" alt="" style="object-fit: contain; width: 100px; height: 100px;"></td>';
+        echo '<td>';
+        echo '<strong>', $row['cosme_name'],'</strong><br>';
+        echo $row['color_name'],'<br>';
+        echo $row['quantity'],'個';
+        echo '</td></tr></table>';
         echo '</div>';
-        echo'<br>';
         echo '<br>';
     }
     echo '<input type="hidden" name="pay" value="', $_POST['pay'], '">';

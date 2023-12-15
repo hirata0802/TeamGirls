@@ -22,11 +22,6 @@ if(isset($_GET['cosme_id'])){
     unset($_SESSION['cosmeId']);
     $_SESSION['cosmeId']=$_GET['cosme_id'];
 }
-    /*ページのURLをセッションに保存
-    if(!isset($_SESSION['history'])){
-        $_SESSION['history'] = array();
-    }
-    array_push($_SESSION['history'], $_SERVER['REQUEST_URI']);*/
 ?>
 <?php require 'header.php'; ?>
 <?php require 'db_connect.php'; ?>
@@ -129,10 +124,20 @@ if(isset($_GET['cosme_id'])){
                 }
             }
             echo '</p>';
-            echo '<p>', $row['member_nickname'], '　';
-            echo $row['member_age'], '/';
-            echo $row['member_skin'], '/';
-            echo $row['member_color'], '</p>';
+            echo '<p>', $row['member_nickname'];
+            if(isset($row['member_age']) || isset($row['member_skin']) || isset($row['member_color'])){
+                echo '　　|';
+                if(isset($row['member_age'])){
+                    echo $row['member_age'], '代|';
+                }
+                if(isset($row['member_skin'])){
+                    echo $row['member_skin'], '|';
+                }
+                if(isset($row['member_color'])){
+                    echo $row['member_color'], '|';
+                }
+            }
+            echo '</p>';
             echo '<p>', $row['review_text'], '</p>';
             if(!empty($row['image_path'])){
                 echo '<div style="text-align: center">';

@@ -19,7 +19,7 @@ if(empty($_SESSION['customer'])){
         $ads=$row['prefecture'].$row['city'].$row['section']. "<br>" .$row['building'];
         echo '<dl>';
         echo '<div id="dai">';
-        echo '<dt>お届け先</dt><dd>';
+        echo '<dt>お届け先：</dt><dd>';
         echo '</div>';
         echo '<div id="text1">';
         echo $row['address_name'], '　様<br>';
@@ -41,7 +41,7 @@ if(empty($_SESSION['customer'])){
     $total->execute([$_SESSION['customer']['code']]);
     foreach($total as $row){
         echo '<div id="dai">';
-        echo '<dt>商品合計</dt><dd>';
+        echo '<dt>商品合計：</dt><dd>';
         echo '</div>';
         echo '<div id="text1">';
         echo  $row['total'], '円</dd>';
@@ -52,7 +52,7 @@ if(empty($_SESSION['customer'])){
 ?>
 <br>
 <div id="dai">
-    <dt>お支払い方法</dt>
+    <dt>お支払い方法：</dt>
 </div>
     <div id="text1">
     <div class="radio-wrap">

@@ -27,7 +27,7 @@ if(empty($_SESSION['customer'])){
                 echo '<table width="100%"><tr>';
                 echo '<td width="100"><img src="', $detail['image_path'], '" alt="" style="object-fit: contain; width: 100px; height: 100px;"></td>';
                 echo '<td>';
-                echo $detail['cosme_name'],'<br>';
+                echo '<strong>', $detail['cosme_name'],'</strong><br>';
                 echo $detail['color_name'],'<br>';
                 echo $detail['quantity'],'個';
                 $reviewCount = $pdo -> prepare('select * from Reviews where cosme_id = ? and member_code = ?');
