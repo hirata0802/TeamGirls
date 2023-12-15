@@ -396,6 +396,10 @@ height: 4;
   border-radius: 5px;
   text-align: center;
 }
+#file{
+  text-align:center;
+  padding-right: 70px;
+}
 #ka-to{
   display: flex;
   margin-left: 100px;

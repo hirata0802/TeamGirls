@@ -95,7 +95,9 @@ if($_GET['page'] == 0){
         echo '</div>';
         echo '<div id="rebyutitle">';
         echo '<p>画像の追加（任意）';
+        echo '<div id="file">';
             echo '<input type="file" name="file">';
+        echo '</div>';
         echo '</p>';
         echo '</div>';
         echo '<div id="mannaka">';
