@@ -70,7 +70,9 @@ if($_GET['page'] == 0){
     echo '<div id="mannaka">';
     echo '<p>',$cosme_name,'</p>';
     echo '</div>';
+    echo '<div id="rebyutitle">';
     echo '<p>満足度';
+    echo '</div>';
     echo '<form action="review_new.php?Rnew=',$cosme_id,'&page=0" method="post" enctype="multipart/form-data">';
         echo '<div class="rate-form">';
             echo '<input id="star5" type="radio" name="rate" value="5">';
@@ -85,11 +87,15 @@ if($_GET['page'] == 0){
             echo '<label for="star1">★</label>';
         echo '</div>';
         echo '</p>';
+        echo '<div id="rebyutitle">';
         echo '<p>レビュー本文';
+        echo '</div>';
         echo '<div id="mannaka">';
         echo '<textarea name="honbun" cols="30" rows="10"></textarea></p>';
         echo '</div>';
+        echo '<div id="rebyutitle">';
         echo '<p>画像の追加（任意）';
+        echo '</div>';
             echo '<input type="file" name="file">';
         echo '</p>';
         echo '<div id="mannaka">';
